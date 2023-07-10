@@ -1,0 +1,262 @@
+.pba {
+    background-image: url('../../images/fondo-credlap.png');
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 750px;
+}
+
+.pba-first-section {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 10px;
+}
+
+.pba-second-section {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: row;
+}
+
+.pba-form {
+    max-width: 600px;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.pba-tags{
+    display: flex;
+    flex-direction: row;
+}
+
+.pba-tag {
+    background: linear-gradient(90deg, #1D377A 0%, #1B5778 100%);
+    border-radius: 25px;
+    color: #FFF;
+    padding: 2px 15px 2px 15px;
+    margin: 5px;
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: #555 1px 0 2px;
+}
+
+.pba-title {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: #555 1px 0 2px;
+}
+
+.pba-checks-button-container{
+    display: flex;
+    width: 100%;
+}
+
+.pba-checkbox-container {
+    margin: 5px;
+}
+
+.pba-button-container {
+    margin: 5px;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pba-form-input {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 350px;
+}
+
+.pba-left-box {
+    width: 100%;
+    max-width: 400px;
+}
+
+.pba-right-box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+}
+
+.pba-adjunto-container{
+    display: flex;
+    margin: 5px;
+    width: 100%;
+}
+
+.pba-label-adjuntar {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    min-width: 350px;
+    margin-top: -5px;
+    margin-bottom: -10px;
+}
+
+.pba-label-adjuntar-2{
+    font-weight: 100;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.pba-adjunto-desc{
+    color: #e4fffe;
+    font-size: 0.8rem;
+    font-style: italic;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.pba-btn {
+    padding: 8px 20px;
+    border-radius: 2rem;
+    outline: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: var(--primary);
+    font-family: 'Gotham Narrow', sans-serif;
+    font-weight: 600;
+    height: 3.5rem;
+    width: 90%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 5%;
+    box-shadow: #555 2px 0 5px;
+}
+
+.pba-btn:hover {
+    padding: 6px 18px;
+    transition: all 0.3s ease-out;
+    background-color: #FFF;
+    color: #47B0AB;
+    border-radius: 2rem;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease-out;
+}
+
+@media screen and (max-width: 1065px) {
+    .pba {
+        flex-direction: column;
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .pba-first-section {
+        max-width: unset;
+        margin-bottom: 0px;
+    }
+
+    .pba-first-section p{
+        text-align: center;
+    }
+
+    .pba-second-section {
+        max-width: unset;
+        flex-direction: column;
+    }
+
+    .pba-tags{
+        display: inline-grid;
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .pba-title {
+        text-align: center;
+        margin-top: 15px;
+        color: #FFF;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .pba-checks-button-container{
+        flex-direction: column;
+    }
+
+    .pba-checkbox-container {
+        width: 300px;
+        margin-top: 0px;
+    }
+
+    .pba-button-container {
+        width: 300px;
+    }
+
+    .pba-form {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -15px;
+    }
+
+    .pba-form-input {
+        width: 300px;
+        margin: 0px;
+        margin-top: 15px;
+    }
+
+    .pba-adjunto-container{
+        flex-direction: column;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .pba-label-adjuntar {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: unset;
+        text-align: unset;
+        font-size: 1.1rem;
+    }
+
+    .pba-adjunto-desc{
+        font-size: 0.7rem;
+        padding-right: 10px;
+    }
+
+    .pba-checks-button-container{
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+    }
+
+    .pba-button-container.adjuntar{
+        height: 40px;
+        width: 150px;
+        margin-left: unset;
+        margin-right: unset;
+    }
+
+    .pba-btn {
+        padding: 0px;
+        padding-top: 2px;
+        display: inline-block;
+        font-size: 1.3rem;
+        height: 3.3rem;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .pba-btn:hover {
+        padding: 0px;
+    }
+}

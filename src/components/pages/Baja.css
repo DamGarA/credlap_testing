@@ -1,0 +1,142 @@
+.baja {
+    background-image: url('../../images/fondo_celeste.png');
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.baja-first-section {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    margin-top: 10%;
+}
+
+.baja-left-box {
+    display: flex;
+    flex-direction: column;
+    margin-right: 3%;
+}
+
+.baja-right-box {
+    display: flex;
+    margin-left: 3%;
+    margin-bottom: 3%;
+}
+
+.baja-label {
+    font-size: 3rem;
+    color: #FFF;
+    font-family: 'Gotham Narrow', sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.baja-text {
+    color: #FFF;
+    font-size: 1.5rem;
+    font-family: 'Gotham Narrow', sans-serif;
+    margin-bottom: 10px;
+}
+
+.form-baja{
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+}
+
+.baja-nota {
+    max-width: 1200px;
+    color: #FFF;
+    font-size: 1.1rem;
+    font-family: 'Gotham Narrow';
+    font-weight: 100;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.baja-nota-2 {
+    max-width: 1200px;
+    color: #FFF;
+    font-size: 1.1rem;
+    font-family: 'Gotham Narrow';
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.baja-button-container{
+    margin-top: 1.3rem;
+    box-shadow: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.baja-enviando {
+    color: #FFF;
+    display: flex;
+    min-width: 300px;
+    min-height: 200px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-family: 'Gotham Narrow';
+    font-style: italic;
+}
+
+@media screen and (max-width: 1065px) {
+    .baja {
+        padding-top: 80px;
+        padding-bottom: 0px;
+    }
+    
+    .baja-first-section{
+        flex-direction: column;
+        min-width: auto;
+        min-height: auto;
+        margin-bottom: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .baja-left-box {
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    .baja-right-box {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .baja-label {
+        font-size: 2rem;
+    }
+
+    .baja-text {
+        font-size: 1.4rem;
+    }
+
+    .form-baja {
+        min-width: 0px;
+        width: 100%;
+    }
+
+    .baja-form-input-container {
+        width: 100%;
+    }
+
+    .baja-nota {
+        padding: 10px;
+    }
+
+    .baja-nota-2 {
+        padding: 10px;
+    }
+
+    .baja-enviando {
+        min-width: unset;
+        width: 100%;
+    }
+}

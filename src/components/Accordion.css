@@ -1,0 +1,25 @@
+.answer_wrapper {
+    max-height: 0px;
+    overflow: hidden;
+}
+
+.answer_wrapper .answer{
+    width: 100%;
+}
+
+.answer_wrapper.open {
+    height: auto;
+}
+
+.answer_wrapper {
+    /* ... */
+    -webkit-transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
+    -moz-transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
+    -o-transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
+    -ms-transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
+    transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
+}
+
+.accordion_item {
+    list-style-type: none;
+}

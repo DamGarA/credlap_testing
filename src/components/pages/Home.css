@@ -1,0 +1,423 @@
+.home {
+    background-image: url('../../images/fondo_celeste.png');
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.home-first-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -35%;
+    padding-top: 8%;
+    z-index: 2;
+}
+
+.home-second-section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.home-second-section-content {
+    width: 100%;
+    color: #FFF;
+    background: linear-gradient(90deg, #183678 0%, #185678 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.home-left-box {
+    margin-right: 30%;
+    margin-top: 5%;
+}
+
+.home-slider-container {
+    border-radius: 20px;
+    height: 40px;
+    background-color: #FFF;
+    padding: 0px 15px 43px 15px;
+}
+
+.home-slider-thumb {
+    cursor: default !important;
+}
+
+.home-slider-track-0 {
+    right: 0px !important;
+}
+
+.home-label {
+    color: #FFF;
+    font-size: 3.5rem;
+    font-family: 'Gotham Narrow', sans-serif;
+    font-weight: 600;
+}
+
+.home-monto {
+    color: #FFF;
+    font-size: 6rem;
+    font-family: 'Gotham Narrow', sans-serif;
+    font-weight: 800;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.home-btn {
+    padding: 8px 20px;
+    border-radius: 2rem;
+    outline: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: var(--primary);
+    font-family: 'Gotham Narrow', sans-serif;
+    font-weight: 600;
+    height: 3.5rem;
+    width: 90%;
+    margin-left: 5%;
+    box-shadow: #555 2px 0 5px;
+}
+
+.home-btn:hover {
+    padding: 6px 18px;
+    transition: all 0.3s ease-out;
+    background-color: #FFF;
+    color: #47B0AB;
+    border-radius: 2rem;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease-out;
+}
+
+.home-second-section-label{
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+}
+
+.home-second-section-label span{
+    background-color: #FFF;
+    color: #185678;
+    border-radius: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.home-second-section-boxes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 50px;
+    padding: 30px;
+}
+
+.home-box-item {
+    border-radius: 25px;
+    background-color: #FFF;
+    padding: 30px;
+    color: #185678;
+    text-align: center;
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.home-box-item-step {
+    position: sticky;
+    margin-top: -40px;
+    margin-left: -40px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 3.5rem;
+    font-family: 'Gotham Narrow';
+    font-weight: bolder;
+    color: #FFF;
+    background: linear-gradient(90deg, #528BD2 0%, #3EE2E4 100%);
+}
+
+.home-box-item-title {
+    font-size: 1.3rem;
+    font-family: 'Titillium Web';
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.home-box-item-desc {
+    font-size: 0.9rem;
+    font-family: 'Titillium Web';
+}
+
+.home-box-item-img {
+    margin-top: -30px;
+}
+
+.home-third-section {
+    background-image: url('../../images/fondo_blanco.png');
+    width: 100%;
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    font-size: 2.2rem;
+    color: rgb(63, 72, 110);
+    padding-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10%;
+}
+
+.home-second-section-img-top {
+    width: 100%;
+    position: sticky;
+}
+
+.home-second-section-img-top-mobile {
+    display: none;
+}
+
+.home-second-section-img-bottom {
+    width: 100%;
+    position: sticky;
+}
+
+.home-third-section-label{
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 275px;
+}
+
+.home-third-section-boxes{
+    width: 85%;
+    max-width: 1400px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    margin: 30px;
+    padding-top: 30px;
+}
+
+.home-third-section-box{
+    font-weight: normal;
+    font-size: 1.7rem;
+    display: inline-block;
+    width: 200px;
+    height: 150px;
+}
+
+.home-third-section-box-img {
+    max-width: 70px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    line-height: 100px;
+}
+
+.home-fourth-section {
+    color: #FFF;
+    background-color: rgb(69, 160, 201);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-left-radius: 75px;
+    border-top-right-radius: 75px;
+    margin-top: -75px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.home-fourth-section-label{
+    font-size: 2.2rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.carousel-container {
+    width: "100%";
+    max-width: '1000px';
+    justify-content: "space-between";
+}
+
+.carousel-btn-right{
+    background: url('../../images/caret-right.png');
+    background-position: center;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    height: 57px;
+    width: 36px;
+    margin-top: 70px;
+    display: inherit;
+}
+
+.carousel-btn-left{
+    background: url('../../images/caret-left.png');
+    background-position: center;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    height: 57px;
+    width: 36px;
+    margin-top: 70px;
+    display: inherit;
+}
+
+@media screen and (min-width: 2300px) {
+    .home-third-section{
+        padding-top: 7%;
+    }
+}
+
+@media screen and (max-width: 1065px) {
+    .home{
+        padding-top: 60px;
+        margin-bottom: 0px;
+    }
+
+    .home-first-section {
+        margin-bottom: -1px;
+    }
+
+    .home-second-section {
+        padding-top: 20px;
+    }
+
+    .home-left-box {
+        margin-right: 0%;
+        margin-top: 0%;
+    }
+
+
+    .home-label {
+        color: #FFF;
+        font-size: 2.8rem;
+        font-family: 'Gotham Narrow', sans-serif;
+        font-weight: 600;
+    }
+    
+    .home-monto {
+        color: #FFF;
+        font-size: 4.2rem;
+        font-family: 'Gotham Narrow', sans-serif;
+        font-weight: 800;
+        margin-bottom: 5px;
+    }
+
+    .home-btn {
+        padding: 0px;
+        padding-top: 2px;
+        display: inline-block;
+        font-size: 1.3rem;
+        height: 3.3rem;
+    }
+
+    .home-btn:hover {
+        padding: 0px;
+    }
+
+    .home-second-section-img-top {
+        display: none;
+    }
+
+    .home-second-section-img-top-mobile {
+        display: block;
+        width: 100%;
+        position: sticky;
+        margin-top: -1px;
+    }
+
+    .home-second-section-label{
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .home-second-section-boxes{
+        max-width: 300px;
+        flex-direction: column;
+        padding: 0px;
+        padding-top: 20px;
+    }
+
+    .home-box-item {
+        margin: 10px;
+    }   
+
+    .home-third-section-label{
+        font-size: 1.5rem;
+        margin-top: 100px;
+    }
+
+    .home-third-section-boxes{
+        flex-direction: column;
+        margin-top: 0px;
+    }
+
+    .home-third-section-box-img{
+        margin-bottom: 0px;
+    }
+
+    .home-third-section {
+        padding-top: 0px;
+        padding-bottom: 70px;
+    }
+
+    .home-fourth-section{
+        padding-top: 70px;
+    }
+
+    .home-fourth-section-label{
+        font-size: 1.4rem;
+    }
+    
+    .carousel-container {
+        width: 100%;
+        max-width: 300px;
+        justify-content: space-between;
+    }
+
+    .carousel-btn-left {
+        width: 100%;
+        margin-top: 30px;
+        height: 45px;
+    }
+
+    .carousel-btn-right {
+        width: 100%;
+        margin-top: 30px;
+        height: 45px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .home-second-section-label {
+        font-size: 1.1rem;
+    }
+
+    .home-fourth-section-label {
+        font-size: 1.2rem;
+    }
+
+    .home-third-section-boxes {
+        padding-top: 0;
+    }
+
+    .home-third-section-box {
+        font-size: 1.2rem;
+        height: 130px;
+    }
+}

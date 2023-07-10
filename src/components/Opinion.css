@@ -1,0 +1,72 @@
+.opinion-container {
+    width: 400px;
+    background: none;
+}
+
+.opinion-cloud {
+    background: url('../images/nube.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 350px;
+    height: 205px;
+    text-align: center;
+    color: rgb(136, 136, 136);
+    padding: 30px 20px;
+    font-family: 'Titillium Web';
+    font-size: 1.2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.opinion-separador {
+    max-width:100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.opinion-autor {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+}
+
+.opinion-autor label {
+    color: rgb(71, 80, 116);
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 1065px) {
+    .opinion-container {
+        width: 250px;
+    }
+
+    .opinion-cloud {
+        width: 200px;
+        height: 115px;
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .opinion-separador {
+        max-width:100px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5px;
+        margin-bottom: 3px;
+    }
+
+    .opinion-autor {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .opinion-autor label {
+        font-size: 0.6rem;
+    }
+}

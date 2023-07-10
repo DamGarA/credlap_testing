@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-Bold.otf') format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-Black.otf') format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-BlackItalic.otf') format("opentype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-Book.otf') format("opentype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-Medium.otf') format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-Light.otf') format("opentype");
+  font-weight: lighter;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-ThinItalic.otf') format("opentype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-Thin.otf') format("opentype");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-BookItalic.otf') format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-MediumItalic.otf') format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./fonts/GothamNarrow-BoldItalic.otf') format("opentype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+html,body {
+    height: 100%;
+}
+  
+#root {
+    display: contents;
+}
+
+#click2call{
+  position: fixed;
+  bottom: 0;
+  left: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#click2call a img{
+  height: 55px;
+  width: 55px;
+}
+
+#click2call_msgdiv{
+  display: none;
+}
+
+.img-wp {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  z-index: 2;
+}
+
+.img-wp img {
+  height: 60px;
+  width: 60px;
+}
+
+@media screen and (max-width: 1065px) {
+  #root {
+    display: block;
+  }
+
+  #click2call{
+    bottom: 0;
+    left: 10px;
+  }
+
+  #click2call a img{
+    height: 45px;
+    width: 45px;
+  }
+
+  .img-wp {
+    right: 0;
+  }
+
+  .img-wp img {
+    height: 48px;
+    width: 48px;
+  }
+}

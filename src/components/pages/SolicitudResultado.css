@@ -1,0 +1,152 @@
+.pre-aprobado {
+  background-image: url("../../images/fondo_celeste.png");
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pre-aprobado-first-section {
+  width: 100%;
+  min-height: 800px;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pre-aprobado-left-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 3%;
+  max-width: 600px;
+}
+
+.pre-aprobado-right-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 3%;
+}
+
+.pre-aprobado-label {
+  font-size: 3rem;
+  color: #fff;
+  font-family: "Gotham Narrow", sans-serif;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.pre-aprobado-text {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Gotham Narrow", sans-serif;
+  margin-bottom: 10px;
+}
+
+.pre-aprobado-links {
+  display: flex;
+}
+
+.pre-aprobado-consulta {
+  color: #fff;
+  font-family: "Gotham Narrow", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin: 3%;
+}
+
+.pre-aprobado-consulta-img {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 5px;
+}
+
+.pre-aprobado-btn {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  border-radius: 2rem;
+  outline: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #fff;
+  cursor: pointer;
+  background-color: var(--primary);
+  font-family: "Gotham Narrow";
+  font-weight: 500;
+  height: 3.3rem;
+  box-shadow: #555 2px 0 5px;
+  margin: 3%;
+  text-decoration: none;
+}
+
+.pre-aprobado-btn:hover {
+  padding: 6px 18px;
+  transition: all 0.3s ease-out;
+  background-color: #fff;
+  color: #47b0ab;
+  border-radius: 2rem;
+  border: 2px solid var(--primary);
+  transition: all 0.3s ease-out;
+}
+
+.pre-aprobado-horarios {
+  color: #fff;
+  font-size: 1.1rem;
+  font-family: "Gotham Narrow", sans-serif;
+}
+
+@media screen and (max-width: 1065px) {
+  .pre-aprobado {
+    padding-top: 100px;
+    padding-bottom: 0px;
+  }
+
+  .pre-aprobado-first-section {
+    flex-direction: column;
+    min-width: auto;
+    min-height: auto;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .pre-aprobado-left-box {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-right: 0px;
+  }
+
+  .pre-aprobado-right-box {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .pre-aprobado-label {
+    font-size: 1.7rem;
+  }
+
+  .pre-aprobado-text {
+    font-size: 1.1rem;
+  }
+
+  .pre-aprobado-links {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    flex-direction: column;
+  }
+
+  .pre-aprobado-btn {
+    max-width: 150px;
+  }
+
+  .pre-aprobado-horarios {
+    font-size: 0.9rem;
+  }
+}

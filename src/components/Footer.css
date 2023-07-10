@@ -1,0 +1,304 @@
+.footer {
+    background-color: rgb(63, 72, 110);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    align-items: center;
+}
+
+.first-section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1400px;
+    justify-content: space-between;
+}
+
+.second-section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1000px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.third-section {
+    background-color: white;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.third-section p {
+    margin: 10px;
+    font-size: 12px;
+}
+
+.footer-left-box {
+    display: flex;
+    max-width: 600px;
+}
+
+.footer-right-box {
+    margin-top: 15px;
+    max-width: 700px;
+}
+
+.legal-container {
+    margin-left: 20px;
+}
+
+.links-container {
+    max-width: 150px;
+    float: left;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Titillium Web', sans-serif;
+    display: block;
+    margin: 15px;
+}
+
+.footer-link:hover {
+    color: #47B0AB;
+}
+
+.footer-title {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Titillium Web', sans-serif;
+    display: block;
+    margin: 15px;
+    margin-bottom: 7px;
+}
+
+.footer-link-sub {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Titillium Web', sans-serif;
+    display: block;
+    font-size: 16px;
+    margin-left: 15px;
+    margin-top: 9px;
+    width: 10rem;
+}
+
+.footer-link-sub:hover {
+    color: #47B0AB;
+}
+
+.social {
+    color: #FFF;
+    width: 150px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: left;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.footer-mail a {
+    color: #FFF;
+    font-size: 0.9rem;
+    margin-left: 15px;
+}
+
+.social-link {
+    width: 28px;
+    height: 28px;
+    color: rgb(63, 72, 110);
+    background-color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    float: left;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.footer-button{
+    background-color: rgb(69, 160, 201);
+    background: linear-gradient(90deg, rgb(69, 160, 201) 100%, rgb(69, 160, 201));
+    font-size: 14px;
+    height: 35px;
+    padding-top: 0px;
+    margin: 5px 10px 10px 5px;
+    width: 270px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 35px;
+    font-family: 'Gotham Narrow';
+    font-weight: 500;
+}
+
+.footer-button-col{
+    max-width: 300px;
+    float: left;
+}
+
+.logo-afip-container{
+    text-align: right;
+}
+
+.logo-afip {
+    width: 70px;
+    margin: 5px;
+}
+
+.logo-image {
+    height: 70px;
+    margin: 10px;
+}
+
+.condiciones-text {
+    max-width: 1400px;
+    color: #404559;
+    text-align: justify;
+}
+
+.tasas-text {
+    margin: 2px !important;
+    font-size: 3rem !important;
+    font-family: 'Gotham Narrow';
+    font-weight: 600;
+    color: #47B0AB;
+    text-align: center;
+}
+
+.derechos-text {
+    font-size: 1.3rem !important;
+    font-family: 'Gotham Narrow';
+    font-weight: normal;
+    font-style: 300;
+    color: #47B0AB;
+    text-align: center;
+    padding-top: 10px;
+}
+
+@media screen and (max-width: 1065px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .first-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    .second-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: none;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .footer-left-box {
+        margin-left: -15px;
+    }
+
+    .footer-right-box {
+        margin-top: 0px;
+        max-width: 300px;
+    }
+
+    .footer-link-sub {
+        font-size: 13px;
+    }
+
+    .footer-link {
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+    .footer-button{
+        width: 295px;
+    }
+
+    .footer-button-col {
+        max-width: none;
+        text-align: center;
+        width: 100%;
+    }
+
+    .logo-afip {
+        width: 100px;
+        margin-top: 10px;
+    }
+
+    .social {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .footer-mail {
+        margin-bottom: 15px;
+    }
+
+    .tasas-text {
+        font-size: 1.6rem !important;
+    }
+
+    .derechos-text {
+        font-size: 0.9rem !important;
+    }
+
+    .third-section {
+        padding-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .footer-left-box {
+        flex-direction: column;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .links-container {
+        max-width: unset;
+    }
+
+    .legal-container {
+        max-width: unset;
+        margin-left: 0px;
+        margin-bottom: 15px;
+    }
+
+    .social {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-mail a {
+        margin-left: 0;
+    }
+
+    .footer-link-sub {
+        margin-left: 0px;
+        width: unset;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .footer-button{
+        width: 250px;
+    }
+}

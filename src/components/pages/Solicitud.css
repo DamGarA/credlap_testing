@@ -1,0 +1,211 @@
+.solicitud {
+    background-image: url('../../images/fondo-credlap.png');
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 650px;
+}
+
+.monto-box {
+    margin: 10px;
+    background: linear-gradient(90deg, #528BD2 0%, #3EE2E4 100%);
+    border-radius: 25px;
+    max-width: 400px;
+    padding: 40px;
+    color: #FFF;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 2.1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: #555 1px 0 10px;
+    box-shadow: #555 2px 0 20px;
+}
+
+.cuota-box {
+    margin: 10px;
+    margin-top: 40px;
+    background: linear-gradient(90deg, #528BD2 0%, #3EE2E4 100%);
+    border-radius: 25px;
+    max-width: 400px;
+    padding: 30px;
+    color: #FFF;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.3rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: #555 1px 0 10px;
+    box-shadow: #555 2px 0 20px;
+}
+
+.label-cuota {
+    float: left;
+    max-width: 55%;
+    margin-right: 10px;
+}
+
+.input-cuota {
+    font-size: 2.1rem;
+    font-weight: bold;
+    color: #3A4467;
+    border: none;
+    border-radius: 10px;
+    max-width: 140px;
+    text-shadow: #555 1px 0 2px;
+    padding-left: 20px;
+    font-style: italic;
+}
+
+.input-cuota:focus {
+    outline: none;
+}
+
+.slider-container {
+    margin-top: 12%;
+    border-radius: 20px;
+    height: 65px;
+    background-color: #FFF;
+    padding: 10px 20px 10px 20px;
+}
+
+.slider-solicitud {
+    max-width: 150px;
+}
+
+.label-monto {
+    color: #3A4467;
+    font-size: 1.8rem;
+    line-height: 2.7rem;
+    font-style: italic;
+    text-align: right;
+    text-shadow: #555 1px 0 2px;
+    font-family: 'Gotham Narrow';
+    font-weight: bold;
+    font-style: italic;
+}
+
+.form-solicitud {
+    max-width: 600px;
+    padding-top: 1rem;
+}
+
+.form-title {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: #555 1px 0 2px;
+}
+
+.form-title2 {
+    color: #3EE2E4;
+    font-weight: bold;
+    font-size: 1.9rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: #000 1px 0 2px;
+}
+
+.center-box {
+    margin: 3%;
+}
+
+.solicitud-checks-button-container{
+    display: flex;
+    width: 100%;
+}
+
+.solicitud-checkbox-container {
+    margin: 5px;
+    width: 45%;
+}
+
+.solicitud-button-container {
+    margin: 5px;
+    display: inline-block;
+    width: 45%;
+    margin-top: 25px;
+}
+
+.solicitud-form-input {
+    width: 45%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1065px) {
+    .center-box {
+        margin: 1%;
+    }
+
+    .monto-box{
+        padding: 25px;
+    }
+
+    .solicitud {
+        flex-direction: column;
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .form-title {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .input-cuota {
+        max-width: 120px;
+        padding-left: 10px;
+    }
+
+    .form-title {
+        color: #FFF;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .solicitud-checks-button-container{
+        flex-direction: column;
+    }
+
+    .solicitud-checkbox-container {
+        width: 300px;
+        margin-top: 0px;
+    }
+
+    .solicitud-button-container {
+        margin: 0px;
+        margin-top: 15px;
+        width: 300px;
+    }
+
+    .form-solicitud {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .solicitud-form-input {
+        width: 300px;
+        margin: 0px;
+        margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    .input-cuota {
+        max-width: 120px;
+        padding-left: 10px;
+    }
+
+    .label-cuota {
+        max-width: 155px;
+        margin-right: 5px;
+        font-size: 1.22rem;
+    }
+
+    .slider-solicitud {
+        max-width: 115px;
+    }
+}

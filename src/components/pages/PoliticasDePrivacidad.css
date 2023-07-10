@@ -1,0 +1,22 @@
+.politicas-container{
+    color: white;
+    background-image: url('../../images/fondo_celeste.png');
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 8%;
+    padding-top: 150px;
+}
+
+.politicas-titulo{
+    font-size: 3rem;
+    font-family: 'Gotham Narrow';
+    font-weight: 600;
+    padding-bottom: 3%;
+}
+
+.politicas-texto{
+    font-size: 1rem;
+    text-align: justify;
+}

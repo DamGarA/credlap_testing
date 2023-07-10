@@ -1,0 +1,311 @@
+.defensa-consumidor {
+    background-image: url('../../images/fondo_celeste.png');
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.defensa-consumidor-first-section {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    margin-top: 10%;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.defensa-consumidor-first-section-content {
+    width: 100%;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.defensa-consumidor-first-section-boxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 50px;
+    padding: 30px;
+}
+
+.defensa-consumidor-box-item {
+    border-radius: 25px;
+    background-color: #FFF;
+    padding: 30px;
+    color: #185678;
+    text-align: center;
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.defensa-consumidor-item-step {
+    position: sticky;
+    margin-top: -40px;
+    margin-left: -40px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 3.5rem;
+    font-family: 'Gotham Narrow';
+    font-weight: bolder;
+    color: #FFF;
+    background: linear-gradient(90deg, #528BD2 0%, #3EE2E4 100%);
+}
+
+.defensa-consumidor-box-item-img {
+    margin-top: -30px;
+}
+
+.defensa-consumidor-left-box {
+    display: flex;
+    flex-direction: column;
+    margin-right: 3%;
+    min-width: 700px;
+}
+
+.defensa-consumidor-right-box {
+    display: flex;
+    margin-left: 3%;
+    margin-bottom: 3%;
+}
+
+.defensa-consumidor-label {
+    font-size: 3rem;
+    color: #FFF;
+    font-family: 'Gotham Narrow', sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.defensa-consumidor-label-2 {
+    font-size: 3rem;
+    color: #FFF;
+    font-family: 'Gotham Narrow', sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.defensa-consumidor-text {
+    color: #FFF;
+    font-size: 1.5rem;
+    font-family: 'Gotham Narrow', sans-serif;
+    margin-bottom: 10px;
+}
+
+.defensa-consumidor-text-2 {
+    max-width: 1200px;
+    color: #FFF;
+    font-size: 1.1rem;
+    font-family: 'Gotham Narrow', sans-serif;
+    margin-bottom: 10px;
+}
+
+.defensa-consumidor-links {
+    display: flex;
+}
+
+.defensa-consumidor-consulta {
+    color: #FFF;
+    font-family: 'Gotham Narrow', sans-serif;
+    font-weight: 600;
+    font-style: normal !important;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    margin: 3%;
+}
+
+.defensa-consumidor-consulta-img {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 5px;
+}
+
+.defensa-consumidor-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 25px;
+    border-radius: 2rem;
+    outline: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: var(--primary);
+    font-family: 'Gotham Narrow';
+    font-weight: 500;
+    font-style: normal !important;
+    height: 3.3rem;
+    box-shadow: #555 2px 0 5px;
+    margin: 3%;
+}
+
+.defensa-consumidor-btn:hover {
+    padding: 6px 18px;
+    transition: all 0.3s ease-out;
+    background-color: #FFF;
+    color: #47B0AB;
+    border-radius: 2rem;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease-out;
+}
+
+.defensa-consumidor-span {
+    background: linear-gradient(90deg, #1D377A 0%, #1B5778 100%);
+    border-radius: 2rem;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.defensa-consumidor a {
+    text-decoration: none;
+    color: #FFF;
+    font-style: italic;
+}
+
+.defensa-consumidor-item-title {
+    font-size: 1.3rem;
+    font-family: 'Titillium Web';
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.defensa-consumidor-item-desc {
+    font-size: 0.9rem;
+    font-family: 'Titillium Web';
+}
+
+.defensa-consumidor-nota {
+    max-width: 1200px;
+    color: #FFF;
+    opacity: 0.9;
+    font-size: 0.9rem;
+    font-family: 'Gotham Narrow';
+    font-weight: lighter;
+    margin-bottom: 10px;
+    text-align: justify;
+    margin: 0px;
+}
+
+.form-defensa-consumidor{
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+}
+
+.defensa-consumidor-button-container{
+    margin-top: 1.3rem;
+    box-shadow: none;
+}
+
+.defensa-consumidor-btn-icon {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+.defensa-consumidor-second-section{
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@media screen and (max-width: 1065px) {
+    .defensa-consumidor {
+        background-image: url('../../images/fondo_celeste.png');
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 55px;
+    }
+
+    .defensa-consumidor-first-section {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .defensa-consumidor-first-section-boxes {
+        max-width: 300px;
+        flex-direction: column;
+        padding: 0px;
+        padding-top: 20px;
+    }
+
+
+    .defensa-consumidor-left-box {
+        display: flex;
+        flex-direction: column;
+        min-width: unset;
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    .defensa-consumidor-box-item {
+        margin: 10px;
+    }  
+
+    .defensa-consumidor-right-box {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .defensa-consumidor-label {
+        font-size: 1.8rem;
+    }
+
+    .defensa-consumidor-label-2{
+        font-weight: 500;
+        font-size: 1.8rem;
+        margin-top: 20px;
+    }
+
+    .defensa-consumidor-text {
+        font-size: 1.3rem;
+    }
+
+    .defensa-consumidor-text-2 {
+        padding: 0px;
+        text-align: justify;
+    }
+
+    .defensa-consumidor-links {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+        flex-direction: column;
+    }
+
+    .defensa-consumidor-btn {
+        max-width: 150px;
+    }
+
+    .defensa-consumidor-nota {
+        padding: 0px;
+    }
+
+    .defensa-consumidor a {
+        text-align: left;
+    }
+
+    .form-defensa-consumidor {
+        min-width: 0px;
+        width: 100%;
+    }
+
+    .defensa-consumidor-form-input-container {
+        width: 100%;
+    }
+}

@@ -1,0 +1,21 @@
+.form-textarea-container {
+    background: linear-gradient(90deg, #528BD2 0%, #3EE2E4 100%);
+    border-radius: 17px;
+    float: left;
+    margin-top: 15px;
+    padding: 4px;
+    padding-bottom: 0px;
+}
+
+.form-textarea {
+    width: 100%;
+    outline: none;
+    border-radius: 13px;
+    border-color: #FFF;
+    border-style: solid;
+    font-size: 15px;
+    padding-left: 15px;
+    padding-top: 10px;
+    resize: none;
+    margin-bottom: -2px;
+}

@@ -1,0 +1,457 @@
+.paga {
+  background-image: url("../../images/fondo_celeste.png");
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.paga-first-section {
+  width: 100%;
+  min-height: 800px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paga-left-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 3%;
+}
+
+.paga-right-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 3%;
+}
+
+.paga-label-1 {
+  color: #fff;
+  font-size: 4.3rem;
+  font-family: "Gotham Narrow", sans-serif;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-left: 11%;
+}
+
+.paga-label-2 {
+  color: #fff;
+  font-size: 2.1rem;
+  font-family: "Gotham Narrow", sans-serif;
+}
+
+.paga-img {
+  max-height: 630px;
+}
+
+.paga-btn {
+  padding: 8px 20px;
+  border-radius: 2rem;
+  outline: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #fff;
+  cursor: pointer;
+  background-color: var(--primary);
+  font-family: "Gotham Narrow", sans-serif;
+  font-weight: 600;
+  width: 330px;
+  height: 3.5rem;
+  margin-top: 10px;
+  box-shadow: #555 2px 0 5px;
+}
+
+.paga-btn:hover {
+  padding: 6px 18px;
+  transition: all 0.3s ease-out;
+  background-color: #fff;
+  color: #47b0ab;
+  border-radius: 24px;
+  border: 2px solid var(--primary);
+  transition: all 0.3s ease-out;
+}
+
+.paga-second-section {
+  color: rgb(24, 86, 120);
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top-left-radius: 75px;
+  border-top-right-radius: 75px;
+  margin-top: -75px;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.paga-second-section-label {
+  font-size: 2.2rem;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  margin-bottom: 80px;
+}
+
+.paga-second-section-label span {
+  background-color: rgb(24, 86, 120);
+  color: #fff;
+  border-radius: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.paga-second-section-boxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 50px;
+}
+
+.paga-box-item {
+  border-radius: 25px;
+  background-color: #fff;
+  padding: 30px;
+  color: #185678;
+  text-align: center;
+  max-height: 300px;
+  max-width: 300px;
+  box-shadow: 0 0 15px 0px rgb(135 135 135 / 44%);
+}
+
+.paga-box-item-step {
+  position: sticky;
+  margin-top: -40px;
+  margin-left: -40px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 3.5rem;
+  font-family: "Gotham Narrow";
+  font-weight: bolder;
+  color: #fff;
+  background: linear-gradient(90deg, #528bd2 0%, #3ee2e4 100%);
+}
+
+.paga-box-item-title {
+  font-size: 1.3rem;
+  font-family: "Titillium Web";
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.paga-box-item-desc {
+  font-size: 1rem;
+  font-family: "Titillium Web";
+}
+
+.paga-box-item-img {
+  margin-top: -30px;
+  max-width: 100px;
+}
+
+.third-section-fondo {
+  background-color: #fff;
+  width: 100%;
+}
+
+.paga-third-section {
+  color: #fff;
+  background: linear-gradient(90deg, #1d377a 0%, #1b5778 100%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 75px;
+  border-top-right-radius: 75px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.paga-third-section-label {
+  font-size: 2.2rem;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.paga-third-section-boxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 50px;
+}
+
+.paga-third-section-item {
+  font-family: "Gotham Narrow";
+  font-weight: 500;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.paga-third-section-medios {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.fourth-section-fondo {
+  background: linear-gradient(90deg, #1d377a 0%, #1b5778 100%);
+  width: 100%;
+}
+
+.paga-fourth-section {
+  color: #1d377a;
+  background: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 75px;
+  border-top-right-radius: 75px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.paga-fourth-section-label {
+  font-size: 2.2rem;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.paga-fourth-section-medios {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.paga-qr-list {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+  margin-left: 3%;
+}
+
+.paga-qr-list-item {
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+}
+
+.paga-qr-list-circle {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #0d88cb 0%, #04cdff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paga-qr-list-number {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.paga-qr-list-label {
+  font-size: 1.6rem;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  max-width: 400px;
+}
+
+.pago-icono-credlap {
+  height: 30px;
+}
+
+.medios-image {
+  height: 175px;
+  margin: 10px;
+}
+
+.medios-image-QR {
+  height: 220px;
+  margin: 10px;
+}
+
+@media screen and (max-width: 1115px) {
+  .paga-label-1 {
+    margin-left: 0%;
+  }
+}
+
+@media screen and (max-width: 1065px) {
+  .paga {
+    padding-top: 100px;
+    padding-bottom: 0px;
+  }
+
+  .paga-left-box {
+    width: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  .paga-right-box {
+    width: 100%;
+    margin-left: 0px;
+    flex-direction: column;
+  }
+
+  .paga-first-section {
+    flex-direction: column;
+    min-width: auto;
+    min-height: auto;
+    margin-bottom: 120px;
+  }
+
+  .paga-label-1 {
+    font-size: 2.3rem;
+  }
+
+  .paga-label-2 {
+    font-size: 1.5rem;
+  }
+
+  .paga-img {
+    max-height: none;
+    max-width: 100% !important;
+  }
+
+  .paga-btn {
+    padding: 10px;
+    width: 280px;
+    display: inline-block;
+    font-size: 1.3rem;
+    height: 3.3rem;
+    margin-left: 0px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding-top: 12px;
+  }
+
+  .paga-btn:hover {
+    padding: 0px;
+  }
+
+  .paga-second-section {
+    padding-top: 70px;
+    padding-bottom: 0px;
+  }
+
+  .paga-second-section-label {
+    font-size: 1.5rem;
+  }
+
+  .paga-second-section-boxes {
+    max-width: 300px;
+    flex-direction: column;
+  }
+
+  .paga-box-item {
+    margin: 20px;
+    padding-top: 0px;
+  }
+
+  .paga-box-item-step {
+    position: sticky;
+    margin-top: -15px;
+    margin-left: -40px;
+  }
+
+  .paga-third-section-label {
+    font-size: 1.8rem;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    padding-top: 0px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .paga-fourth-section-label {
+    font-size: 1.8rem;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    padding-top: 0px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .paga-qr-list {
+    max-width: 80%;
+  }
+
+  .paga-qr-list-label {
+    white-space: wrap;
+  }
+
+  .paga-fourth-section-medios {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .paga-btn {
+    font-size: 1.2rem;
+    width: 270px;
+  }
+
+  .paga-img {
+    max-width: 270px;
+  }
+
+  .paga-second-section {
+    padding-bottom: 0;
+  }
+
+  .paga-second-section-label {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    display: contents;
+  }
+
+  .paga-box-item {
+    max-width: 270px;
+    max-height: 270px;
+  }
+
+  .paga-second-section-boxes {
+    max-width: 270px;
+  }
+
+  .paga-right-box {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,261 @@
+.ayuda {
+    background-image: url('../../images/fondo_celeste.png');
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ayuda-first-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+    padding-top: 8%;
+}
+
+.ayuda-titulo-container {
+    display: flex;
+    align-items: center;
+}
+
+.ayuda-titulo {
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-size: 3.5rem;
+    font-family: 'Gotham Narrow', sans-serif;
+    font-weight: 100;
+    font-style: italic;
+    line-height: 4.5rem;
+    padding-right: 5%;
+    padding-left: 2%;
+}
+
+.ayuda-form-desc {
+    padding-left: 2%;
+}
+
+.ayuda-img {
+    max-width: 30%;
+}
+
+.ayuda-contenido {
+    padding-left: 5%;
+    padding-right: 5%;
+    max-width: 1600px;
+    margin-top: 2rem;
+}
+
+.ayuda-accordion-header {
+    width: 100%;
+    height: 60px;
+    border: none;
+    background-color: transparent;
+    color: #FFF;
+    font-family: 'Gotham Narrow';
+    font-weight: 600;
+    font-size: 1.7rem;
+    border-radius: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 20px;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.ayuda-subaccordion-header{
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: #FFF;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-radius: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    align-items: center;
+    margin-top: 1rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+.ayuda-subaccordion-separator {
+    margin-top: 5px;
+    border: 1px solid #FFF;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ayuda-accordion-prestamo {
+    background-color: #3E486E;
+}
+
+.ayuda-accordion-cuotas {
+    background: linear-gradient(90deg, #1D377A 0%, #1B5778 100%);
+}
+
+.ayuda-accordion-nosotros {
+    background: linear-gradient(90deg, #47B0AA 0%, #00F0CC 100%);
+}
+
+.ayuda-subaccordion-text {
+    color: #FFF;
+    font-size: 1.2rem;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 15px;
+    text-align: justify;
+    padding-bottom: 15px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.ayuda-subaccordion-text p {
+    margin-top: 5px;
+}
+
+.ayuda-second-section {
+    color: #FFF;
+    background: linear-gradient(90deg, #1D377A 0%, #1B5778 100%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 75px;
+    border-top-right-radius: 75px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.form-ayuda{
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+}
+
+.ayuda-button-container{
+    margin-top: 1.3rem;
+    box-shadow: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ayuda-left-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 3%;
+    padding: 0px 15px 15px 2%;
+}
+
+.ayuda-right-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 3%;
+    padding-right: 4%;
+}
+
+.tooltip.calificacion:hover{
+    margin-bottom: 120px;
+}
+
+.ayuda-link-info-usuario {
+    text-decoration: none;
+    background: linear-gradient(90deg, #1D377A 0%, #1B5778 100%);
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 5px;
+    border-radius: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 1065px) {
+    .ayuda-first-section {
+        padding-top: 100px;
+    }
+    .ayuda-second-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ayuda-titulo-container {
+        flex-direction: column;
+    }
+
+    .ayuda-titulo{
+        font-size: 1.9rem;
+        line-height: 2.5rem;
+    }
+
+    .ayuda-img {
+        margin-top: 20px;
+        max-width: 60%;
+    }
+
+    .ayuda-contenido {
+        margin-top: 0px;
+    }
+
+    .ayuda-accordion-header{
+        font-size: 1.5rem;
+    }
+
+    .ayuda-subaccordion-header{
+        font-size: 1.15rem;
+        padding-left: 0px;
+        font-weight: 400;
+        padding-right: 0px;
+    }
+
+    .ayuda-subaccordion-text {
+        color: #FFF;
+        font-size: 1rem;
+        padding-left: 0px;
+        padding-top: 15px;
+    }
+
+    .ayuda-subaccordion-text p {
+        font-size: 0.8rem;
+    }
+
+    .ayuda-subaccordion-separator {
+        width: 100%;
+    }
+
+    .form-ayuda{
+        min-width: 0px;
+    }
+
+    .ayuda-left-box {
+        width: 100%;
+        margin-right: 0px;
+        padding-left: 15px;
+    }
+
+    .ayuda-right-box {
+        padding-left: 0px;
+        padding-right: 0px;
+        width: unset;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .ayuda-titulo {
+        font-size: 1.5rem;
+    }
+
+    .ayuda-accordion-header {
+        font-size: 1.2rem;
+    }
+}

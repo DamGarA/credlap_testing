@@ -1,0 +1,46 @@
+.form-checkbox-container {
+    width: 270px;
+    height: 36px;
+    display: contents;
+}
+
+.input-checkbox-container {
+    background: linear-gradient(90deg, #528BD2 0%, #3EE2E4 100%);
+    height: 28px;
+    width: 28px;
+    border-radius: 4px;
+    margin-top: 15px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.input-checkbox {
+    height: 22px;
+    border-color: #FFF;
+    border-style: solid;
+    width: 22px;
+    margin-top: 3px;
+    margin-left: 3px;
+    position: absolute;
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+    appearance: none;
+    background-color: white;
+    display: inline-block;
+}
+
+.input-checkbox:checked {
+    background-color: #47B0AB;
+}
+
+.label-checkbox {
+    font-size: 15px;
+    line-height: 39px;
+    font-weight: 300;
+    color: #FFF;
+    font-family: 'Titillium Web', sans-serif;
+    text-shadow: #555 1px 0 2px;
+    vertical-align: bottom;
+    display:inline-block
+}

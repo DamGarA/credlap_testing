@@ -1,0 +1,35 @@
+.form-button{
+    background: linear-gradient(90deg, #528BD2 0%, #3EE2E4 100%);
+    border-radius: 25px;
+    color: #FFF;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    font-family: 'Gotham Narrow';
+    font-weight: bold;
+    text-shadow: #555 1px 0 2px;
+    cursor: pointer;
+    display: inline-block;
+    box-shadow: #555 2px 0 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.form-button.disabled{
+    background: linear-gradient(90deg, #CCC 0%, #EEE 100%);
+    color: #AAA;
+    text-shadow: none;
+    cursor: default;
+}
+
+@media screen and (max-width: 610px) {
+    .form-button {
+        width: 295px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .form-button {
+        width: 270px;
+    }
+}
