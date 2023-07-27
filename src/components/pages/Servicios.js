@@ -7,7 +7,7 @@ import imgServicio1 from "../../images/images_services/DESCUENTO-ELECTRO-10.png"
 import imgServicio1Back from "../../images/images_services/DESCUENTO-ELECTRO-10-TXT.png";
 import imgServicio2 from "../../images/images_services/DESCUENTO-MUEBLES-10.png";
 import imgServicio2Back from "../../images/images_services/DESCUENTO-MUEBLES-10-txt.png";
-import imgServicio3 from "../../images/images_services/DESCUENTO-SEGURO.png";
+import imgServicio3 from "../../images/images_services/DESCUENTO-SEGURO-NUEVO.png";
 import imgServicio3Back from "../../images/images_services/DESCUENTO-SEGURO-DORSO.png";
 import imgCarousel1 from "../../images/images_services/ASESORIA-CALCULADORA.png";
 import imgCarousel2 from "../../images/images_services/ASESORIA-LEGAL.png";
