@@ -79,25 +79,25 @@ export default function PoliticasDePrivacidad() {
         <br></br>
         <br></br>
         <p>
-          Responsable de seguridad de datos: Layus Patricio, asesor externo.
-          E-mail: sistemas@credlap.com, Tel: +54 9 11 2617 1557.
+          Responsable de seguridad de datos: Cativa Florencia, asesor externo.
+          E-mail: consultas@credlap.com, Tel: +54 9 11 3404 4836.
         </p>
         <p>
           Responsable de régimen informativo: Medina Wanda, asesor externo.
           E-mail: administracion@credlap.com, Tel: +54 9 11 7831 2678.
         </p>
         <p>
-          Responsable de atención al usuario financiero: Alvarez Manuel, asesor
-          externo. E-mail: cyr@credlap.com, Tel: +54 9 11 2617 0462.
+          Responsable de atención al usuario financiero: Ortega Lina, asesor
+          externo. E-mail: administracion@credlap.com, Tel: +54 9 11 7831 2678.
         </p>
         <p>
           Responsable suplente de atención al usuario financiero: Palaia
-          Mariana, asesora externas. E-mail: compliance@credlap.com, Tel: +54 9
-          11 7831 2677.
+          Mariana, asesor externo. E-mail: administracion@credlap.com, Tel: +54
+          9 11 7831 2677.
         </p>
         <p>
           Directorio responsable PUSF: Cella Yesica Mailen, Director Suplente.
-          E-mail: jesica@credlap.com, Tel: +54 9 221 635 4562.{" "}
+          E-mail: jesica@credlap.com, Tel: +54 9 221 635 4562.
         </p>
       </div>
     </div>

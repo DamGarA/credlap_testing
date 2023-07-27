@@ -4,7 +4,7 @@ import imgCocoNosotros from "../../images/coco-nosotros.png";
 import imgCheck1 from "../../images/check-1.png";
 import imgNosotros1 from "../../images/nosotros-1.png";
 import imgNosotros2 from "../../images/nosotros-2.png";
-import imgNosotros3 from "../../images/nosotros-3.png";
+import imgNosotros3 from "../../images/icono-redes-nosotros.png";
 import FormInput from "../FormInput";
 import FormTextArea from "../FormTextArea";
 import FormButton from "../FormButton";
@@ -13,6 +13,8 @@ import { Link } from "react-router-dom";
 import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function Nosotros() {
+  //cambio de direccion a la que se manda el cv
+  window.cv.mail = "administracion@credlap.com";
   let fileInput = useRef();
   const [formValido, setFormValido] = useState(false);
   const [selectedFilename, setSelectedFilename] = useState(null);
@@ -190,7 +192,7 @@ export default function Nosotros() {
             <img
               src={imgNosotros3}
               alt="+10000 seguidores"
-              className="nosotros-box-item-img"
+              className="nosotros-box-item-img-3"
             />
             <p className="nosotros-box-item-desc">
               +12.000 son las personas que nos siguen en redes.

@@ -7,6 +7,9 @@ import { sendMail } from "../../services/EmailService";
 import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function Baja() {
+  //Acá se modifican las direcciones de mail a donde van a mandar el formulario de baja
+  window.baja.mail = "administracion@credlap.com, cyr@credlap.com";
+
   const [formValido, setFormValido] = useState(false);
   const [estadoActual, setEstadoActual] = useState(null);
   const [formBaja, setFormBaja] = useState({
@@ -242,8 +245,8 @@ export default function Baja() {
           de utilización del servicio o producto.
         </p>
         <p className="baja-nota-2">
-          Tambien podés escribirnos por correo a {window.baja.mail} o comunícate
-          por teléfono al 0810-220-0570 o WhatsApp al {window.baja.telefono}
+          También podés escribirnos por correo a administracion@credlap.com o
+          comunicarte por teléfono al 0810-220-0570 o al WhatsApp 11-7831-2678
         </p>
       </div>
     </div>

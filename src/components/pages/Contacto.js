@@ -50,65 +50,52 @@ export default function Contacto() {
           </div>
         </div>
         <div className="contacto-right-box">
-          <div className="contacto-checks">
-            <div hidden>
-              <Link
-                to={"//api.whatsapp.com/send?phone=" + window.contacto.wsp}
-                className="contacto-btn hablar"
-                target={"_blank"}
-              >
-                <FontAwesomeIcon
-                  icon={brands("whatsapp")}
-                  className="contacto-btn-icon"
-                />
-                Hablar
-              </Link>
-            </div>
+          <div hidden>
             <Link
-              to={"//www.facebook.com/credlap/"}
-              className="contacto-btn facebook"
+              to={"//api.whatsapp.com/send?phone=" + window.contacto.wsp}
+              className="contacto-btn hablar"
               target={"_blank"}
             >
               <FontAwesomeIcon
-                icon={brands("facebook-f")}
+                icon={brands("whatsapp")}
                 className="contacto-btn-icon"
               />
-              Facebook
-            </Link>
-            <Link
-              to={"//www.instagram.com/credlap/"}
-              className="contacto-btn instagram"
-              target={"_blank"}
-            >
-              <FontAwesomeIcon
-                icon={brands("instagram")}
-                className="contacto-btn-icon"
-              />
-              Instagram
-            </Link>
-            <Link
-              to={"//twitter.com/Credlapoficial"}
-              className="contacto-btn twitter"
-              target={"_blank"}
-            >
-              <FontAwesomeIcon
-                icon={brands("twitter")}
-                className="contacto-btn-icon"
-              />
-              Twitter
-            </Link>
-            <Link
-              to={"//www.tiktok.com/@credlap"}
-              className="contacto-btn tiktok"
-              target={"_blank"}
-            >
-              <FontAwesomeIcon
-                icon={brands("tiktok")}
-                className="contacto-btn-icon"
-              />
-              TikTok
+              Hablar
             </Link>
           </div>
+          <Link
+            to={"//www.facebook.com/credlap/"}
+            className="contacto-btn facebook"
+            target={"_blank"}
+          >
+            <FontAwesomeIcon
+              icon={brands("facebook-f")}
+              className="contacto-btn-icon"
+            />
+            Facebook
+          </Link>
+          <Link
+            to={"//www.instagram.com/credlap/"}
+            className="contacto-btn instagram"
+            target={"_blank"}
+          >
+            <FontAwesomeIcon
+              icon={brands("instagram")}
+              className="contacto-btn-icon"
+            />
+            Instagram
+          </Link>
+          <Link
+            to={"//twitter.com/Credlapoficial"}
+            className="contacto-btn twitter"
+            target={"_blank"}
+          >
+            <FontAwesomeIcon
+              icon={brands("twitter")}
+              className="contacto-btn-icon"
+            />
+            Twitter
+          </Link>
         </div>
       </div>
     </div>
