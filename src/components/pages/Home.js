@@ -138,47 +138,92 @@ export default function Home() {
         <p className="home-fourth-section-label">
           Opiniones de nuestros clientes
         </p>
-        <Carousel
-          containerProps={{
-            className: "carousel-container",
-          }}
-          activeSlideIndex={activeSlideIndex}
-          onRequestChange={handleSlideChange}
-          itemsToShow={2}
-          itemsToScroll={1}
-          speed={400}
-          forwardBtnProps={{
-            className: "carousel-btn-right",
-          }}
-          backwardBtnProps={{
-            className: "carousel-btn-left",
-          }}
-        >
-          <Opinion
-            estrellas={5}
-            label={window.home.opinion1.texto}
-            autor={window.home.opinion1.autor}
-            lugar={window.home.opinion1.lugar}
-          />
-          <Opinion
-            estrellas={5}
-            label={window.home.opinion2.texto}
-            autor={window.home.opinion2.autor}
-            lugar={window.home.opinion2.lugar}
-          />
-          <Opinion
-            estrellas={5}
-            label={window.home.opinion3.texto}
-            autor={window.home.opinion3.autor}
-            lugar={window.home.opinion3.lugar}
-          />
-          <Opinion
-            estrellas={5}
-            label={window.home.opinion4.texto}
-            autor={window.home.opinion4.autor}
-            lugar={window.home.opinion4.lugar}
-          />
-        </Carousel>
+        <div className="carousel-container-home-2items">
+          <Carousel
+            containerProps={{
+              className: "carousel-container-home",
+            }}
+            activeSlideIndex={activeSlideIndex}
+            onRequestChange={handleSlideChange}
+            itemsToShow={2}
+            itemsToScroll={1}
+            speed={400}
+            forwardBtnProps={{
+              className: "carousel-btn-right-home",
+            }}
+            backwardBtnProps={{
+              className: "carousel-btn-left-home",
+            }}
+          >
+            <Opinion
+              estrellas={5}
+              label={window.home.opinion1.texto}
+              autor={window.home.opinion1.autor}
+              lugar={window.home.opinion1.lugar}
+            />
+            <Opinion
+              estrellas={5}
+              label={window.home.opinion2.texto}
+              autor={window.home.opinion2.autor}
+              lugar={window.home.opinion2.lugar}
+            />
+            <Opinion
+              estrellas={5}
+              label={window.home.opinion3.texto}
+              autor={window.home.opinion3.autor}
+              lugar={window.home.opinion3.lugar}
+            />
+            <Opinion
+              estrellas={5}
+              label={window.home.opinion4.texto}
+              autor={window.home.opinion4.autor}
+              lugar={window.home.opinion4.lugar}
+            />
+          </Carousel>
+        </div>
+        <div className="carousel-container-home-1items">
+          <Carousel
+            containerProps={{
+              className: "carousel-container-home",
+            }}
+            activeSlideIndex={activeSlideIndex}
+            onRequestChange={handleSlideChange}
+            itemsToShow={1}
+            itemsToScroll={1}
+            speed={400}
+            forwardBtnProps={{
+              className: "carousel-btn-right-home",
+            }}
+            backwardBtnProps={{
+              className: "carousel-btn-left-home",
+            }}
+          >
+            <Opinion
+              estrellas={5}
+              label={window.home.opinion1.texto}
+              autor={window.home.opinion1.autor}
+              lugar={window.home.opinion1.lugar}
+            />
+            <Opinion
+              estrellas={5}
+              label={window.home.opinion2.texto}
+              autor={window.home.opinion2.autor}
+              lugar={window.home.opinion2.lugar}
+            />
+            <Opinion
+              estrellas={5}
+              label={window.home.opinion3.texto}
+              autor={window.home.opinion3.autor}
+              lugar={window.home.opinion3.lugar}
+            />
+            <Opinion
+              estrellas={5}
+              label={window.home.opinion4.texto}
+              autor={window.home.opinion4.autor}
+              lugar={window.home.opinion4.lugar}
+            />
+          </Carousel>
+        </div>
       </div>
     </div>
   );
