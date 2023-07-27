@@ -187,7 +187,7 @@ export default function Servicios() {
                   <div className="servicios-carousel-header">
                     <img
                       src={imgCarousel2}
-                      alt="Imagen Carrousel 1"
+                      alt="Imagen Carrousel 2"
                       className="servicios-imagen-carousel"
                     />
                     <p className="servicios-carousel-title">Asesoria legal</p>
@@ -197,11 +197,23 @@ export default function Servicios() {
                   <div className="servicios-carousel-header">
                     <img
                       src={imgCarousel3}
-                      alt="Imagen Carrousel 1"
+                      alt="Imagen Carrousel 3"
                       className="servicios-imagen-carousel"
                     />
                     <p className="servicios-carousel-title">
                       Asesoria alimentaria
+                    </p>
+                  </div>
+                </div>
+                <div className="servicios-carousel-container">
+                  <div className="servicios-carousel-header">
+                    <img
+                      src={imgCarousel4}
+                      alt="Imagen Carrousel 4"
+                      className="servicios-imagen-carousel"
+                    />
+                    <p className="servicios-carousel-title">
+                      Asesoria deportiva
                     </p>
                   </div>
                 </div>
@@ -290,14 +302,6 @@ export default function Servicios() {
                 </p>
               </div>
             </div>
-          </div>
-          <div className="servicios-fourth-section-end-text-container">
-            <p className="servicios-fourth-section-end-text">
-              En cualquier de las opciones mencionadas tenés derecho al
-              reintegro de hasta un %50 de los servicios y gastos ocasionados
-              por los acontecimientos mencionados, para más información
-              contactarte con nuestra área especializada y te asesoramos.
-            </p>
           </div>
         </div>
       </div>

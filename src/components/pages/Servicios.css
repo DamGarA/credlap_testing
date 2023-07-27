@@ -222,6 +222,7 @@
 .servicios-fourth-section-horizontal-container {
   width: 80%;
   display: flex;
+  margin-bottom: 100px;
 }
 
 .servicios-fourth-section-container {
@@ -270,13 +271,6 @@
   100% {
     transform: rotate(360deg);
   }
-}
-
-.servicios-fourth-section-end-text-container {
-  max-width: 80%;
-  margin-top: 70px;
-  text-align: center;
-  font-weight: 500;
 }
 
 .servicios-fifth-section {
