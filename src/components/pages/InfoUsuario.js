@@ -5,6 +5,7 @@ import "./InfoUsuario.css";
 import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function InfoAlUsuario() {
+  //variables de los datos: window.infousuario. ----> titular
   useEffect(() => {
     insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
 
@@ -36,7 +37,7 @@ export default function InfoAlUsuario() {
         </p>
         <ul className="info-usuario-responsables-info">
           <li>
-            <b>· Titular:</b> {window.infousuario.titular}
+            <b>· Titular:</b> Lina Ortega
           </li>
           <li>
             <b>· Suplente:</b> {window.infousuario.suplente}
@@ -45,16 +46,10 @@ export default function InfoAlUsuario() {
             <b>· Teléfono de contacto:</b> 0810-220-0570
           </li>
           <li>
-            <b>· Mail de atención:</b> {window.infousuario.mail}
+            <b>· Mail de atención:</b> administracion@credlap.com
           </li>
           <li>
-            <b>. Mail de atención 2:</b> {window.infousuario.mail2}
-          </li>
-          <li>
-            <b>· Whatsapp:</b> {window.infousuario.wspnum}{" "}
-          </li>
-          <li>
-            <b>· Whatsapp 2:</b> {window.infousuario.wspnum2}{" "}
+            <b>· Whatsapp:</b> 11-7831-2678
           </li>
         </ul>
       </div>

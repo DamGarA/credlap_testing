@@ -50,13 +50,6 @@ export default function Footer() {
               >
                 <FontAwesomeIcon icon={brands("twitter")} />
               </Link>
-              <Link
-                to={"//www.tiktok.com/@credlap/"}
-                className="social-link"
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={brands("tiktok")} />
-              </Link>
             </div>
             <div className="footer-mail">
               <a href="mailto:consultas@credlap.com">consultas@credlap.com</a>
