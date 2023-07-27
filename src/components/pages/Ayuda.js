@@ -13,6 +13,8 @@ import Tooltip from "../Tooltip";
 import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function Ayuda() {
+  //variable dela que venia el numero: window.ayuda.faq.pagocuotawsp
+
   useEffect(() => {
     insertChatBot("https://go.botmaker.com/rest/webchat/p/6PGD8XS6ER/init.js");
 
@@ -90,8 +92,8 @@ export default function Ayuda() {
                               máximo es de 48 hs. Te vamos a contactar en
                               nuestros horarios de atención:
                             </p>
-                            <p>Lunes a Viernes de 09 a 17 hs.</p>
-                            <p>Sábados y feriados de 09 a 13 hs.</p>
+                            <p>Lunes a Viernes de 10 a 17 hs.</p>
+                            <p>Sábados y feriados de 09:30 a 13 hs.</p>
                             <p>
                               Para facilitar el proceso cuando te contactemos y
                               obtener tu préstamo en el día, tené a mano:
@@ -398,13 +400,12 @@ export default function Ayuda() {
                               </Link>
                               &nbsp;En esta pestaña encontrarás disponible
                               nuestro chat con información específica. Otra
-                              opción es a través WhatsApp al{" "}
-                              {window.ayuda.faq.pagocuotanum} o bien
+                              opción es a través WhatsApp al 11-2617-0462 o bien
                               haciendo&nbsp;
                               <Link
                                 to={
                                   "//api.whatsapp.com/send?phone=" +
-                                  window.ayuda.faq.pagocuotawsp
+                                  "541126170462"
                                 }
                                 style={{ color: "#FFF" }}
                                 target={"_blank"}
