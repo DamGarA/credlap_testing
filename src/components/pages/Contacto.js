@@ -91,7 +91,7 @@ export default function Contacto() {
             target={"_blank"}
           >
             <FontAwesomeIcon
-              icon={brands("twitter")}
+              icon={brands("x-twitter")}
               className="contacto-btn-icon"
             />
             Twitter

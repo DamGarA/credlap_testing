@@ -133,9 +133,10 @@ export default function SolicitudResultado({ resultado }) {
                 Podés volver a probar cuando la <b>regularices.</b>
               </p>
               <p className="pre-aprobado-text">
-                <b>WhatsApp:</b> 11 4563 0828 / 11 4563 9747
+                Para más información contactate al 08010-220-0570 o chateá con
+                nosotros.
               </p>
-              <p className="pre-aprobado-text">11 4563 8718 / 11 4563 2964</p>
+
               <div hidden>
                 <Link
                   to={
@@ -233,13 +234,11 @@ export default function SolicitudResultado({ resultado }) {
               <p className="pre-aprobado-label">
                 Tenemos un problema en nuestros servidores.
               </p>
+              <p className="pre-aprobado-text">Volvé a intentarlo.</p>
               <p className="pre-aprobado-text">
-                Volvé a intentarlo o escribinos por
+                Si necesitás ayuda contactate al 08010-220-0570 o chateá con
+                nosotros.
               </p>
-              <p className="pre-aprobado-text">
-                <b>WhatsApp:</b> 11 4563 0828 / 11 4563 9747{" "}
-              </p>
-              <p className="pre-aprobado-text"> 11 4563 2964 / 11 4563 8718 </p>
               <div className="pre-aprobado-links">
                 <div hidden>
                   <Link

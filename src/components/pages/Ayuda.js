@@ -57,12 +57,13 @@ export default function Ayuda() {
                           <div className="ayuda-subaccordion-text">
                             <p>
                               Tu préstamo podes obtenerlo con estos tres simples
-                              pasos.
+                              pasos:
                             </p>
                             <p>
-                              1 - Al ingresar en nuestra web, encontraras un
-                              botón de “Formulario” o en el menú “Solicitud
-                              Online”
+                              1 - Al ingresar a nuestra web, encontrarás un
+                              botón en la página principal o desde el menú
+                              "Solicitá tu préstamo" donde accedés al formulario
+                              de contacto.
                             </p>
                             <p>
                               2 - Completá el formulario con tus datos

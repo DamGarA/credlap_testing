@@ -48,7 +48,7 @@ export default function Footer() {
                 className="social-link"
                 target="_blank"
               >
-                <FontAwesomeIcon icon={brands("twitter")} />
+                <FontAwesomeIcon icon={brands("x-twitter")} />
               </Link>
             </div>
             <div className="footer-mail">
@@ -209,17 +209,17 @@ export default function Footer() {
         <p style={{ textAlign: "center" }}>
           Desarrollado por{" "}
           <a
-            href="mailto:armendariz.ignacio@gmail.com"
-            style={{ textDecoration: "none" }}
-          >
-            Ignacio Armendariz
-          </a>{" "}
-          /{" "}
-          <a
             href="mailto:damiangarciaabreu@gmail.com"
             style={{ textDecoration: "none" }}
           >
             Damián García Abreu
+          </a>{" "}
+          /{" "}
+          <a
+            href="mailto:armendariz.ignacio@gmail.com"
+            style={{ textDecoration: "none" }}
+          >
+            Ignacio Armendariz
           </a>
           <br />
           Diseñado por{" "}
