@@ -133,7 +133,7 @@ export default function SolicitudResultado({ resultado }) {
                 Podés volver a probar cuando la <b>regularices.</b>
               </p>
               <p className="pre-aprobado-text">
-                Para más información contactate al 08010-220-0570 o chateá con
+                Para más información contactate al 0810-220-0570 o chateá con
                 nosotros.
               </p>
 
@@ -236,7 +236,7 @@ export default function SolicitudResultado({ resultado }) {
               </p>
               <p className="pre-aprobado-text">Volvé a intentarlo.</p>
               <p className="pre-aprobado-text">
-                Si necesitás ayuda contactate al 08010-220-0570 o chateá con
+                Si necesitás ayuda contactate al 0810-220-0570 o chateá con
                 nosotros.
               </p>
               <div className="pre-aprobado-links">

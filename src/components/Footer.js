@@ -209,8 +209,9 @@ export default function Footer() {
         <p style={{ textAlign: "center" }}>
           Desarrollado por{" "}
           <a
-            href="mailto:damiangarciaabreu@gmail.com"
+            href="https://portfolio-dam-gar-a.vercel.app/"
             style={{ textDecoration: "none" }}
+            target="_blank"
           >
             Damián García Abreu
           </a>{" "}
