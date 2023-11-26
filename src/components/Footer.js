@@ -152,7 +152,7 @@ export default function Footer() {
             Tasa Nominal Anual (TNA) sin IVA: Mínimo: 145,50% - Máximo: 310,50%
             | Costo Financiero Total Efectivo Anual (CFTEA) con IVA: Mínimo:
             417,72% - Máximo: 2542,12%, - Intereses punitorios diarios: Minimo
-            :1% - Maximo: 2,5%.
+            :1% - Maximo: 10%.
           </p>
           <p>
             Ejemplo de préstamo: Monto solicitado de $10.000 a 12 meses | Cuota:
@@ -192,7 +192,7 @@ export default function Footer() {
             </b>
           </p>
           <p>
-            <b>Actualización: 01/07/2023</b>
+            <b>Actualización: 01/09/2023</b>
           </p>
         </div>
         <p className="tasas-text">

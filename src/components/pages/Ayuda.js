@@ -349,7 +349,7 @@ export default function Ayuda() {
                     headerClassName="ayuda-subaccordion-header"
                     items={[
                       {
-                        titulo: "¿En cuántas cuotas puedo pagar ?",
+                        titulo: "¿En cuántas cuotas puedo pagar?",
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
@@ -360,7 +360,7 @@ export default function Ayuda() {
                         ),
                       },
                       {
-                        titulo: "¿Cuándo pago la primera cuota ?",
+                        titulo: "¿Cuándo pago la primera cuota?",
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
@@ -393,9 +393,9 @@ export default function Ayuda() {
                               Podés pagar tus cuotas a través de nuestra web
                               en&nbsp;
                               <Link
-                                to={"//https://credlap.com/paga-tu-cuota"}
+                                to={"/paga-tu-cuota"}
                                 style={{ color: "#FFF" }}
-                                target={"_blank"}
+                                // target={"_blank"}
                               >
                                 Pagá tu cuota.
                               </Link>
