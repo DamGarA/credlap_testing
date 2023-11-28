@@ -392,13 +392,20 @@ export default function Ayuda() {
                             <p>
                               Podés pagar tus cuotas a través de nuestra web
                               en&nbsp;
-                              <Link
+                              {/* <Link
                                 to={"/paga-tu-cuota"}
                                 style={{ color: "#FFF" }}
                                 // target={"_blank"}
                               >
                                 Pagá tu cuota.
-                              </Link>
+                              </Link> */}
+                              <a
+                                href="https://www.credlap.com/paga-tu-cuota"
+                                style={{ color: "#FFF" }}
+                                // target="_blank"
+                              >
+                                Pagá tu cuota.
+                              </a>
                               &nbsp;En esta pestaña encontrarás disponible
                               nuestro chat con información específica. Otra
                               opción es a través WhatsApp al 11-2617-0462 o bien

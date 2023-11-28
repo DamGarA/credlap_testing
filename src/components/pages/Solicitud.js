@@ -210,7 +210,10 @@ export default function Solicitud() {
           },
         });
       }, 1000);
-    else enviarSolicitud(formSolicitud, handleSolicitudResponse);
+    else {
+      console.log("antes de enviar la solicitud");
+      enviarSolicitud(formSolicitud, handleSolicitudResponse);
+    }
 
     setEstadoActual("enviando");
   }
@@ -230,7 +233,8 @@ export default function Solicitud() {
       response.isError ||
       !response.request.responseURL.includes("/solicitud")
     )
-      window.location.href = "/solicitud-resultado?resultado=error";
+      // window.location.href = "/solicitud-resultado?resultado=error";
+      console.log("resultado=error");
     else {
       if (response.request.responseURL.includes("resultado=error"))
         window.location.href = "/solicitud-resultado?resultado=procesada";

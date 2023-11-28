@@ -105,7 +105,7 @@ export default function Home() {
       </div>
       <div className="home-third-section">
         <p className="home-third-section-label">
-          Te contamos nuestros requisitos
+          Te contamos nuestros requisitos.
         </p>
         <div className="home-third-section-boxes">
           <div className="home-third-section-box">
