@@ -26,7 +26,6 @@ export default function enviarSolicitud(formSolicitud, callback) {
   serviceURL += "telefono=" + formSolicitud.actividad + "&";
   serviceURL +=
     "cuotas=12&cuotaPromedio=0&diaCobro=1&keyword=&matchtype=0&ingreso=0&linea=0";
-  console.log("antes del axios");
   axios
     .post(serviceURL, null, {
       headers: {
@@ -34,11 +33,9 @@ export default function enviarSolicitud(formSolicitud, callback) {
       },
     })
     .then((res) => {
-      console.log("res:::::", res);
       callback(res);
     })
     .catch((error) => {
-      console.log("error:::::::", error);
       if (
         error.response &&
         (error.response.status === 403 || error.response.status === 404)

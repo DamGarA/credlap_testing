@@ -211,7 +211,6 @@ export default function Solicitud() {
         });
       }, 1000);
     else {
-      console.log("antes de enviar la solicitud");
       enviarSolicitud(formSolicitud, handleSolicitudResponse);
     }
 

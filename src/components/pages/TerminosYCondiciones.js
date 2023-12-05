@@ -187,8 +187,8 @@ export default function TerminosYCondiciones() {
         <br></br>
         <br></br>
         <p>
-          Responsable de seguridad de datos: Cativa Florencia, asesor externo.
-          E-mail: consultas@credlap.com, Tel: +54 9 11 3404 4836.
+          Responsable de seguridad de datos: Alvarez Manuel, asesor externo.
+          E-mail: consultas@credlap.com, Tel: +54 9 11 2617 0462.
         </p>
         <p>
           Responsable de régimen informativo: Medina Wanda, asesor externo.
@@ -204,8 +204,8 @@ export default function TerminosYCondiciones() {
           9 11 7831 2677.
         </p>
         <p>
-          Directorio responsable PUSF: Cella Yesica Mailen, Director Suplente.
-          E-mail: jesica@credlap.com, Tel: +54 9 221 635 4562.
+          Directorio responsable PUSF: Fernandez Cativa Gonzalo, Director
+          Titular. E-mail: gonzalo@credlap.com, Tel: +54 9 221 577 1965.
         </p>
       </div>
     </div>

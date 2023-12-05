@@ -166,9 +166,11 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Actualmente no tenemos lineas de creditos
-                              disponibles para beneficiarios ANSES que no sean
-                              contributivos. Disculpe las molestias
+                              La aceptación de esta repartición queda a criterio
+                              de evaluación de la empresa. Actualmente no
+                              tenemos líneas de créditos disponibles para
+                              beneficiarios ANSES que no sean contributivos.
+                              Disculpe las molestias.
                             </p>
                           </div>
                         ),
