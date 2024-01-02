@@ -141,6 +141,11 @@ export default function Footer() {
             Legal: Calle 4 1620, La Plata, Buenos Aires, Argentina.
           </p>
           <p>
+            El domicilio informado es solo a los efectos legales, Credlap no
+            realiza atención comercial, el funcionamiento de la empresa es %100
+            online y terciarizado.
+          </p>
+          <p>
             Condiciones generales de préstamos: La Tasa Nominal Anual (TNA), la
             Tasa Efectiva Anual (TEA) y el Costo Financiero Total Efectivo Anual
             (CFTEA) varían según el perfil crediticio del solicitante del
@@ -149,14 +154,14 @@ export default function Footer() {
             del préstamo y antes de su otorgamiento.
           </p>
           <p>
-            Tasa Nominal Anual (TNA) sin IVA: Mínimo: 145,50% - Máximo: 310,50%
+            Tasa Nominal Anual (TNA) sin IVA: Mínimo: 218,25% - Máximo: 426,12%
             | Costo Financiero Total Efectivo Anual (CFTEA) con IVA: Mínimo:
-            417,72% - Máximo: 2542,12%, - Intereses punitorios diarios: Minimo
-            :1% - Maximo: 10%.
+            991,28% - Máximo: 7260,50%, - Intereses punitorios diarios: Mínimo:
+            1% - Máximo: 10%.
           </p>
           <p>
-            Ejemplo de préstamo: Monto solicitado de $10.000 a 12 meses | Cuota:
-            $2.300,46 | Total a pagar: $27.605,50 (ejemplo sobre TNA S/IVA)
+            Ejemplo de préstamo: Monto solicitado de $50.000 a 12 meses | Cuota:
+            $15.170,10 | Total a pagar: $182.041,25 (ejemplo sobre TNA S/IVA)
             ("Las tasas varían según riesgo crediticio de cada cliente, el
             ejemplo es una de las líneas vigentes de la compañía (CREDLAP
             GOLD)").
@@ -164,25 +169,28 @@ export default function Footer() {
           <p>
             El plazo mínimo de repago del préstamo es de 1 mes y el máximo de 24
             meses. Cuotas mensuales, iguales y consecutivas calculadas mediante
-            el sistema de cuotas directa, que el cliente abonará mensualmente de
-            manera voluntaria, o por los medios dispuestos en el contrato del
+            el sistema de cuotas directas, que el cliente abonará mensualmente
+            de manera voluntaria, o por los medios dispuestos en el contrato del
             préstamo. El monto mínimo de financiación es de $1.000 y el monto
-            máximo de $100.000, en todo el territorio nacional.
+            máximo de $150.000, en todo el territorio nacional.
           </p>
           <p>
             El cliente acepta términos y condiciones, y políticas de privacidad
             al momento de completar el formulario web, y sus futuras
             modificaciones, los mismos se encuentran actualizados para
             visualizarlos con anterioridad en www.credlap.com - Legales, y deben
-            ser aceptados para continuar y efectivizar la operatoria.
+            ser aceptados para continuar y efectivizar la operatoria
           </p>
           <p>
             Credlap S.A. no cobra ningún tipo de gasto por adelantado, costos
             administrativos, seguros, ni comisiones, salvo en el caso de
             retrasos del pago donde se aplicará un punitorio diario y la empresa
-            podrá incurrir en el recupero total de la deuda, y efectivizara una
-            cuota compensatoria de usos del servicio, por cualquiera de los
-            medios mencionados en el contrato de adhesión/mutuo, el cual se
+            podrá incurrir en el recupero total de la deuda firmada mas gastos
+            generales y mora diaria mencionada, además se efectivizara una cuota
+            compensatoria de usos del servicio, por un valor actualizable
+            mensualmente si así fuera necesario, estipulados y declarados en
+            www.credlap.com/servicios, y de los cuales podrá hacer uso solo el
+            titular firmante del contrato de adhesión/mutuo, el cual se
             visualiza actualizado en: botón - información al usuario financiero
             - botón contrato de adhesión, ley 24.240 de defensa al consumidor.
           </p>
@@ -192,19 +200,19 @@ export default function Footer() {
             </b>
           </p>
           <p>
-            <b>Actualización: 01/09/2023</b>
+            <b>Actualización: 01/01/2024</b>
           </p>
         </div>
         <p className="tasas-text">
-          CFTEA(s/IVA): tasa mínima 295,26%, tasa máxima 1488,66%
+          CFTEA(s/IVA): tasa mínima 644,39%, tasa máxima 3760,55%
         </p>
         <p className="tasas-text">
-          CFTEA (c/IVA): tasa mínima 417,72%, tasa máxima 2542,12%
+          CFTEA (c/IVA): tasa mínima 991,28%, tasa máxima 7260,50%
         </p>
         <p className="derechos-text">
-          Todos los derechos reservados
+          Desde 23/05/2022 todos los derechos reservados
           <br></br>
-          Credlap SA&nbsp;&nbsp;|&nbsp;&nbsp;2023
+          Credlap SA&nbsp;&nbsp;|&nbsp;&nbsp;2024
         </p>
         <p style={{ textAlign: "center" }}>
           Desarrollado por{" "}

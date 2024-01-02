@@ -309,6 +309,16 @@ export default function Servicios() {
         <p className="servicios-fifth-section-text">
           Para acceder, consultar tu aprobación, disponibilidad, informarte o
           categorizar el servicio podés contactarte por nuestro chat bot.
+          Activación de servicios: Los servicios se activan por el incurrimiento
+          en mora, los vencimientos incumplidos activan los servicios en su
+          totalidad, en tal caso los servicios se cobrarán desde la fecha de
+          alta hasta la solicitud de baja, teniendo como mínimo de pago 3 cuotas
+          y máximo el periodo total de cuotas del plan o pedido de baja, lo que
+          fuera como resultado a un rango mayor. El préstamo contraído y
+          cancelado no exime al titular del cobro de las cuotas de servicio,
+          Credlap analizará pagos en términos y tomará la decisión de aplicar
+          las cuotas correspondientes entre los mínimos y máximos estipulados.
+          Valor del servicio $6999,99.
         </p>
       </div>
     </div>

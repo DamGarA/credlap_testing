@@ -232,8 +232,7 @@ export default function Solicitud() {
       response.isError ||
       !response.request.responseURL.includes("/solicitud")
     )
-      // window.location.href = "/solicitud-resultado?resultado=error";
-      console.log("resultado=error");
+      window.location.href = "/solicitud-resultado?resultado=error";
     else {
       if (response.request.responseURL.includes("resultado=error"))
         window.location.href = "/solicitud-resultado?resultado=procesada";
@@ -244,6 +243,8 @@ export default function Solicitud() {
     }
   }
 
+  console.log(window.solicitud.sliderStep, typeof window.solicitud.sliderStep);
+
   return (
     <div className="solicitud">
       <div className="left-box">
@@ -252,7 +253,7 @@ export default function Solicitud() {
           <div className="slider-container">
             <Slider
               min={window.solicitud.sliderMin}
-              max={window.solicitud.sliderMax}
+              max={"150000"}
               step={window.solicitud.sliderStep}
               onChange={handleSliderChange}
               className="slider-solicitud"

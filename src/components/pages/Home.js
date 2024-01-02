@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import imgHomeBox1 from "../../images/home-box-1.png";
 import imgHomeBox2 from "../../images/home-box-2.png";
 import imgHomeBox3 from "../../images/home-box-3.png";
-import imgCocoHome from "../../images/Credlap-navidad-DESKTOP.png";
-import imgCocoHomeCelu from "../../images/Credlap-navidad-celu.png";
+import imgCocoHome from "../../images/enero-desktop.png";
+import imgCocoHomeCelu from "../../images/enero-cel.png";
 import imgSecondSectionBottom from "../../images/home-back-second-section-bottom.png";
 import imgThirdSection1 from "../../images/home-third-section-1.png";
 import imgThirdSection2 from "../../images/home-third-section-2.png";
@@ -35,7 +35,7 @@ export default function Home() {
       <div className="home-first-section">
         <div className="home-left-box">
           <p className="home-label">Llevate hasta</p>
-          <p className="home-monto">{window.home.monto}</p>
+          <p className="home-monto">$150.000</p>
           <Link to="solicitar-prestamo">
             <button className="home-btn">SOLICITÁ TU PRÉSTAMO</button>
           </Link>

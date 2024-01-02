@@ -80,7 +80,7 @@ export default function PoliticasDePrivacidad() {
         <br></br>
         <p>
           Responsable de seguridad de datos: Alvarez Manuel, asesor externo.
-          E-mail: consultas@credlap.com, Tel: +54 9 11 2617 0462.
+          E-mail: cyr@credlap.com, Tel: +54 9 11 2617 0462.
         </p>
         <p>
           Responsable de régimen informativo: Medina Wanda, asesor externo.

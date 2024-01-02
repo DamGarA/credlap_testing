@@ -244,10 +244,10 @@ export default function Baja() {
           cobrarán las comisiones y cargos previstos, proporcionados al tiempo
           de utilización del servicio o producto.
         </p>
-        <p className="baja-nota-2">
+        {/* <p className="baja-nota-2">
           También podés escribirnos por correo a administracion@credlap.com o
           comunicarte por teléfono al 0810-220-0570 o al WhatsApp 11-7831-2678
-        </p>
+        </p> */}
       </div>
     </div>
   );

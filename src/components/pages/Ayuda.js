@@ -221,8 +221,10 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Te ofrecemos hasta $100.000, dependiendo del
-                              análisis crediticio* de nuestros asesores.
+                              Nuestros montos mínimos y máximos se encuentran
+                              expuestos en el pie de página, las aprobaciones
+                              dependerán del análisis crediticio* de nuestros
+                              asesores.
                             </p>
                             <p className="ayuda-asterisco">
                               *Lo obtenemos gracias al&nbsp;
