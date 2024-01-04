@@ -8,6 +8,7 @@ import FormInput from "../FormInput";
 import Slider from "../Slider";
 import "./Solicitud.css";
 import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+//import { useNavigate } from "react-router-dom"; prueba
 
 export default function Solicitud() {
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function Solicitud() {
       deleteChatBot();
     };
   }, []);
+  //const navigate = useNavigate(); //prueba
   const [formValido, setFormValido] = useState(false);
   const [estadoActual, setEstadoActual] = useState(null);
   const [formSolicitud, setFormSolicitud] = useState({
@@ -211,6 +213,7 @@ export default function Solicitud() {
         });
       }, 1000);
     else {
+      //navigate("/solicitud-resultado?resultado=procesada");
       enviarSolicitud(formSolicitud, handleSolicitudResponse);
     }
 
@@ -242,6 +245,10 @@ export default function Solicitud() {
         );
     }
   }
+
+  // function handleSolicitudResponse(response) {
+  //   navigate("/solicitud-resultado?resultado=procesada");
+  // }
 
   console.log(window.solicitud.sliderStep, typeof window.solicitud.sliderStep);
 
