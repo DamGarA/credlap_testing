@@ -8,7 +8,8 @@ import FormInput from "../FormInput";
 import Slider from "../Slider";
 import "./Solicitud.css";
 import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
-//import { useNavigate } from "react-router-dom"; prueba
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Solicitud() {
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function Solicitud() {
       deleteChatBot();
     };
   }, []);
-  //const navigate = useNavigate(); //prueba
+  const navigate = useNavigate(); //prueba
   const [formValido, setFormValido] = useState(false);
   const [estadoActual, setEstadoActual] = useState(null);
   const [formSolicitud, setFormSolicitud] = useState({
@@ -213,8 +214,20 @@ export default function Solicitud() {
         });
       }, 1000);
     else {
-      //navigate("/solicitud-resultado?resultado=procesada");
-      enviarSolicitud(formSolicitud, handleSolicitudResponse);
+      const serviceURL = enviarSolicitud(
+        formSolicitud,
+        handleSolicitudResponse
+      );
+      axios.post(serviceURL, null, {
+        headers: {
+          Accept: "text/html",
+        },
+      });
+
+      setTimeout(function () {
+        navigate("/solicitud-resultado?resultado=procesada");
+        window.location.reload();
+      }, 8000);
     }
 
     setEstadoActual("enviando");
@@ -230,6 +243,8 @@ export default function Solicitud() {
     }));
   }
 
+  //esta funcion no se esta usando. es la que usa financiera service para responder,
+  // pero tiene un problema con el .htaccess
   function handleSolicitudResponse(response) {
     if (
       response.isError ||
@@ -245,10 +260,6 @@ export default function Solicitud() {
         );
     }
   }
-
-  // function handleSolicitudResponse(response) {
-  //   navigate("/solicitud-resultado?resultado=procesada");
-  // }
 
   console.log(window.solicitud.sliderStep, typeof window.solicitud.sliderStep);
 

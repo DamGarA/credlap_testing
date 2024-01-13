@@ -320,7 +320,7 @@ export default function Servicios() {
           Credlap analizará pagos en términos y tomará la decisión de aplicar
           las cuotas correspondientes entre los mínimos y máximos estipulados.
           <br></br>
-          Valor del servicio $6999,99.
+          Valor del servicio $8999,99.
         </p>
       </div>
     </div>

@@ -26,21 +26,25 @@ export default function enviarSolicitud(formSolicitud, callback) {
   serviceURL += "telefono=" + formSolicitud.actividad + "&";
   serviceURL +=
     "cuotas=12&cuotaPromedio=0&diaCobro=1&keyword=&matchtype=0&ingreso=0&linea=0";
-  axios
-    .post(serviceURL, null, {
-      headers: {
-        Accept: "text/html",
-      },
-    })
-    .then((res) => {
-      callback(res);
-    })
-    .catch((error) => {
-      if (
-        error.response &&
-        (error.response.status === 403 || error.response.status === 404)
-      )
-        callback(error.response);
-      else callback({ isError: true });
-    });
+  // axios
+  //   .post(serviceURL, null, {
+  //     headers: {
+  //       Accept: "text/html",
+  //     },
+  //   })
+  //   .then((res) => {
+  //     //callback(res);
+
+  //   });
+  // .catch((error) => {
+  //   if (
+  //     error.response &&
+  //     (error.response.status === 403 || error.response.status === 404)
+  //   )
+  //     callback(error.response);
+  //   else callback({ isError: true });
+  // });
+
+  return serviceURL;
 }
+//esta ultima parte usa la funcion que maneja la respuesta. no se usa actualmente
