@@ -214,24 +214,24 @@ export default function Solicitud() {
         });
       }, 1000);
     else {
-      const serviceURL = enviarSolicitud(
-        formSolicitud,
-        handleSolicitudResponse
-      );
-      axios.post(serviceURL, null, {
-        headers: {
-          Accept: "text/html",
-        },
-      });
+    //   const serviceURL = enviarSolicitud(
+    //     formSolicitud,
+    //     handleSolicitudResponse
+    //   );
+    //   axios.post(serviceURL, null, {
+    //     headers: {
+    //       Accept: "text/html",
+    //     },
+    //   });
 
-      setTimeout(function () {
-        navigate("/solicitud-resultado?resultado=procesada");
-        window.location.reload();
-      }, 8000);
-    }
-
+    //   setTimeout(function () {
+    //     navigate("/solicitud-resultado?resultado=procesada");
+    //     window.location.reload();
+    //   }, 8000);
+    // }
+    enviarSolicitud(formSolicitud, handleSolicitudResponse);
     setEstadoActual("enviando");
-  }
+  }}
 
   function handleSliderChange(value) {
     setFormSolicitud((prevForm) => ({
@@ -260,8 +260,6 @@ export default function Solicitud() {
         );
     }
   }
-
-  console.log(window.solicitud.sliderStep, typeof window.solicitud.sliderStep);
 
   return (
     <div className="solicitud">
