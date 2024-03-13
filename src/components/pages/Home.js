@@ -23,7 +23,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
+    //insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
 
     return () => {
       deleteChatBot();
