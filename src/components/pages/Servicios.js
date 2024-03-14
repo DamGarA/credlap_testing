@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+// import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 import "./Servicios.css";
 
 import imgPortada from "../../images/images_services/PORTADA.png";
@@ -22,13 +22,13 @@ import imgReintegro4 from "../../images/images_services/REINTEGRO-DEFUNCION-ICON
 import Carousel from "react-simply-carousel";
 
 export default function Servicios() {
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/CMOA2RWID0/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/CMOA2RWID0/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [activeSlideIndex2, setActiveSlideIndex2] = useState(0);
