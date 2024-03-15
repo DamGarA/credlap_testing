@@ -10,18 +10,18 @@ import Accordion from "../Accordion";
 import { Link } from "react-router-dom";
 import { sendMail } from "../../services/EmailService";
 import Tooltip from "../Tooltip";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+// import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function Ayuda() {
   //variable dela que venia el numero: window.ayuda.faq.pagocuotawsp
 
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/6PGD8XS6ER/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/6PGD8XS6ER/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
   const tooltip1 = useRef(null);
   const tooltip2 = useRef(null);
 
