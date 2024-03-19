@@ -10,17 +10,17 @@ import pagoQR from "../../images/qr-2.png";
 import pagoIconoCredLap from "../../images/icono-credlap.png";
 import pagoTarjeta from "../../images/credlap-pago-tarjeta.png";
 import pagoTransfer from "../../images/credlap-pago-transferencia.png";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
-import { useEffect } from "react";
+// import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+// import { useEffect } from "react";
 
 export default function PagaTuCuota() {
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/S1VILUNVZ5/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/S1VILUNVZ5/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
 
   return (
     <div className="paga">
@@ -30,7 +30,7 @@ export default function PagaTuCuota() {
           <p className="paga-label-2">Pagá tu cuota o informá tu pago</p>
         </div>
         <div className="paga-right-box">
-          <img src={imgCocoPaga} className="paga-img" />
+          <img src={imgCocoPaga} className="paga-img" alt="coco-paga"/>
         </div>
       </div>
       <div className="paga-second-section">
@@ -86,10 +86,10 @@ export default function PagaTuCuota() {
           </div>
           <div className="paga-third-section-medios">
             <div className="paga-right-box">
-              <img className="medios-image" border="0" src={pagoEfectivo} />
-              <img className="medios-image" border="0" src={pagoTarjeta} />
-              <img className="medios-image" border="0" src={pagoTransfer} />
-              <img className="medios-image" border="0" src={pagoLink} />
+              <img className="medios-image" border="0" src={pagoEfectivo} alt="medios" />
+              <img className="medios-image" border="0" src={pagoTarjeta} alt="medios"/>
+              <img className="medios-image" border="0" src={pagoTransfer} alt="medios"/>
+              <img className="medios-image" border="0" src={pagoLink} alt="medios"/>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function PagaTuCuota() {
           </div>
           <div className="paga-fourth-section-medios">
             <div className="paga-right-box">
-              <img className="medios-image-QR" border="0" src={pagoQR} />
+              <img className="medios-image-QR" border="0" src={pagoQR} alt="medios"/>
             </div>
             <div className="paga-qr-list">
               <div className="paga-qr-list-item">
@@ -129,6 +129,7 @@ export default function PagaTuCuota() {
                   <img
                     className="pago-icono-credlap"
                     src={pagoIconoCredLap}
+                    alt="icono-credlap"
                   ></img>
                   , cargá tus datos y adjuntá tu comprobante
                 </p>

@@ -7,19 +7,16 @@ import FormDropdown from "../FormDropdown";
 import FormInput from "../FormInput";
 import Slider from "../Slider";
 import "./Solicitud.css";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function Solicitud() {
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/S1VILUNVZ5/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/S1VILUNVZ5/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
-  const navigate = useNavigate(); //prueba
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
   const [formValido, setFormValido] = useState(false);
   const [estadoActual, setEstadoActual] = useState(null);
   const [formSolicitud, setFormSolicitud] = useState({
@@ -214,21 +211,6 @@ export default function Solicitud() {
         });
       }, 1000);
     else {
-    //   const serviceURL = enviarSolicitud(
-    //     formSolicitud,
-    //     handleSolicitudResponse
-    //   );
-    //   axios.post(serviceURL, null, {
-    //     headers: {
-    //       Accept: "text/html",
-    //     },
-    //   });
-
-    //   setTimeout(function () {
-    //     navigate("/solicitud-resultado?resultado=procesada");
-    //     window.location.reload();
-    //   }, 8000);
-    // }
     enviarSolicitud(formSolicitud, handleSolicitudResponse);
     setEstadoActual("enviando");
   }}
@@ -243,8 +225,7 @@ export default function Solicitud() {
     }));
   }
 
-  //esta funcion no se esta usando. es la que usa financiera service para responder,
-  // pero tiene un problema con el .htaccess
+  
   function handleSolicitudResponse(response) {
     if (
       response.isError ||
