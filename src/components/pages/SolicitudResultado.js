@@ -7,23 +7,23 @@ import imgWhatsapp from "../../images/whatsapp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid, brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { Link } from "react-router-dom";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+// import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function SolicitudResultado({ resultado }) {
-  useEffect(() => {
-    if (resultado != "error") {
-      insertChatBot(
-        "https://go.botmaker.com/rest/webchat/p/CN8ABWDDLS/init.js"
-      );
-    } else {
-      insertChatBot(
-        "https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js"
-      );
-    }
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  // useEffect(() => {
+  //   if (resultado != "error") {
+  //     insertChatBot(
+  //       "https://go.botmaker.com/rest/webchat/p/CN8ABWDDLS/init.js"
+  //     );
+  //   } else {
+  //     insertChatBot(
+  //       "https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js"
+  //     );
+  //   }
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
 
   function callByPhone() {
     document.getElementById("click2call_callbtn").click();
