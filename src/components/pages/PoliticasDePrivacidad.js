@@ -1,15 +1,15 @@
 import "./PoliticasDePrivacidad.css";
 import { useEffect } from "react";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+//import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function PoliticasDePrivacidad() {
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
   return (
     <div className="politicas-container">
       <p className="politicas-titulo">Políticas de privacidad</p>

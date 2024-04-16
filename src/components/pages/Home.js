@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../../App.css";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import imgHomeBox1 from "../../images/home-box-1.png";
 import imgHomeBox2 from "../../images/home-box-2.png";
 import imgHomeBox3 from "../../images/home-box-3.png";
-import imgCocoHome from "../../images/enero-desktop.png";
-import imgCocoHomeCelu from "../../images/enero-cel.png";
+import imgCocoHome from "../../images/Marzo-2024-desktop.png";
+import imgCocoHomeCelu from "../../images/Marzo-2024-celular.png";
 import imgSecondSectionBottom from "../../images/home-back-second-section-bottom.png";
 import imgThirdSection1 from "../../images/home-third-section-1.png";
 import imgThirdSection2 from "../../images/home-third-section-2.png";
 import imgThirdSection3 from "../../images/home-third-section-3.png";
 import Carousel from "react-simply-carousel";
 import Opinion from "../Opinion";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+
 
 export default function Home() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -22,20 +22,12 @@ export default function Home() {
     setActiveSlideIndex(newActiveSlideIndex);
   }
 
-  useEffect(() => {
-    //insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
-
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
-
   return (
     <div className="home">
       <div className="home-first-section">
         <div className="home-left-box">
           <p className="home-label">Llevate hasta</p>
-          <p className="home-monto">$150.000</p>
+          <p className="home-monto">$200.000</p>
           <Link to="solicitar-prestamo">
             <button className="home-btn">SOLICITÁ TU PRÉSTAMO</button>
           </Link>

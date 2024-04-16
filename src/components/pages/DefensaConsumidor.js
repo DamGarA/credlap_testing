@@ -8,16 +8,16 @@ import { sendMail, sendMailWithAttachment } from "../../services/EmailService";
 import reclamo1 from "../../images/reclamo-1.png";
 import reclamo2 from "../../images/reclamo-2.png";
 import reclamo3 from "../../images/reclamo-3.png";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+//import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function DefensaConsumidor() {
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/6PGD8XS6ER/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/6PGD8XS6ER/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
 
   /*function callByPhone() {
     document.getElementById('click2call_callbtn').click()

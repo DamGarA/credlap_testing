@@ -1,15 +1,15 @@
 import "./TerminosYCondiciones.css";
 import { useEffect } from "react";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+//import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function TerminosYCondiciones() {
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
   return (
     <div className="tyc-container">
       <p className="tyc-titulo">Términos y condiciones</p>

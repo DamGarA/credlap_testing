@@ -4,7 +4,7 @@ import FormInput from "../FormInput";
 import FormTextArea from "../FormTextArea";
 import FormButton from "../FormButton";
 import { sendMail } from "../../services/EmailService";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+//import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function Baja() {
   //Acá se modifican las direcciones de mail a donde van a mandar el formulario de baja
@@ -25,13 +25,13 @@ export default function Baja() {
     checkFormValido();
   }, [formBaja]);
 
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
 
   function checkFormValido() {
     setFormValido(

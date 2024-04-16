@@ -2,17 +2,17 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import imgUsuariosFinancieros from "../../images/usuarios-financieros-gob.png";
 import "./InfoUsuario.css";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+//import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function InfoAlUsuario() {
   //variables de los datos: window.infousuario. ----> titular
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
   return (
     <div className="info-usuario">
       <div className="info-usuario-first-section">

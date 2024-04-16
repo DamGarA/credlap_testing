@@ -10,7 +10,7 @@ import FormTextArea from "../FormTextArea";
 import FormButton from "../FormButton";
 import { sendMail, sendMailWithAttachment } from "../../services/EmailService";
 import { Link } from "react-router-dom";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+//import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function Nosotros() {
   //cambio de direccion a la que se manda el cv
@@ -30,13 +30,13 @@ export default function Nosotros() {
     checkFormValido();
   }, [formTrabaja]);
 
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
 
   function checkFormValido() {
     setFormValido(

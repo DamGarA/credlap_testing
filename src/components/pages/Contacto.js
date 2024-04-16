@@ -6,16 +6,16 @@ import imgTel from "../../images/icono-telefono.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { Link } from "react-router-dom";
-import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
+//import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function Contacto() {
-  useEffect(() => {
-    insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
+  // useEffect(() => {
+  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js");
 
-    return () => {
-      deleteChatBot();
-    };
-  }, []);
+  //   return () => {
+  //     deleteChatBot();
+  //   };
+  // }, []);
 
   return (
     <div className="contacto">

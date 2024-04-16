@@ -1,29 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./SolicitudResultado.css";
 import imgCocoResultadoGral from "../../images/Coco_resultadogeneral_septiembre.png";
 import imgCocoRechazada from "../../images/coco-rechazado.png";
-import imgCocoError from "../../images/credlap-coco-solicitud-erronea.png";
+import imgCocoError from "../../images/coco-rechazado.png";
+import imgCocoProcesada from "../../images/Coco_resultado-sorprendido.png";
 import imgWhatsapp from "../../images/whatsapp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid, brands } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { Link } from "react-router-dom";
-// import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function SolicitudResultado({ resultado }) {
-  // useEffect(() => {
-  //   if (resultado != "error") {
-  //     insertChatBot(
-  //       "https://go.botmaker.com/rest/webchat/p/CN8ABWDDLS/init.js"
-  //     );
-  //   } else {
-  //     insertChatBot(
-  //       "https://go.botmaker.com/rest/webchat/p/GJ2BGG62Q0/init.js"
-  //     );
-  //   }
-  //   return () => {
-  //     deleteChatBot();
-  //   };
-  // }, []);
 
   function callByPhone() {
     document.getElementById("click2call_callbtn").click();
@@ -37,25 +23,25 @@ export default function SolicitudResultado({ resultado }) {
             <div className="pre-aprobado-left-box">
               <p className="pre-aprobado-label">Préstamo pre-aprobado</p>
               <p className="pre-aprobado-text">
-                ¡Genial! ya tenés tu <b>préstamo</b> pre-aprobado, te va a
-                contactar un asesor para terminar.
+                ¡Último paso! <b>Envianos un Whatsapp</b> al siguiente número, <b>agendanos</b>, así finalizamos el proceso.
               </p>
+              <a href="https://api.whatsapp.com/send?phone=5491125685051">
+                <button className="wsapp-btn">
+                  <FontAwesomeIcon icon={brands("whatsapp")} />
+                  <b>      HABLAR AHORA</b>
+                </button>
+              </a>
               <p className="pre-aprobado-horarios">
                 <br />
                 <p>
-                  <b>TIP:</b>
-                  <i>
-                    {" "}
-                    para hacer más rápido el proceso, tené a mano tu <b>
-                      DNI
-                    </b>{" "}
-                    y tu <b>Comprobante de ingresos.</b>
-                  </i>
+                  O utiliza este link:
                 </p>
                 <br />
-                <FontAwesomeIcon icon={solid("clock")} /> Acordate que nuestro
-                horario de atención es de lunes a viernes de 10 a 17 hs, sábados
-                y feriados de 09:30 a 13 hs.
+                <a href="https://api.whatsapp.com/send?phone=5491125685051" style={{ color: 'white', textDecoration: 'none' }}>
+                  <b>
+                    https://api.whatsapp.com/send?phone=5491125685051
+                  </b>
+                </a>
               </p>
             </div>
             <div className="paga-right-box">
@@ -154,7 +140,7 @@ export default function SolicitudResultado({ resultado }) {
               </div>
             </div>
             <div className="paga-right-box">
-              <img src={imgCocoError} className="paga-img" />
+              <img src={imgCocoProcesada} className="paga-img" />
             </div>
           </div>
         </div>

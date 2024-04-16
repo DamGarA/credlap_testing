@@ -7,16 +7,9 @@ import FormDropdown from "../FormDropdown";
 import FormInput from "../FormInput";
 import Slider from "../Slider";
 import "./Solicitud.css";
-// import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 
 export default function Solicitud() {
-  // useEffect(() => {
-  //   insertChatBot("https://go.botmaker.com/rest/webchat/p/S1VILUNVZ5/init.js");
 
-  //   return () => {
-  //     deleteChatBot();
-  //   };
-  // }, []);
   const [formValido, setFormValido] = useState(false);
   const [estadoActual, setEstadoActual] = useState(null);
   const [formSolicitud, setFormSolicitud] = useState({
@@ -250,7 +243,7 @@ export default function Solicitud() {
           <div className="slider-container">
             <Slider
               min={window.solicitud.sliderMin}
-              max={"150000"}
+              max={"200000"}
               step={window.solicitud.sliderStep}
               onChange={handleSliderChange}
               className="slider-solicitud"
