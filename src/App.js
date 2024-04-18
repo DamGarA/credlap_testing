@@ -24,7 +24,6 @@ import imgLlamar from "./images/llamar.png";
 import imgColgar from "./images/colgar.png";
 import SolicitudResultado from "./components/pages/SolicitudResultado";
 import Nosotros from "./components/pages/Nosotros";
-import { useEffect } from "react";
 import FormPBA from "./components/pages/FormPBA";
 import Servicios from "./components/pages/Servicios";
 
@@ -41,15 +40,15 @@ const Wrapper = ({ children }) => {
       });
     else window.scroll({ top: 0, behavior: "smooth" });
 
-    setTimeout(function () {
-      if (window.$zoho && window.$zoho.salesiq) {
-        window.$zoho.salesiq.reset();
-        if (window.$zoho.salesiq.floatwindow)
-          window.$zoho.salesiq.floatwindow.visible(
-            location.pathname === "/solicitud-resultado" ? "show" : "hide"
-          );
-      }
-    }, 2000);
+    // setTimeout(function () {
+    //   if (window.$zoho && window.$zoho.salesiq) {
+    //     window.$zoho.salesiq.reset();
+    //     if (window.$zoho.salesiq.floatwindow)
+    //       window.$zoho.salesiq.floatwindow.visible(
+    //         location.pathname === "/solicitud-resultado" ? "show" : "hide"
+    //       );
+    //   }
+    // }, 2000);
   }, [location.pathname]);
   return children;
 };
