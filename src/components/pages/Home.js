@@ -71,8 +71,7 @@ export default function Home() {
               />
               <p className="home-box-item-title">Corroboramos tus datos</p>
               <p className="home-box-item-desc">
-                Nos comunicamos con vos y por tu seguridad corroboramos tus
-                datos
+              Nos contactas por WhatsApp y corroboramos tus datos.
               </p>
             </div>
             <div className="home-box-item">

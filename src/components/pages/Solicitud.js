@@ -188,21 +188,30 @@ export default function Solicitud() {
     //Hack para evitar enviar una solicitud sin ingresos
     if (formSolicitud.actividad === "No poseo ingresos demostrables")
       setTimeout(function () {
-        handleSolicitudResponse({
-          request: {
-            responseURL: "/solicitud-resultado?resultado=sin-ingresos",
-          },
-        });
-      }, 1000);
-    else if (formSolicitud.actividad === "Tengo un beneficio de ANSES")
+    handleSolicitudResponse({
+      request: {
+        responseURL: "/solicitud-resultado?resultado=sin-ingresos",
+      },
+    });
+  }, 1000);
+  else if (formSolicitud.actividad === "Tengo un beneficio de ANSES")
       //Hack para evitar enviar una solicitud de ANSES
-      setTimeout(function () {
-        handleSolicitudResponse({
-          request: {
-            responseURL: "/solicitud-resultado?resultado=anses",
-          },
-        });
-      }, 1000);
+    setTimeout(function () {
+      handleSolicitudResponse({
+        request: {
+          responseURL: "/solicitud-resultado?resultado=anses",
+        },
+      });
+    }, 1000);
+    else if (formSolicitud.actividad === "Soy jubilado/pensionado de ANSES")
+      //Hack para evitar enviar una solicitud de ANSES
+    setTimeout(function () {
+          handleSolicitudResponse({
+            request: {
+              responseURL: "/solicitud-resultado?resultado=anses",
+            },
+          });
+        }, 1000);
     else {
     enviarSolicitud(formSolicitud, handleSolicitudResponse);
     setEstadoActual("enviando");

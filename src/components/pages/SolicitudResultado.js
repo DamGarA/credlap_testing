@@ -23,25 +23,14 @@ export default function SolicitudResultado({ resultado }) {
             <div className="pre-aprobado-left-box">
               <p className="pre-aprobado-label">Préstamo pre-aprobado</p>
               <p className="pre-aprobado-text">
-                ¡Último paso! <b>Envianos un Whatsapp</b> al siguiente número, <b>agendanos</b>, así finalizamos el proceso.
+                ¡Último paso! <b>Agendanos y envianos un Whatsapp</b> así finalizamos el proceso.
               </p>
-              <a href="https://api.whatsapp.com/send?phone=5491125685051">
-                <button className="wsapp-btn">
-                  <FontAwesomeIcon icon={brands("whatsapp")} />
-                  <b>      HABLAR AHORA</b>
-                </button>
-              </a>
-              <p className="pre-aprobado-horarios">
+              <p className="pre-aprobado-text">
                 <br />
                 <p>
-                  O utiliza este link:
+                 <b>En el chat encontrás nuestro link de contacto.</b> 
                 </p>
                 <br />
-                <a href="https://api.whatsapp.com/send?phone=5491125685051" style={{ color: 'white', textDecoration: 'none' }}>
-                  <b>
-                    https://api.whatsapp.com/send?phone=5491125685051
-                  </b>
-                </a>
               </p>
             </div>
             <div className="paga-right-box">
@@ -199,12 +188,9 @@ export default function SolicitudResultado({ resultado }) {
         <div className="pre-aprobado">
           <div className="pre-aprobado-first-section">
             <div className="pre-aprobado-left-box">
-              <p className="pre-aprobado-label">Beneficiarios de ANSES</p>
+              <p className="pre-aprobado-label">¡Ups!</p>
               <p className="pre-aprobado-text">
-                No otorgamos préstamos personales a beneficiarios de ANSES{" "}
-                <b>no contributivo</b>. Te invitamos a sacarte las dudas en
-                nuestro chatbot. Si sos anses contributivo completá el
-                formulario nuevamente seleccionando la opción recibo de sueldo.
+              Por el momento no estamos otorgando préstamos a <b>beneficiarios</b> de <b>ANSES</b>.
               </p>
             </div>
             <div className="paga-right-box">

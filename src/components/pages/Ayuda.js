@@ -66,15 +66,13 @@ export default function Ayuda() {
                               de contacto.
                             </p>
                             <p>
-                              2 - Completá el formulario con tus datos
-                              personales, que nos servirán para contactarte, y
-                              la cantidad de dinero. ¡Todos nuestros préstamos
-                              se ajustan a tu medida!
+                              2 - Completá el formulario con tus datos personales y la 
+                              cantidad de dinero que desees solicitar. 
+                              ¡Todos nuestros préstamos se ajustan a tu medida!
                             </p>
                             <p>
-                              3 - Al finalizar, recibimos tu solicitud y nos
-                              comunicamos de manera 100% online para depositarte
-                              el dinero en tu cuenta. ¡Y listo!
+                              3 - ¡Último paso! Agendanos y envianos un Whatsapp así 
+                              finalizamos el proceso de manera 100% online. ¡Y listo!
                             </p>
                           </div>
                         ),
@@ -84,20 +82,16 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Si tu solicitud de préstamo fue pre-aprobada, por
-                              favor, esperá a que uno de nuestros asesores se
-                              ponga en contacto con vos.
+                              Si tu solicitud de préstamo fue pre-aprobada, por favor, 
+                              agendanos y envíanos un WhatsApp al link que se encuentra en el chat.
                             </p>
                             <p>
-                              Recordá que en caso de demoras, nuestro plazo
-                              máximo es de 48 hs. Te vamos a contactar en
-                              nuestros horarios de atención:
+                              Nuestros horarios de atención son:
                             </p>
                             <p>Lunes a Viernes de 10 a 17 hs.</p>
                             <p>Sábados y feriados de 09:30 a 13 hs.</p>
                             <p>
-                              Para facilitar el proceso cuando te contactemos y
-                              obtener tu préstamo en el día, tené a mano:
+                              Para facilitar el proceso y obtener tu préstamo en el día, envíanos:
                             </p>
                             <p>☑ Foto del DNI frente y dorso</p>
                             <p>☑ Selfie con el DNI a la altura del pecho</p>
@@ -121,8 +115,8 @@ export default function Ayuda() {
                             </p>
                             <p>2- No contás con comprobante de ingresos.</p>
                             <p>
-                              3- Tenes un beneficio ANSES con el que no
-                              trabajamos.
+                              3- Tenes un beneficio o un tipo de comprobante de ingresos 
+                              con el que no estamos trabajando.
                             </p>
                           </div>
                         ),
@@ -166,11 +160,8 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              La aceptación de esta repartición queda a criterio
-                              de evaluación de la empresa. Actualmente no
-                              tenemos líneas de créditos disponibles para
-                              beneficiarios ANSES que no sean contributivos.
-                              Disculpe las molestias.
+                              La aceptación de esta repartición queda a criterio de 
+                              evaluación de la empresa. Disculpe las molestias.
                             </p>
                           </div>
                         ),
@@ -180,10 +171,9 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Una vez aprobada tu solicitud, nuestros asesores
-                              proceden a depositar tu dinero en tu cuenta
-                              bancaria, la misma debe estar a tu nombre y poseer
-                              tu CBU registrado anteriormente.
+                              Una vez aprobada tu solicitud y luego del chequeo de seguridad 
+                              de nuestros asesores, el préstamo se acredita en una cuenta 
+                              bancaria a tu nombre.
                             </p>
                             <p className="ayuda-asterisco">
                               *Para saber qué es un CBU hacé&nbsp;
