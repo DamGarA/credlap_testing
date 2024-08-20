@@ -96,7 +96,7 @@
 
 .servicios-box-item-img-back {
   margin-top: -30px;
-  width: 28vw;
+  width: 17vw;
   transition: transform 0.6s, opacity 0.8s;
   pointer-events: none;
 }
@@ -109,9 +109,10 @@
 
 .servicios-box-item-img-front {
   margin-top: -30px;
-  width: 28vw;
+  width: 17vw;
   transition: transform 0.6s, opacity 0.8s;
   transition-delay: 0.2s;
+  transform: translateX(12px);
 }
 
 .servicios-box-item-img-front:hover {

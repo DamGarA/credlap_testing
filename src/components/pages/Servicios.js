@@ -3,12 +3,16 @@ import React, { useState, useEffect } from "react";
 import "./Servicios.css";
 
 import imgPortada from "../../images/images_services/PORTADA.png";
-import imgServicio1 from "../../images/images_services/DESCUENTO-ELECTRO-10.png";
-import imgServicio1Back from "../../images/images_services/DESCUENTO-ELECTRO-10-TXT.png";
-import imgServicio2 from "../../images/images_services/DESCUENTO-MUEBLES-10.png";
-import imgServicio2Back from "../../images/images_services/DESCUENTO-MUEBLES-10-txt.png";
-import imgServicio3 from "../../images/images_services/DESCUENTO-SEGURO-NUEVO.png";
-import imgServicio3Back from "../../images/images_services/DESCUENTO-SEGURO-DORSO.png";
+import imgServicio1 from "../../images/images_services/FINANCIACION-ELECTRODOMESTICOS-FRENTE.png";
+import imgServicio1Back from "../../images/images_services/FINANCIACION-ELECTRODOMESTICOS-DORSO.png";
+import imgServicio2 from "../../images/images_services/FINANCIACION-MUBLERIA-FRENTE.png";
+import imgServicio2Back from "../../images/images_services/FINANCIACION-MUBLERIA-DORSO.png";
+import imgServicio3 from "../../images/images_services/FINANCIACION-PAGOS-FRENTE.png";
+import imgServicio3Back from "../../images/images_services/FINANCIACION-PAGOS-DORSO.png";
+import imgServicio4 from "../../images/images_services/FINANCIACION-TECNOLOGIA-FRENTE.png";
+import imgServicio4Back from "../../images/images_services/FINANCIACION-TECNOLOGIA-DORSO.png";
+import imgServicio5 from "../../images/images_services/FINANCIACION-VEHICULOS-FRENTE.png";
+import imgServicio5Back from "../../images/images_services/FINANCIACION-VEHICULOS-DORSO.png";
 import imgCarousel1 from "../../images/images_services/ASESORIA-CALCULADORA.png";
 import imgCarousel2 from "../../images/images_services/ASESORIA-LEGAL.png";
 import imgCarousel3 from "../../images/images_services/ASESORIA-ALIMENTARIA.png";
@@ -62,8 +66,8 @@ export default function Servicios() {
       </div>
       <div className="servicios-second-section">
         <p className="servicios-second-section-label">
-          Tus cupones de
-          <span className="servicios-label-inner"> descuento</span>
+          Financia
+          <span className="servicios-label-inner"> tus productos</span>
         </p>
         <div className="servicios-second-section-boxes">
           <img
@@ -71,18 +75,27 @@ export default function Servicios() {
             alt="Servicio electrodoméstico"
             className="servicios-box-item-img-front"
           />
-
           <img
             src={imgServicio2}
             alt="Servicio muebleria"
             className="servicios-box-item-img-front"
           />
-
           <img
             src={imgServicio3}
             alt="Servicio seguro"
             className="servicios-box-item-img-front"
           />
+          <img
+            src={imgServicio4}
+            alt="Servicio seguro"
+            className="servicios-box-item-img-front"
+          />
+          <img
+            src={imgServicio5}
+            alt="Servicio seguro"
+            className="servicios-box-item-img-front"
+          />
+
           <div className="servicios-second-section-boxes-back">
             <img
               src={imgServicio1Back}
@@ -96,6 +109,16 @@ export default function Servicios() {
             />
             <img
               src={imgServicio3Back}
+              alt="Servicios Seguro Dorso"
+              className="servicios-box-item-img-back"
+            />
+             <img
+              src={imgServicio4Back}
+              alt="Servicios Seguro Dorso"
+              className="servicios-box-item-img-back"
+            />
+            <img
+              src={imgServicio5Back}
               alt="Servicios Seguro Dorso"
               className="servicios-box-item-img-back"
             />
@@ -307,20 +330,11 @@ export default function Servicios() {
       </div>
       <div className="servicios-fifth-section">
         <p className="servicios-fifth-section-text">
-          Para acceder, consultar tu aprobación, disponibilidad, informarte o
-          categorizar el servicio podés contactarte por nuestro chat bot.
+        Para acceder, consultar tu aprobación, disponibilidad, informarte o categorizar el servicio podés contactarte por nuestro chat bot.
           <br></br>
-          Activación de servicios: Los servicios se activan por el incurrimiento
-          en mora, los vencimientos incumplidos activan los servicios en su
-          totalidad, en tal caso los servicios se cobrarán desde la fecha de
-          alta hasta la solicitud de baja, teniendo como mínimo de pago 3 cuotas
-          y máximo el periodo total de cuotas del plan o pedido de baja, lo que
-          fuera como resultado a un rango mayor. El préstamo contraído y
-          cancelado no exime al titular del cobro de las cuotas de servicio,
-          Credlap analizará pagos en términos y tomará la decisión de aplicar
-          las cuotas correspondientes entre los mínimos y máximos estipulados.
+          Activación de servicios: Los servicios se activan por el incurrimiento en mora, los vencimientos incumplidos activan los servicios en su totalidad, en tal caso los servicios se cobrarán desde la fecha de alta hasta la solicitud de baja, teniendo como mínimo de pago 12 cuotas y máximo hasta la solicitud de baja. El préstamo contraído y cancelado no exime al titular del cobro de las cuotas de servicio, Credlap analizará pagos en términos y tomará la decisión de aplicar las cuotas correspondientes entre los mínimos y máximos estipulados.
           <br></br>
-          Valor del servicio $11699,99.
+          Valor del servicio $16999,99.
         </p>
       </div>
     </div>
