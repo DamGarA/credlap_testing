@@ -214,7 +214,7 @@ export default function Servicios() {
             <div className="servicios-box-links">
               <Link
                 to={"https://www.instagram.com/toptenrentacar/"}
-                className="servicio-contacto-btn"
+                className="servicio-contacto-btn servicio-instagram"
                 target={"_blank"}
               >
                 <FontAwesomeIcon
