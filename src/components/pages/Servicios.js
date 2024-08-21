@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 // import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 import "./Servicios.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { Link } from "react-router-dom";
 
 import imgPortada from "../../images/images_services/PORTADA.png";
 import imgServicio1 from "../../images/images_services/FINANCIACION-ELECTRODOMESTICOS-FRENTE.png";
@@ -69,7 +72,8 @@ export default function Servicios() {
           Financia
           <span className="servicios-label-inner"> tus productos</span>
         </p>
-        <div className="servicios-second-section-boxes">
+        {/* ORIGINAL */}
+        {/* <div className="servicios-second-section-boxes">
           <img
             src={imgServicio1}
             alt="Servicio electrodoméstico"
@@ -93,7 +97,7 @@ export default function Servicios() {
           <img
             src={imgServicio5}
             alt="Servicio seguro"
-            className="servicios-box-item-img-front"
+            className="servicios-box-item-img-front-5"
           />
 
           <div className="servicios-second-section-boxes-back">
@@ -122,8 +126,117 @@ export default function Servicios() {
               alt="Servicios Seguro Dorso"
               className="servicios-box-item-img-back"
             />
+            <div className="servicios-box-links">
+              <Link
+                to={"//www.facebook.com/credlap/"}
+                className="contacto-btn facebook"
+                target={"_blank"}
+                >
+                <FontAwesomeIcon
+                  icon={brands("instagram")}
+                  className="contacto-btn-icon"
+                />
+              </Link>
+              <Link
+                to={"//www.facebook.com/credlap/"}
+                className="contacto-btn facebook"
+                target={"_blank"}
+                >
+                <FontAwesomeIcon
+                  icon={brands("whatsapp")}
+                  className="contacto-btn-icon"
+                />
+              </Link>
+            </div> 
+          </div>
+        </div> */}
+        {/* CAMBIO */}
+        <div className="servicios-second-section-boxes">
+          <div className="servicios-second-section-box">
+            <img
+              src={imgServicio1}
+              alt="Servicio electrodoméstico"
+              className="servicios-box-item-img-front"
+            />
+            <img
+              src={imgServicio1Back}
+              alt="Servicios Electro Dorso"
+              className="servicios-box-item-img-back"
+            />
+          </div>
+          <div className="servicios-second-section-box">
+            <img
+              src={imgServicio2}
+              alt="Servicio muebleria"
+              className="servicios-box-item-img-front"
+            />
+            <img
+              src={imgServicio2Back}
+              alt="Servicios Muebles Dorso"
+              className="servicios-box-item-img-back"
+            />
+          </div>
+          <div className="servicios-second-section-box">
+            <img
+              src={imgServicio3}
+              alt="Servicio seguro"
+              className="servicios-box-item-img-front"
+            />
+            <img
+              src={imgServicio3Back}
+              alt="Servicios Seguro Dorso"
+              className="servicios-box-item-img-back"
+            />
+          </div>
+          <div className="servicios-second-section-box">
+            <img
+              src={imgServicio4}
+              alt="Servicio seguro"
+              className="servicios-box-item-img-front"
+            />
+            <img
+              src={imgServicio4Back}
+              alt="Servicios Seguro Dorso"
+              className="servicios-box-item-img-back"
+            />
+          </div>
+          <div className="servicios-second-section-box">
+            <img
+              src={imgServicio5}
+              alt="Servicio seguro"
+              className="servicios-box-item-img-front"
+            />
+            <img
+              src={imgServicio5Back}
+              alt="Servicios Seguro Dorso"
+              className="servicios-box-item-img-back"
+            />
+            <div className="servicios-box-links">
+              <Link
+                to={"//www.facebook.com/credlap/"}
+                className="servicio-contacto-btn"
+                target={"_blank"}
+              >
+                <FontAwesomeIcon
+                  icon={brands("instagram")}
+                  className="servicio-contacto-btn-icon"
+                />
+              </Link>
+              <Link
+                to={"//www.facebook.com/credlap/"}
+                className="servicio-contacto-btn"
+                target={"_blank"}
+              >
+                <FontAwesomeIcon
+                  icon={brands("whatsapp")}
+                  className="servicio-contacto-btn-icon"
+                />
+              </Link>
+          </div> 
           </div>
         </div>
+
+        {/* FIN */}
       </div>
       <div className="servicios-third-section-fondo">
         <div className="servicios-third-section">
