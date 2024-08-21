@@ -213,7 +213,7 @@ export default function Servicios() {
             />
             <div className="servicios-box-links">
               <Link
-                to={"//www.facebook.com/credlap/"}
+                to={"https://www.instagram.com/toptenrentacar/"}
                 className="servicio-contacto-btn"
                 target={"_blank"}
               >
@@ -223,7 +223,7 @@ export default function Servicios() {
                 />
               </Link>
               <Link
-                to={"//www.facebook.com/credlap/"}
+                to={"https://wa.me/5492944586083"}
                 className="servicio-contacto-btn"
                 target={"_blank"}
               >
