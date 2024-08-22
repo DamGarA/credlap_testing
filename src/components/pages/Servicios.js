@@ -20,6 +20,7 @@ import imgCarousel1 from "../../images/images_services/ASESORIA-CALCULADORA.png"
 import imgCarousel2 from "../../images/images_services/ASESORIA-LEGAL.png";
 import imgCarousel3 from "../../images/images_services/ASESORIA-ALIMENTARIA.png";
 import imgCarousel4 from "../../images/images_services/ASESORIA-DEPORTIVA.png";
+import imgCarousel5 from "../../images/images_services/ASESORIA-ODONTOLÓGICA.png";
 import imgReintegroRotate from "../../images/images_services/REINTEGRO-CASAMIENTO.png";
 import imgReintegro1 from "../../images/images_services/REINTEGRO-MEDICO-ICONO.png";
 import imgReintegro2 from "../../images/images_services/REINTEGRO-CASAMIENTO-ICONO.png";
@@ -258,7 +259,7 @@ export default function Servicios() {
             <div className="servicios-carousel-header-desktop-item">
               <img
                 src={imgCarousel2}
-                alt="Imagen Carrousel 1"
+                alt="Imagen Carrousel 2"
                 className="servicios-imagen-carousel-desktop"
               />
               <p className="servicios-carousel-desktop-title">Asesoria legal</p>
@@ -266,7 +267,7 @@ export default function Servicios() {
             <div className="servicios-carousel-header-desktop-item">
               <img
                 src={imgCarousel3}
-                alt="Imagen Carrousel 1"
+                alt="Imagen Carrousel 3"
                 className="servicios-imagen-carousel-desktop"
               />
               <p className="servicios-carousel-desktop-title">
@@ -276,11 +277,21 @@ export default function Servicios() {
             <div className="servicios-carousel-header-desktop-item">
               <img
                 src={imgCarousel4}
-                alt="Imagen Carrousel 1"
+                alt="Imagen Carrousel 4"
                 className="servicios-imagen-carousel-desktop"
               />
               <p className="servicios-carousel-desktop-title">
                 Asesoria deportiva
+              </p>
+            </div>
+            <div className="servicios-carousel-header-desktop-item">
+              <img
+                src={imgCarousel5}
+                alt="Imagen Carrousel 5"
+                className="servicios-imagen-carousel-desktop"
+              />
+              <p className="servicios-carousel-desktop-title">
+                Asesoria odontológica
               </p>
             </div>
           </div>
@@ -350,6 +361,18 @@ export default function Servicios() {
                     />
                     <p className="servicios-carousel-title">
                       Asesoria deportiva
+                    </p>
+                  </div>
+                </div>
+                <div className="servicios-carousel-container">
+                  <div className="servicios-carousel-header">
+                    <img
+                      src={imgCarousel5}
+                      alt="Imagen Carrousel 5"
+                      className="servicios-imagen-carousel"
+                    />
+                    <p className="servicios-carousel-title">
+                      Asesoria odontológica
                     </p>
                   </div>
                 </div>
@@ -445,7 +468,7 @@ export default function Servicios() {
         <p className="servicios-fifth-section-text">
         Para acceder, consultar tu aprobación, disponibilidad, informarte o categorizar el servicio podés contactarte por nuestro chat bot.
           <br></br>
-          Activación de servicios: Los servicios se activan por el incurrimiento en mora, los vencimientos incumplidos activan los servicios en su totalidad, en tal caso los servicios se cobrarán desde la fecha de alta hasta la solicitud de baja, teniendo como mínimo de pago 12 cuotas y máximo hasta la solicitud de baja. El préstamo contraído y cancelado no exime al titular del cobro de las cuotas de servicio, Credlap analizará pagos en términos y tomará la decisión de aplicar las cuotas correspondientes entre los mínimos y máximos estipulados.
+          Activación de servicios: Los servicios se activan por el incurrimiento en mora, los vencimientos incumplidos activan los servicios en su totalidad, en tal caso los servicios se cobrarán desde la fecha de alta hasta la solicitud de baja, teniendo como mínimo de pago 12 cuotas y máximo hasta la solicitud de baja. El préstamo contraído y cancelado no exime al titular del cobro de las cuotas de servicio, Credlap® analizará pagos en términos y tomará la decisión de aplicar las cuotas correspondientes entre los mínimos y máximos estipulados.
           <br></br>
           Valor del servicio $16999,99.
         </p>

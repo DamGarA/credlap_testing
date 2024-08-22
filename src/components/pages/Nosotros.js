@@ -237,7 +237,7 @@ export default function Nosotros() {
           </div>
           <br />
           <p className="nosotros-form-desc">
-            ¡Credlap es tu nueva oportunidad!
+            ¡Credlap® es tu nueva oportunidad!
           </p>
         </div>
         <div className="nosotros-third-right-box">

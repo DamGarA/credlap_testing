@@ -136,8 +136,7 @@ export default function Footer() {
       <div className="third-section">
         <div className="condiciones-text">
           <p>
-          Credlap pertenece a CREDLAP S.A. CUIT N° 30-71766090-7. Domicilio Legal: Calle 4 1620, La Plata, Buenos
-Aires, Argentina.
+          Credlap® es una marca registrada que pertenece a CREDLAP S.A. CUIT N° 30-71766090-7. Domicilio Legal: Calle 4 1620, La Plata, Buenos Aires, Argentina
           </p>
           <p>
           El domicilio informado es solo a los efectos legales, Credlap no realiza atención comercial, el funcionamiento de
