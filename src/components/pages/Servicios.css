@@ -236,8 +236,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  width: 100%;
-  max-width: 1200px;
   margin-bottom: 50px;
   perspective: 1000px;
 }
@@ -527,12 +525,12 @@
   }
 
   .servicios-second-section-boxes {
-    max-width: 300px;
+    max-width: none;
     flex-direction: column;
   }
 
   .servicios-second-section-boxes-back {
-    max-width: 300px;
+
     flex-direction: column;
   }
 
