@@ -69,89 +69,12 @@ export default function Servicios() {
         </div>
       </div>
       <div className="servicios-second-section">
-        <p className="servicios-second-section-label">
-          Financia
-          <span className="servicios-label-inner"> tus productos</span>
-        </p>
-        {/* ORIGINAL */}
-        {/* <div className="servicios-second-section-boxes">
-          <img
-            src={imgServicio1}
-            alt="Servicio electrodoméstico"
-            className="servicios-box-item-img-front"
-          />
-          <img
-            src={imgServicio2}
-            alt="Servicio muebleria"
-            className="servicios-box-item-img-front"
-          />
-          <img
-            src={imgServicio3}
-            alt="Servicio seguro"
-            className="servicios-box-item-img-front"
-          />
-          <img
-            src={imgServicio4}
-            alt="Servicio seguro"
-            className="servicios-box-item-img-front"
-          />
-          <img
-            src={imgServicio5}
-            alt="Servicio seguro"
-            className="servicios-box-item-img-front-5"
-          />
-
-          <div className="servicios-second-section-boxes-back">
-            <img
-              src={imgServicio1Back}
-              alt="Servicios Electro Dorso"
-              className="servicios-box-item-img-back"
-            />
-            <img
-              src={imgServicio2Back}
-              alt="Servicios Muebles Dorso"
-              className="servicios-box-item-img-back"
-            />
-            <img
-              src={imgServicio3Back}
-              alt="Servicios Seguro Dorso"
-              className="servicios-box-item-img-back"
-            />
-             <img
-              src={imgServicio4Back}
-              alt="Servicios Seguro Dorso"
-              className="servicios-box-item-img-back"
-            />
-            <img
-              src={imgServicio5Back}
-              alt="Servicios Seguro Dorso"
-              className="servicios-box-item-img-back"
-            />
-            <div className="servicios-box-links">
-              <Link
-                to={"//www.facebook.com/credlap/"}
-                className="contacto-btn facebook"
-                target={"_blank"}
-                >
-                <FontAwesomeIcon
-                  icon={brands("instagram")}
-                  className="contacto-btn-icon"
-                />
-              </Link>
-              <Link
-                to={"//www.facebook.com/credlap/"}
-                className="contacto-btn facebook"
-                target={"_blank"}
-                >
-                <FontAwesomeIcon
-                  icon={brands("whatsapp")}
-                  className="contacto-btn-icon"
-                />
-              </Link>
-            </div> 
-          </div>
-        </div> */}
-        {/* CAMBIO */}
+        <div className="servicios-second-section-label-box">
+          <p className="servicios-second-section-label">
+            Financia
+            <span className="servicios-label-inner"> tus productos y servicios</span>
+          </p>
+        </div>
         <div className="servicios-second-section-boxes">
           <div className="servicios-second-section-box">
             <img

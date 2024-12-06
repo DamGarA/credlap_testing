@@ -36,7 +36,7 @@ export default function Footer() {
                 <FontAwesomeIcon icon={brands("facebook-f")} />
               </Link>
               <Link
-                to={"//www.instagram.com/credlap/"}
+                to={"https://www.instagram.com/credlap.ok/"}
                 className="social-link"
                 target="_blank"
               >

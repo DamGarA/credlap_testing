@@ -75,7 +75,7 @@ export default function Contacto() {
             Facebook
           </Link>
           <Link
-            to={"//www.instagram.com/credlap/"}
+            to={"https://www.instagram.com/credlap.ok/"}
             className="contacto-btn instagram"
             target={"_blank"}
           >

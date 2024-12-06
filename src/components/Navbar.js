@@ -63,7 +63,7 @@ function Navbar() {
     <>
       <nav ref={navbarRef} className={click ? "navbar active" : "navbar"}>
         <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          <img src={logo} className="logo" />
+          <img src={logo} className="logo" alt="navbar-logo"/>
         </Link>
         <div className="menu-icon" onClick={handleClick}>
           {!click && <img src={imgBarras} alt="Expandir menú" />}
