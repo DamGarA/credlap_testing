@@ -187,7 +187,7 @@ de $1.000 y el monto máximo de $200.000, en todo el territorio nacional.</p>
         <p className="derechos-text">
           Desde 23/05/2022 todos los derechos reservados
           <br></br>
-          Credlap SA&nbsp;&nbsp;|&nbsp;&nbsp;2024
+          Credlap SA&nbsp;&nbsp;|&nbsp;&nbsp;2025
         </p>
         <p style={{ textAlign: "center" }}>
           Desarrollado por{" "}
