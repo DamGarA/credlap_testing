@@ -82,14 +82,12 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
+                            Recordá que nuestros horarios de atención está en el pie de página.
+                            </p>
+                            <p>
                               Si tu solicitud de préstamo fue pre-aprobada, por favor, 
                               agendanos y envíanos un WhatsApp al link que se encuentra en el chat.
                             </p>
-                            <p>
-                              Nuestros horarios de atención son:
-                            </p>
-                            <p>Lunes a Viernes de 10 a 17 hs.</p>
-                            <p>Sábados y feriados de 09:30 a 13 hs.</p>
                             <p>
                               Para facilitar el proceso y obtener tu préstamo en el día, envíanos:
                             </p>
@@ -347,8 +345,7 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Podés elegir tu plan entre 1 y 24 pagos iguales y
-                              consecutivos.
+                            En el pie de página vas a poder visualizar el número de cuotas que podríamos ofrecerte.
                             </p>
                           </div>
                         ),

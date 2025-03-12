@@ -20,7 +20,7 @@ export default function Solicitud() {
     actividad: "",
     telefono: "",
     email: "",
-    monto: 1000,
+    monto: 25000,
     tyc: false,
     politicas: false,
     validaciones: {},
@@ -251,8 +251,8 @@ export default function Solicitud() {
           Elegí el monto al que querés acceder
           <div className="slider-container">
             <Slider
-              min={window.solicitud.sliderMin}
-              max={"200000"}
+              min={"25000"}
+              max={"500000"}
               step={window.solicitud.sliderStep}
               onChange={handleSliderChange}
               className="slider-solicitud"

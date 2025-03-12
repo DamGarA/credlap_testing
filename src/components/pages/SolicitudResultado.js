@@ -23,12 +23,15 @@ export default function SolicitudResultado({ resultado }) {
             <div className="pre-aprobado-left-box">
               <p className="pre-aprobado-label">Préstamo pre-aprobado</p>
               <p className="pre-aprobado-text">
-                ¡Último paso! <b>Agendanos y envianos un Whatsapp</b> así finalizamos el proceso.
+                <b>Hacé clic en el botón verde para enviarnos un WhatsApp y poder agendarnos.</b>
               </p>
+              <a href="https://wa.me/542215462961" target="_blank" rel="noopener noreferrer">
+                <button className="wsp-btn">WhatsApp</button>
+              </a>
               <p className="pre-aprobado-text">
                 <br />
                 <p>
-                 <b>En el chat encontrás nuestro link de contacto.</b> 
+                 Si no podés acceder desde el botón, comunícate por WhatsApp al número +542215462961, o dejanos tu solicitud a consultas@credlap.com
                 </p>
                 <br />
               </p>

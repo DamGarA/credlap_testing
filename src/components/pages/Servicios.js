@@ -124,7 +124,7 @@ export default function Servicios() {
               className="servicios-box-item-img-back"
             />
           </div>
-          <div className="servicios-second-section-box">
+          {/* <div className="servicios-second-section-box">
             <img
               src={imgServicio5}
               alt="Servicio seguro"
@@ -157,10 +157,8 @@ export default function Servicios() {
                 />
               </Link>
           </div> 
-          </div>
+          </div> */}
         </div>
-
-        {/* FIN */}
       </div>
       <div className="servicios-third-section-fondo">
         <div className="servicios-third-section">
