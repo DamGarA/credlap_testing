@@ -54,7 +54,7 @@ export default function Footer() {
               <a href="mailto:consultas@credlap.com">consultas@credlap.com</a>
             </div>
             <div className="footer-mail">
-              <a href="08102200570">0810-220-0570</a>
+              <a href="tel:08102200570">0810-220-0570</a>
             </div>
           </div>
           <div className="legal-container">
