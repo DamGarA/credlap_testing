@@ -58,9 +58,9 @@ export default function Solicitud() {
     let mensaje = null;
   
     if (!value) {
-      mensaje = "Nombre es obligatorio";
+      mensaje = "El nombre es obligatorio";
     } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(value)) {
-      mensaje = "El nombre solo puede contener letras y espacios";
+      mensaje = "El nombre solo puede contener letras";
     }
   
     setFormSolicitud((prevForm) => ({
@@ -74,12 +74,18 @@ export default function Solicitud() {
   }
 
   function handleApellidoChange(event) {
-    var mensaje = null;
-    if (!event.target.value) mensaje = "Apellido es obligatorio";
+    const value = event.target.value.trim();
+    let mensaje = null;
+
+    if (!value) {
+      mensaje = "El apellido es obligatorio";
+    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(value)) {
+      mensaje = "El apellido solo puede contener letras";
+    }
 
     setFormSolicitud((prevForm) => ({
       ...prevForm,
-      apellido: event.target.value,
+      apellido: value,
       validaciones: {
         ...prevForm.validaciones,
         apellido: mensaje,
@@ -89,7 +95,7 @@ export default function Solicitud() {
 
   function handleGeneroChange(event) {
     var mensaje = null;
-    if (!event.target.value) mensaje = "Género es obligatorio";
+    if (!event.target.value) mensaje = "El género es obligatorio";
     setFormSolicitud((prevForm) => ({
       ...prevForm,
       genero: event.target.value,
@@ -102,7 +108,7 @@ export default function Solicitud() {
 
   function handleDNIChange(event) {
     var mensaje = null;
-    if (!event.target.value) mensaje = "DNI es obligatorio";
+    if (!event.target.value) mensaje = "El DNI es obligatorio";
     else {
       if (event.target.value.length > 8) return;
       if (event.target.value.length < 7)
@@ -121,7 +127,7 @@ export default function Solicitud() {
 
   function handleActividadChange(event) {
     var mensaje = null;
-    if (!event.target.value) mensaje = "Actividad laboral es obligatorio";
+    if (!event.target.value) mensaje = "La actividad laboral es obligatoria";
 
     setFormSolicitud((prevForm) => ({
       ...prevForm,
@@ -135,7 +141,7 @@ export default function Solicitud() {
 
   function handleTelefonoChange(event) {
     var mensaje = null;
-    if (!event.target.value) mensaje = "Tel./Celular es obligatorio";
+    if (!event.target.value) mensaje = "El Tel./Celular es obligatorio";
     else {
       if (event.target.value.length > 10) return;
       if (event.target.value.length < 10)
@@ -154,7 +160,7 @@ export default function Solicitud() {
 
   function handleEmailChange(event) {
     var mensaje = null;
-    if (!event.target.value) mensaje = "Email es obligatorio";
+    if (!event.target.value) mensaje = "El email es obligatorio";
     else {
       var re = /\S+@\S+\.\S+/;
       if (!re.test(event.target.value)) mensaje = "Email inválido";
