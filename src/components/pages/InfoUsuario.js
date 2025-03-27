@@ -107,7 +107,7 @@ export default function InfoAlUsuario() {
           </p>
           <Link
             to={
-              "//workdrive.zoho.com/file/rpeq6b6a16e37296a40c0b109027bdeb5d3de"
+              "https://workdrive.zoho.com/file/blle6f6d7191bc1f248ccb1b5c4c5f1f5e517"
             }
             className="info-usuario-link"
             target={"_blank"}

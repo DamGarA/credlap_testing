@@ -54,12 +54,18 @@ export default function Solicitud() {
   }
 
   function handleNombreChange(event) {
-    var mensaje = null;
-    if (!event.target.value) mensaje = "Nombre es obligatorio";
-
+    const value = event.target.value.trim();
+    let mensaje = null;
+  
+    if (!value) {
+      mensaje = "Nombre es obligatorio";
+    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(value)) {
+      mensaje = "El nombre solo puede contener letras y espacios";
+    }
+  
     setFormSolicitud((prevForm) => ({
       ...prevForm,
-      nombre: event.target.value,
+      nombre: value,
       validaciones: {
         ...prevForm.validaciones,
         nombre: mensaje,

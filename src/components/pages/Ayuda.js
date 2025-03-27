@@ -80,13 +80,9 @@ export default function Ayuda() {
                       {
                         titulo: "¿Qué hacer si mi solicitud fue aceptada?",
                         contenido: (
-                          <div className="ayuda-subaccordion-text">
+                          <div className="ayuda-subaccordion-text">     
                             <p>
-                            Recordá que nuestros horarios de atención está en el pie de página.
-                            </p>
-                            <p>
-                              Si tu solicitud de préstamo fue pre-aprobada, por favor, 
-                              agendanos y envíanos un WhatsApp al link que se encuentra en el chat.
+                            Si tu solicitud de préstamo fue preaprobada, por favor, agéndanos y envíanos un WhatsApp al número que aparece en pantalla o también podes acceder al link que se encuentra en el chat.
                             </p>
                             <p>
                               Para facilitar el proceso y obtener tu préstamo en el día, envíanos:
@@ -94,6 +90,7 @@ export default function Ayuda() {
                             <p>☑ Foto del DNI frente y dorso</p>
                             <p>☑ Selfie con el DNI a la altura del pecho</p>
                             <p>☑ Comprobante de ingresos</p>
+                            <p>Recordá que nuestros horarios de atención los podés encontrar en el pie de página.</p>
                           </div>
                         ),
                       },
@@ -102,10 +99,7 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Actualmente hay 3 motivos por los cuales nuestro
-                              sistema puede rechazarte. En caso de que nuestras
-                              políticas cambien podes volver a intentarlo en 15
-                              días
+                            Actualmente, hay tres motivos por los cuales nuestro sistema puede rechazar tu solicitud. En caso de que nuestras políticas cambien, podrás volver a intentarlo en 10 días.
                             </p>
                             <p>
                               1- Tenés situaciones crediticias negativas en la
@@ -124,13 +118,7 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Es necesario no contar con atrasos en tus pagos.
-                              Al atrasarse en algún pago, las entidades informan
-                              al BCRA y generan situaciones negativas. Mientras
-                              más tiempo debas, más situaciones tendrás. Para
-                              más información entrá al siguiente link del Bcra y
-                              consultá tus deudas de manera pública y
-                              gratuitamente{" "}
+                            Esto se debe a que es necesario no tener atrasos en tus pagos, ya que, al atrasarte, las entidades informan al BCRA y se generan situaciones negativas. Cuanto más tiempo debas, mayor será el número de la situación informada. Para más información, ingresa al siguiente link del BCRA y consulta tus deudas de manera pública y gratuita en {" "}
                               <a href="http://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp">
                                 BCRA: Situación Crediticia
                               </a>
@@ -381,26 +369,16 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Podés pagar tus cuotas a través de nuestra web
-                              en&nbsp;
-                              {/* <Link
-                                to={"/paga-tu-cuota"}
-                                style={{ color: "#FFF" }}
-                                // target={"_blank"}
-                              >
-                                Pagá tu cuota.
-                              </Link> */}
+                            Podés pagar tus cuotas a través de nuestra web, en la sección&nbsp;
+                          
                               <a
                                 href="https://www.credlap.com/paga-tu-cuota"
                                 style={{ color: "#FFF" }}
                                 // target="_blank"
                               >
-                                Pagá tu cuota.
+                                Pagá tu cuota
                               </a>
-                              &nbsp;En esta pestaña encontrarás disponible
-                              nuestro chat con información específica. Otra
-                              opción es a través WhatsApp al 11-2617-0462 o bien
-                              haciendo&nbsp;
+                              , donde encontrarás nuestro chat con información detallada. Otra opción es a través de WhatsApp al 11-2617-0462 o haciendo&nbsp;
                               <Link
                                 to={
                                   "//api.whatsapp.com/send?phone=" +
@@ -409,12 +387,9 @@ export default function Ayuda() {
                                 style={{ color: "#FFF" }}
                                 target={"_blank"}
                               >
-                                click aquí.
+                                click aquí
                               </Link>
-                              &nbsp;Recordá que podés pagar tu cuota con tu link
-                              de pago mediante efectivo por Rapipago o Pago
-                              Fácil; transferencia bancaria a nuestra cuentas;
-                              tarjeta de débito o crédito.
+                              . Recordá que podés abonar tu cuota mediante el link de pago, utilizando cualquiera de las siguientes opciones: pago en efectivo a través de Rapipago o Pago Fácil, transferencia bancaria a nuestras cuentas o con tarjeta de débito o crédito.
                             </p>
                           </div>
                         ),
@@ -424,11 +399,7 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Por cada día de atraso se ejecuta un punitorio
-                              diario previamente estipulado en el contrato mutuo
-                              correspondiente, el cual podras visualizar y leer
-                              en previa firma y del cual quedara una copia en tu
-                              correo electrónico.
+                            Por cada día de atraso, se ejecutará un punitorio diario previamente estipulado en el contrato mutuo correspondiente, el cual podrás visualizar y leer antes de la firma. Además, recibirás una copia del mismo en tu correo electrónico.
                             </p>
                           </div>
                         ),

@@ -129,7 +129,7 @@ export default function Footer() {
         >
           <img className="logo-image" border="0" src={logoBcra} alt="BCRA"/>
         </Link>
-        <Link to={"//camarafintech.org/socios/credlap/"} target="_blank">
+        <Link to={"https://camarafintech.org/directorio-de-socios/"} target="_blank">
           <img className="logo-image" border="0" src={logoCamFintech} alt="Camara Fintech"/>
         </Link>
       </div>
@@ -140,7 +140,7 @@ export default function Footer() {
           </p>
           <p>
           El domicilio informado es solo a los efectos legales, Credlap no realiza atención comercial, el funcionamiento de
-la empresa es %100 online y terciarizado.
+la empresa es 100% online y tercerizado.
           </p>
           <p>
           Condiciones generales de préstamos: La Tasa Nominal Anual (TNA), la Tasa Efectiva Anual (TEA) y el Costo
