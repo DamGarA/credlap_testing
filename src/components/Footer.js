@@ -178,7 +178,7 @@ de $25.000 y el monto máximo de $500.000, en todo el territorio nacional.</p>
             </b>
           </p>
           <p>
-            <b>Actualización: 26/03/2025</b>
+            <b>Actualización: 08/03/2025</b>
           </p>
         </div>
         <p className="tasas-text">

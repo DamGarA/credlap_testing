@@ -99,7 +99,7 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                            Actualmente, hay tres motivos por los cuales nuestro sistema puede rechazar tu solicitud. En caso de que nuestras políticas cambien, podrás volver a intentarlo en 10 días.
+                            Actualmente, hay tres motivos por los cuales nuestro sistema puede rechazar tu solicitud. En caso de que nuestras políticas cambien, podrás volver a intentarlo en 30 días.
                             </p>
                             <p>
                               1- Tenés situaciones crediticias negativas en la

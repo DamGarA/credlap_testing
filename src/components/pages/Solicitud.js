@@ -20,6 +20,7 @@ export default function Solicitud() {
     actividad: "",
     telefono: "",
     email: "",
+    provincia: "",
     monto: 25000,
     tyc: false,
     politicas: false,
@@ -42,6 +43,8 @@ export default function Solicitud() {
         !formSolicitud.validaciones.dni &&
         formSolicitud.actividad &&
         !formSolicitud.validaciones.actividad &&
+        formSolicitud.provincia &&
+        !formSolicitud.validaciones.provincia &&
         formSolicitud.email &&
         !formSolicitud.validaciones.email &&
         formSolicitud.telefono &&
@@ -139,6 +142,20 @@ export default function Solicitud() {
     }));
   }
 
+  function handleProvinciaChange(event) {
+    var mensaje = null;
+    if (!event.target.value) mensaje = "La provincia es obligatoria";
+
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      provincia: event.target.value,
+      validaciones: {
+        ...prevForm.validaciones,
+        provincia: mensaje,
+      },
+    }));
+  }
+
   function handleTelefonoChange(event) {
     var mensaje = null;
     if (!event.target.value) mensaje = "El Tel./Celular es obligatorio";
@@ -215,6 +232,15 @@ export default function Solicitud() {
         },
       });
     }, 1000);
+    else if (formSolicitud.provincia === "Entre Rios")
+      //Provincias excluidas
+    setTimeout(function () {
+      handleSolicitudResponse({
+        request: {
+          responseURL: "/solicitud-resultado?resultado=rechazado",
+        },
+      });
+    }, 1000);
     else if (formSolicitud.actividad === "Soy jubilado/pensionado de ANSES")
       //Hack para evitar enviar una solicitud de ANSES
     setTimeout(function () {
@@ -225,7 +251,14 @@ export default function Solicitud() {
           });
         }, 1000);
     else {
-    enviarSolicitud(formSolicitud, handleSolicitudResponse);
+    //enviarSolicitud(formSolicitud, handleSolicitudResponse);
+    setTimeout(function () {
+          handleSolicitudResponse({
+            request: {
+              responseURL: "/solicitud-resultado?resultado=preaprobado",
+            },
+          });
+        }, 1000);
     setEstadoActual("enviando");
   }}
 
@@ -380,6 +413,40 @@ export default function Solicitud() {
                 validation={formSolicitud.validaciones.email}
               />
             </div>
+            <FormDropdown
+                placeholder="Provincia"
+                className="solicitud-form-input"
+                options={[
+                  {
+                    label: "Buenos Aires",
+                    value: "Buenos Aires",
+                  },
+                  {
+                    label: "Entre Rios",
+                    value: "Entre Rios",
+                  },
+                  {
+                    label: "La Pampa",
+                    value: "La Pampa",
+                  },
+                  {
+                    label: "Santa Fe",
+                    value: "Santa Fe",
+                  },
+                  {
+                    label: "Jujuy",
+                    value: "Jujuy",
+                  },
+                  {
+                    label: "Tierra del Fuego",
+                    value: "Tierra del Fuego",
+                  },
+                ]}
+                value={formSolicitud.provincia}
+                onChange={handleProvinciaChange}
+                validation={formSolicitud.validaciones.provincia}
+              />
+              
             <div className="solicitud-checks-button-container">
               <div className="solicitud-checkbox-container">
                 <FormCheckbox
