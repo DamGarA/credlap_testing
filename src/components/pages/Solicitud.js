@@ -21,6 +21,7 @@ export default function Solicitud() {
     telefono: "",
     email: "",
     provincia: "",
+    entidadBancaria: "",
     monto: 25000,
     tyc: false,
     politicas: false,
@@ -45,6 +46,8 @@ export default function Solicitud() {
         !formSolicitud.validaciones.actividad &&
         formSolicitud.provincia &&
         !formSolicitud.validaciones.provincia &&
+        formSolicitud.entidadBancaria &&
+        !formSolicitud.validaciones.entidadBancaria &&
         formSolicitud.email &&
         !formSolicitud.validaciones.email &&
         formSolicitud.telefono &&
@@ -156,6 +159,20 @@ export default function Solicitud() {
     }));
   }
 
+  function handleEntidadBancariaChange(event) {
+    var mensaje = null;
+    if (!event.target.value) mensaje = "La entidad bancaria es obligatoria";
+
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      entidadBancaria: event.target.value,
+      validaciones: {
+        ...prevForm.validaciones,
+        entidadBancaria: mensaje,
+      },
+    }));
+  }
+
   function handleTelefonoChange(event) {
     var mensaje = null;
     if (!event.target.value) mensaje = "El Tel./Celular es obligatorio";
@@ -232,8 +249,8 @@ export default function Solicitud() {
         },
       });
     }, 1000);
-    else if (formSolicitud.provincia === "Entre Rios")
-      //Provincias excluidas
+    else if (provinciasExcluidas.includes(formSolicitud.provincia) || entidadesExcluidas.includes(formSolicitud.entidadBancaria))
+      //Provincias y Entidades bancarias excluidas
     setTimeout(function () {
       handleSolicitudResponse({
         request: {
@@ -412,40 +429,24 @@ export default function Solicitud() {
                 onChange={handleEmailChange}
                 validation={formSolicitud.validaciones.email}
               />
-            </div>
-            <FormDropdown
+              <FormDropdown
                 placeholder="Provincia"
                 className="solicitud-form-input"
-                options={[
-                  {
-                    label: "Buenos Aires",
-                    value: "Buenos Aires",
-                  },
-                  {
-                    label: "Entre Rios",
-                    value: "Entre Rios",
-                  },
-                  {
-                    label: "La Pampa",
-                    value: "La Pampa",
-                  },
-                  {
-                    label: "Santa Fe",
-                    value: "Santa Fe",
-                  },
-                  {
-                    label: "Jujuy",
-                    value: "Jujuy",
-                  },
-                  {
-                    label: "Tierra del Fuego",
-                    value: "Tierra del Fuego",
-                  },
-                ]}
+                options={provinciasLabelsYValues}
                 value={formSolicitud.provincia}
                 onChange={handleProvinciaChange}
                 validation={formSolicitud.validaciones.provincia}
               />
+              <FormDropdown
+                placeholder="Entidad bancaria"
+                className="solicitud-form-input"
+                options={entidadesBancariasLabelsYValues}
+                value={formSolicitud.entidadBancaria}
+                onChange={handleEntidadBancariaChange}
+                validation={formSolicitud.validaciones.entidadBancaria}
+              />
+            </div>
+            
               
             <div className="solicitud-checks-button-container">
               <div className="solicitud-checkbox-container">
@@ -480,3 +481,23 @@ export default function Solicitud() {
     </div>
   );
 }
+
+//Datos para la exclusion de ciertas provincias
+const listaDeProvincias = ["Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos","Formosa", "Jujuy","La Pampa", "La Rioja","Mendoza", "Misiones","Neuquén","Río Negro","Salta","San Juan","San Luis","Santa Cruz","Santa Fe","Tucumán","Tierra del Fuego, Antártida e Islas del Atlántico Sur","Santiago del Estero"]
+const provinciasLabelsYValues = listaDeProvincias.map(provincia => {
+  return {
+    label: provincia,
+    value: provincia
+  }
+})
+const provinciasExcluidas = ["Misiones", "Chaco", "Entre Ríos", "Jujuy", "Salta"]
+
+//Datos para la exclusion de ciertas entidades bancarias
+const listaDeEntidadesBancarias = ["BANCO DE GALICIA Y BUENOS AIRES S.A.U.","BANCO DE LA NACION ARGENTINA","BANCO DE LA PROVINCIA DE BUENOS AIRES","INDUSTRIAL AND COMMERCIAL BANK OF CHINA","CITIBANK N.A.","BANCO BBVA ARGENTINA S.A.","BANCO DE LA PROVINCIA DE CORDOBA S.A.","BANCO SUPERVIELLE S.A.","BANCO DE LA CIUDAD DE BUENOS AIRES", "BANCO PATAGONIA S.A.","BANCO HIPOTECARIO S.A.","BANCO DE SAN JUAN S.A.BANCO MUNICIPAL DE ROSARIO","BANCO SANTANDER ARGENTINA S.A.","BANCO DEL CHUBUT S.A.","BANCO DE SANTA CRUZ S.A.","BANCO DE LA PAMPA SOCIEDAD DE ECONOMÍA M" ,"BANCO DE CORRIENTES S.A.","BANCO PROVINCIA DEL NEUQUÉN","BANK OF CHINA LIMITED SUCURSAL BUENOS AIRES","BRUBANK S.A.U.","BIBANK S.A.","BANCO GGAL SA","JPMORGAN CHASE BANK, NATIONAL ASSOCIATION","BANCO CREDICOOP COOPERATIVO LIMITADO","BANCO DE VALORES S.A.","BANCO ROELA S.A.","BANCO MARIVA S.A.","BNP PARIBAS","BANCO PROVINCIA DE TIERRA DEL FUEGO","BANCO DE LA REPUBLICA ORIENTAL DEL URUGUAY","BANCO SAENZ S.A.","BANCO MERIDIAN S.A.","BANCO MACRO S.A.","BANCO COMAFI SOCIEDAD ANONIMA","BANCO DE INVERSION Y COMERCIO EXTERIOR","BANCO PIANO S.A.","BANCO JULIO SOCIEDAD ANONIMA","BANCO RIOJA SOCIEDAD ANONIMA UNIPERSONAL","BANCO DEL SOL S.A.","NUEVO BANCO DEL CHACO S.A.","BANCO VOII S.A.","BANCO DE FORMOSA S.A.","BANCO CMF S.A.","BANCO DE SANTIAGO DEL ESTERO S.A.","BANCO INDUSTRIAL S.A.","NUEVO BANCO DE SANTA FE SOCIEDAD ANONIMA","BANCO CETELEM ARGENTINA S.A.","BANCO DE SERVICIOS FINANCIEROS S.A.","BANCO DE SERVICIOS Y TRANSACCIONES S.A.","RCI BANQUE S.A.","BACS BANCO DE CREDITO Y SECURITIZACION","BANCO MASVENTAS S.A.","WILOBANK S.A.U.","NUEVO BANCO DE ENTRE RÍOS S.A.","BANCO COLUMBIA S.A.","BANCO BICA S.A.","BANCO COINAG S.A.","BANCO DE COMERCIO S.A.","BANCO SUCREDITO REGIONAL S.A.U.","BANCO DINO S.A.","COMPAÑIA FINANCIERA ARGENTINA S.A.","VOLKSWAGEN FINANCIAL SERVICES COMPAÑIA","FCA COMPAÑIA FINANCIERA S.A.", "GPAT COMPAÑIA FINANCIERA S.A.U.", "MERCEDES-BENZ COMPAÑÍA FINANCIERA ARGENTINA","ROMBO COMPAÑÍA FINANCIERA S.A.","JOHN DEERE CREDIT COMPAÑÍA FINANCIERA S.","PSA FINANCE ARGENTINA COMPAÑÍA FINANCIER","TOYOTA COMPAÑÍA FINANCIERA DE ARGENTINA", "NARANJA DIGITAL COMPAÑÍA FINANCIERA S.A.","MONTEMAR COMPAÑIA FINANCIERA S.A.","REBA COMPAÑIA FINANCIERA S.A.","CRÉDITO REGIONAL COMPAÑÍA FINANCIERA S.A"]
+const entidadesBancariasLabelsYValues = listaDeEntidadesBancarias.map(entidad => {
+  return {
+    label: entidad,
+    value: entidad
+  }
+})
+const entidadesExcluidas = ["BANCO BBVA ARGENTINA S.A.", "BANCO DE LA NACION ARGENTINA", "NUEVO BANCO DEL CHACO S.A.", "NUEVO BANCO DE ENTRE RÍOS S.A.", "BANCO DE GALICIA Y BUENOS AIRES S.A.U.", "BANCO MACRO S.A."]

@@ -187,25 +187,19 @@ export default function TerminosYCondiciones() {
         <br></br>
         <br></br>
         <p>
-          Responsable de seguridad de datos: Alvarez Manuel, asesor externo.
-          E-mail: cyr@credlap.com, Tel: +54 9 11 2617 0462.
+          Responsable de seguridad de datos: Medina Wanda, asesor externo. E-mail: administracion@credlap.com, Tel: +54 9 11 7831 2678.
         </p>
         <p>
-          Responsable de régimen informativo: Medina Wanda, asesor externo.
-          E-mail: administracion@credlap.com, Tel: +54 9 11 7831 2678.
+          Responsable de régimen informativo: Ortega Lina, asesor externo. E-mail: administracion@credlap.com, Tel: +54 9 11 7831 2678.
         </p>
         <p>
-          Responsable de atención al usuario financiero: Ortega Lina, asesor
-          externo. E-mail: administracion@credlap.com, Tel: +54 9 11 7831 2678.
+          Responsable de atención al usuario financiero: Cativa Florencia, asesor externo. E-mail: cyr@credlap.com, Tel: +54 9 11 2617 0462.
         </p>
         <p>
-          Responsable suplente de atención al usuario financiero: Palaia
-          Mariana, asesor externo. E-mail: administracion@credlap.com, Tel: +54
-          9 11 7831 2677.
+          Responsable suplente de atención al usuario financiero: Alvarez Manuel, asesor externo. E-mail: cyr@credlap.com, Tel: +54 9 11 2617 0462.
         </p>
         <p>
-          Directorio responsable PUSF: Fernandez Cativa Gonzalo, Director
-          Titular. E-mail: gonzalo@credlap.com, Tel: +54 9 221 577 1965.
+          Directorio responsable PUSF: Fernandez Cativa Gonzalo, Director Titular. E-mail: gonzalo@credlap.com, Tel: +54 9 221 577 1965.
         </p>
       </div>
     </div>
