@@ -167,7 +167,7 @@ de $25.000 y el monto máximo de $500.000, en todo el territorio nacional.</p>
           El cliente acepta términos y condiciones, y políticas de privacidad al momento de completar el formulario web, y sus futuras modificaciones, los mismos se encuentran actualizados para visualizarlos con anterioridad en www.credlap.com - Legales, y deben ser aceptados para continuar y efectivizar la operatoria
           </p>
           <p>
-            Horarios de atención: Lunes a Viernes de 9:30 a 16:00 / Sábados y Feriados de 9:30 a 13:00
+            Horarios de atención: Lunes a Viernes de 9:30 a 16:00 / Sábados y Feriados de 9:30 a 13:30
           </p>
           <p>
           Credlap S.A. no cobra ningún tipo de gasto por adelantado, costos administrativos, seguros, ni comisiones, salvo en el caso de retrasos del pago donde se aplicará un punitorio diario y la empresa podrá incurrir en el recupero total de la deuda firmada mas gastos generales y mora diaria mencionada, además se efectivizara una cuota compensatoria de usos del servicio, por un valor actualizable mensualmente si así fuera necesario, estipulados y declarados en www.credlap.com/servicios, y de los cuales podrá hacer uso solo el titular firmante del contrato de adhesión/mutuo, el cual se visualiza actualizado en: botón - información al usuario financiero - botón contrato de adhesión, ley 24.240 de defensa al consumidor.
