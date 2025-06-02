@@ -149,14 +149,13 @@ financiación elegido. En todos los casos, la TNA, TEA y el CFT aplicable serán
 solicitud del préstamo y antes de su otorgamiento.
           </p>
           <p>
-          Tasa Nominal Anual (TNA) sin IVA: Mínimo: 250,99% - Máximo: 490,04% | Costo Financiero Total Efectivo Anual
-(CFTEA) con IVA: Mínimo: 1404,68% - Máximo: 12422,87%, - Intereses punitorios diarios: Mínimo: 1% - Máximo:
-15%.
+          Tasa Nominal Anual (TNA) sin IVA: Mínimo: 175,00% - Máximo: 340,00% | Tasa Nominal Anual (TNA) con IVA: Mínimo: 211,75% - Máximo 411,40% | Tasa Efectiva Anual (TEA) sin IVA: Mínimo: 412,97% - Máximo: 1905,05% | Tasa Efectiva Anual (TEA) con IVA: Mínimo: 604,39% - Máximo 3360,11% | Costo Financiero Total Efectivo Anual (CFTEA) con IVA: Mínimo: 604,39% - Máximo: 3360,11% | Costo Financiero Total Efectivo Anual (CFTEA) sin IVA: Mínimo: 412,97% - Máximo: 1905,05% - Intereses punitorios diarios: Mínimo: 1% - Máximo: 15%.
           </p>
           <p>
-          Ejemplo de préstamo: Monto solicitado de $50.000 a 12 meses | Cuota: $16.820,75 | Total a pagar: $201.848,95
-(ejemplo sobre TNA S/IVA) (&quot;Las tasas varían según riesgo crediticio de cada cliente, el ejemplo es una de las
-líneas vigentes de la compañía (CREDLAP GOLD)&quot;).
+          Ejemplo de préstamo: Monto solicitado de $25.000 a 12 meses | Cuota: $6.494,79 | Total a pagar: $77.937,50 (ejemplo sobre TNA S/IVA) ("Las tasas varían según riesgo crediticio de cada cliente, el ejemplo es una de las líneas vigentes de la compañía (CREDLAP GOLD)").
+          </p>
+          <p>
+            LINEA CREDLAP, exposición ante BCRA por fórmula de decimales. CFTEA s/IVA POR EXCESO DE DECIMALES: 276,17%. | LINEA CREDLAP GOLD, exposición ante BCRA por fórmula de decimales. CFTEA s/IVA POR EXCESO DE DECIMALES: 49,68%
           </p>
           <p>
           El plazo mínimo de repago del préstamo es de 1 mes y el máximo de 24 meses. Cuotas mensuales, iguales y
@@ -178,14 +177,14 @@ de $25.000 y el monto máximo de $500.000, en todo el territorio nacional.</p>
             </b>
           </p>
           <p>
-            <b>Actualización: 08/03/2025</b>
+            <b>Actualización: 02/06/2025</b>
           </p>
         </div>
         <p className="tasas-text">
-        CFTEA(s/IVA): tasa mínima 879,51%, tasa máxima 6042,41%
+        CFTEA(s/IVA): tasa mínima 412,97%, tasa máxima 1905,05%
         </p>
         <p className="tasas-text">
-        CFTEA (c/IVA): tasa mínima 1404,68%, tasa máxima 12422,87%
+        CFTEA (c/IVA): tasa mínima 604,39%, tasa máxima 3360,11%
         </p>
         <p className="derechos-text">
           Desde 23/05/2022 todos los derechos reservados

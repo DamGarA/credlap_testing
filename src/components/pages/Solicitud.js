@@ -268,14 +268,7 @@ export default function Solicitud() {
           });
         }, 1000);
     else {
-    //enviarSolicitud(formSolicitud, handleSolicitudResponse);
-    setTimeout(function () {
-          handleSolicitudResponse({
-            request: {
-              responseURL: "/solicitud-resultado?resultado=preaprobado",
-            },
-          });
-        }, 1000);
+    enviarSolicitud(formSolicitud, handleSolicitudResponse);
     setEstadoActual("enviando");
   }}
 
