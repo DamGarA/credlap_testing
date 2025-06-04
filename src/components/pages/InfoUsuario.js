@@ -37,19 +37,19 @@ export default function InfoAlUsuario() {
         </p>
         <ul className="info-usuario-responsables-info">
           <li>
-            <b>· Titular:</b> Lina Ortega
+            <b>· Titular:</b> Cativa Florencia
           </li>
           <li>
-            <b>· Suplente:</b> {window.infousuario.suplente}
+            <b>· Suplente:</b> Alvarez Manuel
           </li>
           <li>
             <b>· Teléfono de contacto:</b> 0810-220-0570
           </li>
           <li>
-            <b>· Mail de atención:</b> administracion@credlap.com
+            <b>· Mail de atención:</b> cyr@credlap.com
           </li>
           <li>
-            <b>· Whatsapp:</b> 11-7831-2678
+            <b>· Whatsapp:</b> +54 9 11 2617 0462.
           </li>
         </ul>
       </div>
