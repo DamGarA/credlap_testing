@@ -43,7 +43,7 @@ export default function Contacto() {
                 <p className="contacto-dias-hora">09:30hs - 16:00hs</p>
               </div>
               <div className="contacto-dias">
-                <p className="contacto-dias-texto">Sábados y feriados</p>
+                <p className="contacto-dias-texto">Feriados</p>
                 <p className="contacto-dias-hora">09:30hs - 13:30hs</p>
               </div>
             </div>

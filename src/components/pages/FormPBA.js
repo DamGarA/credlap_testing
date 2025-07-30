@@ -379,7 +379,7 @@ export default function FormPBA() {
               <p className='pre-aprobado-text'>Un asesor está revisando la documentación y se va a contactar a la brevedad para terminar con tu solicitud.</p>
               <br/>
               <p className='pre-aprobado-horarios'>
-                <FontAwesomeIcon icon={solid('clock')}/> Recordá que nuestro horario de atención es de lunes a viernes de 09 a 17 hs, sábados y feriados de 09 a 13 hs.
+                <FontAwesomeIcon icon={solid('clock')}/> Recordá que nuestro horario de atención es de lunes a viernes de 09:30 a 16 hs y feriados de 09:30 a 13:30 hs.
               </p>
             </div>
             <div className='paga-right-box'>
@@ -399,7 +399,7 @@ export default function FormPBA() {
                 <button className='pba-btn'>SOLICITÁ TU PRÉSTAMO</button>
               </Link>
               <p className='pre-aprobado-horarios'>
-                <FontAwesomeIcon icon={solid('clock')}/> Recordá que nuestro horario de atención es de lunes a viernes de 09 a 17 hs, sábados y feriados de 09 a 13 hs.
+                <FontAwesomeIcon icon={solid('clock')}/> Recordá que nuestro horario de atención es de lunes a viernes de 09:30 a 16 hs y feriados de 09:30 a 13:30 hs.
               </p>
             </div>
             <div className='paga-right-box'>
