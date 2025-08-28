@@ -158,7 +158,7 @@ solicitud del préstamo y antes de su otorgamiento.
             LINEA CREDLAP, exposición ante BCRA por fórmula de decimales. CFTEA s/IVA POR EXCESO DE DECIMALES: 276,17%. | LINEA CREDLAP GOLD, exposición ante BCRA por fórmula de decimales. CFTEA s/IVA POR EXCESO DE DECIMALES: 49,68%
           </p>
           <p>
-          El plazo mínimo de repago del préstamo es de 1 mes y el máximo de 24 meses. Cuotas mensuales, iguales y
+          El plazo mínimo de repago del préstamo es de 2 meses y el máximo de 48 meses. Cuotas mensuales, iguales y
 consecutivas calculadas mediante el sistema de cuotas directas, que el cliente abonará mensualmente de
 manera voluntaria, o por los medios dispuestos en el contrato del préstamo. El monto mínimo de financiación es
 de $25.000 y el monto máximo de $500.000, en todo el territorio nacional.</p>
@@ -177,7 +177,7 @@ de $25.000 y el monto máximo de $500.000, en todo el territorio nacional.</p>
             </b>
           </p>
           <p>
-            <b>Actualización: 02/06/2025</b>
+            <b>Actualización: 28/08/2025</b>
           </p>
         </div>
         <p className="tasas-text">
