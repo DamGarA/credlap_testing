@@ -77,7 +77,7 @@ window.resultado = {
 	botonwsp : "5491145630828"
 }
 window.solicitud = {
-	sliderMin: "1000",
-	sliderMax: "100000",
-	sliderStep: "1000"
+	sliderMin: "25000",
+	sliderMax: "1500000",
+	sliderStep: "25000"
 }
