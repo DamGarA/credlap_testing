@@ -27,7 +27,7 @@ export default function Home() {
       <div className="home-first-section">
         <div className="home-left-box">
           <p className="home-label">Llevate hasta</p>
-          <p className="home-monto">$500.000</p>
+          <p className="home-monto">$1.500.000</p>
           <Link to="solicitar-prestamo">
             <button className="home-btn">SOLICITÁ TU PRÉSTAMO</button>
           </Link>

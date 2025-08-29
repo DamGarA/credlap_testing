@@ -161,7 +161,7 @@ solicitud del préstamo y antes de su otorgamiento.
           El plazo mínimo de repago del préstamo es de 2 meses y el máximo de 48 meses. Cuotas mensuales, iguales y
 consecutivas calculadas mediante el sistema de cuotas directas, que el cliente abonará mensualmente de
 manera voluntaria, o por los medios dispuestos en el contrato del préstamo. El monto mínimo de financiación es
-de $25.000 y el monto máximo de $500.000, en todo el territorio nacional.</p>
+de $25.000 y el monto máximo de $1.500.000, en todo el territorio nacional.</p>
           <p>
           El cliente acepta términos y condiciones, y políticas de privacidad al momento de completar el formulario web, y sus futuras modificaciones, los mismos se encuentran actualizados para visualizarlos con anterioridad en www.credlap.com - Legales, y deben ser aceptados para continuar y efectivizar la operatoria
           </p>

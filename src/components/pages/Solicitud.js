@@ -307,7 +307,7 @@ export default function Solicitud() {
           <div className="slider-container">
             <Slider
               min={"25000"}
-              max={"500000"}
+              max={"1500000"}
               step={window.solicitud.sliderStep}
               onChange={handleSliderChange}
               className="slider-solicitud"
