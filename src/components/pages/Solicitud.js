@@ -314,13 +314,14 @@ export default function Solicitud() {
         
             />
             <p className="label-monto">
-              {new Intl.NumberFormat("en-US", {
+              {/* {new Intl.NumberFormat("en-US", {
                 style: "currency",
                 currency: "USD",
                 maximumFractionDigits: 0,
               })
                 .format(formSolicitud.monto)
-                .replace(",", ".")}
+                .replace(",", ".")} */}
+                {formSolicitud.monto.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
             </p>
           </div>
         </div>
