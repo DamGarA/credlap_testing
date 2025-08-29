@@ -268,9 +268,7 @@ export default function Solicitud() {
           });
         }, 1000);
     else {
-    console.log("form::::::::", formSolicitud)
-    console.log("type::::::::", typeof formSolicitud.monto)
-    // enviarSolicitud(formSolicitud, handleSolicitudResponse);
+    enviarSolicitud(formSolicitud, handleSolicitudResponse);
     setEstadoActual("enviando");
   }}
 
@@ -308,8 +306,8 @@ export default function Solicitud() {
           Elegí el monto al que querés acceder
           <div className="slider-container">
             <Slider
-              min={"25000"}
-              max={"1500000"}
+              min={25000}
+              max={1500000}
               step={window.solicitud.sliderStep}
               onChange={handleSliderChange}
               className="slider-solicitud"
@@ -323,7 +321,7 @@ export default function Solicitud() {
               })
                 .format(formSolicitud.monto)
                 .replace(",", ".")} */}
-                {formSolicitud.monto.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+              {formSolicitud.monto.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
             </p>
           </div>
         </div>
