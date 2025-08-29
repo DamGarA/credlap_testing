@@ -311,7 +311,7 @@ export default function Solicitud() {
               step={window.solicitud.sliderStep}
               onChange={handleSliderChange}
               className="slider-solicitud"
-              value={25000}
+        
             />
             <p className="label-monto">
               {new Intl.NumberFormat("en-US", {
