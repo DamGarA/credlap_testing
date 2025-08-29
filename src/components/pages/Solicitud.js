@@ -306,11 +306,12 @@ export default function Solicitud() {
           Elegí el monto al que querés acceder
           <div className="slider-container">
             <Slider
-              min={"25000"}
-              max={"1500000"}
+              min={25000}
+              max={1500000}
               step={window.solicitud.sliderStep}
               onChange={handleSliderChange}
               className="slider-solicitud"
+              value={25000}
             />
             <p className="label-monto">
               {new Intl.NumberFormat("en-US", {
