@@ -310,8 +310,10 @@
   width: 100%;
   max-width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 8px; /* 👈 controla el espacio entre hijos */
 }
 
 .servicios-fifth-section-text {
@@ -320,6 +322,31 @@
   margin-bottom: 120px;
   max-width: 80%;
   font-size: large;
+  margin-bottom: 0;  /* 👈 elimina espacio extra del <p> */
+  text-align: center; /* opcional */
+}
+
+.servicio-link-pdf{
+    background: linear-gradient(90deg, #528BD2 0%, #3EE2E4 100%);
+    border-radius: 25px;
+    color: #FFF;
+    height: 50px;
+    border: none;
+    font-size: 1.1rem;
+    font-family: 'Gotham Narrow';
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    box-shadow: #555 2px 0 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+    max-width: 600px;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 120px;
+    text-align: center;
 }
 
 @media screen and (max-width: 1065px) {
@@ -423,7 +450,18 @@
     font-weight: 700;
     margin-bottom: 3vh;
   }
+
+  .servicio-link-pdf{
+        max-width: 300px;
+        font-size: 1rem;
+        padding-top: 2px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+  }
 }
+
+
 
 @media screen and (max-width: 700px) {
   .servicios-label-2 {

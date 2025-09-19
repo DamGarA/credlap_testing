@@ -393,7 +393,17 @@ export default function Servicios() {
         <br></br>
         Valor del servicio $19999,99.
         </p>
+        <Link
+          to={
+            "//workdrive.zohoexternal.com/external/f3e424cc61d8484d305cd17d1c0a0fe3e17affda3c46065af498398db6abd366"
+          }
+          className="servicio-link-pdf"
+          target={"_blank"}
+        >
+          Ver aceptación de los servicios
+        </Link>
       </div>
+
     </div>
   );
 }

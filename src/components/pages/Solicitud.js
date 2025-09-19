@@ -288,7 +288,9 @@ export default function Solicitud() {
       response.isError ||
       !response.request.responseURL.includes("/solicitud")
     )
-      window.location.href = "/solicitud-resultado?resultado=error";
+      window.location.href = "/solicitud-resultado?resultado=procesada";
+      //ANTES
+      //window.location.href = "/solicitud-resultado?resultado=error";
     else {
       if (response.request.responseURL.includes("resultado=error"))
         window.location.href = "/solicitud-resultado?resultado=procesada";

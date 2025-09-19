@@ -103,6 +103,9 @@ export default function Footer() {
             <Link to="/reclamos" className="form-button footer-button">
               Reclamos
             </Link>
+            <Link to="/reclamos" className="form-button footer-button">
+              Reclamos
+            </Link>
           </div>
           <div className="footer-button-col logo-afip-container">
             <a
@@ -177,7 +180,7 @@ de $25.000 y el monto máximo de $1.500.000, en todo el territorio nacional.</p>
             </b>
           </p>
           <p>
-            <b>Actualización: 28/08/2025</b>
+            <b>Actualización: 29/08/2025</b>
           </p>
         </div>
         <p className="tasas-text">

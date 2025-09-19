@@ -185,7 +185,7 @@ export default function Nosotros() {
               className="nosotros-box-item-img"
             />
             <p className="nosotros-box-item-desc">
-              +17.000 son los clientes que avalan nuestra seriedad y compromiso.
+              +23.000 son los clientes que avalan nuestra seriedad y compromiso.
             </p>
           </div>
           <div className="nosotros-box-item">
@@ -195,7 +195,7 @@ export default function Nosotros() {
               className="nosotros-box-item-img-3"
             />
             <p className="nosotros-box-item-desc">
-              +17.000 son las personas que nos siguen en redes.
+              +23.000 son las personas que nos siguen en redes.
               <br />
               <Link
                 to={"//maslinks.com/Credlap"}
