@@ -103,8 +103,12 @@ export default function Footer() {
             <Link to="/reclamos" className="form-button footer-button">
               Reclamos
             </Link>
-            <Link to="/reclamos" className="form-button footer-button">
-              Reclamos
+            <Link
+              to={"https://workdrive.zohoexternal.com/external/9eb2f704ef4de6f6a7a1e1e8b7dda46af9ba124ed89ce2e92cb57888cd481ece "}
+              target="_blank"
+              className="form-button footer-button-6th"
+            >
+              Credlap informa
             </Link>
           </div>
           <div className="footer-button-col logo-afip-container">
@@ -152,13 +156,26 @@ financiación elegido. En todos los casos, la TNA, TEA y el CFT aplicable serán
 solicitud del préstamo y antes de su otorgamiento.
           </p>
           <p>
-          Tasa Nominal Anual (TNA) sin IVA: Mínimo: 175,00% - Máximo: 340,00% | Tasa Nominal Anual (TNA) con IVA: Mínimo: 211,75% - Máximo 411,40% | Tasa Efectiva Anual (TEA) sin IVA: Mínimo: 412,97% - Máximo: 1905,05% | Tasa Efectiva Anual (TEA) con IVA: Mínimo: 604,39% - Máximo 3360,11% | Costo Financiero Total Efectivo Anual (CFTEA) con IVA: Mínimo: 604,39% - Máximo: 3360,11% | Costo Financiero Total Efectivo Anual (CFTEA) sin IVA: Mínimo: 412,97% - Máximo: 1905,05% - Intereses punitorios diarios: Mínimo: 1% - Máximo: 15%.
+          Tasa Nominal Anual (TNA) sin IVA: Mínimo: 175,00% - Máximo: 525,00% | Tasa Nominal Anual (TNA) con IVA: Mínimo: 211,75%
+          - Máximo 635,25% | Tasa Efectiva Anual (TEA) sin IVA: Mínimo: 412,97% - Máximo: 7761,16% | Tasa Efectiva Anual (TEA) con
+          IVA: Mínimo: 604,39% - Máximo 16488,47% | Costo Financiero Total Efectivo Anual (CFTEA) sin IVA: Mínimo: 412,97% -
+          Máximo: 7761,16% Costo Financiero Total Efectivo Anual (CFTEA) con IVA: Mínimo: 604,39% - Máximo: 16488,47% | Intereses
+          punitorios diarios: Mínimo: 1% - Máximo: 15%.
           </p>
           <p>
-          Ejemplo de préstamo: Monto solicitado de $25.000 a 12 meses | Cuota: $6.494,79 | Total a pagar: $77.937,50 (ejemplo sobre TNA S/IVA) ("Las tasas varían según riesgo crediticio de cada cliente, el ejemplo es una de las líneas vigentes de la compañía (CREDLAP GOLD)").
+          Ejemplo de préstamo (ejemplo sobre TNA MINIMA C/IVA): Monto solicitado de $25.000 a 12 meses | Cuota: $6.494,79 | Total a
+          pagar: $77.937,50. LINEA CREDLAP GOLD
           </p>
           <p>
-            LINEA CREDLAP, exposición ante BCRA por fórmula de decimales. CFTEA s/IVA POR EXCESO DE DECIMALES: 276,17%. | LINEA CREDLAP GOLD, exposición ante BCRA por fórmula de decimales. CFTEA s/IVA POR EXCESO DE DECIMALES: 49,68%
+          Ejemplo de préstamo (ejemplo sobre TNA MAXIMA C/IVA): Monto solicitado de $25.000 a 12 meses | Cuota: $10.654,16 | Total
+          a pagar: $ 127.849,92. LINEA CREDLAP
+          </p>
+          <p>
+          Ejemplo de préstamo (ejemplo sobre TNA MAXIMA C/IVA): Monto solicitado de $25.000 a 12 meses | Cuota: $ 15.317,71 | Total
+          a pagar: $ 183.812,50. LINEA CREDLAP RIESGO ALTO
+          </p>
+          <p>
+          ("Las tasas varían según riesgo crediticio de cada cliente”)
           </p>
           <p>
           El plazo mínimo de repago del préstamo es de 2 meses y el máximo de 48 meses. Cuotas mensuales, iguales y
@@ -180,14 +197,21 @@ de $25.000 y el monto máximo de $1.500.000, en todo el territorio nacional.</p>
             </b>
           </p>
           <p>
-            <b>Actualización: 29/08/2025</b>
+            <b>Actualización: 21/09/2025</b>
           </p>
         </div>
         <p className="tasas-text">
-        CFTEA(s/IVA): tasa mínima 412,97%, tasa máxima 1905,05%
+        CFTEA(s/IVA): tasa mínima 412,97%, tasa máxima 7761,16%
         </p>
         <p className="tasas-text">
-        CFTEA (c/IVA): tasa mínima 604,39%, tasa máxima 3360,11%
+        CFTEA (c/IVA): tasa mínima 604,39%, tasa máxima 16488,47%
+        </p>
+        <p className="tasas-text-definition">
+        CFTEA s/IVA y CFTEA c/IVA son tasas expuestas mínimas o máximas de reinversión de capitales, que no son la aplicación
+        real de las tasas de CREDLAP SA 
+        </p>
+        <p className="tasa-real">
+        Tasa real en uso 340% s/IVA 
         </p>
         <p className="derechos-text">
           Desde 23/05/2022 todos los derechos reservados

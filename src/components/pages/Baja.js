@@ -166,6 +166,9 @@ export default function Baja() {
             préstamo personal dentro de los 10 días hábiles de solicitado, para
             realizarlo completá el siguiente formulario
           </p>
+          <p className="baja-text">
+            La presente solicitud puede contener gastos de hasta un 15%, correspondientes a retenciones, percepciones, impuestos u otros cargos que afecten a Credlap S.A.
+          </p>
         </div>
         <div className="baja-right-box">
           {!estadoActual && (

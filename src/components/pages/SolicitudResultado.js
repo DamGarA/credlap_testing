@@ -23,6 +23,23 @@ export default function SolicitudResultado({ resultado }) {
             <div className="pre-aprobado-left-box">
               <p className="pre-aprobado-label">Préstamo pre-aprobado</p>
               <p className="pre-aprobado-text">
+                <b>
+                  Por favor envianos a consultas@credlap.com la siguiente documentación para finalizar tu préstamo:
+                </b>
+              </p>
+              <p className="pre-aprobado-text">  
+              - DNI frente y dorso
+              </p>
+              <p className="pre-aprobado-text">  
+              - Selfie sosteniendo tu DNI, te dejamos un <a target="_blank" rel="noopener noreferrer" href="https://workdrive.zohoexternal.com/external/29b4e2c67fae1d09c1b50938e5b99aa465997df7de86fa97afd3f555cc3a20e6 ">tutorial</a>
+              </p>
+              <p className="pre-aprobado-text">  
+              - Comprobante de ingresos
+              </p>
+              <p className="pre-aprobado-text">  
+              - En el cuerpo del mail debes agregar apellido, nombre y número de WhatsApp
+              </p>
+              <p className="pre-aprobado-text">
                 <b>Hacé clic en el botón verde para enviarnos un WhatsApp y poder agendarnos.</b>
               </p>
               <a href="https://wa.me/542215462961" target="_blank" rel="noopener noreferrer">
@@ -34,6 +51,11 @@ export default function SolicitudResultado({ resultado }) {
                  Si no podés acceder desde el botón, comunícate por WhatsApp al número +542215462961, o dejanos tu solicitud a consultas@credlap.com
                 </p>
                 <br />
+              </p>
+              <p className="pre-aprobado-text">
+                <b>
+                 Tu préstamo quedará acreditado dentro de las 24 hs. de la aceptación de firma.
+                </b> 
               </p>
             </div>
             <div className="paga-right-box">

@@ -395,7 +395,7 @@ export default function Servicios() {
         </p>
         <Link
           to={
-            "//workdrive.zohoexternal.com/external/f3e424cc61d8484d305cd17d1c0a0fe3e17affda3c46065af498398db6abd366"
+            "https://workdrive.zohoexternal.com/external/5fc94b3c29bbe85da3bb9695e4e5d12ffe09da8f09a92508e6d6a0bb52a15066"
           }
           className="servicio-link-pdf"
           target={"_blank"}

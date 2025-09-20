@@ -15,6 +15,21 @@
     padding-right: 20px;
 }
 
+.footer-button-6th{
+    background: #00F0CC;
+    font-size: 14px;
+    height: 35px;
+    padding-top: 0px;
+    margin: 5px 10px 10px 5px;
+    width: 270px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 35px;
+    font-family: 'Gotham Narrow';
+    font-weight: 500;
+}
+
+
 .form-button.disabled{
     background: linear-gradient(90deg, #CCC 0%, #EEE 100%);
     color: #AAA;
