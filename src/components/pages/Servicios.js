@@ -83,16 +83,16 @@ export default function Servicios() {
 
         <div className="servicios-muyPronto-right">
           <div className="servicios-icon-box">
-            <img src={imgMuyPronto1} alt="Carga de transporte" />
-            <p>Carga de transporte</p>
+            <img src={imgMuyPronto1} alt="Carga de SUBE" />
+            <p>Carga de SUBE</p>
           </div>
           <div className="servicios-icon-box">
             <img src={imgMuyPronto2} alt="Recarga de crédito" />
             <p>Recarga de crédito</p>
           </div>
           <div className="servicios-icon-box">
-            <img src={imgMuyPronto3} alt="Pago de facturas" />
-            <p>Pago de facturas</p>
+            <img src={imgMuyPronto3} alt="Pago de facturas y servicios" />
+            <p>Pago de facturas y servicios</p>
           </div>
         </div>
       </div>
@@ -289,18 +289,6 @@ export default function Servicios() {
                     />
                     <p className="servicios-carousel-title">
                       Asesoria deportiva
-                    </p>
-                  </div>
-                </div>
-                <div className="servicios-carousel-container">
-                  <div className="servicios-carousel-header">
-                    <img
-                      src={imgCarousel5}
-                      alt="Imagen Carrousel 5"
-                      className="servicios-imagen-carousel"
-                    />
-                    <p className="servicios-carousel-title">
-                      Asesoria odontológica
                     </p>
                   </div>
                 </div>
