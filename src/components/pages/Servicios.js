@@ -92,7 +92,7 @@ export default function Servicios() {
           </div>
           <div className="servicios-icon-box">
             <img src={imgMuyPronto3} alt="Pago de facturas y servicios" />
-            <p>Pago de facturas y servicios</p>
+            <p>Pago de facturas <br /> y servicios</p>
           </div>
         </div>
       </div>
