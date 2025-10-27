@@ -207,7 +207,7 @@ de $25.000 y el monto máximo de $1.500.000, en todo el territorio nacional.</p>
         CFTEA (c/IVA): tasa mínima 604,39%, tasa máxima 16488,47%
         </p>
         <p className="tasas-text-definition">
-        CFTEA s/IVA y CFTEA c/IVA son tasas expuestas mínimas o máximas de reinversión de capitales, que no son la aplicación
+        CFTEA s/IVA y CFTEA c/IVA son tasas expuestas mínimas o máximas que no son la aplicación
         real de las tasas de CREDLAP SA 
         </p>
         <p className="tasa-real">

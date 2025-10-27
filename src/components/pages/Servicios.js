@@ -10,12 +10,10 @@ import imgServicio1 from "../../images/images_services/FINANCIACION-ELECTRODOMES
 import imgServicio1Back from "../../images/images_services/FINANCIACION-ELECTRODOMESTICOS-DORSO.png";
 import imgServicio2 from "../../images/images_services/FINANCIACION-MUBLERIA-FRENTE.png";
 import imgServicio2Back from "../../images/images_services/FINANCIACION-MUBLERIA-DORSO.png";
-import imgServicio3 from "../../images/images_services/FINANCIACION-PAGOS-FRENTE.png";
-import imgServicio3Back from "../../images/images_services/FINANCIACION-PAGOS-DORSO.png";
 import imgServicio4 from "../../images/images_services/FINANCIACION-TECNOLOGIA-FRENTE.png";
 import imgServicio4Back from "../../images/images_services/FINANCIACION-TECNOLOGIA-DORSO.png";
-import imgServicio5 from "../../images/images_services/FINANCIACION-VEHICULOS-FRENTE.png";
-import imgServicio5Back from "../../images/images_services/FINANCIACION-VEHICULOS-DORSO.png";
+import imgServicio5 from "../../images/images_services/FINANCIACION-EVENTOS-FRENTE.png";
+import imgServicio5Back from "../../images/images_services/FINANCIACION-EVENTOS-DORSO.png";
 import imgCarousel1 from "../../images/images_services/ASESORIA-CALCULADORA.png";
 import imgCarousel2 from "../../images/images_services/ASESORIA-LEGAL.png";
 import imgCarousel3 from "../../images/images_services/ASESORIA-ALIMENTARIA.png";
@@ -26,6 +24,9 @@ import imgReintegro1 from "../../images/images_services/REINTEGRO-MEDICO-ICONO.p
 import imgReintegro2 from "../../images/images_services/REINTEGRO-CASAMIENTO-ICONO.png";
 import imgReintegro3 from "../../images/images_services/REINTEGRO-MATERNIDAD-ICONO.png";
 import imgReintegro4 from "../../images/images_services/REINTEGRO-DEFUNCION-ICONO.png";
+import imgMuyPronto1 from "../../images/images_services/NUEVO-CARGADETRANSPORTE.png"
+import imgMuyPronto2 from "../../images/images_services/NUEVO-RECARGACELULAR.png"
+import imgMuyPronto3 from "../../images/images_services/NUEVO-PAGOFACTURA.png"
 
 import Carousel from "react-simply-carousel";
 
@@ -68,6 +69,34 @@ export default function Servicios() {
           />
         </div>
       </div>
+      <div className="servicios-muyPronto-section-fondo">
+      <div className="servicios-muyPronto-section">
+        <div className="servicios-muyPronto-left">
+          <p className="servicios-muyPronto-label">Muy pronto...</p>
+          <h2 className="servicios-muyPronto-title">
+            <span className="bold">¡100% recargado!</span>
+          </h2>
+          <h2 className="servicios-muyPronto-title">
+            <span className="italic-title">Nuevos servicios para que resuelvas todo desde un mismo lugar: </span>
+          </h2>
+        </div>
+
+        <div className="servicios-muyPronto-right">
+          <div className="servicios-icon-box">
+            <img src={imgMuyPronto1} alt="Carga de transporte" />
+            <p>Carga de transporte</p>
+          </div>
+          <div className="servicios-icon-box">
+            <img src={imgMuyPronto2} alt="Recarga de crédito" />
+            <p>Recarga de crédito</p>
+          </div>
+          <div className="servicios-icon-box">
+            <img src={imgMuyPronto3} alt="Pago de facturas" />
+            <p>Pago de facturas</p>
+          </div>
+        </div>
+      </div>
+      </div>
       <div className="servicios-second-section">
         <div className="servicios-second-section-label-box">
           <p className="servicios-second-section-label">
@@ -102,18 +131,6 @@ export default function Servicios() {
           </div>
           <div className="servicios-second-section-box">
             <img
-              src={imgServicio3}
-              alt="Servicio seguro"
-              className="servicios-box-item-img-front"
-            />
-            <img
-              src={imgServicio3Back}
-              alt="Servicios Seguro Dorso"
-              className="servicios-box-item-img-back"
-            />
-          </div>
-          <div className="servicios-second-section-box">
-            <img
               src={imgServicio4}
               alt="Servicio seguro"
               className="servicios-box-item-img-front"
@@ -124,7 +141,7 @@ export default function Servicios() {
               className="servicios-box-item-img-back"
             />
           </div>
-          {/* <div className="servicios-second-section-box">
+          <div className="servicios-second-section-box">
             <img
               src={imgServicio5}
               alt="Servicio seguro"
@@ -137,7 +154,7 @@ export default function Servicios() {
             />
             <div className="servicios-box-links">
               <Link
-                to={"https://www.instagram.com/toptenrentacar/"}
+                to={"https://www.instagram.com/refugiomacedook?igsh=MjJrNnBvOWFobGJm"}
                 className="servicio-contacto-btn servicio-instagram"
                 target={"_blank"}
               >
@@ -147,17 +164,17 @@ export default function Servicios() {
                 />
               </Link>
               <Link
-                to={"https://wa.me/5492944586083"}
+                to={"https://www.facebook.com/share/1CfbeBvkGw/"}
                 className="servicio-contacto-btn"
                 target={"_blank"}
               >
                 <FontAwesomeIcon
-                  icon={brands("whatsapp")}
+                  icon={brands("facebook")}
                   className="servicio-contacto-btn-icon"
                 />
               </Link>
           </div> 
-          </div> */}
+          </div>
         </div>
       </div>
       <div className="servicios-third-section-fondo">
@@ -203,16 +220,6 @@ export default function Servicios() {
               />
               <p className="servicios-carousel-desktop-title">
                 Asesoria deportiva
-              </p>
-            </div>
-            <div className="servicios-carousel-header-desktop-item">
-              <img
-                src={imgCarousel5}
-                alt="Imagen Carrousel 5"
-                className="servicios-imagen-carousel-desktop"
-              />
-              <p className="servicios-carousel-desktop-title">
-                Asesoria odontológica
               </p>
             </div>
           </div>

@@ -39,8 +39,11 @@ export default function SolicitudResultado({ resultado }) {
               <p className="pre-aprobado-text">  
               - En el cuerpo del mail debes agregar apellido, nombre y número de WhatsApp
               </p>
+              <p className="pre-aprobado-text">  
+              <b>Importante</b>: la documentación debe ser clara y legible, tu documentación y datos personales están protegidos por Credlap SA, bajo el registro de datos personales del BCRA, en el pie de página encontrarás nuestro código del BCRA.
+              </p>
               <p className="pre-aprobado-text">
-                <b>Hacé clic en el botón verde para enviarnos un WhatsApp y poder agendarnos.</b>
+                <b>Hacé clic en el botón verde para enviarnos un WhatsApp y poder agendarnos, vas a ver que contamos con el tilde de verificación de META.</b>
               </p>
               <a href="https://wa.me/542215462961" target="_blank" rel="noopener noreferrer">
                 <button className="wsp-btn">WhatsApp</button>
@@ -48,7 +51,7 @@ export default function SolicitudResultado({ resultado }) {
               <p className="pre-aprobado-text">
                 <br />
                 <p>
-                 Si no podés acceder desde el botón, comunícate por WhatsApp al número +542215462961, o dejanos tu solicitud a consultas@credlap.com
+                 Si no podés acceder desde el botón, comunícate por WhatsApp al número +542215462961
                 </p>
                 <br />
               </p>
