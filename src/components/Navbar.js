@@ -31,7 +31,7 @@ function Navbar() {
   };
 
   /**
-   * Hook that alerts clicks outside of the passed ref
+   * Hook that alerts clicks outside of the passed  ref
    */
   function useOutsideAlerter(ref, click) {
     useEffect(() => {
