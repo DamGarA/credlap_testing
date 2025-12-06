@@ -18,19 +18,20 @@
 .contacto-left-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  margin-right: 3%;
-  padding: 15px;
-  padding-left: 2%;
+  margin-right: 9%;
+  padding-top: 90px;
+  padding-left: 20%;
 }
 
 .contacto-right-box {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  padding-left: 3%;
-  padding-right: 4%;
+  align-items: center;
+  padding-left: 9%;
+  padding-right: -10%;
 }
 
 .contacto-label {
@@ -46,61 +47,9 @@
   font-size: 5rem;
   font-family: "Gotham Narrow", sans-serif;
   font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.telefono-titulo-container {
-  display: flex;
-  margin-bottom: 5%;
-}
-
-.telefono {
-  display: flex;
-  justify-content: space-between;
-  margin: 2%;
-}
-
-.telefono-horario {
-  background-color: #fff;
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  padding: 5% 7%;
-  width: 100%;
-}
-
-.telefono-img-reloj {
-  width: 17%;
-  height: 17%;
-}
-
-.telefono-label-horarios {
-  font-size: 2rem;
-  color: rgb(63, 72, 110);
-  font-family: "Gotham Narrow", sans-serif;
-  font-weight: 600;
-  margin-left: 5%;
-  margin-top: 4%;
-}
-
-.telefono-texto {
-  font-size: 1.3rem;
-  color: rgb(63, 72, 110);
-  font-family: "Gotham Narrow", sans-serif;
-  font-weight: 600;
-}
-
-.telefono-hora {
-  font-size: 1.3rem;
-  color: rgb(63, 72, 110);
-  font-family: "Gotham Narrow", sans-serif;
-  font-style: italic;
-  font-weight: 300;
-}
-
-.contacto-titulo-container {
-  display: flex;
-  margin-bottom: 5%;
+  margin-bottom: 1px;
+  margin-top: 120px;
+  padding-left: 7%;
 }
 
 .contacto-horario {
@@ -108,45 +57,81 @@
   border-radius: 30px;
   display: flex;
   flex-direction: column;
-  padding: 5% 7%;
-  width: 100%;
+  padding: 10% 20% 15%;
+  width:170%;
 }
 
-.contacto-img-reloj {
-  width: 17%;
-  height: 17%;
-}
-
-.contacto-label-horarios {
-  font-size: 2rem;
-  color: rgb(63, 72, 110);
-  font-family: "Gotham Narrow", sans-serif;
-  font-weight: 600;
-  margin-left: 5%;
-  margin-top: 4%;
-}
-
-.contacto-dias {
+.contacto-item-container {
   display: flex;
-  justify-content: space-between;
-  margin: 2%;
+  align-items: flex-start;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  margin-left: 4%;
 }
 
-.contacto-dias-texto {
-  font-size: 1.3rem;
+.contacto-item-container:last-child {
+  margin-bottom: 20px;
+}
+
+.contacto-item-img {
+  width: 60px;
+  height: 60px;
+  margin-right: 4%;
+  flex-shrink: 0;
+}
+
+.contacto-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.contacto-item-titulo {
+  font-size: 1.8rem;
   color: rgb(63, 72, 110);
   font-family: "Gotham Narrow", sans-serif;
   font-weight: 600;
-  margin-right: 1%;
+  margin: 0;
+  margin-bottom: 2px;
 }
 
-.contacto-dias-hora {
-  font-size: 1.3rem;
+.contacto-item-subtitulo {
+  font-size: 1.1rem;
   color: rgb(63, 72, 110);
   font-family: "Gotham Narrow", sans-serif;
   font-style: italic;
   font-weight: 300;
+  margin: 0;
+  line-height: 1.4;
 }
+
+.contacto-horarios-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.contacto-horarios-dia {
+  font-size: 1.1rem;
+  color: rgb(63, 72, 110);
+  font-family: "Gotham Narrow", sans-serif;
+  font-weight: 600;
+  margin-right: 2rem;
+}
+
+.contacto-horarios-hora {
+  font-size: 1.1rem;
+  color: rgb(63, 72, 110);
+  font-family: "Gotham Narrow", sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  text-align: right;
+}
+
+
 
 .contacto-btn {
   display: flex;
@@ -311,6 +296,29 @@
   margin-right: auto;
 }
 
+.contacto-right-box-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-left: 3%;
+  padding-right: 4%;
+}
+
+.contacto-img-coco {
+  width: 450px;
+  height: 350px;
+  padding-left: 7%;
+}
+  
+.contacto-subtitulo {
+  color: #fff;
+  font-size: 1.9rem;
+  font-family: "Gotham Narrow", sans-serif;
+  padding-right: 20%;
+  padding-left: 8%;
+}
+
+
 @media screen and (max-width: 1065px) {
   .contacto {
     padding-top: 100px;
@@ -412,6 +420,15 @@
   .telefono-hora {
     font-size: 1rem;
   }
+
+  .contacto-img-coco {
+    width: 50px;
+    height: 50px;
+  }
+
+  .contacto-subtitulo {
+    font-size: 1.2rem;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -434,5 +451,12 @@
 
   p.contacto-dias-texto {
     width: 110px;
+  }
+  .contacto-img-coco {
+    width: 50px;
+    height: 50px;
+  }
+  .contacto-subtitulo {
+    font-size: 1.2rem;
   }
 }

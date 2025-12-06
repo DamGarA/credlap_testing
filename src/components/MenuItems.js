@@ -21,5 +21,10 @@ export const MenuInfo = [
     title: 'Nosotros',
     path: '/nosotros',
     cName: 'dropdown-link'
+  },
+  {
+    title: 'Ayuda',
+    path: '/ayuda',
+    cName: 'dropdown-link'
   }
 ]

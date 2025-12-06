@@ -80,31 +80,76 @@
   font-style: italic;
 }
 
-html,body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
-  
+
 #root {
-    display: contents;
+  display: contents;
 }
 
-#click2call{
+/* ----------------------------------------------------------
+   CONTENEDOR DE ICONOS FLOTANTES (WHATSAPP + LLAMAR + COLGAR)
+   ---------------------------------------------------------- */
+.floating-icons {
   position: fixed;
-  bottom: 0;
-  left: 10px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Tamaño estándar de todos los íconos flotantes */
+.floating-icons img {
+  width: 60px;
+  height: 60px;
   cursor: pointer;
-  z-index: 2;
 }
 
-#click2call a img{
-  height: 55px;
-  width: 55px;
+/* ----------------------------------------------------------
+   CLICK2CALL (SE DEJA CON SU LÓGICA ORIGINAL)
+   ---------------------------------------------------------- */
+#click2call {
+  position: relative; /* Ya no fixed para que el script funcione */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 60px;
+  margin-right: -25px;
 }
 
-#click2call_msgdiv{
+/* Ocultamos el ícono de colgar por defecto — así era antes */
+#click2call_hupbtn {
   display: none;
 }
 
+#click2call a img {
+  width: 60px;
+  height: 60px;
+}
+
+#click2call_msgdiv {
+  display: none;
+}
+
+/* ----------------------------------------------------------
+   WHATSAPP VERIFICADO
+   ---------------------------------------------------------- */
+.img-wp-verificado img {
+  width: 70px;
+  height: 70px;
+  margin-right: -10px;
+}
+
+/* ----------------------------------------------------------
+   ÍCONO DE WHATSAPP ORIGINAL OCULTO
+   ---------------------------------------------------------- */
 .img-wp {
   position: fixed;
   bottom: 0;
@@ -117,27 +162,23 @@ html,body {
   width: 60px;
 }
 
+/* ----------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------- */
 @media screen and (max-width: 1065px) {
   #root {
     display: block;
   }
 
-  #click2call{
-    bottom: 0;
-    left: 10px;
+  .floating-icons {
+    bottom: 10px;
+    right: 10px;
   }
 
-  #click2call a img{
-    height: 45px;
-    width: 45px;
-  }
-
-  .img-wp {
-    right: 0;
-  }
-
-  .img-wp img {
-    height: 48px;
+  .floating-icons img,
+  #click2call a img,
+  .img-wp-verificado img {
     width: 48px;
+    height: 48px;
   }
 }
