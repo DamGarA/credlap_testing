@@ -27,6 +27,7 @@ import SolicitudResultado from "./components/pages/SolicitudResultado";
 import Nosotros from "./components/pages/Nosotros";
 import FormPBA from "./components/pages/FormPBA";
 import Servicios from "./components/pages/Servicios";
+import Institucional from "./components/pages/Institucional";
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -64,6 +65,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/institucional" element={<Institucional />} />
           <Route path="/paga-tu-cuota" element={<PagaTuCuota />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/legal-tyc" element={<TerminosYCondiciones />} />

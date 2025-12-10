@@ -72,8 +72,8 @@ function Navbar() {
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
             <Link
-              to="/"
-              className={currentPath === "/" ? "nav-links active" : "nav-links"}
+              to="/institucional"
+              className={currentPath === "/institucional" ? "nav-links active" : "nav-links"}
               onClick={closeMobileMenu}
             >
               INSTITUCIONAL
