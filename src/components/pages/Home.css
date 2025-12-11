@@ -368,6 +368,7 @@
   .home-third-section-boxes {
     flex-direction: column;
     margin-top: 0px;
+    margin-bottom: 100px;
   }
 
   .home-third-section-box-img {

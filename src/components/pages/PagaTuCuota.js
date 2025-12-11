@@ -45,9 +45,9 @@ export default function PagaTuCuota() {
               alt="Completá el formulario"
               className="paga-box-item-img"
             />
-            <p className="paga-box-item-title">Pedí tu link de pago</p>
+            <p className="paga-box-item-title">Pedí tu medio de pago</p>
             <p className="paga-box-item-desc">
-              Solicitás tu link por nuestro chat
+              Solicitá el medio por el que querés pagar.
             </p>
           </div>
           <div className="paga-box-item">
@@ -59,8 +59,8 @@ export default function PagaTuCuota() {
             />
             <p className="paga-box-item-title">Pagá como vos querés</p>
             <p className="paga-box-item-desc">
-              Elegí tu medio de pago, ya sea con tarjeta, efectivo o
-              transferencia
+              Elegí tu medio de pago, ya sea con tarjetas, efectivo o
+              transferencia.
             </p>
           </div>
           <div className="paga-box-item">
@@ -72,7 +72,7 @@ export default function PagaTuCuota() {
             />
             <p className="paga-box-item-title">¡Listo!</p>
             <p className="paga-box-item-desc">
-              El sistema registra automáticamente el pago
+              El sistema registra automáticamente el pago.
             </p>
           </div>
         </div>

@@ -1,8 +1,9 @@
 .dropdown-menu {
   width: 140px;
   position: absolute;
-  top: 100%;
-  left: 0;
+  /* top: 100%;
+  left: 0; */
+  top: 80%;
   list-style: none;
   text-align: flex-start;
 }

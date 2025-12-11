@@ -121,7 +121,7 @@ export default function Home() {
               className="home-third-section-box-img"
               alt="Comprobante de ingreso"
             />
-            Comprobante de ingreso
+            Con o sin comprobante de ingresos
           </div>
         </div>
       </div>
