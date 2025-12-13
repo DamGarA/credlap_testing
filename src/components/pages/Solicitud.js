@@ -232,15 +232,16 @@ export default function Solicitud() {
   function onFormSubmit(event) {
     event.preventDefault();
     //Hack para evitar enviar una solicitud sin ingresos
-    if (formSolicitud.actividad === "No poseo ingresos demostrables")
-      setTimeout(function () {
-    handleSolicitudResponse({
-      request: {
-        responseURL: "/solicitud-resultado?resultado=sin-ingresos",
-      },
-    });
-  }, 1000);
-  else if (formSolicitud.actividad === "Tengo un beneficio de ANSES")
+  //   if (formSolicitud.actividad === "No poseo ingresos demostrables")
+  //     setTimeout(function () {
+  //   handleSolicitudResponse({
+  //     request: {
+  //       responseURL: "/solicitud-resultado?resultado=sin-ingresos",
+  //     },
+  //   });
+  // }, 1000);
+  // else 
+    if (formSolicitud.actividad === "Tengo un beneficio de ANSES")
       //Hack para evitar enviar una solicitud de ANSES
     setTimeout(function () {
       handleSolicitudResponse({
@@ -268,7 +269,8 @@ export default function Solicitud() {
           });
         }, 1000);
     else {
-    enviarSolicitud(formSolicitud, handleSolicitudResponse);
+    //enviarSolicitud(formSolicitud, handleSolicitudResponse);
+    console.log("solicituuuuud", formSolicitud)
     setEstadoActual("enviando");
   }}
 

@@ -88,8 +88,8 @@ export default function Ayuda() {
                               Para facilitar el proceso y obtener tu préstamo en el día, envíanos:
                             </p>
                             <p>☑ Foto del DNI frente y dorso</p>
-                            <p>☑ Selfie con el DNI a la altura del pecho</p>
-                            <p>☑ Comprobante de ingresos</p>
+                            <p>☑ Selfie sosteniendo tu DNI. Te dejamos un <a href="https://workdrive.zohoexternal.com/external/2ba7e432e1befa7d1946151c5c874667af0406f043ca7b3f6e200bdc29aeec1c">tutorial</a> </p>
+                            <p>☑ Comprobante de ingresos (si no tenés, recordá que es necesario contar con CBU a tu nombre)</p>
                             <p>Recordá que nuestros horarios de atención los podés encontrar en el pie de página.</p>
                           </div>
                         ),
@@ -105,9 +105,9 @@ export default function Ayuda() {
                               1- Tenés situaciones crediticias negativas en la
                               central de deudores del BCRA.
                             </p>
-                            <p>2- No contás con comprobante de ingresos.</p>
+                            <p>2- No tenés cuenta bancaria a tu nombre.</p>
                             <p>
-                              3- Tenes un beneficio o un tipo de comprobante de ingresos 
+                              3- Tenés un beneficio o un tipo de comprobante de ingresos 
                               con el que no estamos trabajando.
                             </p>
                           </div>
@@ -132,10 +132,7 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Lamentablemente no contamos con líneas de crédito
-                              para quienes no poseen demostración de ingresos
-                              como recibo de sueldo, monotributo, etc.
-                              Lamentamos las molestias.
+                              Si no tenés comprobante de ingresos, podés solicitar tu préstamo igual y será evaluado por nuestros asesores comerciales (recordá que es necesario contar con CBU a tu nombre)
                             </p>
                           </div>
                         ),

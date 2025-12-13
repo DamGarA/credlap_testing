@@ -122,7 +122,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="second-section">
-        <Link to={"//www.cace.org.ar/socio/credlap/"} target="_blank">
+        <Link to={"https://cace.org.ar/products/credlap?_pos=1&_psq=credlap&_ss=e&_v=1.0"} target="_blank">
           <img className="logo-image" border="0" src={logoCace} alt="Cace"/>
         </Link>
         <Link to={"//sbsoftware.com.ar"} target="_blank">
