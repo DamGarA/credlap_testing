@@ -110,7 +110,7 @@
 
 .nosotros-box-item-img-3 {
   max-height: 200px;
-  margin-bottom: -40px;
+  margin-bottom: -90px;
   margin-top: -60px;
 }
 
@@ -127,6 +127,12 @@
   font-size: 1.2rem;
   font-family: "Gotham Narrow";
   font-weight: 500;
+}
+.nosotros-box-item-desc3 {
+  font-size: 1.2rem;
+  font-family: "Gotham Narrow";
+  font-weight: 500;
+  margin-top: 90px;
 }
 
 .nosotros-third-section {

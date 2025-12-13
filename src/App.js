@@ -101,7 +101,7 @@ function App() {
     </Link>
 
     {/* 2. CLICK2CALL (no lo movemos — queda intacto) */}
-    <div id="click2call" align="end">
+    <div id="click2call">
         <a id="click2call_callbtn">
             <img src={imgLlamar} />
         </a>

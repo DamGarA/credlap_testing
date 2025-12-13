@@ -4,7 +4,7 @@ import imgCocoNosotros from "../../images/coco-nosotros.png";
 import imgCheck1 from "../../images/check-1.png";
 import imgNosotros1 from "../../images/nosotros-1.png";
 import imgNosotros2 from "../../images/nosotros-2.png";
-import imgNosotros3 from "../../images/icono-redes-nosotros.png";
+import imgTrayectoria from "../../images/icono-trayectoria.png";
 import FormInput from "../FormInput";
 import FormTextArea from "../FormTextArea";
 import FormButton from "../FormButton";
@@ -190,20 +190,12 @@ export default function Nosotros() {
           </div>
           <div className="nosotros-box-item">
             <img
-              src={imgNosotros3}
-              alt="+10000 seguidores"
+              src={imgTrayectoria}
+              alt="+10 años"
               className="nosotros-box-item-img-3"
             />
-            <p className="nosotros-box-item-desc">
-              +23.000 son las personas que nos siguen en redes.
-              <br />
-              <Link
-                to={"//maslinks.com/Credlap"}
-                style={{ textDecoration: "none" }}
-                target="_blank"
-              >
-                ¡SUMATE ACÁ!
-              </Link>
+            <p className="nosotros-box-item-desc3">
+              +10 Años en el mercado avalan nuestro compromiso y experiencia.
             </p>
           </div>
         </div>

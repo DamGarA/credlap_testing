@@ -9,20 +9,20 @@
 
 .contacto-first-section {
   width: 100%;
-  min-height: 650px;
+  min-height: 750px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 50px;
+  padding: 50px 40px;
 }
 
 .contacto-left-box {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  margin-right: 9%;
-  padding-top: 90px;
-  padding-left: 20%;
+  flex: 0 0 auto;
 }
 
 .contacto-right-box {
@@ -30,8 +30,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left: 9%;
-  padding-right: -10%;
+  flex: 0 0 auto;
+  gap: 10px;
 }
 
 .contacto-label {
@@ -44,12 +44,14 @@
 
 .contacto-titulo {
   color: #fff;
-  font-size: 5rem;
+  font-size: 4rem;
   font-family: "Gotham Narrow", sans-serif;
   font-weight: 600;
-  margin-bottom: 1px;
-  margin-top: 120px;
-  padding-left: 7%;
+  margin-bottom: 5px;
+  margin-top: 0;
+  padding-left: 0;
+  text-align: center;
+  width: 100%;
 }
 
 .contacto-horario {
@@ -57,16 +59,19 @@
   border-radius: 30px;
   display: flex;
   flex-direction: column;
-  padding: 10% 20% 15%;
-  width:170%;
+  padding: 20px 40px;
+  width: 520px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .contacto-item-container {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 5%;
-  margin-top: 5%;
-  margin-left: 4%;
+  margin-bottom: 20px;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  gap: 20px;
 }
 
 .contacto-item-container:last-child {
@@ -76,7 +81,7 @@
 .contacto-item-img {
   width: 60px;
   height: 60px;
-  margin-right: 4%;
+  margin-right: 0;
   flex-shrink: 0;
 }
 
@@ -108,10 +113,12 @@
 
 .contacto-horarios-row {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
   width: 100%;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  gap: 80px;
+  justify-content: space-between;
 }
 
 .contacto-horarios-dia {
@@ -119,7 +126,9 @@
   color: rgb(63, 72, 110);
   font-family: "Gotham Narrow", sans-serif;
   font-weight: 600;
-  margin-right: 2rem;
+  margin-right: 0;
+  margin-top: 2px;
+  margin-bottom: -2px;
 }
 
 .contacto-horarios-hora {
@@ -129,9 +138,8 @@
   font-style: italic;
   font-weight: 300;
   text-align: right;
+  white-space: nowrap;
 }
-
-
 
 .contacto-btn {
   display: flex;
@@ -298,53 +306,78 @@
 
 .contacto-right-box-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  padding-left: 3%;
-  padding-right: 4%;
+  align-items: center;
+  gap: 20px;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
 }
 
 .contacto-img-coco {
-  width: 450px;
-  height: 350px;
-  padding-left: 7%;
+  width: 280px;
+  height: 220px;
+  padding-left: -15px;
+  align-items: center;
+  margin-left: 50px;
 }
   
 .contacto-subtitulo {
   color: #fff;
-  font-size: 1.9rem;
+  font-size: 1.4rem;
   font-family: "Gotham Narrow", sans-serif;
-  padding-right: 20%;
-  padding-left: 8%;
+  padding-right: 10px;
+  padding-left: 17px;
+  text-align: start;
+  line-height: 1.5;
+  max-width: 370px;
 }
 
 
 @media screen and (max-width: 1065px) {
   .contacto {
-    padding-top: 100px;
-    padding-bottom: 0px;
-  }
-
-  .contacto-left-box {
-    width: 100%;
-    margin-right: 0px;
-    padding-left: 15px;
-  }
-
-  .contacto-right-box {
-    flex-direction: column;
-    padding-left: 0px;
-    padding-right: 0px;
-    width: unset;
+    padding-top: 60px;
+    padding-bottom: 40px;
   }
 
   .contacto-first-section {
     flex-direction: column;
-    min-width: 0px;
-    min-height: 0px;
-    margin-bottom: 10%;
-    max-width: 500px;
+    min-height: auto;
+    gap: 50px;
+    padding: 0 20px;
   }
+
+  .contacto-left-box {
+    width: 100%;
+    flex: none;
+    margin-top: 80px;
+  }
+
+  .contacto-right-box {
+    width: 100%;
+    flex: none;
+  }
+
+.contacto-horarios-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 3px;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+  .contacto-horarios-dia {
+  font-size: 1.1rem;
+  color: rgb(63, 72, 110);
+  font-family: "Gotham Narrow", sans-serif;
+  font-weight: 600;
+  margin-right: 10px;
+  margin-top: 2px;
+  margin-bottom: -2px;
+}
 
   .contacto-label {
     font-size: 2.5rem;
@@ -352,111 +385,188 @@
 
   .contacto-titulo {
     font-size: 3rem;
-  }
-
-  .contacto-img {
-    max-height: none;
-    max-width: 300px;
-  }
-
-  .contacto-checks {
-    grid-template-columns: repeat(2, 14em);
-    margin-bottom: 0px;
-  }
-
-  .contacto-btn {
-    padding: 10px;
-    display: inline-block;
-    font-size: 1.3rem;
-    height: 45px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    margin-right: 0px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .contacto-btn:hover {
-    padding: 0px;
-    padding-top: 8px;
-  }
-
-  .contacto-dias-texto {
-    font-size: 1rem;
-  }
-
-  .contacto-dias-hora {
-    font-size: 1rem;
-  }
-
-  .contacto-consulta {
-    font-size: 1rem;
-    letter-spacing: 2px;
-  }
-
-  .contacto-second-section {
-    padding-top: 50px;
-    flex-direction: column;
-  }
-
-  .contacto-second-section-label {
-    font-size: 2.3rem;
-  }
-
-  .contacto-second-section-boxes {
-    max-width: 300px;
-    flex-direction: column;
-    margin-bottom: 0px;
-  }
-
-  .form-contacto {
-    min-width: 0px;
-  }
-
-  .telefono-texto {
-    font-size: 1rem;
-  }
-
-  .telefono-hora {
-    font-size: 1rem;
+    margin-top: 0;
   }
 
   .contacto-img-coco {
-    width: 50px;
-    height: 50px;
+    width: 200px;
+    height: 160px;
+    margin-left: 110px;
   }
 
   .contacto-subtitulo {
     font-size: 1.2rem;
+    max-width: 100%;
+    margin-left: 60px;
+    margin-right: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contacto {
+    padding-top: 40px;
+  }
+
+  .contacto-first-section {
+    gap: 30px;
+    padding: 0 15px;
+  }
+
+  .contacto-horario {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .contacto-item-container {
+    margin-bottom: 20px;
+  }
+
+  .contacto-item-titulo {
+    font-size: 1.5rem;
+  }
+
+  .contacto-item-subtitulo {
+    font-size: 1rem;
+  }
+
+  .contacto-titulo {
+    font-size: 2.5rem;
+  }
+
+  .contacto-subtitulo {
+    font-size: 1.1rem;
+  }
+
+  .contacto-img-coco {
+    width: 180px;
+    height: 150px;
+  }
+
+  .contacto-right-box-content {
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contacto {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  .contacto-first-section {
+    flex-direction: column;
+    gap: 25px;
+    padding: 0 15px;
+    min-height: auto;
+  }
+
+  .contacto-left-box {
+    width: 100%;
+    align-items: center;
+  }
+
+  .contacto-right-box {
+    width: 100%;
+    align-items: center;
+  }
+
+  .contacto-label {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .contacto-titulo {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .contacto-horario {
+    width: 100%;
+    padding: 25px 15px;
+    border-radius: 20px;
+  }
+
+  .contacto-item-container {
+    margin-bottom: 18px;
+    gap: 15px;
+  }
+
+  .contacto-item-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .contacto-item-titulo {
+    font-size: 1.2rem;
+  }
+
+  .contacto-item-subtitulo {
+    font-size: 0.9rem;
+  }
+
+  .contacto-horarios-dia {
+    font-size: 1rem;
+  }
+
+  .contacto-horarios-hora {
+    font-size: 1rem;
+  }
+
+  .contacto-subtitulo {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .contacto-img-coco {
+    width: 150px;
+    height: 120px;
+  }
+
+  .contacto-right-box-content {
+    width: 100%;
+    gap: 15px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .contacto-second-section-label {
+  .contacto-first-section {
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .contacto-horario {
+    padding: 20px 12px;
+  }
+
+  .contacto-titulo {
     font-size: 1.5rem;
   }
 
-  .contacto-second-section-item {
+  .contacto-item-container {
+    margin-bottom: 15px;
+    gap: 12px;
+  }
+
+  .contacto-item-img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .contacto-item-titulo {
     font-size: 1.1rem;
   }
 
-  .contacto-second-section-item-img {
-    width: 3.5rem;
-    height: 3.5rem;
+  .contacto-item-subtitulo {
+    font-size: 0.85rem;
   }
 
-  .contacto-img-reloj {
-    margin-top: 10px;
-  }
-
-  p.contacto-dias-texto {
-    width: 110px;
-  }
   .contacto-img-coco {
-    width: 50px;
-    height: 50px;
+    width: 120px;
+    height: 100px;
   }
+
   .contacto-subtitulo {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
+    max-width: 100%;
   }
 }

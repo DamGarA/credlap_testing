@@ -84,7 +84,7 @@ export default function Contacto() {
           </div>
           <div className="contacto-rigth-box-content">
           <p className="contacto-titulo">Contactanos</p>
-          <p className="contacto-subtitulo">Estamos listos para ayudarte con tus consultas y gestiones</p>
+          <p className="contacto-subtitulo">Estamos listos para ayudarte con tus consultas y gestiones.</p>
           <img src={imgContac} className="contacto-img-coco" />
           </div>
           {/* <Link

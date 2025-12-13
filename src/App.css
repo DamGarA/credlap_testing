@@ -80,6 +80,13 @@
   font-style: italic;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Titillium Web', sans-serif;
+}
+
 html,
 body {
   height: 100%;
@@ -89,50 +96,68 @@ body {
   display: contents;
 }
 
-/* ----------------------------------------------------------
-   CONTENEDOR DE ICONOS FLOTANTES (WHATSAPP + LLAMAR + COLGAR)
-   ---------------------------------------------------------- */
+
+/* =========================
+   COLUMNA FLOTANTE REAL
+   ========================= */
 .floating-icons {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
+  right: 16px;
+  bottom: 80px;
+  z-index: 10000;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 4px;
 }
 
-/* Tamaño estándar de todos los íconos flotantes */
+/* TODOS los hijos ocupan el MISMO ancho y altura */
+.floating-icons > * {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Asegurar que todas las imágenes dentro tengan tamaño consistente */
 .floating-icons img {
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
 }
 
 /* ----------------------------------------------------------
    CLICK2CALL (SE DEJA CON SU LÓGICA ORIGINAL)
    ---------------------------------------------------------- */
 #click2call {
-  position: relative; /* Ya no fixed para que el script funcione */
+  position: static; /* Ya no fixed para que el script funcione */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 60px;
-  margin-right: -25px;
+  gap: 24px;
 }
 
-/* Ocultamos el ícono de colgar por defecto — así era antes */
-#click2call_hupbtn {
-  display: none;
+/* IMPORTANTE: evita desalineado */
+#click2call a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
 }
 
 #click2call a img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* #click2call a img {
   width: 60px;
   height: 60px;
-}
+} */
 
 #click2call_msgdiv {
   display: none;
@@ -141,12 +166,31 @@ body {
 /* ----------------------------------------------------------
    WHATSAPP VERIFICADO
    ---------------------------------------------------------- */
-.img-wp-verificado img {
-  width: 70px;
-  height: 70px;
-  margin-right: -10px;
+.img-wp-verificado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
 }
 
+.img-wp-verificado img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* =========================
+   ZOHO CHAT (FORZADO A LA COLUMNA)
+   ========================= */
+iframe[src*="zoho"],
+#zsiq_float {
+  position: static !important;
+  margin: 0 !important;
+  width: 60px !important;
+  height: 60px !important;
+  flex-shrink: 0 !important;
+}
 /* ----------------------------------------------------------
    ÍCONO DE WHATSAPP ORIGINAL OCULTO
    ---------------------------------------------------------- */
@@ -165,18 +209,42 @@ body {
 /* ----------------------------------------------------------
    RESPONSIVE
    ---------------------------------------------------------- */
-@media screen and (max-width: 1065px) {
-  #root {
-    display: block;
-  }
-
+@media (max-width: 768px) {
   .floating-icons {
-    bottom: 10px;
-    right: 10px;
+    right: 12px;
+    bottom: 80px;
+    gap: 4px;
   }
 
-  .floating-icons img,
-  #click2call a img,
+  .floating-icons > * {
+    width: 48px;
+    height: 48px;
+  }
+
+  .floating-icons img {
+    width: 48px;
+    height: 48px;
+  }
+
+  #click2call {
+    gap: 4px;
+  }
+
+  #click2call a {
+    width: 48px;
+    height: 48px;
+  }
+
+  #click2call a img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .img-wp-verificado {
+    width: 48px;
+    height: 48px;
+  }
+
   .img-wp-verificado img {
     width: 48px;
     height: 48px;
