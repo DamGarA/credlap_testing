@@ -269,8 +269,7 @@ export default function Solicitud() {
           });
         }, 1000);
     else {
-    //enviarSolicitud(formSolicitud, handleSolicitudResponse);
-    console.log("solicituuuuud", formSolicitud)
+    enviarSolicitud(formSolicitud, handleSolicitudResponse);
     setEstadoActual("enviando");
   }}
 
