@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Contacto.css";
 import imgReloj from "../../images/reloj.png";
-import imgWhatsapp from "../../images/whatsapp.png";
+import imgEmail from "../../images/Contacto-mail.png";
+import imgChat from "../../images/Icono-chat.png";
 import imgTel from "../../images/icono-telefono.png";
+import imgContac from "../../images/coco-contacto.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { Link } from "react-router-dom";
@@ -21,30 +23,47 @@ export default function Contacto() {
     <div className="contacto">
       <div className="contacto-first-section">
         <div className="contacto-left-box">
-          <p className="contacto-titulo">Contactanos</p>
           <div className="contacto-horario">
-            <div className="telefono-titulo-container">
-              <img src={imgTel} className="telefono-img-reloj" />
-              <p className="telefono-label-horarios">Llamanos</p>
-            </div>
-            <div className="telefono-container">
-              <div className="telefono">
-                <p className="telefono-texto">Teléfono:</p>
-                <p className="telefono-hora">0810-220-0570</p>
+            {/* CHATEÁ */}
+            <div className="contacto-item-container">
+              <img src={imgChat} className="contacto-item-img" />
+              <div className="contacto-item-content">
+                <p className="contacto-item-titulo">Chateá</p>
+                <p className="contacto-item-subtitulo">Disponibles las 24 horas</p>
               </div>
             </div>
-            <div className="contacto-titulo-container">
-              <img src={imgReloj} className="contacto-img-reloj" />
-              <p className="contacto-label-horarios">Horarios</p>
-            </div>
-            <div className="contacto-dias-container">
-              <div className="contacto-dias">
-                <p className="contacto-dias-texto">Lunes a Viernes</p>
-                <p className="contacto-dias-hora">09:30hs - 16:00hs</p>
+
+            {/* LLAMANOS */}
+            <div className="contacto-item-container">
+              <img src={imgTel} className="contacto-item-img" />
+              <div className="contacto-item-content">
+                <p className="contacto-item-titulo">Llamanos</p>
+                <p className="contacto-item-subtitulo">0810-220-0570</p>
               </div>
-              <div className="contacto-dias">
-                <p className="contacto-dias-texto">Feriados</p>
-                <p className="contacto-dias-hora">09:30hs - 13:30hs</p>
+            </div>
+
+            {/* CONSULTANOS */}
+            <div className="contacto-item-container">
+              <img src={imgEmail} className="contacto-item-img" />
+              <div className="contacto-item-content">
+                <p className="contacto-item-titulo">Consultanos</p>
+                <p className="contacto-item-subtitulo">consultas@credlap.com</p>
+              </div>
+            </div>
+
+            {/* HORARIOS */}
+            <div className="contacto-item-container">
+              <img src={imgReloj} className="contacto-item-img" />
+              <div className="contacto-item-content">
+                <p className="contacto-item-titulo">Horarios</p>
+                <div className="contacto-horarios-row">
+                  <span className="contacto-horarios-dia">Lunes a Viernes</span>
+                  <span className="contacto-horarios-hora">09:30hs - 16:00hs</span>
+                </div>
+                <div className="contacto-horarios-row">
+                  <span className="contacto-horarios-dia">Feriados</span>
+                  <span className="contacto-horarios-hora">09:30hs - 13:30hs</span>
+                </div>
               </div>
             </div>
           </div>
@@ -63,7 +82,12 @@ export default function Contacto() {
               Hablar
             </Link>
           </div>
-          <Link
+          <div className="contacto-rigth-box-content">
+          <p className="contacto-titulo">Contactanos</p>
+          <p className="contacto-subtitulo">Estamos listos para ayudarte con tus consultas y gestiones.</p>
+          <img src={imgContac} className="contacto-img-coco" />
+          </div>
+          {/* <Link
             to={"//www.facebook.com/credlap/"}
             className="contacto-btn facebook"
             target={"_blank"}
@@ -95,7 +119,7 @@ export default function Contacto() {
               className="contacto-btn-icon"
             />
             Twitter
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

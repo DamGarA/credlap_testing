@@ -22,10 +22,12 @@ import DefensaConsumidor from "./components/pages/DefensaConsumidor";
 import imgWp from "./images/wp.png";
 import imgLlamar from "./images/llamar.png";
 import imgColgar from "./images/colgar.png";
+import imgWpVerificado from "./images/Whatsapp_icono_verificado.png";
 import SolicitudResultado from "./components/pages/SolicitudResultado";
 import Nosotros from "./components/pages/Nosotros";
 import FormPBA from "./components/pages/FormPBA";
 import Servicios from "./components/pages/Servicios";
+import Institucional from "./components/pages/Institucional";
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -52,14 +54,18 @@ const Wrapper = ({ children }) => {
   }, [location.pathname]);
   return children;
 };
+
 function App() {
   const urlParams = new URLSearchParams(window.location.search);
+
   return (
     <Router>
       <Wrapper>
         <Navbar />
+
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/institucional" element={<Institucional />} />
           <Route path="/paga-tu-cuota" element={<PagaTuCuota />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/legal-tyc" element={<TerminosYCondiciones />} />
@@ -79,32 +85,51 @@ function App() {
           <Route path="/form-pba" element={<FormPBA />} />
           <Route path="/servicios" element={<Servicios />} />
         </Routes>
+
         <Footer />
-        <div id="click2call" align="end">
-          <a id="click2call_callbtn">
+
+{/* CONTENEDOR GENERAL PARA ORDENAR LOS ICONOS */}
+<div className="floating-icons">
+
+    {/* 1. WhatsApp verificado */}
+    <Link
+        to={"//api.whatsapp.com/send?phone=" + window.flotante.wsp}
+        className="img-wp-verificado"
+        target="_blank"
+    >
+        <img src={imgWpVerificado} />
+    </Link>
+
+    {/* 2. CLICK2CALL (no lo movemos — queda intacto) */}
+    <div id="click2call">
+        <a id="click2call_callbtn">
             <img src={imgLlamar} />
-          </a>
-          <a id="click2call_hupbtn">
+        </a>
+
+        <a id="click2call_hupbtn" style={{ display: "none" }}>
             <img src={imgColgar} />
-          </a>
-          <div id="click2call_msgdiv"></div>
-          <div style={{ visibility: "hidden", display: "none" }}>
+        </a>
+
+        <div id="click2call_msgdiv"></div>
+
+        {/* ESTO NO SE MUEVE — requerido para ANURA */}
+        <div style={{ visibility: "hidden", display: "none" }}>
             <input id="click2call_user" defaultValue="300" />
-            <input
-              id="click2call_domain"
-              defaultValue="wamafego.grancentral.com.ar"
-            />
+            <input id="click2call_domain" defaultValue="wamafego.grancentral.com.ar" />
             <input id="click2call_password" defaultValue="300@73ed" />
             <input id="click2call_number" defaultValue="100" />
-            <input
-              id="click2call_host"
-              defaultValue="wss://webrtc.anura.com.ar:9084"
-            />
-          </div>
-          <div id="media" style={{ visibility: "hidden", display: "none" }}>
-            <video width={800} id="webcam" autoPlay="autoplay" hidden={true} />
-          </div>
+            <input id="click2call_host" defaultValue="wss://webrtc.anura.com.ar:9084" />
         </div>
+
+        <div id="media" style={{ visibility: "hidden", display: "none" }}>
+            <video width={800} id="webcam" autoPlay="autoplay" hidden={true} />
+        </div>
+    </div>
+
+</div>
+
+
+        {/* Imagen oculta que no tocamos */}
         <div hidden>
           <Link
             to={"//api.whatsapp.com/send?phone=" + window.flotante.wsp}

@@ -72,24 +72,11 @@ function Navbar() {
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
             <Link
-              to="/"
-              className={currentPath === "/" ? "nav-links active" : "nav-links"}
+              to="/institucional"
+              className={currentPath === "/institucional" ? "nav-links active" : "nav-links"}
               onClick={closeMobileMenu}
             >
-              INICIO
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/paga-tu-cuota"
-              className={
-                currentPath === "/paga-tu-cuota"
-                  ? "nav-links active"
-                  : "nav-links"
-              }
-              onClick={closeMobileMenu}
-            >
-              PAGÁ TU CUOTA
+              INSTITUCIONAL
             </Link>
           </li>
           <li
@@ -100,7 +87,8 @@ function Navbar() {
             <div
               className={
                 currentPath.includes("contacto") ||
-                currentPath.includes("nosotros")
+                currentPath.includes("nosotros") ||
+                currentPath.includes("ayuda")
                   ? "nav-links expandible active"
                   : "nav-links expandible"
               }
@@ -154,7 +142,20 @@ function Navbar() {
               SERVICIOS
             </Link>
           </li>
-          <li className="nav-item">
+                    <li className="nav-item">
+            <Link
+              to="/paga-tu-cuota"
+              className={
+                currentPath === "/paga-tu-cuota"
+                  ? "nav-links active"
+                  : "nav-links"
+              }
+              onClick={closeMobileMenu}
+            >
+              PAGÁ TU CUOTA
+            </Link>
+          </li>
+          {/* <li className="nav-item">
             <Link
               to="/ayuda"
               className={
@@ -164,7 +165,7 @@ function Navbar() {
             >
               AYUDA
             </Link>
-          </li>
+          </li> */}
           <li className="nav-item only-mobile">
             <Link
               to="/solicitar-prestamo"
