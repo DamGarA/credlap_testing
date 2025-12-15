@@ -175,8 +175,8 @@ body {
 }
 
 .img-wp-verificado img {
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
 }
 
@@ -213,7 +213,7 @@ iframe[src*="zoho"],
   .floating-icons {
     right: 12px;
     bottom: 80px;
-    gap: 4px;
+    gap: 6px;
   }
 
   .floating-icons > * {
@@ -246,7 +246,7 @@ iframe[src*="zoho"],
   }
 
   .img-wp-verificado img {
-    width: 48px;
-    height: 48px;
+    width: 58px;
+    height: 58px;
   }
 }
