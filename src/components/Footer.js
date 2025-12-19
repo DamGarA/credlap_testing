@@ -46,14 +46,8 @@ export default function Footer() {
               </Link>
             </div>
             <div className="social">
-              {/* <Link
-                to={"//www.facebook.com/credlap/"}
-                className="social-link"
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={brands("facebook-f")} />
-              </Link> */}
-                           <div
+
+              <div
                 className={`fb-popover ${fbOpen ? "open" : ""}`}
                 ref={fbRef}
               >
@@ -67,7 +61,7 @@ export default function Footer() {
 
                 <div className="fb-menu">
                   <a
-                    href="https://facebook.com/administracion"
+                    href="https://www.facebook.com/p/Credlap-SA-61583349664257/"
                     target="_blank"
                     rel="noreferrer"
                     className="fb-row"
@@ -76,11 +70,11 @@ export default function Footer() {
                     <span className="fb-circle">
                       <FontAwesomeIcon icon={brands("facebook-f")} />
                     </span>
-                    <span className="fb-text">/Administración</span>
+                    <span className="fb-text">Cuenta secundaria</span>
                   </a>
 
                   <a
-                    href="https://facebook.com/soporte"
+                    href="https://www.facebook.com/profile.php?id=61584011066812"
                     target="_blank"
                     rel="noreferrer"
                     className="fb-row"
@@ -89,11 +83,11 @@ export default function Footer() {
                     <span className="fb-circle">
                       <FontAwesomeIcon icon={brands("facebook-f")} />
                     </span>
-                    <span className="fb-text">/Soporte</span>
+                    <span className="fb-text">Sucursal Noreste</span>
                   </a>
 
                   <a
-                    href="https://facebook.com/comercial"
+                    href="https://www.facebook.com/profile.php?id=61584000147291"
                     target="_blank"
                     rel="noreferrer"
                     className="fb-row"
@@ -102,10 +96,49 @@ export default function Footer() {
                     <span className="fb-circle">
                       <FontAwesomeIcon icon={brands("facebook-f")} />
                     </span>
-                    <span className="fb-text">/Comercial</span>
+                    <span className="fb-text">Sucursal Noroeste</span>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61584083664572"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="fb-row"
+                    onMouseDown={() => setFbOpen(false)}
+                  >
+                    <span className="fb-circle">
+                      <FontAwesomeIcon icon={brands("facebook-f")} />
+                    </span>
+                    <span className="fb-text">Sucursal Centro</span>
+                  </a>
+
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61583883302850"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="fb-row"
+                    onMouseDown={() => setFbOpen(false)}
+                  >
+                    <span className="fb-circle">
+                      <FontAwesomeIcon icon={brands("facebook-f")} />
+                    </span>
+                    <span className="fb-text">Sucursal Centro Oeste</span>
+                  </a>
+
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61584230571742"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="fb-row"
+                    onMouseDown={() => setFbOpen(false)}
+                  >
+                    <span className="fb-circle">
+                      <FontAwesomeIcon icon={brands("facebook-f")} />
+                    </span>
+                    <span className="fb-text">Sucursal Sur</span>
                   </a>
                 </div>
               </div>
+
               <Link
                 to={"https://www.instagram.com/credlap.ok/"}
                 className="social-link"
@@ -121,6 +154,7 @@ export default function Footer() {
                 <FontAwesomeIcon icon={brands("x-twitter")} />
               </Link>
             </div>
+
             <div className="footer-mail">
               <a href="mailto:consultas@credlap.com">consultas@credlap.com</a>
             </div>

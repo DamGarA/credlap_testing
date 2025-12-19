@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useRef } from "react";
+
 // HERO + ICONOS
 import heroBg from "../../images/hero-institucional.png";
 import iconGestion from "../../images/icon-gestion.png";
@@ -33,6 +35,21 @@ import iconWhatsapp from "../../images/icono-whatsapp.png";
 import "./Institucional.css";
 
 export default function Institucional() {
+  const sliderRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (!sliderRef.current) return;
+
+    if (window.innerWidth > 768) return;
+
+    const width = sliderRef.current.offsetWidth;
+
+    sliderRef.current.scrollBy({
+      left: direction === "left" ? -width : width,
+      behavior: "smooth"
+    });
+  };
+
   return (
     <div className="institucional page-container">
       {/* HERO */}
@@ -49,14 +66,11 @@ export default function Institucional() {
               </h1>
 
               <p className="hero-desc">
-                Una sociedad que transforma ideas en
-                <br />
-                realidades y construye valor en múltiples
-                <br />
-                mercados.
+                Una sociedad que transforma ideas en realidades y construye
+                valor en múltiples mercados.
               </p>
 
-              <a href="/explorar-negocios" className="hero-cta">
+              <a href="#marcas" className="hero-cta">
                 EXPLORAR NEGOCIOS
               </a>
             </div>
@@ -210,56 +224,99 @@ export default function Institucional() {
       </section>
 
       {/* MARCAS DESTACADAS */}
-      <section className="marcas-section">
+      <section className="marcas-section" id="marcas">
         <div className="marcas-container">
           <h2 className="section-title">Marcas Destacadas</h2>
-          <div className="marcas-grid">
-            <article className="marca-card-feature">
-              <div className="marca-image-wrap">
-                <img src={marcaCredlap} alt="Credlap" />
-              </div>
-              <div className="marca-body">
-                <div className="marca-kicker credlap">CREDLAP</div>
-                <h3 className="marca-title">
-                  Inversión y Servicios Financieros
-                </h3>
-                <p className="marca-desc">
-                  Más de 10 años potenciando tu futuro con el crédito más
-                  simple.
-                </p>
-                <button className="marca-btn blue">VISITAR CREDLAP</button>
-              </div>
-            </article>
 
-            <article className="marca-card-feature">
-              <div className="marca-image-wrap">
-                <img src={marcaMacedo} alt="Macedo" />
-              </div>
-              <div className="marca-body">
-                <div className="marca-kicker macedo">REFUGIO MACEDO</div>
-                <h3 className="marca-title">Experiencia Gastronómica Única</h3>
-                <p className="marca-desc">
-                  Sabor y armonía en el refugio perfecto en las afueras de La
-                  Plata.
-                </p>
-                <button className="marca-btn green">DESCUBRIR MACEDO</button>
-              </div>
-            </article>
+          <div className="marcas-slider">
+            <button
+              className="marca-arrow left"
+              aria-label="Anterior"
+              onClick={() => scroll("left")}
+            >
+              ‹
+            </button>
 
-            <article className="marca-card-feature">
-              <div className="marca-image-wrap">
-                <img src={marcaAmarilla} alt="Amarilla" />
-              </div>
-              <div className="marca-body">
-                <div className="marca-kicker cerveza">CERVEZA AMARILLA</div>
-                <h3 className="marca-title">Cerveza Artesanal con Carácter</h3>
-                <p className="marca-desc">
-                  Pasión artesanal en cada pinta. Pequeña productora con estilos
-                  audaces.
-                </p>
-                <button className="marca-btn yellow">CONOCER AMARILLA</button>
-              </div>
-            </article>
+            <div className="marcas-grid" ref={sliderRef}>
+              <article className="marca-card-feature">
+                <div className="marca-image-wrap">
+                  <img src={marcaCredlap} alt="Credlap" />
+                </div>
+                <div className="marca-body">
+                  <div className="marca-kicker credlap">CREDLAP</div>
+                  <h3 className="marca-title">
+                    Inversión y Servicios Financieros
+                  </h3>
+                  <p className="marca-desc">
+                    Más de 10 años potenciando tu futuro con el crédito más
+                    simple.
+                  </p>
+                  <a
+                    href="https://wa.me/5492215462961"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="marca-btn blue"
+                  >
+                    VISITAR CREDLAP
+                  </a>
+                </div>
+              </article>
+
+              <article className="marca-card-feature">
+                <div className="marca-image-wrap">
+                  <img src={marcaMacedo} alt="Macedo" />
+                </div>
+                <div className="marca-body">
+                  <div className="marca-kicker macedo">REFUGIO MACEDO</div>
+                  <h3 className="marca-title">
+                    Experiencia Gastronómica Única
+                  </h3>
+                  <p className="marca-desc">
+                    Sabor y armonía en el refugio perfecto en las afueras de La
+                    Plata.
+                  </p>
+                  <a
+                    href="https://wa.me/5492216901832"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="marca-btn green"
+                  >
+                    DESCUBRIR MACEDO
+                  </a>
+                </div>
+              </article>
+
+              <article className="marca-card-feature">
+                <div className="marca-image-wrap">
+                  <img src={marcaAmarilla} alt="Amarilla" />
+                </div>
+                <div className="marca-body">
+                  <div className="marca-kicker cerveza">CERVEZA AMARILLA</div>
+                  <h3 className="marca-title">
+                    Cerveza Artesanal con Carácter
+                  </h3>
+                  <p className="marca-desc">
+                    Pasión artesanal en cada pinta. Pequeña productora con
+                    estilos audaces.
+                  </p>
+                  <a
+                    href="https://wa.me/5492216046790"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="marca-btn yellow"
+                  >
+                    CONOCER AMARILLA
+                  </a>
+                </div>
+              </article>
+            </div>
+            <button
+              className="marca-arrow right"
+              aria-label="Siguiente"
+              onClick={() => scroll("right")}
+            >
+              ›
+            </button>
           </div>
         </div>
       </section>
