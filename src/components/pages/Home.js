@@ -6,7 +6,7 @@ import imgHomeBox1 from "../../images/home-box-1.png";
 import imgHomeBox2 from "../../images/home-box-2.png";
 import imgHomeBox3 from "../../images/home-box-3.png";
 import imgCocoHome from "../../images/Portada_Desktop.png";
-import imgCocoHomeCelu from "../../images/Portada_Mobile.png";
+import imgCocoHomeCelu from "../../images/Portada_Mobille.png";
 import imgSecondSectionBottom from "../../images/home-back-second-section-bottom.png";
 import imgThirdSection1 from "../../images/home-third-section-1.png";
 import imgThirdSection2 from "../../images/home-third-section-2.png";
