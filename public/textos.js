@@ -33,7 +33,7 @@ window.footer = {
 	}
 }
 window.flotante = {
-	wsp: "5491145630828"
+	wsp: "5492215462961"
 }
 
 window.cv = {

@@ -363,10 +363,10 @@ export default function Institucional() {
           </div>
 
           <div className="cta-band-right">
-            <a className="band-icon" href="mailto:contacto@credlap.com">
+            <a className="band-icon" href="mailto:administracion@credlap.com">
               <img src={iconEmail} alt="email" />
             </a>
-            <a className="band-icon" href="https://wa.me/">
+            <a className="band-icon" href="https://wa.me/5491178312678" target="_blank" rel="noopener noreferrer">
               <img src={iconWhatsapp} alt="whatsapp" />
             </a>
           </div>

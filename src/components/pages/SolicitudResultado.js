@@ -34,7 +34,7 @@ export default function SolicitudResultado({ resultado }) {
               - Selfie sosteniendo tu DNI, te dejamos un <a target="_blank" rel="noopener noreferrer" href="https://workdrive.zohoexternal.com/external/29b4e2c67fae1d09c1b50938e5b99aa465997df7de86fa97afd3f555cc3a20e6 ">tutorial</a>
               </p>
               <p className="pre-aprobado-text">  
-              - Comprobante de ingresos
+              - Comprobante de ingresos (si no tenés, recordá que es necesario contar con CBU a tu nombre)
               </p>
               <p className="pre-aprobado-text">  
               - En el cuerpo del mail debes agregar apellido, nombre y número de WhatsApp

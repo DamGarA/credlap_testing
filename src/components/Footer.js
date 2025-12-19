@@ -70,7 +70,7 @@ export default function Footer() {
                     <span className="fb-circle">
                       <FontAwesomeIcon icon={brands("facebook-f")} />
                     </span>
-                    <span className="fb-text">Cuenta secundaria</span>
+                    <span className="fb-text">Casa matriz</span>
                   </a>
 
                   <a
