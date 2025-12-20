@@ -93,7 +93,7 @@ function App() {
 
     {/* 1. WhatsApp verificado */}
     <Link
-        to={"//api.whatsapp.com/send?phone=" + window.flotante.wsp}
+        to={"//api.whatsapp.com/send?phone=5492215462961"}
         className="img-wp-verificado"
         target="_blank"
     >
@@ -132,7 +132,7 @@ function App() {
         {/* Imagen oculta que no tocamos */}
         <div hidden>
           <Link
-            to={"//api.whatsapp.com/send?phone=" + window.flotante.wsp}
+            to={"//api.whatsapp.com/send?phone=5492215462961"}
             className="img-wp"
             target="_blank"
           >
