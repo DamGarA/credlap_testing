@@ -201,7 +201,7 @@ export default function Footer() {
           </div>
           <div className="footer-button-col">
             <Link
-              to={"//www.bcra.gob.ar/BCRAyVos/Regimen_de_transparencia.asp"}
+              to={"https://www.bcra.gob.ar/regimen-de-transparencia/"}
               target="_blank"
               className="form-button footer-button"
             >
@@ -250,7 +250,7 @@ export default function Footer() {
         </Link>
         <Link
           to={
-            "//www.bcra.gob.ar/SistemasFinancierosYdePagos/Proveedores_no_financieros.asp"
+            "https://www.bcra.gob.ar/proveedores-no-financieros/"
           }
           target="_blank"
         >

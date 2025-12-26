@@ -25,7 +25,8 @@ export default function InfoAlUsuario() {
         <div className="info-usuario-video-container">
           <iframe
             className="info-usuario-video"
-            src="https://www.youtube.com/embed/kE-209lfc_o"
+            //src="https://www.youtube.com/embed/kE-209lfc_o"
+            src="https://www.youtube.com/embed/uFJrdlHBGLY"
             title="Usuarios financieros"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
