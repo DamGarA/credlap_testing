@@ -201,7 +201,7 @@ export default function Footer() {
           </div>
           <div className="footer-button-col">
             <Link
-              to={"https://www.bcra.gob.ar/regimen-de-transparencia/"}
+              to={"https://www.bcra.gob.ar/regimen-de-transparencia"}
               target="_blank"
               className="form-button footer-button"
             >
@@ -222,7 +222,7 @@ export default function Footer() {
           </div>
           <div className="footer-button-col logo-afip-container">
             <a
-              href="http://qr.afip.gob.ar/?qr=_Ud1_-TlSOYCD3vKUBUU1w,,"
+              href="https://workdrive.zohoexternal.com/external/5921be67aac5708d7cb7f0536d285ea704c6bad05ed2fb57cc05f665479bc111"
               target="_blank"
               rel="noreferrer"
             >
@@ -369,7 +369,7 @@ export default function Footer() {
         <p className="derechos-text">
           Desde 23/05/2022 todos los derechos reservados
           <br></br>
-          Credlap SA&nbsp;&nbsp;|&nbsp;&nbsp;2025
+          Credlap SA&nbsp;&nbsp;|&nbsp;&nbsp;2026
         </p>
         <p style={{ textAlign: "center" }}>
           Desarrollado por{" "}
