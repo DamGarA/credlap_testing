@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 import "./Servicios.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import CargaSube from "./CargaSube";
+import RecargaSaldo from "./RecargaSaldo";
+import PagarFactura from "./PagarFactura";
 
 import imgPortada from "../../images/images_services/PORTADA.png";
 import imgServicio1 from "../../images/images_services/FINANCIACION-ELECTRODOMESTICOS-FRENTE.png";
@@ -24,9 +27,9 @@ import imgReintegro1 from "../../images/images_services/REINTEGRO-MEDICO-ICONO.p
 import imgReintegro2 from "../../images/images_services/REINTEGRO-CASAMIENTO-ICONO.png";
 import imgReintegro3 from "../../images/images_services/REINTEGRO-MATERNIDAD-ICONO.png";
 import imgReintegro4 from "../../images/images_services/REINTEGRO-DEFUNCION-ICONO.png";
-import imgMuyPronto1 from "../../images/images_services/NUEVO-CARGADETRANSPORTE.png"
-import imgMuyPronto2 from "../../images/images_services/NUEVO-RECARGACELULAR.png"
-import imgMuyPronto3 from "../../images/images_services/NUEVO-PAGOFACTURA.png"
+import imgMuyPronto1 from "../../images/images_services/NUEVO-CARGADETRANSPORTE.png";
+import imgMuyPronto2 from "../../images/images_services/NUEVO-RECARGACELULAR.png";
+import imgMuyPronto3 from "../../images/images_services/NUEVO-PAGOFACTURA.png";
 
 import Carousel from "react-simply-carousel";
 
@@ -39,8 +42,14 @@ export default function Servicios() {
   //   };
   // }, []);
 
+  const navigate = useNavigate();
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [activeSlideIndex2, setActiveSlideIndex2] = useState(0);
+
+  // Referencias para scroll
+  const cargaSubeRef = useRef(null);
+  const recargaSaldoRef = useRef(null);
+  const pagarFacturaRef = useRef(null);
 
   function handleSlideChange(newActiveSlideIndex) {
     setActiveSlideIndex(newActiveSlideIndex);
@@ -48,6 +57,19 @@ export default function Servicios() {
 
   function handleSlideChange2(newActiveSlideIndex) {
     setActiveSlideIndex2(newActiveSlideIndex);
+  }
+
+  // Funciones de scroll
+  function scrollToCargaSube() {
+    cargaSubeRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function scrollToRecargaSaldo() {
+    recargaSaldoRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function scrollToPagarFactura() {
+    pagarFacturaRef.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (
@@ -70,38 +92,82 @@ export default function Servicios() {
         </div>
       </div>
       <div className="servicios-muyPronto-section-fondo">
-      <div className="servicios-muyPronto-section">
-        <div className="servicios-muyPronto-left">
-          <p className="servicios-muyPronto-label">Muy pronto...</p>
-          <h2 className="servicios-muyPronto-title">
-            <span className="bold">¡100% recargado!</span>
-          </h2>
-          <h2 className="servicios-muyPronto-title">
-            <span className="italic-title">Nuevos servicios para que resuelvas todo desde un mismo lugar: </span>
-          </h2>
+        <div className="servicios-muyPronto-section">
+          <div className="servicios-muyPronto-left">
+            <p className="servicios-muyPronto-label">100% recargado</p>
+            <h2 className="servicios-muyPronto-title">
+              <span className="italic-title">
+                Nuevos servicios para que resuelvas todo desde un mismo lugar:{" "}
+              </span>
+            </h2>
+          </div>
+
+          <div className="servicios-muyPronto-right">
+            <div className="servicio-item" onClick={scrollToCargaSube}>
+              <div className="servicio-icon-circle">
+                <img src={imgMuyPronto1} alt="Carga SUBE" />
+              </div>
+              <button className="servicio-pill">Cargar SUBE</button>
+            </div>
+
+            <div className="servicio-item" onClick={scrollToRecargaSaldo}>
+              <div className="servicio-icon-circle">
+                <img src={imgMuyPronto2} alt="Recargar saldo" />
+              </div>
+              <button className="servicio-pill">Recargar saldo</button>
+            </div>
+
+            <div className="servicio-item" onClick={scrollToPagarFactura}>
+              <div className="servicio-icon-circle">
+                <img src={imgMuyPronto3} alt="Pagar factura" />
+              </div>
+              <button className="servicio-pill">Pagar factura</button>
+            </div>
+          </div>
         </div>
 
-        <div className="servicios-muyPronto-right">
-          <div className="servicios-icon-box">
-            <img src={imgMuyPronto1} alt="Carga de SUBE" />
-            <p>Carga de SUBE</p>
-          </div>
-          <div className="servicios-icon-box">
-            <img src={imgMuyPronto2} alt="Recarga de crédito" />
-            <p>Recarga de crédito</p>
-          </div>
-          <div className="servicios-icon-box">
-            <img src={imgMuyPronto3} alt="Pago de facturas y servicios" />
-            <p>Pago de facturas <br /> y servicios</p>
+        {/* SECCIÓN TUS CUPONES DE DESCUENTO */}
+        <div className="servicios-cupones-section">
+          <div className="servicios-cupones-header">
+            <h2 className="servicios-cupones-title">
+              TUS CUPONES DE{" "}
+              <span className="servicios-cupones-descuento">descuento</span>
+            </h2>
           </div>
         </div>
-      </div>
+
+        <div className="servicios-divider"></div>
+
+        {/* SECCIÓN FORMULARIOS DE SERVICIOS */}
+        <section ref={cargaSubeRef} className="servicio-form-section">
+          <CargaSube />
+        </section>
+
+        <div className="servicios-divider"></div>
+
+         <section
+          ref={recargaSaldoRef} className="servicio-form-section"
+        >
+          <RecargaSaldo />
+        </section>
+
+        <div className="servicios-divider"></div>
+
+        <section
+          ref={pagarFacturaRef} className="servicio-form-section"
+        >
+          <PagarFactura />
+        </section>
+
       </div>
       <div className="servicios-second-section">
         <div className="servicios-second-section-label-box">
           <p className="servicios-second-section-label">
             Financia
-            <span className="servicios-label-inner"> tus productos y servicios</span>
+            <span className="servicios-label-inner">
+              {" "}
+              tus productos y servicios
+            </span>
           </p>
         </div>
         <div className="servicios-second-section-boxes">
@@ -154,7 +220,9 @@ export default function Servicios() {
             />
             <div className="servicios-box-links">
               <Link
-                to={"https://www.instagram.com/refugiomacedook?igsh=MjJrNnBvOWFobGJm"}
+                to={
+                  "https://www.instagram.com/refugiomacedook?igsh=MjJrNnBvOWFobGJm"
+                }
                 className="servicio-contacto-btn servicio-instagram"
                 target={"_blank"}
               >
@@ -173,7 +241,7 @@ export default function Servicios() {
                   className="servicio-contacto-btn-icon"
                 />
               </Link>
-          </div> 
+            </div>
           </div>
         </div>
       </div>
@@ -227,7 +295,7 @@ export default function Servicios() {
             <div className="servicios-third-section-box">
               <Carousel
                 containerProps={{
-                  className: "carousel-container",
+                  className: "carousel-container"
                 }}
                 activeSlideIndex={activeSlideIndex}
                 onRequestChange={handleSlideChange}
@@ -235,15 +303,15 @@ export default function Servicios() {
                 itemsToScroll={1}
                 speed={400}
                 forwardBtnProps={{
-                  className: "carousel-btn-right",
+                  className: "carousel-btn-right"
                 }}
                 backwardBtnProps={{
-                  className: "carousel-btn-left",
+                  className: "carousel-btn-left"
                 }}
                 innerProps={{
                   style: {
-                    borderRadius: "20px",
-                  },
+                    borderRadius: "20px"
+                  }
                 }}
               >
                 <div className="servicios-carousel-container">
@@ -382,11 +450,21 @@ export default function Servicios() {
       </div>
       <div className="servicios-fifth-section">
         <p className="servicios-fifth-section-text">
-        Para acceder, consultar tu aprobación, disponibilidad, informarte o categorizar el servicio, podés contactarte por nuestro chatbot.
-        <br></br>
-        Activación de servicios: Los servicios se activan con el primer pago de los mismos, son obtenidos por solicitud personal o por el incurrimiento en mora de otros servicios contraídos, los vencimientos incumplidos activan los servicios en su totalidad, en tal caso los servicios se cobrarán desde la fecha de alta hasta la solicitud de baja, teniendo como mínimo de pago 12 cuotas y máximo hasta la solicitud de baja. El mutuo contraído y cancelado no exime al titular del cobro de las cuotas de servicio, Credlap® analizará pagos en término y tomará la decisión de aplicar las cuotas correspondientes entre los mínimos y máximos estipulados.
-        <br></br>
-        Valor del servicio $19999,99.
+          Para acceder, consultar tu aprobación, disponibilidad, informarte o
+          categorizar el servicio, podés contactarte por nuestro chatbot.
+          <br></br>
+          Activación de servicios: Los servicios se activan con el primer pago
+          de los mismos, son obtenidos por solicitud personal o por el
+          incurrimiento en mora de otros servicios contraídos, los vencimientos
+          incumplidos activan los servicios en su totalidad, en tal caso los
+          servicios se cobrarán desde la fecha de alta hasta la solicitud de
+          baja, teniendo como mínimo de pago 12 cuotas y máximo hasta la
+          solicitud de baja. El mutuo contraído y cancelado no exime al titular
+          del cobro de las cuotas de servicio, Credlap® analizará pagos en
+          término y tomará la decisión de aplicar las cuotas correspondientes
+          entre los mínimos y máximos estipulados.
+          <br></br>
+          Valor del servicio $19999,99.
         </p>
         <Link
           to={
@@ -398,7 +476,6 @@ export default function Servicios() {
           Ver aceptación de los servicios
         </Link>
       </div>
-
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Home from "./components/pages/Home";
 import Solicitud from "./components/pages/Solicitud";
+import CargaSube from "./components/pages/CargaSube";
 import {
   BrowserRouter as Router,
   Link,
@@ -72,6 +73,7 @@ function App() {
           <Route path="/legal-privacidad" element={<PoliticasDePrivacidad />} />
           <Route path="/ayuda" element={<Ayuda />} />
           <Route path="/solicitar-prestamo" element={<Solicitud />} />
+          <Route path="/carga-sube" element={<CargaSube />} />
           <Route
             path="/solicitud-resultado"
             element={
