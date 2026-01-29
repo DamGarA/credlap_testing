@@ -479,7 +479,7 @@
 }
 .marca-btn {
   border:none;
-  padding:5px 10px;
+  padding: 9px 10px;
   border-radius:4px;  
   font-size: 16px;
   letter-spacing: 1.5px;
@@ -1030,13 +1030,21 @@
     gap: 20px;
     max-width: 320px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow-x: scroll;
     scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .marcas-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .marca-card-feature {
     width: 100%;
     flex-shrink: 0;
+    scroll-snap-align: center;
   }
 
     .marca-arrow {
@@ -1053,15 +1061,15 @@
     font-size: 44px;
     border: none;
     cursor: pointer;
-    z-index: 10;
+    z-index: 10;   
   }
 
   .marca-arrow.left {
-    left: -8px;
+    left: -50px;
   }
 
   .marca-arrow.right {
-    right: -8px;
+    right: -50px;
   }
 
   .marca-image-wrap {

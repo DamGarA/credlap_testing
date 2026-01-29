@@ -42,10 +42,12 @@ export default function Institucional() {
 
     if (window.innerWidth > 768) return;
 
-    const width = sliderRef.current.offsetWidth;
+    const cardWidth = sliderRef.current.children[0]?.offsetWidth || 0;
+    const gap = 20;
+    const scrollAmount = cardWidth + gap;
 
     sliderRef.current.scrollBy({
-      left: direction === "left" ? -width : width,
+      left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth"
     });
   };
