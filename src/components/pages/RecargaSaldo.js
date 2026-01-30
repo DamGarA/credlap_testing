@@ -133,7 +133,22 @@ export default function CargaSube() {
             <div className="checks">
               <FormCheckbox label="Acepto los términos y condiciones" />
               <FormCheckbox label="Acepto políticas de privacidad" />
-              <FormCheckbox label="Acepto la carga de $25.000 a devolver en un pago sin interés." />
+              <div className="form-checkbox-container">
+                <div className="input-checkbox-container">
+                  <input type="checkbox" className="input-checkbox" />
+                </div>
+                <label className="label-checkbox">
+                  <a
+                    href="https://workdrive.zohoexternal.com/external/5fc94b3c29bbe85da3bb9695e4e5d12ffe09da8f09a92508e6d6a0bb52a15066"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="checkbox-link"
+                  >
+                    Acepto las condiciones de uso del servicio
+                  </a>
+                  .
+                </label>
+              </div>
             </div>
 
             <FormButton label="ENVIAR SOLICITUD" />
