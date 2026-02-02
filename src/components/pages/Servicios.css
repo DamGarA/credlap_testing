@@ -576,6 +576,7 @@
     width: 100%;
     margin-left: 0px;
     flex-direction: column;
+    margin-bottom: -150px;
   }
 
   .servicios-first-section {
@@ -615,6 +616,7 @@
   .servicios-muyPronto-right {
     justify-content: center;
     gap: 30px;
+    margin-bottom: 5px;
   }
 
   .servicios-muyPronto-title {
@@ -708,6 +710,13 @@
         margin-left: auto;
         margin-right: auto;
         margin-top: 15px;
+  }
+  .servicios-cupones-header{
+    margin-top: -15px;
+    margin-bottom: -40px;
+  }
+  .servicios-muyPronto-section-fondo{
+    margin-bottom: 70px;
   }
 }
 
@@ -918,6 +927,78 @@
 }
 
 @media screen and (max-width: 768px) {
+  /* Evitar scroll horizontal */
+  body {
+    overflow-x: hidden;
+  }
+
+  .servicios {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Corrección de espacios en iconos */
+  .servicio-icon-circle {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 0;
+  }
+
+  .servicio-icon-circle img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .servicio-item {
+    gap: 12px;
+  }
+
+  .servicio-pill {
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
+
+  /* Alinear los 3 botones centralmente y que se vean todos */
+  .servicios-muyPronto-right {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  /* Reducir espacio sobre TUS CUPONES DE DESCUENTO */
+  .servicios-cupones-section {
+    margin: -60px auto 30px;
+    padding: 40px 0 30px;
+  }
+
+  .servicios-cupones-title {
+    font-size: 2rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .servicios-cupones-descuento {
+    font-size: 2.8rem;
+  }
+
+  /* Centrar formularios */
+  .servicio-form-section {
+    padding: 40px 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Mejorar ancho de contenedores para evitar scroll horizontal */
+  .servicios-muyPronto-section-fondo,
+  .servicios-second-section,
+  .servicios-third-section-fondo,
+  .servicios-fourth-section-fondo {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
   .servicio-boton-scroll {
     padding: 15px 20px;
     font-size: 1rem;
