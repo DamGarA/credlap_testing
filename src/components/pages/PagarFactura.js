@@ -5,48 +5,383 @@ import FormButton from "../FormButton";
 import FormCheckbox from "../FormCheckbox";
 import FormDropdown from "../FormDropdown";
 import FormInput from "../FormInput";
-import Slider from "../Slider";
 import "./PagarFactura.css";
 import avatarPagarFactura from "../../images/Coco-factura_Servicios.png";
 import dniFrente from "../../images/Dni-Frente_Servicios.png"
 import dniDorso from "../../images/Dni-Dorso_Servicios.png"
 import iconSelfie from "../../images/Selfie_Servicios.png"
 
-export default function CargaSube() {
+export default function PagarFactura() {
   const [formValido, setFormValido] = useState(false);
   const [estadoActual, setEstadoActual] = useState(null);
-
   const [formSolicitud, setFormSolicitud] = useState({
-    nombre: "",
-    apellido: "",
+    nombreCompleto: "",
     genero: "",
     dni: "",
-    actividad: "",
+    provincia: "",
     telefono: "",
     email: "",
-    provincia: "",
-    entidadBancaria: "",
-    monto: 25000,
+    empresa: "",
+    codigoFactura: "",
     tyc: false,
     politicas: false,
-    validaciones: {}
+    condicionesServicio: false,
+    validaciones: {},
+  });
+
+  // Estado para las imágenes
+  const [imagenes, setImagenes] = useState({
+    dniFrente: null,
+    dniDorso: null,
+    selfie: null,
+    factura: null,
   });
 
   useEffect(() => {
+    checkFormValido();
+  }, [formSolicitud, imagenes]);
+
+  function checkFormValido() {
     setFormValido(
-      formSolicitud.nombre &&
-        formSolicitud.apellido &&
+      formSolicitud.nombreCompleto &&
+        !formSolicitud.validaciones.nombreCompleto &&
         formSolicitud.genero &&
+        !formSolicitud.validaciones.genero &&
         formSolicitud.dni &&
-        formSolicitud.actividad &&
-        formSolicitud.telefono &&
-        formSolicitud.email &&
+        !formSolicitud.validaciones.dni &&
         formSolicitud.provincia &&
-        formSolicitud.entidadBancaria &&
+        !formSolicitud.validaciones.provincia &&
+        formSolicitud.email &&
+        !formSolicitud.validaciones.email &&
+        formSolicitud.telefono &&
+        !formSolicitud.validaciones.telefono &&
+        formSolicitud.empresa &&
+        !formSolicitud.validaciones.empresa &&
+        formSolicitud.codigoFactura &&
+        !formSolicitud.validaciones.codigoFactura &&
         formSolicitud.tyc &&
-        formSolicitud.politicas
+        formSolicitud.politicas &&
+        formSolicitud.condicionesServicio &&
+        imagenes.dniFrente &&
+        imagenes.dniDorso &&
+        imagenes.selfie &&
+        imagenes.factura
     );
-  }, [formSolicitud]);
+  }
+
+  function handleNombreCompletoChange(event) {
+    const value = event.target.value.trim();
+    let mensaje = null;
+  
+    if (!value) {
+      mensaje = "El nombre y apellido son obligatorios";
+    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(value)) {
+      mensaje = "El nombre y apellido solo pueden contener letras";
+    } else {
+      const palabras = value.split(/\s+/).filter(p => p.length > 0);
+      if (palabras.length < 2) {
+        mensaje = "Debe ingresar al menos nombre y apellido";
+      }
+    }
+  
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      nombreCompleto: value,
+      validaciones: {
+        ...prevForm.validaciones,
+        nombreCompleto: mensaje,
+      },
+    }));
+  }
+
+  function handleGeneroChange(event) {
+    var mensaje = null;
+    if (!event.target.value) mensaje = "El género es obligatorio";
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      genero: event.target.value,
+      validaciones: {
+        ...prevForm.validaciones,
+        genero: mensaje,
+      },
+    }));
+  }
+
+  function handleDNIChange(event) {
+    var mensaje = null;
+    if (!event.target.value) mensaje = "El DNI es obligatorio";
+    else {
+      if (event.target.value.length > 8) return;
+      if (event.target.value.length < 7)
+        mensaje = "DNI debe tener entre 7 y 8 dígitos";
+    }
+
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      dni: event.target.value,
+      validaciones: {
+        ...prevForm.validaciones,
+        dni: mensaje,
+      },
+    }));
+  }
+
+  function handleProvinciaChange(event) {
+    var mensaje = null;
+    if (!event.target.value) mensaje = "La provincia es obligatoria";
+
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      provincia: event.target.value,
+      validaciones: {
+        ...prevForm.validaciones,
+        provincia: mensaje,
+      },
+    }));
+  }
+
+  function handleTelefonoChange(event) {
+    var mensaje = null;
+    if (!event.target.value) mensaje = "El Tel./Celular es obligatorio";
+    else {
+      if (event.target.value.length > 10) return;
+      if (event.target.value.length < 10)
+        mensaje = "Debe tener 10 dígitos: cód. de área + número";
+    }
+
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      telefono: event.target.value,
+      validaciones: {
+        ...prevForm.validaciones,
+        telefono: mensaje,
+      },
+    }));
+  }
+
+  function handleEmailChange(event) {
+    var mensaje = null;
+    if (!event.target.value) mensaje = "El email es obligatorio";
+    else {
+      var re = /\S+@\S+\.\S+/;
+      if (!re.test(event.target.value)) mensaje = "Email inválido";
+    }
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      email: event.target.value,
+      validaciones: {
+        ...prevForm.validaciones,
+        email: mensaje,
+      },
+    }));
+  }
+
+  function handleEmpresaChange(event) {
+    var mensaje = null;
+    if (!event.target.value) mensaje = "La empresa es obligatoria";
+
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      empresa: event.target.value,
+      validaciones: {
+        ...prevForm.validaciones,
+        empresa: mensaje,
+      },
+    }));
+  }
+
+  function handleCodigoFacturaChange(event) {
+    const value = event.target.value.trim();
+    let mensaje = null;
+
+    if (!value) {
+      mensaje = "El código de factura es obligatorio";
+    } else if (value.length < 3) {
+      mensaje = "El código debe tener al menos 3 caracteres";
+    }
+
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      codigoFactura: value,
+      validaciones: {
+        ...prevForm.validaciones,
+        codigoFactura: mensaje,
+      },
+    }));
+  }
+
+  function handleTyCChecked(event) {
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      tyc: event.target.checked,
+      validaciones: {
+        ...prevForm.validaciones,
+      },
+    }));
+  }
+
+  function handlePoliticasChecked(event) {
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      politicas: event.target.checked,
+      validaciones: {
+        ...prevForm.validaciones,
+      },
+    }));
+  }
+
+  function handleCondicionesServicioChecked(event) {
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      condicionesServicio: event.target.checked,
+      validaciones: {
+        ...prevForm.validaciones,
+      },
+    }));
+  }
+
+  // Función para convertir archivo a base64
+  function convertirArchivoABase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+
+  // Funciones para manejar carga de imágenes
+  async function handleImagenDniFrente(event) {
+    const file = event.target.files[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        alert('Por favor seleccione un archivo de imagen válido');
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        alert('La imagen no debe superar los 5MB');
+        return;
+      }
+      try {
+        const base64 = await convertirArchivoABase64(file);
+        setImagenes(prev => ({ ...prev, dniFrente: base64 }));
+      } catch (error) {
+        console.error('Error al cargar imagen:', error);
+        alert('Error al cargar la imagen');
+      }
+    }
+  }
+
+  async function handleImagenDniDorso(event) {
+    const file = event.target.files[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        alert('Por favor seleccione un archivo de imagen válido');
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        alert('La imagen no debe superar los 5MB');
+        return;
+      }
+      try {
+        const base64 = await convertirArchivoABase64(file);
+        setImagenes(prev => ({ ...prev, dniDorso: base64 }));
+      } catch (error) {
+        console.error('Error al cargar imagen:', error);
+        alert('Error al cargar la imagen');
+      }
+    }
+  }
+
+  async function handleImagenSelfie(event) {
+    const file = event.target.files[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        alert('Por favor seleccione un archivo de imagen válido');
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        alert('La imagen no debe superar los 5MB');
+        return;
+      }
+      try {
+        const base64 = await convertirArchivoABase64(file);
+        setImagenes(prev => ({ ...prev, selfie: base64 }));
+      } catch (error) {
+        console.error('Error al cargar imagen:', error);
+        alert('Error al cargar la imagen');
+      }
+    }
+  }
+
+  async function handleImagenFactura(event) {
+    const file = event.target.files[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        alert('Por favor seleccione un archivo de imagen válido');
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        alert('La imagen no debe superar los 5MB');
+        return;
+      }
+      try {
+        const base64 = await convertirArchivoABase64(file);
+        setImagenes(prev => ({ ...prev, factura: base64 }));
+      } catch (error) {
+        console.error('Error al cargar imagen:', error);
+        alert('Error al cargar la imagen');
+      }
+    }
+  }
+
+  function onFormSubmit(event) {
+    event.preventDefault();
+    
+    if (provinciasExcluidas.includes(formSolicitud.provincia))
+      setTimeout(function () {
+        handleSolicitudResponse({
+          request: {
+            responseURL: "/solicitud-resultado?resultado=rechazado",
+          },
+        });
+      }, 1000);
+    else {
+      const palabras = formSolicitud.nombreCompleto.trim().split(/\s+/);
+      const nombre = palabras[0];
+      const apellido = palabras.slice(1).join(" ");
+      
+      const solicitudParaEnviar = {
+        ...formSolicitud,
+        nombre: nombre,
+        apellido: apellido,
+        // Agregar imágenes en base64
+        imagenDniFrente: imagenes.dniFrente,
+        imagenDniDorso: imagenes.dniDorso,
+        imagenSelfie: imagenes.selfie,
+        imagenFactura: imagenes.factura
+      };
+      
+      enviarSolicitud(solicitudParaEnviar, handleSolicitudResponse);
+      setEstadoActual("enviando");
+    }
+  }
+
+  function handleSolicitudResponse(response) {
+    if (
+      response.isError ||
+      !response.request.responseURL.includes("/solicitud")
+    )
+      window.location.href = "/solicitud-resultado?resultado=procesada";
+    else {
+      if (response.request.responseURL.includes("resultado=error"))
+        window.location.href = "/solicitud-resultado?resultado=procesada";
+      else
+        window.location.href = response.request.responseURL.substring(
+          response.request.responseURL.indexOf("/solicitud")
+        );
+    }
+  }
 
   return (
     <div className="carga-sube-wrapper">
@@ -63,109 +398,269 @@ export default function CargaSube() {
         <div className="carga-sube-content">
           {/* IZQUIERDA */}
           <div className="carga-sube-left">
-            <h3>
-              <span>1</span> Datos personales
-            </h3>
+            {!estadoActual && (
+              <>
+                <h3>
+                  <span>1</span> Datos personales
+                </h3>
 
-            <div className="grid-2">
-              <FormInput placeholder="Nombre y apellido" />
-              <FormInput placeholder="DNI" />
-              <FormDropdown placeholder="Seleccione género..." />
-              <FormDropdown placeholder="Provincia" />
-              <FormInput placeholder="Celular" />
-              <FormInput placeholder="E-mail" />
-            </div>
+                <div className="grid-2">
+                  <FormInput 
+                    placeholder="Nombre y apellido"
+                    maxLength={100}
+                    value={formSolicitud.nombreCompleto}
+                    onChange={handleNombreCompletoChange}
+                    validation={formSolicitud.validaciones.nombreCompleto}
+                  />
+                  <FormInput 
+                    placeholder="DNI"
+                    type="number"
+                    value={formSolicitud.dni}
+                    onChange={handleDNIChange}
+                    validation={formSolicitud.validaciones.dni}
+                  />
+                  <FormDropdown
+                    placeholder="Seleccione género..."
+                    options={[
+                      {
+                        label: "Femenino",
+                        value: "F",
+                      },
+                      {
+                        label: "Masculino",
+                        value: "M",
+                      },
+                    ]}
+                    value={formSolicitud.genero}
+                    onChange={handleGeneroChange}
+                    validation={formSolicitud.validaciones.genero}
+                  />
+                  <FormDropdown 
+                    placeholder="Provincia"
+                    options={provinciasLabelsYValues}
+                    value={formSolicitud.provincia}
+                    onChange={handleProvinciaChange}
+                    validation={formSolicitud.validaciones.provincia}
+                  />
+                  <FormInput 
+                    placeholder="Celular"
+                    type="number"
+                    value={formSolicitud.telefono}
+                    onChange={handleTelefonoChange}
+                    validation={formSolicitud.validaciones.telefono}
+                  />
+                  <FormInput 
+                    placeholder="E-mail"
+                    value={formSolicitud.email}
+                    onChange={handleEmailChange}
+                    validation={formSolicitud.validaciones.email}
+                  />
+                </div>
 
-            <h3>
-              <span>2</span> Datos de tu factura
-            </h3>
-            <div className="grid-1">
-              <FormDropdown placeholder="Empresa" />
-              <FormInput placeholder="Código de barras / N° de factura / N° de cliente" />
-            </div>
-            <div className="upload-item">
-              <div className="upload-left">
-                <img
-                  src={dniDorso}
-                  alt="DNI dorso"
-                />
-                <div>
-                  <strong>Factura</strong>                </div>
-              </div>
-              <button>Cargar imagen</button>
-            </div>
+                <h3>
+                  <span>2</span> Datos de tu factura
+                </h3>
+                <div className="grid-1">
+                  <FormDropdown 
+                    placeholder="Empresa"
+                    options={empresasLabelsYValues}
+                    value={formSolicitud.empresa}
+                    onChange={handleEmpresaChange}
+                    validation={formSolicitud.validaciones.empresa}
+                  />
+                  <FormInput 
+                    placeholder="Código de barras / N° de factura / N° de cliente"
+                    value={formSolicitud.codigoFactura}
+                    onChange={handleCodigoFacturaChange}
+                    validation={formSolicitud.validaciones.codigoFactura}
+                  />
+                </div>
+                <div className="upload-item">
+                  <div className="upload-left">
+                    <img
+                      src={dniDorso}
+                      alt="Factura"
+                    />
+                    <div>
+                      <strong>Factura</strong>
+                    </div>
+                  </div>
+                  <input
+                    type="file"
+                    id="factura"
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    onChange={handleImagenFactura}
+                  />
+                  <button
+                    type="button"
+                    className={imagenes.factura ? "ok" : ""}
+                    onClick={() => document.getElementById('factura').click()}
+                  >
+                    {imagenes.factura ? "Cargado ✓" : "Cargar imagen"}
+                  </button>
+                </div>
+              </>
+            )}
+            {estadoActual === "enviando" && (
+              <div className="baja-enviando">Procesando solicitud...</div>
+            )}
           </div>
 
           {/* DERECHA */}
           <div className="carga-sube-right">
-            <h3>
-              <span>3</span> Validación
-            </h3>
+            {!estadoActual && (
+              <>
+                <h3>
+                  <span>3</span> Validación
+                </h3>
 
-            <div className="upload-item">
-              <div className="upload-left">
-                <img src={dniFrente} alt="DNI" />
-                <div>
-                  <strong>Frente del DNI</strong>
-                  <small>La imagen debe ser 100% visible</small>
-                </div>
-              </div>
-              <button className="ok">Cargado ✓</button>
-            </div>
-
-            <div className="upload-item">
-              <div className="upload-left">
-                <img
-                  src={dniDorso}
-                  alt="DNI dorso"
-                />
-                <div>
-                  <strong>Dorso del DNI</strong>
-                  <small>La imagen debe ser 100% visible</small>
-                </div>
-              </div>
-              <button>Cargar imagen</button>
-            </div>
-
-            <div className="upload-item">
-              <div className="upload-left">
-                <img
-                  src={iconSelfie}
-                  alt="Selfie DNI"
-                />
-                <div>
-                  <strong>Selfie sosteniendo tu DNI</strong>
-                  <small>¿Cómo hago la selfie?</small>
-                </div>
-              </div>
-              <button>Cargar imagen</button>
-            </div>
-
-            <div className="checks">
-              <FormCheckbox label="Acepto los términos y condiciones" />
-              <FormCheckbox label="Acepto políticas de privacidad" />
-              <div className="form-checkbox-container">
-                <div className="input-checkbox-container">
-                  <input type="checkbox" className="input-checkbox" />
-                </div>
-                <label className="label-checkbox">
-                  <a
-                    href="https://workdrive.zohoexternal.com/external/5fc94b3c29bbe85da3bb9695e4e5d12ffe09da8f09a92508e6d6a0bb52a15066"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="checkbox-link"
+                <div className="upload-item">
+                  <div className="upload-left">
+                    <img src={dniFrente} alt="DNI" />
+                    <div>
+                      <strong>Frente del DNI</strong>
+                      <small>La imagen debe ser 100% visible</small>
+                    </div>
+                  </div>
+                  <input
+                    type="file"
+                    id="dniFrente"
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    onChange={handleImagenDniFrente}
+                  />
+                  <button
+                    type="button"
+                    className={imagenes.dniFrente ? "ok" : ""}
+                    onClick={() => document.getElementById('dniFrente').click()}
                   >
-                    Acepto las condiciones de uso del servicio
-                  </a>
-                  .
-                </label>
-              </div>
-            </div>
+                    {imagenes.dniFrente ? "Cargado ✓" : "Cargar imagen"}
+                  </button>
+                </div>
 
-            <FormButton label="ENVIAR SOLICITUD" />
+                <div className="upload-item">
+                  <div className="upload-left">
+                    <img
+                      src={dniDorso}
+                      alt="DNI dorso"
+                    />
+                    <div>
+                      <strong>Dorso del DNI</strong>
+                      <small>La imagen debe ser 100% visible</small>
+                    </div>
+                  </div>
+                  <input
+                    type="file"
+                    id="dniDorso"
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    onChange={handleImagenDniDorso}
+                  />
+                  <button
+                    type="button"
+                    className={imagenes.dniDorso ? "ok" : ""}
+                    onClick={() => document.getElementById('dniDorso').click()}
+                  >
+                    {imagenes.dniDorso ? "Cargado ✓" : "Cargar imagen"}
+                  </button>
+                </div>
+
+                <div className="upload-item">
+                  <div className="upload-left">
+                    <img
+                      src={iconSelfie}
+                      alt="Selfie DNI"
+                    />
+                    <div>
+                      <strong>Selfie sosteniendo tu DNI</strong>
+                      <small>¿Cómo hago la selfie?</small>
+                    </div>
+                  </div>
+                  <input
+                    type="file"
+                    id="selfie"
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    onChange={handleImagenSelfie}
+                  />
+                  <button
+                    type="button"
+                    className={imagenes.selfie ? "ok" : ""}
+                    onClick={() => document.getElementById('selfie').click()}
+                  >
+                    {imagenes.selfie ? "Cargado ✓" : "Cargar imagen"}
+                  </button>
+                </div>
+
+                <div className="checks">
+                  <FormCheckbox 
+                    label="Acepto los términos y condiciones"
+                    value={formSolicitud.tyc}
+                    onChange={handleTyCChecked}
+                    validation={formSolicitud.validaciones.tyc}
+                  />
+                  <FormCheckbox 
+                    label="Acepto políticas de privacidad"
+                    value={formSolicitud.politicas}
+                    onChange={handlePoliticasChecked}
+                    validation={formSolicitud.validaciones.politicas}
+                  />
+                  <div className="form-checkbox-container">
+                    <div className="input-checkbox-container">
+                      <input 
+                        type="checkbox" 
+                        className="input-checkbox"
+                        checked={formSolicitud.condicionesServicio}
+                        onChange={handleCondicionesServicioChecked}
+                      />
+                    </div>
+                    <label className="label-checkbox">
+                      <a
+                        href="https://workdrive.zohoexternal.com/external/5fc94b3c29bbe85da3bb9695e4e5d12ffe09da8f09a92508e6d6a0bb52a15066"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="checkbox-link"
+                      >
+                        Acepto las condiciones de uso del servicio
+                      </a>
+                      .
+                    </label>
+                  </div>
+                </div>
+
+                <FormButton 
+                  label="ENVIAR SOLICITUD"
+                  disabled={!formValido}
+                  onClick={onFormSubmit}
+                />
+              </>
+            )}
+            {estadoActual === "enviando" && (
+              <div className="baja-enviando">Procesando solicitud...</div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+//Datos para la exclusion de ciertas provincias
+const listaDeProvincias = ["Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos","Formosa", "Jujuy","La Pampa", "La Rioja","Mendoza", "Misiones","Neuquén","Río Negro","Salta","San Juan","San Luis","Santa Cruz","Santa Fe","Tucumán","Tierra del Fuego, Antártida e Islas del Atlántico Sur","Santiago del Estero"]
+const provinciasLabelsYValues = listaDeProvincias.map(provincia => {
+  return {
+    label: provincia,
+    value: provincia
+  }
+})
+const provinciasExcluidas = []
+
+//Datos para empresas de servicios
+const listaDeEmpresas = ["Edenor", "Edesur", "AYSA", "Metrogas", "Telecentro", "Otros"]
+const empresasLabelsYValues = listaDeEmpresas.map(empresa => {
+  return {
+    label: empresa,
+    value: empresa
+  }
+})

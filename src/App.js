@@ -4,6 +4,8 @@ import "./App.css";
 import Home from "./components/pages/Home";
 import Solicitud from "./components/pages/Solicitud";
 import CargaSube from "./components/pages/CargaSube";
+import RecargaSaldo from "./components/pages/RecargaSaldo";
+import PagarFactura from "./components/pages/PagarFactura";
 import {
   BrowserRouter as Router,
   Link,
@@ -74,6 +76,8 @@ function App() {
           <Route path="/ayuda" element={<Ayuda />} />
           <Route path="/solicitar-prestamo" element={<Solicitud />} />
           <Route path="/carga-sube" element={<CargaSube />} />
+          <Route path="/recarga-saldo" element={<RecargaSaldo />} />
+          <Route path="/pagar-factura" element={<PagarFactura />} />
           <Route
             path="/solicitud-resultado"
             element={

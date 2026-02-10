@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 // import { insertChatBot, deleteChatBot } from "../../services/ChatbotService";
 import "./Servicios.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { Link, useNavigate } from "react-router-dom";
-import CargaSube from "./CargaSube";
-import RecargaSaldo from "./RecargaSaldo";
-import PagarFactura from "./PagarFactura";
 
 import imgPortada from "../../images/images_services/PORTADA.png";
 import imgServicio1 from "../../images/images_services/FINANCIACION-ELECTRODOMESTICOS-FRENTE.png";
@@ -46,11 +43,6 @@ export default function Servicios() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [activeSlideIndex2, setActiveSlideIndex2] = useState(0);
 
-  // Referencias para scroll
-  const cargaSubeRef = useRef(null);
-  const recargaSaldoRef = useRef(null);
-  const pagarFacturaRef = useRef(null);
-
   function handleSlideChange(newActiveSlideIndex) {
     setActiveSlideIndex(newActiveSlideIndex);
   }
@@ -59,17 +51,17 @@ export default function Servicios() {
     setActiveSlideIndex2(newActiveSlideIndex);
   }
 
-  // Funciones de scroll
-  function scrollToCargaSube() {
-    cargaSubeRef.current?.scrollIntoView({ behavior: "smooth" });
+  // Funciones de navegación a páginas separadas
+  function navigateToCargaSube() {
+    navigate("/carga-sube");
   }
 
-  function scrollToRecargaSaldo() {
-    recargaSaldoRef.current?.scrollIntoView({ behavior: "smooth" });
+  function navigateToRecargaSaldo() {
+    navigate("/recarga-saldo");
   }
 
-  function scrollToPagarFactura() {
-    pagarFacturaRef.current?.scrollIntoView({ behavior: "smooth" });
+  function navigateToPagarFactura() {
+    navigate("/pagar-factura");
   }
 
   return (
@@ -103,21 +95,21 @@ export default function Servicios() {
           </div>
 
           <div className="servicios-muyPronto-right">
-            <div className="servicio-item" onClick={scrollToCargaSube}>
+            <div className="servicio-item" onClick={navigateToCargaSube}>
               <div className="servicio-icon-circle">
                 <img src={imgMuyPronto1} alt="Carga SUBE" />
               </div>
               <button className="servicio-pill">Cargar SUBE</button>
             </div>
 
-            <div className="servicio-item" onClick={scrollToRecargaSaldo}>
+            <div className="servicio-item" onClick={navigateToRecargaSaldo}>
               <div className="servicio-icon-circle">
                 <img src={imgMuyPronto2} alt="Recargar saldo" />
               </div>
               <button className="servicio-pill">Recargar saldo</button>
             </div>
 
-            <div className="servicio-item" onClick={scrollToPagarFactura}>
+            <div className="servicio-item" onClick={navigateToPagarFactura}>
               <div className="servicio-icon-circle">
                 <img src={imgMuyPronto3} alt="Pagar factura" />
               </div>
@@ -125,41 +117,9 @@ export default function Servicios() {
             </div>
           </div>
         </div>
-
-        {/* SECCIÓN TUS CUPONES DE DESCUENTO */}
-        <div className="servicios-cupones-section">
-          <div className="servicios-cupones-header">
-            <h2 className="servicios-cupones-title">
-              TUS CUPONES DE{" "}
-              <span className="servicios-cupones-descuento">descuento</span>
-            </h2>
-          </div>
-        </div>
-
-        <div className="servicios-divider"></div>
-
-        {/* SECCIÓN FORMULARIOS DE SERVICIOS */}
-        <section ref={cargaSubeRef} className="servicio-form-section">
-          <CargaSube />
-        </section>
-
-        <div className="servicios-divider"></div>
-
-         <section
-          ref={recargaSaldoRef} className="servicio-form-section"
-        >
-          <RecargaSaldo />
-        </section>
-
-        <div className="servicios-divider"></div>
-
-        <section
-          ref={pagarFacturaRef} className="servicio-form-section"
-        >
-          <PagarFactura />
-        </section>
-
       </div>
+
+      
       <div className="servicios-second-section">
         <div className="servicios-second-section-label-box">
           <p className="servicios-second-section-label">
