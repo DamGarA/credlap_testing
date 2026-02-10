@@ -8,6 +8,12 @@
   display: flex;
   justify-content: center;
   padding: 40px 20px;
+  background-image: url("../../images/fondo_celeste.png");
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .carga-sube-card {
@@ -16,6 +22,7 @@
   border-radius: 16px;
   padding: 5px 60px;
   color: #fff;
+  margin-top: 60px;
 }
 
 .carga-sube-header {
