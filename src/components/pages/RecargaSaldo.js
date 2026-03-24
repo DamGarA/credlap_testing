@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
-import enviarSolicitud from "../../services/FinancieraService";
+import enviarSolicitud from "../../services/SBFintechService";
 import FormButton from "../FormButton";
 import FormCheckbox from "../FormCheckbox";
 import FormDropdown from "../FormDropdown";
@@ -14,6 +14,7 @@ import iconSelfie from "../../images/Selfie_Servicios.png"
 export default function RecargaSaldo() {
   const [formValido, setFormValido] = useState(false);
   const [estadoActual, setEstadoActual] = useState(null);
+  const [condicionesServicioLeidas, setCondicionesServicioLeidas] = useState(false);
   const [formSolicitud, setFormSolicitud] = useState({
     nombreCompleto: "",
     genero: "",
@@ -230,6 +231,13 @@ export default function RecargaSaldo() {
   }
 
   function handleCondicionesServicioChecked(event) {
+    // Solo permitir marcar el checkbox si ya leyó las condiciones
+    if (!condicionesServicioLeidas) {
+      console.warn('⚠️  [RecargaSaldo] Usuario intentó marcar checkbox sin leer condiciones');
+      alert('Debes hacer clic en el link de condiciones de uso antes de marcar este checkbox');
+      return;
+    }
+    
     setFormSolicitud((prevForm) => ({
       ...prevForm,
       condicionesServicio: event.target.checked,
@@ -237,6 +245,11 @@ export default function RecargaSaldo() {
         ...prevForm.validaciones,
       },
     }));
+  }
+
+  function handleCondicionesServicioLink(event) {
+    // Marcar que el usuario hizo click en el link
+    setCondicionesServicioLeidas(true);
   }
 
   // Función para convertir archivo a base64
@@ -339,25 +352,44 @@ export default function RecargaSaldo() {
         imagenSelfie: imagenes.selfie
       };
       
+      // Guardar datos del formulario en sessionStorage para el flujo de firma
+      const datosParaGuardar = {
+        nombre: solicitudParaEnviar.nombre,
+        apellido: solicitudParaEnviar.apellido,
+        genero: solicitudParaEnviar.genero,
+        dni: solicitudParaEnviar.dni,
+        telefono: solicitudParaEnviar.telefono,
+        email: solicitudParaEnviar.email,
+        provincia: solicitudParaEnviar.provincia,
+        monto: 25000, // Monto fijo para Recarga de Saldo
+      };
+      
+      try {
+        sessionStorage.setItem('credlap_formData', JSON.stringify(datosParaGuardar));
+      } catch (error) {
+        console.warn('⚠️  [RecargaSaldo] No se pudo guardar datos en sessionStorage:', error);
+      }
+      
       enviarSolicitud(solicitudParaEnviar, handleSolicitudResponse);
       setEstadoActual("enviando");
     }
   }
 
   function handleSolicitudResponse(response) {
-    if (
-      response.isError ||
-      !response.request.responseURL.includes("/solicitud")
-    )
-      window.location.href = "/solicitud-resultado?resultado=procesada";
-    else {
-      if (response.request.responseURL.includes("resultado=error"))
-        window.location.href = "/solicitud-resultado?resultado=procesada";
-      else
-        window.location.href = response.request.responseURL.substring(
-          response.request.responseURL.indexOf("/solicitud")
-        );
+    if (response?.isError) {
+      window.location.href = "/solicitud-resultado?resultado=error";
+      return;
     }
+
+    const responseURL = response?.request?.responseURL;
+    if (!responseURL || !responseURL.includes("/solicitud")) {
+      window.location.href = "/solicitud-resultado?resultado=procesada";
+      return;
+    }
+
+    window.location.href = responseURL.substring(
+      responseURL.indexOf("/solicitud")
+    );
   }
 
   return (
@@ -566,6 +598,7 @@ export default function RecargaSaldo() {
                         className="input-checkbox"
                         checked={formSolicitud.condicionesServicio}
                         onChange={handleCondicionesServicioChecked}
+                        title={!condicionesServicioLeidas ? "Haz clic en el link de condiciones primero" : ""}
                       />
                     </div>
                     <label className="label-checkbox">
@@ -573,10 +606,13 @@ export default function RecargaSaldo() {
                         href="https://workdrive.zohoexternal.com/external/5fc94b3c29bbe85da3bb9695e4e5d12ffe09da8f09a92508e6d6a0bb52a15066"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="checkbox-link"
+                        className={`checkbox-link ${condicionesServicioLeidas ? 'link-leido' : ''}`}
+                        onClick={handleCondicionesServicioLink}
                       >
                         Acepto las condiciones de uso del servicio
                       </a>
+                      {condicionesServicioLeidas && <span className="link-leido-icon">✓</span>}
+                      {!condicionesServicioLeidas && <span className="link-no-leido-texto"> (Haz clic en el link primero)</span>}
                       .
                     </label>
                   </div>

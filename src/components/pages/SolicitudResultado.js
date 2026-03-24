@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import "./SolicitudResultado.css";
 import imgCocoResultadoGral from "../../images/Coco_resultadogeneral_septiembre.png";
 import imgCocoRechazada from "../../images/coco-rechazado.png";
@@ -8,11 +8,361 @@ import imgWhatsapp from "../../images/whatsapp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { Link } from "react-router-dom";
+import SignatureCanvas from "react-signature-canvas";
+import { generatePdfBlob } from "../../services/PdfGenerationService";
+import { sendMailWithAttachment } from "../../services/EmailService";
+import { CREDLAP_EMAIL } from "../../Config";
+
+// Estados del flujo de firma
+const SIGNING_STATES = {
+  IDLE: "idle",               // Esperando que el usuario inicie
+  SIGNING: "signing",         // Pad de firma visible, usuario firmando
+  GENERATING: "generating",   // Generando PDF con firma
+  SENDING: "sending",         // Enviando emails
+  COMPLETED: "completed",     // Todo OK
+  ERROR: "error",             // Error en algún paso
+};
 
 export default function SolicitudResultado({ resultado }) {
+  const [signingState, setSigningState] = useState(SIGNING_STATES.IDLE);
+  const [formData, setFormData] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [pdfBlobUrl, setPdfBlobUrl] = useState(null);
+  const [signedPdfBlob, setSignedPdfBlob] = useState(null);
+  const sigCanvasRef = useRef(null);
+
+  // Recuperar datos del formulario de sessionStorage
+  useEffect(() => {
+    if (resultado === "preaprobado") {
+      const stored = sessionStorage.getItem("credlap_formData");
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          setFormData(parsed);
+        } catch (e) {
+          console.error("❌ [SolicitudResultado] Error parseando formData de sessionStorage:", e);
+        }
+      } else {
+        console.warn('⚠️  [SolicitudResultado] sessionStorage vacío para credlap_formData');
+      }
+    }
+  }, [resultado]);
+
+  // Limpiar blob URL al desmontar
+  useEffect(() => {
+    return () => {
+      if (pdfBlobUrl) URL.revokeObjectURL(pdfBlobUrl);
+    };
+  }, [pdfBlobUrl]);
 
   function callByPhone() {
     document.getElementById("click2call_callbtn").click();
+  }
+
+  // Iniciar flujo de firma
+  const handleStartSigning = useCallback(() => {
+    setSigningState(SIGNING_STATES.SIGNING);
+  }, []);
+
+  // Limpiar el pad de firma
+  const handleClearSignature = useCallback(() => {
+    if (sigCanvasRef.current) {
+      sigCanvasRef.current.clear();
+    }
+  }, []);
+
+  // Confirmar firma y generar PDF
+  const handleConfirmSignature = useCallback(async () => {
+    if (!sigCanvasRef.current || sigCanvasRef.current.isEmpty()) {
+      setErrorMsg("Por favor, dibujá tu firma antes de confirmar.");
+      return;
+    }
+
+    if (!formData) {
+      setErrorMsg("No se encontraron los datos del formulario. Por favor, realizá la solicitud nuevamente.");
+      setSigningState(SIGNING_STATES.ERROR);
+      return;
+    }
+
+    setErrorMsg("");
+    setSigningState(SIGNING_STATES.GENERATING);
+
+    try {
+      // Obtener firma como PNG data URL
+      
+      let signatureDataUrl;
+      
+      // Intentar diferentes métodos para acceder al canvas
+      if (sigCanvasRef.current.canvasProps?.ref?.current) {
+        signatureDataUrl = sigCanvasRef.current.canvasProps.ref.current.toDataURL("image/png");
+      } else if (sigCanvasRef.current._canvas) {
+        signatureDataUrl = sigCanvasRef.current._canvas.toDataURL("image/png");
+      } else if (sigCanvasRef.current.canvasRef?.current) {
+        signatureDataUrl = sigCanvasRef.current.canvasRef.current.toDataURL("image/png");
+      } else if (sigCanvasRef.current.getCanvas) {
+        signatureDataUrl = sigCanvasRef.current.getCanvas().toDataURL("image/png");
+      } else {
+        // Último recurso - buscar el primer canvas en el DOM
+        const canvas = document.querySelector('canvas');
+        if (!canvas) {
+          throw new Error('No se encontró el elemento canvas de firma en el DOM');
+        }
+        signatureDataUrl = canvas.toDataURL("image/png");
+      }
+      
+
+      // Generar PDF con la firma embebida
+      const pdfBlob = await generatePdfBlob(formData, signatureDataUrl);
+      setSignedPdfBlob(pdfBlob);
+
+      // Crear URL para preview/descarga
+      const blobUrl = URL.createObjectURL(pdfBlob);
+      setPdfBlobUrl(blobUrl);
+
+      // Enviar emails
+      setSigningState(SIGNING_STATES.SENDING);
+
+      const userName = `${formData.nombre} ${formData.apellido}`;
+      const userEmail = formData.email;
+      const fileName = `Autorizacion_Prestamo_${formData.dni}_${Date.now()}.pdf`;
+
+      // Convertir blob a File para el servicio de email existente
+      const pdfFile = new File([pdfBlob], fileName, { type: "application/pdf" });
+
+      // Datos del email
+      const emailData = {
+        Nombre: userName,
+        DNI: formData.dni,
+        Email: userEmail,
+        Telefono: formData.telefono,
+        Monto: `$${Number(formData.monto).toLocaleString("es-AR")}`,
+        Provincia: formData.provincia,
+        "Entidad Bancaria": formData.entidadBancaria,
+        Estado: "Documento de autorización firmado digitalmente",
+      };
+
+      // Enviar email a Credlap con el PDF adjunto
+      await new Promise((resolve, reject) => {
+        sendMailWithAttachment(
+          userEmail,
+          CREDLAP_EMAIL,
+          { ...emailData },
+          "Autorización de Préstamo Firmada",
+          window.location.href,
+          (res) => {
+            if (res.isError) reject(new Error(res.result || "Error enviando a Credlap"));
+            else resolve(res);
+          },
+          pdfFile,
+          fileName
+        );
+      });
+
+      // Enviar copia al usuario
+      await new Promise((resolve, reject) => {
+        sendMailWithAttachment(
+          "consultas@credlap.com",
+          userEmail,
+          { ...emailData },
+          "Tu Autorización de Préstamo - Credlap",
+          window.location.href,
+          (res) => {
+            if (res.isError) reject(new Error(res.result || "Error enviando al usuario"));
+            else resolve(res);
+          },
+          pdfFile,
+          fileName
+        );
+      });
+
+      // Limpiar sessionStorage
+      sessionStorage.removeItem("credlap_formData");
+      setSigningState(SIGNING_STATES.COMPLETED);
+    } catch (error) {
+      console.error("Error en flujo de firma:", error);
+      setErrorMsg(
+        error.message || "Ocurrió un error. Por favor, intentá nuevamente."
+      );
+      setSigningState(SIGNING_STATES.ERROR);
+    }
+  }, [formData]);
+
+  // Reintentar tras error
+  const handleRetry = useCallback(() => {
+    setErrorMsg("");
+    setSigningState(SIGNING_STATES.SIGNING);
+  }, []);
+
+  // Descargar PDF firmado
+  const handleDownloadPdf = useCallback(() => {
+    if (pdfBlobUrl && formData) {
+      const link = document.createElement("a");
+      link.href = pdfBlobUrl;
+      link.download = `Autorizacion_Prestamo_${formData.dni}.pdf`;
+      link.click();
+    }
+  }, [pdfBlobUrl, formData]);
+
+  // ═══════════════════════════════════════════
+  // RENDER: Sección de firma para pre-aprobados
+  // ═══════════════════════════════════════════
+  function renderSigningSection() {
+    if (!formData) {
+      return (
+        <div className="signing-section">
+          <div className="signing-notice">
+            <p>No se encontraron datos del formulario.</p>
+            <p>Por favor, realizá tu solicitud nuevamente desde el <a href="/solicitud">formulario</a>.</p>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="signing-section">
+        {/* ── ESTADO: IDLE ── */}
+        {signingState === SIGNING_STATES.IDLE && (
+          <div className="signing-idle">
+            <div className="signing-info-box">
+              <h3 className="signing-subtitle">Documento de Autorización</h3>
+              <p className="signing-info-text">
+                Para finalizar tu solicitud de préstamo, necesitamos tu firma digital
+                en el documento de autorización.
+              </p>
+              <div className="signing-data-preview">
+                <p><strong>Nombre:</strong> {formData.nombre} {formData.apellido}</p>
+                <p><strong>DNI:</strong> {formData.dni}</p>
+                <p><strong>Monto:</strong> ${Number(formData.monto).toLocaleString("es-AR")}</p>
+                <p><strong>Email:</strong> {formData.email}</p>
+              </div>
+              <p className="signing-info-text signing-info-small">
+                Al firmar, se generará un PDF con tus datos y se enviará una copia
+                a tu email y a Credlap.
+              </p>
+            </div>
+            <button className="signing-btn signing-btn-primary" onClick={handleStartSigning}>
+              Firmar Documento
+            </button>
+          </div>
+        )}
+
+        {/* ── ESTADO: SIGNING (pad visible) ── */}
+        {signingState === SIGNING_STATES.SIGNING && (
+          <div className="signing-pad-container">
+            <h3 className="signing-subtitle">Dibujá tu firma</h3>
+            <p className="signing-info-text">
+              Usá el mouse o el dedo (en celular) para firmar en el recuadro.
+            </p>
+            <div className="signature-canvas-wrapper">
+              <SignatureCanvas
+                ref={sigCanvasRef}
+                penColor="black"
+                canvasProps={{
+                  className: "signature-canvas",
+                }}
+                backgroundColor="white"
+              />
+            </div>
+            {errorMsg && <p className="signing-error-msg">{errorMsg}</p>}
+            <div className="signing-btn-group">
+              <button
+                className="signing-btn signing-btn-secondary"
+                onClick={handleClearSignature}
+              >
+                Borrar
+              </button>
+              <button
+                className="signing-btn signing-btn-primary"
+                onClick={handleConfirmSignature}
+              >
+                Confirmar Firma
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ── ESTADO: GENERATING ── */}
+        {signingState === SIGNING_STATES.GENERATING && (
+          <div className="signing-loading">
+            <div className="signing-spinner"></div>
+            <p className="signing-loading-text">Generando documento firmado...</p>
+          </div>
+        )}
+
+        {/* ── ESTADO: SENDING ── */}
+        {signingState === SIGNING_STATES.SENDING && (
+          <div className="signing-loading">
+            <div className="signing-spinner"></div>
+            <p className="signing-loading-text">Enviando documento por email...</p>
+            <p className="signing-loading-subtext">
+              Se envía una copia a tu email y a Credlap.
+            </p>
+          </div>
+        )}
+
+        {/* ── ESTADO: COMPLETED ── */}
+        {signingState === SIGNING_STATES.COMPLETED && (
+          <div className="signing-completed">
+            <div className="signing-success-icon">&#10003;</div>
+            <h3 className="signing-subtitle">Documento firmado exitosamente</h3>
+            <p className="signing-info-text">
+              Se envió una copia del documento firmado a <strong>{formData.email}</strong> y a Credlap.
+            </p>
+            <p className="signing-info-text">
+              Tu préstamo quedará acreditado dentro de las <strong>24 hs</strong> de la aceptación.
+            </p>
+            <div className="signing-btn-group">
+              <button
+                className="signing-btn signing-btn-secondary"
+                onClick={handleDownloadPdf}
+              >
+                Descargar PDF
+              </button>
+              <a
+                href="https://wa.me/542215462961"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="signing-btn signing-btn-primary"
+                style={{ textDecoration: "none", textAlign: "center" }}
+              >
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        )}
+
+        {/* ── ESTADO: ERROR ── */}
+        {signingState === SIGNING_STATES.ERROR && (
+          <div className="signing-error">
+            <div className="signing-error-icon">!</div>
+            <h3 className="signing-subtitle">Ocurrió un error</h3>
+            <p className="signing-error-detail">{errorMsg}</p>
+            {pdfBlobUrl && (
+              <p className="signing-info-text">
+                Tu documento fue generado. Podés descargarlo y enviarlo manualmente a{" "}
+                <strong>consultas@credlap.com</strong>
+              </p>
+            )}
+            <div className="signing-btn-group">
+              {pdfBlobUrl && (
+                <button
+                  className="signing-btn signing-btn-secondary"
+                  onClick={handleDownloadPdf}
+                >
+                  Descargar PDF
+                </button>
+              )}
+              <button
+                className="signing-btn signing-btn-primary"
+                onClick={handleRetry}
+              >
+                Reintentar
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
   }
 
   return (
@@ -24,45 +374,14 @@ export default function SolicitudResultado({ resultado }) {
               <p className="pre-aprobado-label">Préstamo pre-aprobado</p>
               <p className="pre-aprobado-text">
                 <b>
-                  Por favor envianos a consultas@credlap.com la siguiente documentación para finalizar tu préstamo:
+                  ¡Felicitaciones! Tu préstamo fue pre-aprobado. Para continuar,
+                  firmá digitalmente el documento de autorización.
                 </b>
               </p>
-              <p className="pre-aprobado-text">  
-              - DNI frente y dorso
-              </p>
-              <p className="pre-aprobado-text">  
-              - Selfie sosteniendo tu DNI, te dejamos un <a target="_blank" rel="noopener noreferrer" href="https://workdrive.zohoexternal.com/external/29b4e2c67fae1d09c1b50938e5b99aa465997df7de86fa97afd3f555cc3a20e6 ">tutorial</a>
-              </p>
-              <p className="pre-aprobado-text">  
-              - Comprobante de ingresos (si no tenés, recordá que es necesario contar con CBU a tu nombre)
-              </p>
-              <p className="pre-aprobado-text">  
-              - En el cuerpo del mail debes agregar apellido, nombre y número de WhatsApp
-              </p>
-              <p className="pre-aprobado-text">  
-              <b>Importante</b>: la documentación debe ser clara y legible, tu documentación y datos personales están protegidos por Credlap SA, bajo el registro de datos personales del BCRA, en el pie de página encontrarás nuestro código del BCRA.
-              </p>
-              <p className="pre-aprobado-text">
-                <b>Hacé clic en el botón verde para enviarnos un WhatsApp y poder agendarnos, vas a ver que contamos con el tilde de verificación de META.</b>
-              </p>
-              <a href="https://wa.me/542215462961" target="_blank" rel="noopener noreferrer">
-                <button className="wsp-btn">WhatsApp</button>
-              </a>
-              <p className="pre-aprobado-text">
-                <br />
-                <p>
-                 Si no podés acceder desde el botón, comunícate por WhatsApp al número +542215462961
-                </p>
-                <br />
-              </p>
-              <p className="pre-aprobado-text">
-                <b>
-                 Tu préstamo quedará acreditado dentro de las 24 hs. de la aceptación de firma.
-                </b> 
-              </p>
+              {renderSigningSection()}
             </div>
             <div className="paga-right-box">
-              <img src={imgCocoResultadoGral} className="paga-img" />
+              <img src={imgCocoResultadoGral} className="paga-img" alt="Resultado" />
             </div>
           </div>
         </div>
@@ -80,7 +399,7 @@ export default function SolicitudResultado({ resultado }) {
               <div className="pre-aprobado-links">
                 <div hidden>
                   {" "}
-                  // esto esconde el botón de wsp
+                  {/* esto esconde el botón de wsp */}
                   <Link
                     to={
                       "//api.whatsapp.com/send?phone=" +
@@ -106,14 +425,14 @@ export default function SolicitudResultado({ resultado }) {
                       cursor: "pointer",
                     }}
                   >
-                    <img src={imgWhatsapp} className="contacto-consulta-img" />
+                    <img src={imgWhatsapp} className="contacto-consulta-img" alt="WhatsApp" />
                     0810-220-0570
                   </button>
                 </div>
               </div>
             </div>
             <div className="paga-right-box">
-              <img src={imgCocoRechazada} className="paga-img" />
+              <img src={imgCocoRechazada} className="paga-img" alt="Rechazada" />
             </div>
           </div>
         </div>
@@ -157,7 +476,7 @@ export default function SolicitudResultado({ resultado }) {
               </div>
             </div>
             <div className="paga-right-box">
-              <img src={imgCocoProcesada} className="paga-img" />
+              <img src={imgCocoProcesada} className="paga-img" alt="Procesada" />
             </div>
           </div>
         </div>
@@ -174,7 +493,7 @@ export default function SolicitudResultado({ resultado }) {
               <div className="pre-aprobado-links">
                 <div hidden>
                   {" "}
-                  //esto apaga el botón de wsp
+                  {/*esto apaga el botón de wsp*/}
                   <Link
                     to={
                       "//api.whatsapp.com/send?phone=" +
@@ -200,14 +519,14 @@ export default function SolicitudResultado({ resultado }) {
                       cursor: "pointer",
                     }}
                   >
-                    <img src={imgWhatsapp} className="contacto-consulta-img" />
+                    <img src={imgWhatsapp} className="contacto-consulta-img" alt="WhatsApp" />
                     0810-220-0570
                   </button>
                 </div>
               </div>
             </div>
             <div className="paga-right-box">
-              <img src={imgCocoResultadoGral} className="paga-img" />
+              <img src={imgCocoResultadoGral} className="paga-img" alt="Sin ingresos" />
             </div>
           </div>
         </div>
@@ -218,11 +537,12 @@ export default function SolicitudResultado({ resultado }) {
             <div className="pre-aprobado-left-box">
               <p className="pre-aprobado-label">¡Ups!</p>
               <p className="pre-aprobado-text">
-              Por el momento no estamos otorgando préstamos a <b>beneficiarios</b> de <b>ANSES</b>.
+                Por el momento no estamos otorgando préstamos a{" "}
+                <b>beneficiarios</b> de <b>ANSES</b>.
               </p>
             </div>
             <div className="paga-right-box">
-              <img src={imgCocoResultadoGral} className="paga-img" />
+              <img src={imgCocoResultadoGral} className="paga-img" alt="ANSES" />
             </div>
           </div>
         </div>
@@ -266,14 +586,14 @@ export default function SolicitudResultado({ resultado }) {
                       cursor: "pointer",
                     }}
                   >
-                    <img src={imgWhatsapp} className="contacto-consulta-img" />
+                    <img src={imgWhatsapp} className="contacto-consulta-img" alt="WhatsApp" />
                     0810-220-0570
                   </button>
                 </div>
               </div>
             </div>
             <div className="paga-right-box">
-              <img src={imgCocoError} className="paga-img" />
+              <img src={imgCocoError} className="paga-img" alt="Error" />
             </div>
           </div>
         </div>
