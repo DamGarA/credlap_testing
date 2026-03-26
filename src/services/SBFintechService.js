@@ -85,6 +85,7 @@ function headersConToken(token) {
 }
 
 function construirPayloadScore(formSolicitud) {
+  console.log('📋 [construirPayloadScore] formSolicitud recibido:', formSolicitud);
   
   const tieneSube = Object.prototype.hasOwnProperty.call(
     formSolicitud,
@@ -200,7 +201,9 @@ function construirDocumentos(formSolicitud, idReferencia) {
 export default async function enviarSolicitud(formSolicitud, callback) {
   try {
     const token = await obtenerTokenApi();
-    const payloadScore = construirPayloadScore(formSolicitud);    
+    const payloadScore = construirPayloadScore(formSolicitud);
+    console.log('✅ [enviarSolicitud] Payload a enviar:', JSON.stringify(payloadScore, null, 2));
+    
     const scoreResponse = await axios.post(
       `${BASE_URL}/lending/score`,
       payloadScore,

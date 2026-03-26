@@ -5,16 +5,21 @@ import FormButton from "../FormButton";
 import FormCheckbox from "../FormCheckbox";
 import FormDropdown from "../FormDropdown";
 import FormInput from "../FormInput";
+import AdobeSignWidget from "../AdobeSignWidget";
+import { ADOBE_SIGN_CONFIG } from "../../Config";
 import "./CargaSube.css";
 import avatarSube from "../../images/Coco-Sube_Servicios.png";
 import dniFrente from "../../images/Dni-Frente_Servicios.png"
 import dniDorso from "../../images/Dni-Dorso_Servicios.png"
 import iconSelfie from "../../images/Selfie_Servicios.png"
 
+
 export default function CargaSube() {
   const [formValido, setFormValido] = useState(false);
-  const [estadoActual, setEstadoActual] = useState(null);
+  const [estadoActual, setEstadoActual] = useState(null); // "enviando", "firmando", "firmado", null
   const [condicionesServicioLeidas, setCondicionesServicioLeidas] = useState(false);
+  const [idPreaprobado, setIdPreaprobado] = useState(null); // ID de preaprobación
+  const [firmaCargada, setFirmaCargada] = useState(false);
   const [formSolicitud, setFormSolicitud] = useState({
     nombreCompleto: "",
     genero: "",
@@ -41,46 +46,40 @@ export default function CargaSube() {
   }, [formSolicitud, imagenes]);
 
   function checkFormValido() {
-    const esValido = 
+    const esValido =
       formSolicitud.nombreCompleto &&
-        !formSolicitud.validaciones.nombreCompleto &&
-        formSolicitud.genero &&
-        !formSolicitud.validaciones.genero &&
-        formSolicitud.dni &&
-        !formSolicitud.validaciones.dni &&
-        formSolicitud.provincia &&
-        !formSolicitud.validaciones.provincia &&
-        formSolicitud.email &&
-        !formSolicitud.validaciones.email &&
-        formSolicitud.telefono &&
-        !formSolicitud.validaciones.telefono &&
-        formSolicitud.numeroTarjetaSube &&
-        !formSolicitud.validaciones.numeroTarjetaSube &&
-        formSolicitud.tyc &&
-        formSolicitud.politicas &&
-        formSolicitud.condicionesServicio &&
-        imagenes.dniFrente &&
-        imagenes.dniDorso &&
-        imagenes.selfie;    
+      formSolicitud.genero &&
+      formSolicitud.dni &&
+      formSolicitud.provincia &&
+      formSolicitud.email &&
+      formSolicitud.telefono &&
+      formSolicitud.numeroTarjetaSube &&
+      formSolicitud.tyc &&
+      formSolicitud.politicas &&
+      formSolicitud.condicionesServicio &&
+      imagenes.dniFrente &&
+      imagenes.dniDorso &&
+      imagenes.selfie;
+
     setFormValido(esValido);
   }
 
   function handleNombreCompletoChange(event) {
-    const value = event.target.value.trim();
+    const value = event.target.value; // No trimear aquí, permitir espacios
     let mensaje = null;
-  
-    if (!value) {
+
+    if (!value || !value.trim()) {
       mensaje = "El nombre y apellido son obligatorios";
-    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(value)) {
+    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]*$/.test(value)) {
       mensaje = "El nombre y apellido solo pueden contener letras";
     } else {
       // Validar que tenga al menos dos palabras (nombre y apellido)
-      const palabras = value.split(/\s+/).filter(p => p.length > 0);
+      const palabras = value.trim().split(/\s+/).filter(p => p.length > 0);
       if (palabras.length < 2) {
         mensaje = "Debe ingresar al menos nombre y apellido";
       }
     }
-  
+
     setFormSolicitud((prevForm) => ({
       ...prevForm,
       nombreCompleto: value,
@@ -219,7 +218,7 @@ export default function CargaSube() {
       alert('Debes hacer clic en el link de condiciones de uso antes de marcar este checkbox');
       return;
     }
-    
+
     setFormSolicitud((prevForm) => ({
       ...prevForm,
       condicionesServicio: event.target.checked,
@@ -322,8 +321,8 @@ export default function CargaSube() {
   }
 
   function onFormSubmit(event) {
-    event.preventDefault();
-    
+    console.log('✓ [CargaSube] Botón ENVIAR SOLICITUD presionado');
+
     if (provinciasExcluidas.includes(formSolicitud.provincia)) {
       console.warn('⚠️  [CargaSube] Provincia excluida:', formSolicitud.provincia);
       //Provincias excluidas
@@ -339,7 +338,12 @@ export default function CargaSube() {
       const palabras = formSolicitud.nombreCompleto.trim().split(/\s+/);
       const nombre = palabras[0];
       const apellido = palabras.slice(1).join(" ");
-      
+
+      if (!nombre || !apellido) {
+        alert('Por favor, ingresa tu nombre y apellido completo (mínimo dos palabras)');
+        return;
+      }
+
       const solicitudParaEnviar = {
         ...formSolicitud,
         nombre: nombre,
@@ -348,7 +352,7 @@ export default function CargaSube() {
         imagenDniFrente: imagenes.dniFrente,
         imagenDniDorso: imagenes.dniDorso,
         imagenSelfie: imagenes.selfie
-      };      
+      };
       // Guardar datos del formulario en sessionStorage para el flujo de firma
       const datosParaGuardar = {
         nombre: solicitudParaEnviar.nombre,
@@ -360,20 +364,20 @@ export default function CargaSube() {
         provincia: solicitudParaEnviar.provincia,
         monto: 25000, // Monto fijo para Carga SUBE
       };
-      
+
       try {
         sessionStorage.setItem('credlap_formData', JSON.stringify(datosParaGuardar));
       } catch (error) {
         console.warn('⚠️  [CargaSube] No se pudo guardar datos en sessionStorage:', error);
       }
-      
+
       enviarSolicitud(solicitudParaEnviar, handleSolicitudResponse);
       setEstadoActual("enviando");
     }
   }
 
   function handleSolicitudResponse(response) {
-    
+
     if (response?.isError) {
       console.error('❌ [CargaSube] Error en solicitud:', response.error);
       console.error('📝 [CargaSube] Detalles del error:', response);
@@ -381,21 +385,69 @@ export default function CargaSube() {
       return;
     }
 
-    const responseURL = response?.request?.responseURL;
-    
-    if (!responseURL || !responseURL.includes("/solicitud")) {
-      console.warn('⚠️  [CargaSube] URL inválida, redirigiendo a procesada');
-      window.location.href = "/solicitud-resultado?resultado=procesada";
-      return;
-    }
+    // Si llegamos aquí, la solicitud fue exitosa (idPreaprobado + documentos subidos)
+    // Ahora mostramos el widget de Adobe Sign (usando widget ID fijo del frontend)
+    const idPreaprobadoRecibido = response?.data?.idPreaprobado || response?.data?.idReferencia;
 
-    window.location.href = responseURL.substring(
-      responseURL.indexOf("/solicitud")
-    );
+    if (idPreaprobadoRecibido) {
+      setIdPreaprobado(idPreaprobadoRecibido);
+
+      const adobeUrl = `https://na3.documents.adobe.com/public/embeddedWidget?wid=${ADOBE_SIGN_CONFIG.widgetId}`;
+
+      // 💻 Desktop → sigue con iframe
+      setEstadoActual("firmando");
+
+      console.log('✓ [CargaSube] Mostrando formulario de firma. ID:', idPreaprobadoRecibido);
+    } else {
+      console.warn('⚠️  [CargaSube] No se recibió ID de preaprobado');
+      window.location.href = "/solicitud-resultado?resultado=error";
+    }
   }
 
+  function handleAdobeSignComplete() {
+    console.log('✓ [CargaSube] Firma completada exitosamente');
+    setEstadoActual("firmado");
+
+    // Guardar en sessionStorage que la firma se completó
+    try {
+      const datosFormulario = JSON.parse(sessionStorage.getItem('credlap_formData') || '{}');
+      datosFormulario.adobeSignFirmado = true;
+      datosFormulario.idPreaprobado = idPreaprobado;
+      sessionStorage.setItem('credlap_formData', JSON.stringify(datosFormulario));
+    } catch (error) {
+      console.warn('⚠️  [CargaSube] Error guardando estado de firma:', error);
+    }
+
+    // Redirigir a página de resultado después de 1 segundo
+    setTimeout(() => {
+      window.location.href = "/solicitud-resultado?resultado=preaprobado";
+    }, 1000);
+  }
+
+  function handleAdobeSignError(error) {
+    console.error('❌ [CargaSube] Error en firma de Adobe Sign:', error);
+    setEstadoActual(null);
+    alert('Error al completar la firma. Por favor intente nuevamente.');
+  }
+
+  useEffect(() => {
+    const firmaPendiente = sessionStorage.getItem("firmaPendiente");
+
+    if (firmaPendiente) {
+      console.log("🔁 Usuario volvió de Adobe Sign");
+
+      sessionStorage.removeItem("firmaPendiente");
+
+      // ⚠️ OPCIÓN SIMPLE:
+      setEstadoActual("firmado");
+
+      // ⚠️ OPCIÓN PRO (mejor):
+      // acá podrías pegarle a tu backend para verificar si realmente firmó
+    }
+  }, []);
+
   return (
-    <div className="carga-sube-wrapper">
+    <div className={`carga-sube-wrapper ${estadoActual === "firmando" ? "firma-fullscreen" : ""}`}>
       <div className="carga-sube-card">
         {/* HEADER */}
         <div className="carga-sube-header">
@@ -406,7 +458,7 @@ export default function CargaSube() {
           </div>
         </div>
 
-        <div className="carga-sube-content">
+        <div className={`carga-sube-content ${estadoActual === "firmando" ? "firmando" : ""}`}>
           {/* IZQUIERDA */}
           <div className="carga-sube-left">
             {!estadoActual && (
@@ -416,14 +468,14 @@ export default function CargaSube() {
                 </h3>
 
                 <div className="grid-2">
-                  <FormInput 
+                  <FormInput
                     placeholder="Nombre y apellido"
                     maxLength={100}
                     value={formSolicitud.nombreCompleto}
                     onChange={handleNombreCompletoChange}
                     validation={formSolicitud.validaciones.nombreCompleto}
                   />
-                  <FormInput 
+                  <FormInput
                     placeholder="DNI"
                     type="number"
                     value={formSolicitud.dni}
@@ -446,21 +498,21 @@ export default function CargaSube() {
                     onChange={handleGeneroChange}
                     validation={formSolicitud.validaciones.genero}
                   />
-                  <FormDropdown 
+                  <FormDropdown
                     placeholder="Provincia"
                     options={provinciasLabelsYValues}
                     value={formSolicitud.provincia}
                     onChange={handleProvinciaChange}
                     validation={formSolicitud.validaciones.provincia}
                   />
-                  <FormInput 
+                  <FormInput
                     placeholder="Celular"
                     type="number"
                     value={formSolicitud.telefono}
                     onChange={handleTelefonoChange}
                     validation={formSolicitud.validaciones.telefono}
                   />
-                  <FormInput 
+                  <FormInput
                     placeholder="E-mail"
                     value={formSolicitud.email}
                     onChange={handleEmailChange}
@@ -471,7 +523,7 @@ export default function CargaSube() {
                 <h3>
                   <span>2</span> Número de tu tarjeta SUBE
                 </h3>
-                <FormInput 
+                <FormInput
                   placeholder="N° de la tarjeta a tu nombre donde se realizará la recarga"
                   type="number"
                   value={formSolicitud.numeroTarjetaSube}
@@ -482,6 +534,12 @@ export default function CargaSube() {
             )}
             {estadoActual === "enviando" && (
               <div className="baja-enviando">Procesando solicitud...</div>
+            )}
+            {estadoActual === "firmando" && !firmaCargada && (
+              <div className="baja-enviando">Cargando formulario de firma...</div>
+            )}
+            {estadoActual === "firmado" && (
+              <div className="baja-enviando">¡Firma completada! Redirigiendo...</div>
             )}
           </div>
 
@@ -572,13 +630,13 @@ export default function CargaSube() {
                 </div>
 
                 <div className="checks">
-                  <FormCheckbox 
+                  <FormCheckbox
                     label="Acepto los términos y condiciones"
                     value={formSolicitud.tyc}
                     onChange={handleTyCChecked}
                     validation={formSolicitud.validaciones.tyc}
                   />
-                  <FormCheckbox 
+                  <FormCheckbox
                     label="Acepto políticas de privacidad"
                     value={formSolicitud.politicas}
                     onChange={handlePoliticasChecked}
@@ -586,8 +644,8 @@ export default function CargaSube() {
                   />
                   <div className="form-checkbox-container">
                     <div className="input-checkbox-container">
-                      <input 
-                        type="checkbox" 
+                      <input
+                        type="checkbox"
                         className="input-checkbox"
                         checked={formSolicitud.condicionesServicio}
                         onChange={handleCondicionesServicioChecked}
@@ -611,15 +669,34 @@ export default function CargaSube() {
                   </div>
                 </div>
 
-                <FormButton 
+                <FormButton
                   label="ENVIAR SOLICITUD"
-                  disabled={!formValido}
+                  disabled={false}
                   onClick={onFormSubmit}
                 />
               </>
             )}
             {estadoActual === "enviando" && (
               <div className="baja-enviando">Procesando solicitud...</div>
+            )}
+            {(estadoActual === "firmando" || estadoActual === "firmado") && (
+              <div className="adobe-sign-container">
+                <h3>
+                  <span>4</span> Firma digital
+                </h3>
+
+                <p className="firma-descripcion">
+                  Por favor, complete su firma electrónica a continuación
+                </p>
+
+                <AdobeSignWidget
+                  widgetId={ADOBE_SIGN_CONFIG.widgetId}
+                  userName={formSolicitud.nombreCompleto}
+                  onSignComplete={handleAdobeSignComplete}
+                  onSignError={handleAdobeSignError}
+                  onLoad={() => setFirmaCargada(true)}
+                />
+              </div>
             )}
           </div>
         </div>
@@ -629,7 +706,7 @@ export default function CargaSube() {
 }
 
 //Datos para la exclusion de ciertas provincias
-const listaDeProvincias = ["Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos","Formosa", "Jujuy","La Pampa", "La Rioja","Mendoza", "Misiones","Neuquén","Río Negro","Salta","San Juan","San Luis","Santa Cruz","Santa Fe","Tucumán","Tierra del Fuego, Antártida e Islas del Atlántico Sur","Santiago del Estero"]
+const listaDeProvincias = ["Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Tucumán", "Tierra del Fuego, Antártida e Islas del Atlántico Sur", "Santiago del Estero"]
 const provinciasLabelsYValues = listaDeProvincias.map(provincia => {
   return {
     label: provincia,

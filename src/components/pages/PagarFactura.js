@@ -5,6 +5,8 @@ import FormButton from "../FormButton";
 import FormCheckbox from "../FormCheckbox";
 import FormDropdown from "../FormDropdown";
 import FormInput from "../FormInput";
+import AdobeSignWidget from "../AdobeSignWidget";
+import { ADOBE_SIGN_CONFIG } from "../../Config";
 import "./PagarFactura.css";
 import avatarPagarFactura from "../../images/Coco-factura_Servicios.png";
 import dniFrente from "../../images/Dni-Frente_Servicios.png"
@@ -13,8 +15,10 @@ import iconSelfie from "../../images/Selfie_Servicios.png"
 
 export default function PagarFactura() {
   const [formValido, setFormValido] = useState(false);
-  const [estadoActual, setEstadoActual] = useState(null);
+  const [estadoActual, setEstadoActual] = useState(null); // "enviando", "firmando", "firmado", null
   const [condicionesServicioLeidas, setCondicionesServicioLeidas] = useState(false);
+  const [idPreaprobado, setIdPreaprobado] = useState(null); // ID de preaprobación
+  const [firmaCargada, setFirmaCargada] = useState(false);
   const [formSolicitud, setFormSolicitud] = useState({
     nombreCompleto: "",
     genero: "",
@@ -45,21 +49,13 @@ export default function PagarFactura() {
   function checkFormValido() {
     setFormValido(
       formSolicitud.nombreCompleto &&
-        !formSolicitud.validaciones.nombreCompleto &&
         formSolicitud.genero &&
-        !formSolicitud.validaciones.genero &&
         formSolicitud.dni &&
-        !formSolicitud.validaciones.dni &&
         formSolicitud.provincia &&
-        !formSolicitud.validaciones.provincia &&
         formSolicitud.email &&
-        !formSolicitud.validaciones.email &&
         formSolicitud.telefono &&
-        !formSolicitud.validaciones.telefono &&
         formSolicitud.empresa &&
-        !formSolicitud.validaciones.empresa &&
         formSolicitud.codigoFactura &&
-        !formSolicitud.validaciones.codigoFactura &&
         formSolicitud.tyc &&
         formSolicitud.politicas &&
         formSolicitud.condicionesServicio &&
@@ -71,15 +67,15 @@ export default function PagarFactura() {
   }
 
   function handleNombreCompletoChange(event) {
-    const value = event.target.value.trim();
+    const value = event.target.value; // No trimear aquí, permitir espacios
     let mensaje = null;
   
-    if (!value) {
+    if (!value || !value.trim()) {
       mensaje = "El nombre y apellido son obligatorios";
-    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(value)) {
+    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]*$/.test(value)) {
       mensaje = "El nombre y apellido solo pueden contener letras";
     } else {
-      const palabras = value.split(/\s+/).filter(p => p.length > 0);
+      const palabras = value.trim().split(/\s+/).filter(p => p.length > 0);
       if (palabras.length < 2) {
         mensaje = "Debe ingresar al menos nombre y apellido";
       }
@@ -349,7 +345,7 @@ export default function PagarFactura() {
   }
 
   function onFormSubmit(event) {
-    event.preventDefault();
+    console.log('✓ [PagarFactura] Botón ENVIAR SOLICITUD presionado');
     
     if (provinciasExcluidas.includes(formSolicitud.provincia))
       setTimeout(function () {
@@ -363,6 +359,11 @@ export default function PagarFactura() {
       const palabras = formSolicitud.nombreCompleto.trim().split(/\s+/);
       const nombre = palabras[0];
       const apellido = palabras.slice(1).join(" ");
+      
+      if (!nombre || !apellido) {
+        alert('Por favor, ingresa tu nombre y apellido completo (mínimo dos palabras)');
+        return;
+      }
       
       const solicitudParaEnviar = {
         ...formSolicitud,
@@ -404,15 +405,44 @@ export default function PagarFactura() {
       return;
     }
 
-    const responseURL = response?.request?.responseURL;
-    if (!responseURL || !responseURL.includes("/solicitud")) {
-      window.location.href = "/solicitud-resultado?resultado=procesada";
-      return;
+    // Si llegamos aquí, la solicitud fue exitosa (idPreaprobado + documentos subidos)
+    // Ahora mostramos el widget de Adobe Sign (usando widget ID fijo del frontend)
+    const idPreaprobadoRecibido = response?.data?.idPreaprobado || response?.data?.idReferencia;
+    
+    if (idPreaprobadoRecibido) {
+      setIdPreaprobado(idPreaprobadoRecibido);
+      setEstadoActual("firmando");
+      console.log('✓ [PagarFactura] Mostrando formulario de firma. ID:', idPreaprobadoRecibido);
+    } else {
+      console.warn('⚠️  [PagarFactura] No se recibió ID de preaprobado');
+      window.location.href = "/solicitud-resultado?resultado=error";
     }
+  }
 
-    window.location.href = responseURL.substring(
-      responseURL.indexOf("/solicitud")
-    );
+  function handleAdobeSignComplete() {
+    console.log('✓ [PagarFactura] Firma completada exitosamente');
+    setEstadoActual("firmado");
+    
+    // Guardar en sessionStorage que la firma se completó
+    try {
+      const datosFormulario = JSON.parse(sessionStorage.getItem('credlap_formData') || '{}');
+      datosFormulario.adobeSignFirmado = true;
+      datosFormulario.idPreaprobado = idPreaprobado;
+      sessionStorage.setItem('credlap_formData', JSON.stringify(datosFormulario));
+    } catch (error) {
+      console.warn('⚠️  [PagarFactura] Error guardando estado de firma:', error);
+    }
+    
+    // Redirigir a página de resultado después de 1 segundo
+    setTimeout(() => {
+      window.location.href = "/solicitud-resultado?resultado=preaprobado";
+    }, 1000);
+  }
+
+  function handleAdobeSignError(error) {
+    console.error('❌ [PagarFactura] Error en firma de Adobe Sign:', error);
+    setEstadoActual(null);
+    alert('Error al completar la firma. Por favor intente nuevamente.');
   }
 
   return (
@@ -536,6 +566,12 @@ export default function PagarFactura() {
             )}
             {estadoActual === "enviando" && (
               <div className="baja-enviando">Procesando solicitud...</div>
+            )}
+            {estadoActual === "firmando" && !firmaCargada && (
+              <div className="baja-enviando">Cargando formulario de firma...</div>
+            )}
+            {estadoActual === "firmado" && (
+              <div className="baja-enviando">¡Firma completada! Redirigiendo...</div>
             )}
           </div>
 
@@ -667,13 +703,29 @@ export default function PagarFactura() {
 
                 <FormButton 
                   label="ENVIAR SOLICITUD"
-                  disabled={!formValido}
+                  disabled={false}
                   onClick={onFormSubmit}
                 />
               </>
             )}
             {estadoActual === "enviando" && (
               <div className="baja-enviando">Procesando solicitud...</div>
+            )}
+            {(estadoActual === "firmando" || estadoActual === "firmado") && (
+              <div className="adobe-sign-container">
+                <h3>
+                  <span>4</span> Firma digital
+                </h3>
+                <p className="firma-descripcion">
+                  Por favor, complete su firma electrónica a continuación
+                </p>
+                <AdobeSignWidget 
+                  widgetId={ADOBE_SIGN_CONFIG.widgetId}
+                  userName={formSolicitud.nombreCompleto}
+                  onSignComplete={handleAdobeSignComplete}
+                  onSignError={handleAdobeSignError}
+                />
+              </div>
             )}
           </div>
         </div>
