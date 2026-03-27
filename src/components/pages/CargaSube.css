@@ -68,6 +68,9 @@
   gap: 50px;
   align-items: start;
 }
+.carga-sube-content.firmando {
+  grid-template-columns: 1fr;
+}
 
 .carga-sube-left h3,
 .carga-sube-right h3 {
@@ -332,7 +335,8 @@
 .carga-sube-right {
   display: flex;
   flex-direction: column;
-  margin-left: 70px;
+  margin-left: 0;
+  width: 100%;
 }
 
 /* RESPONSIVE MOBILE */
@@ -346,12 +350,35 @@
   }
 
 @media (max-width: 768px) {
+  .firma-fullscreen .carga-sube-header,
+.firma-fullscreen .carga-sube-left {
+  display: none;
+}
+
+.firma-fullscreen {
+  padding: 0 !important;
+}
+
+.firma-fullscreen .carga-sube-card {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+.firma-fullscreen .carga-sube-content {
+  display: block;
+}
+
+.firma-fullscreen .carga-sube-right {
+  width: 100%;
+  margin: 0;
+}
   .carga-sube-wrapper {
-    padding: 20px 10px;
+    padding: 0;
   }
 
   .carga-sube-card {
-    padding: 20px 16px;
+    padding: 0;
   }
 
   .carga-sube-header {
@@ -376,7 +403,7 @@
 
   .carga-sube-content {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 0;
   }
 
   .carga-sube-left h3,
@@ -422,7 +449,7 @@
   }
 
   .carga-sube-right {
-    margin-left: 0;
+    width: 100%;
   }
 
   .upload-item {
@@ -474,4 +501,61 @@
     height: 50px;
     font-size: 1.2rem;
   }
+}
+
+.adobe-sign-container {
+  width: 100vw;
+  margin-left: -10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.adobe-sign-widget-container {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.adobe-sign-container h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.adobe-sign-container h3 span {
+  background: #fff;
+  color: #4a9fb5;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.firma-descripcion {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 20px;
+  opacity: 0.95;
 }
