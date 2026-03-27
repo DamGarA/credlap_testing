@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
-import enviarSolicitud from "../../services/FinancieraService";
+import enviarSolicitud from "../../services/SBFintechService";
 import FormButton from "../FormButton";
 import FormCheckbox from "../FormCheckbox";
 import FormDropdown from "../FormDropdown";
@@ -14,6 +14,7 @@ import iconSelfie from "../../images/Selfie_Servicios.png"
 export default function CargaSube() {
   const [formValido, setFormValido] = useState(false);
   const [estadoActual, setEstadoActual] = useState(null);
+  const [condicionesServicioLeidas, setCondicionesServicioLeidas] = useState(false);
   const [formSolicitud, setFormSolicitud] = useState({
     nombreCompleto: "",
     genero: "",
@@ -40,7 +41,7 @@ export default function CargaSube() {
   }, [formSolicitud, imagenes]);
 
   function checkFormValido() {
-    setFormValido(
+    const esValido = 
       formSolicitud.nombreCompleto &&
         !formSolicitud.validaciones.nombreCompleto &&
         formSolicitud.genero &&
@@ -60,8 +61,8 @@ export default function CargaSube() {
         formSolicitud.condicionesServicio &&
         imagenes.dniFrente &&
         imagenes.dniDorso &&
-        imagenes.selfie
-    );
+        imagenes.selfie;    
+    setFormValido(esValido);
   }
 
   function handleNombreCompletoChange(event) {
@@ -212,6 +213,13 @@ export default function CargaSube() {
   }
 
   function handleCondicionesServicioChecked(event) {
+    // Solo permitir marcar el checkbox si ya leyó las condiciones
+    if (!condicionesServicioLeidas) {
+      console.warn('⚠️  [CargaSube] Usuario intentó marcar checkbox sin leer condiciones');
+      alert('Debes hacer clic en el link de condiciones de uso antes de marcar este checkbox');
+      return;
+    }
+    
     setFormSolicitud((prevForm) => ({
       ...prevForm,
       condicionesServicio: event.target.checked,
@@ -221,13 +229,23 @@ export default function CargaSube() {
     }));
   }
 
+  function handleCondicionesServicioLink(event) {
+    // Marcar que el usuario hizo click en el link
+    setCondicionesServicioLeidas(true);
+  }
+
   // Función para convertir archivo a base64
   function convertirArchivoABase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+      reader.onerror = (error) => {
+        console.error('❌ [convertirArchivoABase64] Error en conversión:', error);
+        reject(error);
+      };
     });
   }
 
@@ -237,11 +255,13 @@ export default function CargaSube() {
     if (file) {
       // Validar que sea una imagen
       if (!file.type.startsWith('image/')) {
+        console.warn('⚠️  [handleImagenDniFrente] Tipo de archivo inválido:', file.type);
         alert('Por favor seleccione un archivo de imagen válido');
         return;
       }
       // Validar tamaño máximo (5MB)
       if (file.size > 5 * 1024 * 1024) {
+        console.warn('⚠️  [handleImagenDniFrente] Archivo muy grande:', file.size, 'bytes');
         alert('La imagen no debe superar los 5MB');
         return;
       }
@@ -249,7 +269,7 @@ export default function CargaSube() {
         const base64 = await convertirArchivoABase64(file);
         setImagenes(prev => ({ ...prev, dniFrente: base64 }));
       } catch (error) {
-        console.error('Error al cargar imagen:', error);
+        console.error('❌ [handleImagenDniFrente] Error al cargar imagen:', error);
         alert('Error al cargar la imagen');
       }
     }
@@ -259,10 +279,12 @@ export default function CargaSube() {
     const file = event.target.files[0];
     if (file) {
       if (!file.type.startsWith('image/')) {
+        console.warn('⚠️  [handleImagenDniDorso] Tipo de archivo inválido:', file.type);
         alert('Por favor seleccione un archivo de imagen válido');
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
+        console.warn('⚠️  [handleImagenDniDorso] Archivo muy grande:', file.size, 'bytes');
         alert('La imagen no debe superar los 5MB');
         return;
       }
@@ -270,7 +292,7 @@ export default function CargaSube() {
         const base64 = await convertirArchivoABase64(file);
         setImagenes(prev => ({ ...prev, dniDorso: base64 }));
       } catch (error) {
-        console.error('Error al cargar imagen:', error);
+        console.error('❌ [handleImagenDniDorso] Error al cargar imagen:', error);
         alert('Error al cargar la imagen');
       }
     }
@@ -280,10 +302,12 @@ export default function CargaSube() {
     const file = event.target.files[0];
     if (file) {
       if (!file.type.startsWith('image/')) {
+        console.warn('⚠️  [handleImagenSelfie] Tipo de archivo inválido:', file.type);
         alert('Por favor seleccione un archivo de imagen válido');
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
+        console.warn('⚠️  [handleImagenSelfie] Archivo muy grande:', file.size, 'bytes');
         alert('La imagen no debe superar los 5MB');
         return;
       }
@@ -300,7 +324,8 @@ export default function CargaSube() {
   function onFormSubmit(event) {
     event.preventDefault();
     
-    if (provinciasExcluidas.includes(formSolicitud.provincia))
+    if (provinciasExcluidas.includes(formSolicitud.provincia)) {
+      console.warn('⚠️  [CargaSube] Provincia excluida:', formSolicitud.provincia);
       //Provincias excluidas
       setTimeout(function () {
         handleSolicitudResponse({
@@ -309,7 +334,7 @@ export default function CargaSube() {
           },
         });
       }, 1000);
-    else {
+    } else {
       // Dividir nombre completo en nombre y apellido para enviar al servidor
       const palabras = formSolicitud.nombreCompleto.trim().split(/\s+/);
       const nombre = palabras[0];
@@ -323,7 +348,24 @@ export default function CargaSube() {
         imagenDniFrente: imagenes.dniFrente,
         imagenDniDorso: imagenes.dniDorso,
         imagenSelfie: imagenes.selfie
+      };      
+      // Guardar datos del formulario en sessionStorage para el flujo de firma
+      const datosParaGuardar = {
+        nombre: solicitudParaEnviar.nombre,
+        apellido: solicitudParaEnviar.apellido,
+        genero: solicitudParaEnviar.genero,
+        dni: solicitudParaEnviar.dni,
+        telefono: solicitudParaEnviar.telefono,
+        email: solicitudParaEnviar.email,
+        provincia: solicitudParaEnviar.provincia,
+        monto: 25000, // Monto fijo para Carga SUBE
       };
+      
+      try {
+        sessionStorage.setItem('credlap_formData', JSON.stringify(datosParaGuardar));
+      } catch (error) {
+        console.warn('⚠️  [CargaSube] No se pudo guardar datos en sessionStorage:', error);
+      }
       
       enviarSolicitud(solicitudParaEnviar, handleSolicitudResponse);
       setEstadoActual("enviando");
@@ -331,21 +373,25 @@ export default function CargaSube() {
   }
 
   function handleSolicitudResponse(response) {
-    if (
-      response.isError ||
-      !response.request.responseURL.includes("/solicitud")
-    )
-      window.location.href = "/solicitud-resultado?resultado=procesada";
-      //ANTES
-      //window.location.href = "/solicitud-resultado?resultado=error";
-    else {
-      if (response.request.responseURL.includes("resultado=error"))
-        window.location.href = "/solicitud-resultado?resultado=procesada";
-      else
-        window.location.href = response.request.responseURL.substring(
-          response.request.responseURL.indexOf("/solicitud")
-        );
+    
+    if (response?.isError) {
+      console.error('❌ [CargaSube] Error en solicitud:', response.error);
+      console.error('📝 [CargaSube] Detalles del error:', response);
+      window.location.href = "/solicitud-resultado?resultado=error";
+      return;
     }
+
+    const responseURL = response?.request?.responseURL;
+    
+    if (!responseURL || !responseURL.includes("/solicitud")) {
+      console.warn('⚠️  [CargaSube] URL inválida, redirigiendo a procesada');
+      window.location.href = "/solicitud-resultado?resultado=procesada";
+      return;
+    }
+
+    window.location.href = responseURL.substring(
+      responseURL.indexOf("/solicitud")
+    );
   }
 
   return (
@@ -545,6 +591,7 @@ export default function CargaSube() {
                         className="input-checkbox"
                         checked={formSolicitud.condicionesServicio}
                         onChange={handleCondicionesServicioChecked}
+                        title={!condicionesServicioLeidas ? "Haz clic en el link de condiciones primero" : ""}
                       />
                     </div>
                     <label className="label-checkbox">
@@ -552,10 +599,13 @@ export default function CargaSube() {
                         href="https://workdrive.zohoexternal.com/external/5fc94b3c29bbe85da3bb9695e4e5d12ffe09da8f09a92508e6d6a0bb52a15066"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="checkbox-link"
+                        className={`checkbox-link ${condicionesServicioLeidas ? 'link-leido' : ''}`}
+                        onClick={handleCondicionesServicioLink}
                       >
                         Acepto las condiciones de uso del servicio
                       </a>
+                      {condicionesServicioLeidas && <span className="link-leido-icon">✓</span>}
+                      {!condicionesServicioLeidas && <span className="link-no-leido-texto"> (Haz clic en el link primero)</span>}
                       .
                     </label>
                   </div>

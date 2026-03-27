@@ -48,4 +48,3 @@ export default function enviarSolicitud(formSolicitud, callback) {
 
  // return serviceURL;
 }
-

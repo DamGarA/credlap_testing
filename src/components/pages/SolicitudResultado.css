@@ -173,3 +173,253 @@
     margin-left: 20%;
   }
 }
+
+/* ═══════════════════════════════════════════════════════ */
+/* ESTILOS PARA FLUJO DE FIRMA ELECTRÓNICA */
+/* ═══════════════════════════════════════════════════════ */
+
+.signing-section {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.signing-idle,
+.signing-pad-container,
+.signing-loading,
+.signing-completed,
+.signing-error,
+.signing-notice {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.signing-info-box {
+  background-color: #f8f9fa;
+  border-left: 4px solid #60b350;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.signing-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-family: "Gotham Narrow", sans-serif;
+}
+
+.signing-info-text {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.signing-info-small {
+  font-size: 0.9rem;
+  color: #777;
+  font-style: italic;
+}
+
+.signing-data-preview {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.signing-data-preview p {
+  margin: 0.5rem 0;
+}
+
+.signing-btn {
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Gotham Narrow", sans-serif;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.signing-btn-primary {
+  background-color: #60b350;
+  color: #fff;
+}
+
+.signing-btn-primary:hover {
+  background-color: #4a9440;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(96, 179, 80, 0.3);
+}
+
+.signing-btn-secondary {
+  background-color: #ddd;
+  color: #333;
+}
+
+.signing-btn-secondary:hover {
+  background-color: #bbb;
+  transform: translateY(-2px);
+}
+
+.signing-btn-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.signing-pad-container {
+  text-align: center;
+}
+
+.signature-canvas-wrapper {
+  border: 2px solid #60b350;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signature-canvas {
+  border: 1px solid #ccc;
+  cursor: crosshair;
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.signing-error-msg {
+  color: #dc3545;
+  font-weight: 600;
+  padding: 1rem;
+  background-color: #f8d7da;
+  border-radius: 6px;
+  margin: 1rem 0;
+  border-left: 4px solid #dc3545;
+}
+
+.signing-loading {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.signing-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #60b350;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.signing-loading-text {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 600;
+  margin: 1rem 0 0 0;
+}
+
+.signing-loading-subtext {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.signing-completed {
+  text-align: center;
+  padding: 2rem;
+}
+
+.signing-success-icon {
+  font-size: 3rem;
+  color: #60b350;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.signing-error {
+  text-align: center;
+  padding: 2rem;
+}
+
+.signing-error-icon {
+  font-size: 3rem;
+  color: #dc3545;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.signing-error-detail {
+  color: #dc3545;
+  font-weight: 600;
+  padding: 1rem;
+  background-color: #f8d7da;
+  border-radius: 6px;
+  margin: 1rem 0;
+  border-left: 4px solid #dc3545;
+}
+
+.signing-notice {
+  text-align: center;
+  padding: 2rem;
+  background-color: #fff3cd;
+  border-left-color: #ffc107;
+}
+
+.signing-notice p {
+  color: #856404;
+  margin: 0.5rem 0;
+}
+
+@media screen and (max-width: 768px) {
+  .signing-idle,
+  .signing-pad-container,
+  .signing-loading,
+  .signing-completed,
+  .signing-error {
+    padding: 1rem;
+  }
+
+  .signing-btn-group {
+    flex-direction: column;
+  }
+
+  .signing-btn {
+    width: 100%;
+  }
+
+  .signature-canvas {
+    height: 150px;
+  }
+
+  .signing-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .signing-info-text {
+    font-size: 0.95rem;
+  }
+}
