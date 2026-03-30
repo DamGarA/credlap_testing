@@ -30,7 +30,8 @@
 }
 
 
-.form-button.disabled{
+.form-button.disabled,
+.form-button.visual-disabled{
     background: linear-gradient(90deg, #CCC 0%, #EEE 100%);
     color: #AAA;
     text-shadow: none;

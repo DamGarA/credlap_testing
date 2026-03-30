@@ -6,6 +6,7 @@ import FormCheckbox from "../FormCheckbox";
 import FormDropdown from "../FormDropdown";
 import FormInput from "../FormInput";
 import AdobeSignWidget from "../AdobeSignWidget";
+import CustomAlert from "../CustomAlert";
 import { ADOBE_SIGN_CONFIG } from "../../Config";
 import "./RecargaSaldo.css";
 import avatarRecargaSaldo from "../../images/Coco-recarga_Servicios.png";
@@ -19,6 +20,11 @@ export default function RecargaSaldo() {
   const [condicionesServicioLeidas, setCondicionesServicioLeidas] = useState(false);
   const [idPreaprobado, setIdPreaprobado] = useState(null); // ID de preaprobación para adobe sign
   const [firmaCargada, setFirmaCargada] = useState(false);
+  const [alertConfig, setAlertConfig] = useState({ visible: false, mensaje: '', tipo: 'warning' });
+
+  function mostrarAlerta(mensaje, tipo = 'warning') {
+    setAlertConfig({ visible: true, mensaje, tipo });
+  }
   const [formSolicitud, setFormSolicitud] = useState({
     nombreCompleto: "",
     genero: "",
@@ -230,7 +236,7 @@ export default function RecargaSaldo() {
     // Solo permitir marcar el checkbox si ya leyó las condiciones
     if (!condicionesServicioLeidas) {
       console.warn('⚠️  [RecargaSaldo] Usuario intentó marcar checkbox sin leer condiciones');
-      alert('Debes hacer clic en el link de condiciones de uso antes de marcar este checkbox');
+      mostrarAlerta('Debes hacer clic en el link de condiciones de uso antes de marcar este checkbox', 'warning');
       return;
     }
     
@@ -263,11 +269,11 @@ export default function RecargaSaldo() {
     const file = event.target.files[0];
     if (file) {
       if (!file.type.startsWith('image/')) {
-        alert('Por favor seleccione un archivo de imagen válido');
+        mostrarAlerta('Por favor seleccione un archivo de imagen válido', 'error');
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
-        alert('La imagen no debe superar los 5MB');
+        mostrarAlerta('La imagen no debe superar los 5MB', 'error');
         return;
       }
       try {
@@ -275,7 +281,7 @@ export default function RecargaSaldo() {
         setImagenes(prev => ({ ...prev, dniFrente: base64 }));
       } catch (error) {
         console.error('Error al cargar imagen:', error);
-        alert('Error al cargar la imagen');
+        mostrarAlerta('Error al cargar la imagen', 'error');
       }
     }
   }
@@ -284,11 +290,11 @@ export default function RecargaSaldo() {
     const file = event.target.files[0];
     if (file) {
       if (!file.type.startsWith('image/')) {
-        alert('Por favor seleccione un archivo de imagen válido');
+        mostrarAlerta('Por favor seleccione un archivo de imagen válido', 'error');
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
-        alert('La imagen no debe superar los 5MB');
+        mostrarAlerta('La imagen no debe superar los 5MB', 'error');
         return;
       }
       try {
@@ -296,7 +302,7 @@ export default function RecargaSaldo() {
         setImagenes(prev => ({ ...prev, dniDorso: base64 }));
       } catch (error) {
         console.error('Error al cargar imagen:', error);
-        alert('Error al cargar la imagen');
+        mostrarAlerta('Error al cargar la imagen', 'error');
       }
     }
   }
@@ -305,11 +311,11 @@ export default function RecargaSaldo() {
     const file = event.target.files[0];
     if (file) {
       if (!file.type.startsWith('image/')) {
-        alert('Por favor seleccione un archivo de imagen válido');
+        mostrarAlerta('Por favor seleccione un archivo de imagen válido', 'error');
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
-        alert('La imagen no debe superar los 5MB');
+        mostrarAlerta('La imagen no debe superar los 5MB', 'error');
         return;
       }
       try {
@@ -317,14 +323,34 @@ export default function RecargaSaldo() {
         setImagenes(prev => ({ ...prev, selfie: base64 }));
       } catch (error) {
         console.error('Error al cargar imagen:', error);
-        alert('Error al cargar la imagen');
+        mostrarAlerta('Error al cargar la imagen', 'error');
       }
     }
   }
 
   function onFormSubmit(event) {
-    console.log('✓ [RecargaSaldo] Botón ENVIAR SOLICITUD presionado');
-    
+    // Validar campos obligatorios
+    const faltantes = [];
+    if (!formSolicitud.nombreCompleto) faltantes.push('Nombre y apellido');
+    if (!formSolicitud.genero) faltantes.push('Género');
+    if (!formSolicitud.dni) faltantes.push('DNI');
+    if (!formSolicitud.provincia) faltantes.push('Provincia');
+    if (!formSolicitud.email) faltantes.push('E-mail');
+    if (!formSolicitud.telefono) faltantes.push('Teléfono');
+    if (!formSolicitud.empresa) faltantes.push('Empresa');
+    if (!formSolicitud.confirmarTelefono) faltantes.push('Confirmar teléfono');
+    if (!imagenes.dniFrente) faltantes.push('Foto DNI frente');
+    if (!imagenes.dniDorso) faltantes.push('Foto DNI dorso');
+    if (!imagenes.selfie) faltantes.push('Selfie');
+    if (!formSolicitud.tyc) faltantes.push('Términos y condiciones');
+    if (!formSolicitud.politicas) faltantes.push('Políticas de privacidad');
+    if (!formSolicitud.condicionesServicio) faltantes.push('Condiciones del servicio');
+
+    if (faltantes.length > 0) {
+      mostrarAlerta('Completá los siguientes campos:\n• ' + faltantes.join('\n• '), 'warning');
+      return;
+    }
+
     if (provinciasExcluidas.includes(formSolicitud.provincia))
       setTimeout(function () {
         handleSolicitudResponse({
@@ -339,7 +365,7 @@ export default function RecargaSaldo() {
       const apellido = palabras.slice(1).join(" ");
       
       if (!nombre || !apellido) {
-        alert('Por favor, ingresa tu nombre y apellido completo (mínimo dos palabras)');
+        mostrarAlerta('Por favor, ingresa tu nombre y apellido completo (mínimo dos palabras)', 'warning');
         return;
       }
       
@@ -389,7 +415,6 @@ export default function RecargaSaldo() {
     if (idPreaprobadoRecibido) {
       setIdPreaprobado(idPreaprobadoRecibido);
       setEstadoActual("firmando");
-      console.log('✓ [RecargaSaldo] Mostrando formulario de firma. ID:', idPreaprobadoRecibido);
     } else {
       console.warn('⚠️  [RecargaSaldo] No se recibió ID de preaprobado');
       window.location.href = "/solicitud-resultado?resultado=error";
@@ -397,9 +422,7 @@ export default function RecargaSaldo() {
   }
 
   function handleAdobeSignComplete() {
-    console.log('✓ [RecargaSaldo] Firma completada exitosamente');
-    setEstadoActual("firmado");
-    
+    setEstadoActual("firmado");    
     // Guardar en sessionStorage que la firma se completó
     try {
       const datosFormulario = JSON.parse(sessionStorage.getItem('credlap_formData') || '{}');
@@ -419,11 +442,19 @@ export default function RecargaSaldo() {
   function handleAdobeSignError(error) {
     console.error('❌ [RecargaSaldo] Error en firma de Adobe Sign:', error);
     setEstadoActual(null);
-    alert('Error al completar la firma. Por favor intente nuevamente.');
+    mostrarAlerta('Error al completar la firma. Por favor intente nuevamente.', 'error');
   }
 
+  useEffect(() => {
+    const firmaPendiente = sessionStorage.getItem("firmaPendiente");
+    if (firmaPendiente) {
+      sessionStorage.removeItem("firmaPendiente");
+      setEstadoActual("firmado");
+    }
+  }, []);
+
   return (
-    <div className="carga-sube-wrapper">
+    <div className={`carga-sube-wrapper ${estadoActual === "firmando" ? "firma-fullscreen" : ""}`}>
       <div className="carga-sube-card">
         {/* HEADER */}
         <div className="carga-sube-header">
@@ -434,7 +465,7 @@ export default function RecargaSaldo() {
           </div>
         </div>
 
-        <div className="carga-sube-content">
+        <div className={`carga-sube-content ${estadoActual === "firmando" ? "firmando" : ""}`}>
           {/* IZQUIERDA */}
           <div className="carga-sube-left">
             {!estadoActual && (
@@ -654,9 +685,10 @@ export default function RecargaSaldo() {
                   </div>
                 </div>
 
-                <FormButton 
+                <FormButton
                   label="ENVIAR SOLICITUD"
                   disabled={false}
+                  className={!formValido ? 'visual-disabled' : ''}
                   onClick={onFormSubmit}
                 />
               </>
@@ -673,11 +705,12 @@ export default function RecargaSaldo() {
                   Por favor, complete su firma electrónica a continuación
                 </p>
                 {estadoActual === "firmando" && (
-                  <AdobeSignWidget 
+                  <AdobeSignWidget
                     widgetId={ADOBE_SIGN_CONFIG.widgetId}
                     userName={formSolicitud.nombreCompleto}
                     onSignComplete={handleAdobeSignComplete}
                     onSignError={handleAdobeSignError}
+                    onLoad={() => setFirmaCargada(true)}
                   />
                 )}
               </div>
@@ -685,6 +718,7 @@ export default function RecargaSaldo() {
           </div>
         </div>
       </div>
+      <CustomAlert {...alertConfig} onClose={() => setAlertConfig({ ...alertConfig, visible: false })} />
     </div>
   );
 }

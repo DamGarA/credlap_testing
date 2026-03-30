@@ -1,5 +1,5 @@
 .adobe-sign-widget-container {
-  width: 100%;
+  width: 77%;
   height: 80vh; /* 🔥 MÁS GRANDE */
   min-height: 650px;
   background: #ffffff;
@@ -66,13 +66,9 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .adobe-sign-widget-container {
-    height: 85vh;
-    min-height: 500px;
-    padding: 8px;
-  }
-
   .adobe-sign-iframe {
-    max-width: 100%;
+    max-width: -50%;
+    width: -50%;
+    height: -50%;
   }
 }

@@ -13,8 +13,13 @@ import "./AdobeSignWidget.css";
  */
 export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError, onLoad, userName = "Usuario" }) {
   const iframeRef = useRef(null);
+  const completionHandledRef = useRef(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [iframeReady, setIframeReady] = useState(false);
+
+  useEffect(() => {
+    completionHandledRef.current = false;
+  }, [widgetId]);
 
   // Primer efecto: crear el iframe vacío apenas el componente monta
   useEffect(() => {
@@ -32,8 +37,6 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
     if (!iframeReady || !iframeRef.current) {
       return;
     }
-
-    console.log(`📋 [AdobeSignWidget] Cargando script de Adobe Sign para ${userName}`);
 
     try {
       const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
@@ -53,17 +56,43 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
           <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
             html { width: 100%; height: 100%; }
-            body { 
-              width: 100%; 
-              height: 100%; 
-              overflow-x: hidden; 
-              overflow-y: auto;
+            body {
+              width: 114%;
+              height: 100%;
+              overflow: hidden;
+
               -webkit-overflow-scrolling: touch;
+            }
+            @media (max-width: 768px) {
+              html {
+                transform: scale(0.70);
+                transform-origin: top left;
+                width: 130%;
+                height: 100%;
+              }
+              body {
+                height: 145%;
+                overflow: hidden;
+              }
             }
           </style>
         </head>
         <body>
           <script type='text/javascript' language='JavaScript' src='https://na3.documents.adobe.com/public/embeddedWidget?wid=${widgetId}'></script>
+          <script>
+            // Reenviar mensajes de Adobe Sign al window principal (main window)
+            // Adobe Sign envía postMessage a window.parent (este iframe),
+            // pero el listener está en el main window, así que reenviamos
+            window.addEventListener('message', function(event) {
+              try {
+                if (window.parent && window.parent !== window) {
+                  window.parent.postMessage(event.data, '*');
+                }
+              } catch(e) {
+                // Silenciar errores cross-origin
+              }
+            });
+          </script>
         </body>
         </html>
       `;
@@ -85,7 +114,6 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
 
           if (hasContent) {
             clearInterval(checkWidgetLoaded);
-            console.log("✓ [AdobeSignWidget] Widget de Adobe Sign cargado exitosamente");
             // Pequeño delay para asegurar que el contenido está completamente renderizado
             setTimeout(() => {
               setIframeLoaded(true);
@@ -93,7 +121,6 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
             }, 300);
           } else if (checkAttempts >= maxAttempts) {
             clearInterval(checkWidgetLoaded);
-            console.log("✓ [AdobeSignWidget] Widget de Adobe Sign renderizado (timeout)");
             setIframeLoaded(true);
             onLoad?.();
           }
@@ -101,7 +128,6 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
           // Cross-origin error, pero es esperado
           if (checkAttempts >= maxAttempts) {
             clearInterval(checkWidgetLoaded);
-            console.log("✓ [AdobeSignWidget] Widget de Adobe Sign cargado (cross-origin)");
             setIframeLoaded(true);
             onLoad?.();
           }
@@ -117,6 +143,82 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
       onSignError?.({ error: error.message });
     }
   }, [iframeReady, widgetId, userName, onSignError]);
+
+  useEffect(() => {
+    function isAdobeSignOrigin(origin = "") {
+      try {
+        const hostname = new URL(origin).hostname;
+        return (
+          hostname.endsWith(".adobe.com") ||
+          hostname.endsWith(".adobesign.com") ||
+          hostname.endsWith(".echosign.com")
+        );
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function handleAdobeMessage(event) {
+      if (!isAdobeSignOrigin(event.origin)) {
+        return;
+      }
+
+      let payload = event.data;
+
+      if (typeof payload === "string") {
+        try {
+          payload = JSON.parse(payload);
+        } catch (error) {
+          return;
+        }
+      }
+
+      if (!payload || typeof payload !== "object") {
+        return;
+      }
+
+      const eventType = payload.event || payload.type;
+      const pageName = payload.pageName || payload.page;
+
+      if (eventType === "ERROR") {
+        onSignError?.(payload);
+        return;
+      }
+
+      const isCompletionEvent =
+        eventType === "ESIGN" ||
+        eventType === "PREFILL" ||
+        (eventType === "PAGE_LOAD" &&
+          (pageName === "POST_SIGN" || pageName === "POST_SEND"));
+
+      if (isCompletionEvent && !completionHandledRef.current) {
+        completionHandledRef.current = true;
+        onSignComplete?.(payload);
+      }
+    }
+
+    window.addEventListener("message", handleAdobeMessage);
+
+    // También escuchar en el contentWindow del iframe como respaldo
+    let iframeWindow = null;
+    if (iframeLoaded && iframeRef.current?.contentWindow) {
+      try {
+        iframeWindow = iframeRef.current.contentWindow;
+        iframeWindow.addEventListener("message", handleAdobeMessage);
+      } catch (e) {
+        console.warn('[AdobeSignWidget] No se pudo agregar listener al iframe (cross-origin):', e.message);
+      }
+    }
+
+    return () => {
+      window.removeEventListener("message", handleAdobeMessage);
+      if (iframeWindow) {
+        try {
+          iframeWindow.removeEventListener("message", handleAdobeMessage);
+        } catch (e) {}
+      }
+    };
+  }, [onSignComplete, onSignError, iframeLoaded]);
 
   if (!widgetId) {
     return (
