@@ -350,28 +350,49 @@
   }
 
 @media (max-width: 768px) {
-  .firma-fullscreen .carga-sube-header,
-.firma-fullscreen .carga-sube-left {
-  display: none;
+.firma-fullscreen .carga-sube-header,
+.firma-fullscreen .carga-sube-left,
+.firma-fullscreen .adobe-sign-container h3,
+.firma-fullscreen .firma-descripcion {
+  display: none !important;
 }
 
-.firma-fullscreen {
-  padding: 0 !important;
+.firma-fullscreen .adobe-sign-widget-container {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  z-index: 99999;
+  border-radius: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  display: block !important;
+  box-shadow: none;
 }
 
-.firma-fullscreen .carga-sube-card {
-  padding: 0 !important;
-  margin: 0 !important;
+.firma-fullscreen .adobe-sign-iframe {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
   max-width: 100% !important;
 }
 
-.firma-fullscreen .carga-sube-content {
-  display: block;
+body:has(.firma-fullscreen) {
+  overflow: hidden !important;
+  height: 100% !important;
 }
 
-.firma-fullscreen .carga-sube-right {
-  width: 100%;
-  margin: 0;
+body:has(.firma-fullscreen) .floating-icons,
+body:has(.firma-fullscreen) .navbar,
+body:has(.firma-fullscreen) .footer,
+body:has(.firma-fullscreen) #zsiq_float,
+body:has(.firma-fullscreen) .zsiq_floatmain,
+body:has(.firma-fullscreen) iframe[src*="zoho"] {
+  display: none !important;
 }
   .carga-sube-wrapper {
     padding: 0;
@@ -501,11 +522,31 @@
     height: 50px;
     font-size: 1.2rem;
   }
+
+  .adobe-sign-container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .adobe-sign-widget-container {
+    height: calc(100dvh - 100px);
+    min-height: 400px;
+    padding: 0;
+  }
+
+  .adobe-sign-container h3 {
+    font-size: 1.1rem;
+  }
+
+  .adobe-sign-container h3 span {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
 }
 
 .adobe-sign-container {
-  width: 100vw;
-  margin-left: -10px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -522,10 +563,6 @@
   }
 }
 
-.adobe-sign-widget-container {
-  height: 100vh;
-  min-height: 100vh;
-}
 
 .adobe-sign-container h3 {
   display: flex;

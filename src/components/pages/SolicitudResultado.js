@@ -203,167 +203,7 @@ export default function SolicitudResultado({ resultado }) {
     }
   }, [pdfBlobUrl, formData]);
 
-  // ═══════════════════════════════════════════
-  // RENDER: Sección de firma para pre-aprobados
-  // ═══════════════════════════════════════════
-  function renderSigningSection() {
-    if (!formData) {
-      return (
-        <div className="signing-section">
-          <div className="signing-notice">
-            <p>No se encontraron datos del formulario.</p>
-            <p>Por favor, realizá tu solicitud nuevamente desde el <a href="/solicitud">formulario</a>.</p>
-          </div>
-        </div>
-      );
-    }
 
-    return (
-      <div className="signing-section">
-        {/* ── ESTADO: IDLE ── */}
-        {signingState === SIGNING_STATES.IDLE && (
-          <div className="signing-idle">
-            <div className="signing-info-box">
-              <h3 className="signing-subtitle">Documento de Autorización</h3>
-              <p className="signing-info-text">
-                Para finalizar tu solicitud de préstamo, necesitamos tu firma digital
-                en el documento de autorización.
-              </p>
-              <div className="signing-data-preview">
-                <p><strong>Nombre:</strong> {formData.nombre} {formData.apellido}</p>
-                <p><strong>DNI:</strong> {formData.dni}</p>
-                <p><strong>Monto:</strong> ${Number(formData.monto).toLocaleString("es-AR")}</p>
-                <p><strong>Email:</strong> {formData.email}</p>
-              </div>
-              <p className="signing-info-text signing-info-small">
-                Al firmar, se generará un PDF con tus datos y se enviará una copia
-                a tu email y a Credlap.
-              </p>
-            </div>
-            <button className="signing-btn signing-btn-primary" onClick={handleStartSigning}>
-              Firmar Documento
-            </button>
-          </div>
-        )}
-
-        {/* ── ESTADO: SIGNING (pad visible) ── */}
-        {signingState === SIGNING_STATES.SIGNING && (
-          <div className="signing-pad-container">
-            <h3 className="signing-subtitle">Dibujá tu firma</h3>
-            <p className="signing-info-text">
-              Usá el mouse o el dedo (en celular) para firmar en el recuadro.
-            </p>
-            <div className="signature-canvas-wrapper">
-              <SignatureCanvas
-                ref={sigCanvasRef}
-                penColor="black"
-                canvasProps={{
-                  className: "signature-canvas",
-                }}
-                backgroundColor="white"
-              />
-            </div>
-            {errorMsg && <p className="signing-error-msg">{errorMsg}</p>}
-            <div className="signing-btn-group">
-              <button
-                className="signing-btn signing-btn-secondary"
-                onClick={handleClearSignature}
-              >
-                Borrar
-              </button>
-              <button
-                className="signing-btn signing-btn-primary"
-                onClick={handleConfirmSignature}
-              >
-                Confirmar Firma
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* ── ESTADO: GENERATING ── */}
-        {signingState === SIGNING_STATES.GENERATING && (
-          <div className="signing-loading">
-            <div className="signing-spinner"></div>
-            <p className="signing-loading-text">Generando documento firmado...</p>
-          </div>
-        )}
-
-        {/* ── ESTADO: SENDING ── */}
-        {signingState === SIGNING_STATES.SENDING && (
-          <div className="signing-loading">
-            <div className="signing-spinner"></div>
-            <p className="signing-loading-text">Enviando documento por email...</p>
-            <p className="signing-loading-subtext">
-              Se envía una copia a tu email y a Credlap.
-            </p>
-          </div>
-        )}
-
-        {/* ── ESTADO: COMPLETED ── */}
-        {signingState === SIGNING_STATES.COMPLETED && (
-          <div className="signing-completed">
-            <div className="signing-success-icon">&#10003;</div>
-            <h3 className="signing-subtitle">Documento firmado exitosamente</h3>
-            <p className="signing-info-text">
-              Se envió una copia del documento firmado a <strong>{formData.email}</strong> y a Credlap.
-            </p>
-            <p className="signing-info-text">
-              Tu préstamo quedará acreditado dentro de las <strong>24 hs</strong> de la aceptación.
-            </p>
-            <div className="signing-btn-group">
-              <button
-                className="signing-btn signing-btn-secondary"
-                onClick={handleDownloadPdf}
-              >
-                Descargar PDF
-              </button>
-              <a
-                href="https://wa.me/542215462961"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="signing-btn signing-btn-primary"
-                style={{ textDecoration: "none", textAlign: "center" }}
-              >
-                WhatsApp
-              </a>
-            </div>
-          </div>
-        )}
-
-        {/* ── ESTADO: ERROR ── */}
-        {signingState === SIGNING_STATES.ERROR && (
-          <div className="signing-error">
-            <div className="signing-error-icon">!</div>
-            <h3 className="signing-subtitle">Ocurrió un error</h3>
-            <p className="signing-error-detail">{errorMsg}</p>
-            {pdfBlobUrl && (
-              <p className="signing-info-text">
-                Tu documento fue generado. Podés descargarlo y enviarlo manualmente a{" "}
-                <strong>consultas@credlap.com</strong>
-              </p>
-            )}
-            <div className="signing-btn-group">
-              {pdfBlobUrl && (
-                <button
-                  className="signing-btn signing-btn-secondary"
-                  onClick={handleDownloadPdf}
-                >
-                  Descargar PDF
-                </button>
-              )}
-              <button
-                className="signing-btn signing-btn-primary"
-                onClick={handleRetry}
-              >
-                Reintentar
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
 
   return (
     <>
@@ -375,10 +215,9 @@ export default function SolicitudResultado({ resultado }) {
               <p className="pre-aprobado-text">
                 <b>
                   ¡Felicitaciones! Tu préstamo fue pre-aprobado. Para continuar,
-                  firmá digitalmente el documento de autorización.
+                  firmá digitalmente el documento de autorización que te enviamos por email.
                 </b>
               </p>
-              {renderSigningSection()}
             </div>
             <div className="paga-right-box">
               <img src={imgCocoResultadoGral} className="paga-img" alt="Resultado" />

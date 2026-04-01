@@ -6,6 +6,7 @@ import FormCheckbox from "../FormCheckbox";
 import FormDropdown from "../FormDropdown";
 import FormInput from "../FormInput";
 import AdobeSignWidget from "../AdobeSignWidget";
+import CustomAlert from "../CustomAlert";
 import { ADOBE_SIGN_CONFIG } from "../../Config";
 import "./CargaSube.css";
 import avatarSube from "../../images/Coco-Sube_Servicios.png";
@@ -20,6 +21,11 @@ export default function CargaSube() {
   const [condicionesServicioLeidas, setCondicionesServicioLeidas] = useState(false);
   const [idPreaprobado, setIdPreaprobado] = useState(null); // ID de preaprobación
   const [firmaCargada, setFirmaCargada] = useState(false);
+  const [alertConfig, setAlertConfig] = useState({ visible: false, mensaje: '', tipo: 'warning' });
+
+  function mostrarAlerta(mensaje, tipo = 'warning') {
+    setAlertConfig({ visible: true, mensaje, tipo });
+  }
   const [formSolicitud, setFormSolicitud] = useState({
     nombreCompleto: "",
     genero: "",
@@ -215,7 +221,7 @@ export default function CargaSube() {
     // Solo permitir marcar el checkbox si ya leyó las condiciones
     if (!condicionesServicioLeidas) {
       console.warn('⚠️  [CargaSube] Usuario intentó marcar checkbox sin leer condiciones');
-      alert('Debes hacer clic en el link de condiciones de uso antes de marcar este checkbox');
+      mostrarAlerta('Debes hacer clic en el link de condiciones de uso antes de marcar este checkbox', 'warning');
       return;
     }
 
@@ -255,13 +261,13 @@ export default function CargaSube() {
       // Validar que sea una imagen
       if (!file.type.startsWith('image/')) {
         console.warn('⚠️  [handleImagenDniFrente] Tipo de archivo inválido:', file.type);
-        alert('Por favor seleccione un archivo de imagen válido');
+        mostrarAlerta('Por favor seleccione un archivo de imagen válido', 'error');
         return;
       }
       // Validar tamaño máximo (5MB)
       if (file.size > 5 * 1024 * 1024) {
         console.warn('⚠️  [handleImagenDniFrente] Archivo muy grande:', file.size, 'bytes');
-        alert('La imagen no debe superar los 5MB');
+        mostrarAlerta('La imagen no debe superar los 5MB', 'error');
         return;
       }
       try {
@@ -269,7 +275,7 @@ export default function CargaSube() {
         setImagenes(prev => ({ ...prev, dniFrente: base64 }));
       } catch (error) {
         console.error('❌ [handleImagenDniFrente] Error al cargar imagen:', error);
-        alert('Error al cargar la imagen');
+        mostrarAlerta('Error al cargar la imagen', 'error');
       }
     }
   }
@@ -279,12 +285,12 @@ export default function CargaSube() {
     if (file) {
       if (!file.type.startsWith('image/')) {
         console.warn('⚠️  [handleImagenDniDorso] Tipo de archivo inválido:', file.type);
-        alert('Por favor seleccione un archivo de imagen válido');
+        mostrarAlerta('Por favor seleccione un archivo de imagen válido', 'error');
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
         console.warn('⚠️  [handleImagenDniDorso] Archivo muy grande:', file.size, 'bytes');
-        alert('La imagen no debe superar los 5MB');
+        mostrarAlerta('La imagen no debe superar los 5MB', 'error');
         return;
       }
       try {
@@ -292,7 +298,7 @@ export default function CargaSube() {
         setImagenes(prev => ({ ...prev, dniDorso: base64 }));
       } catch (error) {
         console.error('❌ [handleImagenDniDorso] Error al cargar imagen:', error);
-        alert('Error al cargar la imagen');
+        mostrarAlerta('Error al cargar la imagen', 'error');
       }
     }
   }
@@ -302,12 +308,12 @@ export default function CargaSube() {
     if (file) {
       if (!file.type.startsWith('image/')) {
         console.warn('⚠️  [handleImagenSelfie] Tipo de archivo inválido:', file.type);
-        alert('Por favor seleccione un archivo de imagen válido');
+        mostrarAlerta('Por favor seleccione un archivo de imagen válido', 'error');
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
         console.warn('⚠️  [handleImagenSelfie] Archivo muy grande:', file.size, 'bytes');
-        alert('La imagen no debe superar los 5MB');
+        mostrarAlerta('La imagen no debe superar los 5MB', 'error');
         return;
       }
       try {
@@ -315,13 +321,32 @@ export default function CargaSube() {
         setImagenes(prev => ({ ...prev, selfie: base64 }));
       } catch (error) {
         console.error('Error al cargar imagen:', error);
-        alert('Error al cargar la imagen');
+        mostrarAlerta('Error al cargar la imagen', 'error');
       }
     }
   }
 
   function onFormSubmit(event) {
-    console.log('✓ [CargaSube] Botón ENVIAR SOLICITUD presionado');
+    // Validar campos obligatorios
+    const faltantes = [];
+    if (!formSolicitud.nombreCompleto) faltantes.push('Nombre y apellido');
+    if (!formSolicitud.genero) faltantes.push('Género');
+    if (!formSolicitud.dni) faltantes.push('DNI');
+    if (!formSolicitud.provincia) faltantes.push('Provincia');
+    if (!formSolicitud.email) faltantes.push('E-mail');
+    if (!formSolicitud.telefono) faltantes.push('Teléfono');
+    if (!formSolicitud.numeroTarjetaSube) faltantes.push('Número de tarjeta SUBE');
+    if (!imagenes.dniFrente) faltantes.push('Foto DNI frente');
+    if (!imagenes.dniDorso) faltantes.push('Foto DNI dorso');
+    if (!imagenes.selfie) faltantes.push('Selfie');
+    if (!formSolicitud.tyc) faltantes.push('Términos y condiciones');
+    if (!formSolicitud.politicas) faltantes.push('Políticas de privacidad');
+    if (!formSolicitud.condicionesServicio) faltantes.push('Condiciones del servicio');
+
+    if (faltantes.length > 0) {
+      mostrarAlerta('Completá los siguientes campos:\n• ' + faltantes.join('\n• '), 'warning');
+      return;
+    }
 
     if (provinciasExcluidas.includes(formSolicitud.provincia)) {
       console.warn('⚠️  [CargaSube] Provincia excluida:', formSolicitud.provincia);
@@ -340,7 +365,7 @@ export default function CargaSube() {
       const apellido = palabras.slice(1).join(" ");
 
       if (!nombre || !apellido) {
-        alert('Por favor, ingresa tu nombre y apellido completo (mínimo dos palabras)');
+        mostrarAlerta('Por favor, ingresa tu nombre y apellido completo (mínimo dos palabras)', 'warning');
         return;
       }
 
@@ -396,8 +421,6 @@ export default function CargaSube() {
 
       // 💻 Desktop → sigue con iframe
       setEstadoActual("firmando");
-
-      console.log('✓ [CargaSube] Mostrando formulario de firma. ID:', idPreaprobadoRecibido);
     } else {
       console.warn('⚠️  [CargaSube] No se recibió ID de preaprobado');
       window.location.href = "/solicitud-resultado?resultado=error";
@@ -405,7 +428,6 @@ export default function CargaSube() {
   }
 
   function handleAdobeSignComplete() {
-    console.log('✓ [CargaSube] Firma completada exitosamente');
     setEstadoActual("firmado");
 
     // Guardar en sessionStorage que la firma se completó
@@ -427,22 +449,15 @@ export default function CargaSube() {
   function handleAdobeSignError(error) {
     console.error('❌ [CargaSube] Error en firma de Adobe Sign:', error);
     setEstadoActual(null);
-    alert('Error al completar la firma. Por favor intente nuevamente.');
+    mostrarAlerta('Error al completar la firma. Por favor intente nuevamente.', 'error');
   }
 
   useEffect(() => {
     const firmaPendiente = sessionStorage.getItem("firmaPendiente");
 
     if (firmaPendiente) {
-      console.log("🔁 Usuario volvió de Adobe Sign");
-
       sessionStorage.removeItem("firmaPendiente");
-
-      // ⚠️ OPCIÓN SIMPLE:
       setEstadoActual("firmado");
-
-      // ⚠️ OPCIÓN PRO (mejor):
-      // acá podrías pegarle a tu backend para verificar si realmente firmó
     }
   }, []);
 
@@ -672,6 +687,7 @@ export default function CargaSube() {
                 <FormButton
                   label="ENVIAR SOLICITUD"
                   disabled={false}
+                  className={!formValido ? 'visual-disabled' : ''}
                   onClick={onFormSubmit}
                 />
               </>
@@ -701,6 +717,7 @@ export default function CargaSube() {
           </div>
         </div>
       </div>
+      <CustomAlert {...alertConfig} onClose={() => setAlertConfig({ ...alertConfig, visible: false })} />
     </div>
   );
 }
