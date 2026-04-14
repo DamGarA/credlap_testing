@@ -97,8 +97,6 @@
   font-size: 5rem;
   font-family: "Satisfy-Regular", sans-serif;
   font-weight: 400;
-  white-space: nowrap;        /* 🔹 evita el salto de línea */
-  overflow: visible;          /* 🔹 deja que el texto se salga del div */
 }
 
 .servicios-muyPronto-title {

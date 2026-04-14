@@ -6,7 +6,7 @@ module.exports = function (app) {
   app.use(
     "/sbfintech",
     createProxyMiddleware({
-      target: "https://credlaptest.sbfintech.net",
+      target: "https://credlap.sbfintech.net",
       changeOrigin: true,
       secure: true,
       // /sbfintech/API/v1/...  =>  /API/v1/...
