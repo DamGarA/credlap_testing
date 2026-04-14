@@ -2,14 +2,14 @@ import axios from "axios";
 
 // Servicio para Carga SUBE, Recarga de Saldo y Pago de Facturas
 // En desarrollo (npm start): usa proxy local (/sbfintech) para evitar CORS
-// En producción (npm run build): usa URL absoluta (https://credlaptest.sbfintech.net)
+// En producción (npm run build): usa URL absoluta (https://credlap.sbfintech.net)
 const API_BASE_URL = process.env.NODE_ENV === 'development' 
   ? '/sbfintech' 
-  : 'https://credlaptest.sbfintech.net';
+  : 'https://credlap.sbfintech.net';
 const BASE_URL = `${API_BASE_URL}/API/v1`;
 const API_LOGIN = {
-  Username: "api",
-  Password: "PruebasApi**",
+  Username: "DAMIAN",
+  Password: "Damian2026**",
 };
 
 let cachedToken = null;

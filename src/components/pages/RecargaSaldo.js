@@ -461,7 +461,7 @@ export default function RecargaSaldo() {
           <img src={avatarRecargaSaldo} alt="Avatar Recarga Saldo" />
           <div className="carga-sube-header-text">
             <h2>Recargá saldo</h2>
-            <p>Devolvé $25.000 en una cuota sin interés</p>
+            <p>Devolvé tu recarga en un pago sin interés</p>
           </div>
         </div>
 
@@ -626,7 +626,7 @@ export default function RecargaSaldo() {
                     />
                     <div>
                       <strong>Selfie sosteniendo tu DNI</strong>
-                      <small>¿Cómo hago la selfie?</small>
+                      <small><a href="https://workdrive.zohoexternal.com/external/6bab4eab41448be009c4b42afe6c69aa7008ccb402b919741b6009b5cf9b9d4e" target="_blank" rel="noopener noreferrer">¿Cómo hago la selfie?</a>  </small>
                     </div>
                   </div>
                   <input
@@ -708,6 +708,15 @@ export default function RecargaSaldo() {
                   <AdobeSignWidget
                     widgetId={ADOBE_SIGN_CONFIG.widgetId}
                     userName={formSolicitud.nombreCompleto}
+                    prefillData={{
+                      nombreCompleto: formSolicitud.nombreCompleto,
+                      genero: formSolicitud.genero,
+                      dni: formSolicitud.dni,
+                      provincia: formSolicitud.provincia,
+                      telefono: formSolicitud.telefono,
+                      email: formSolicitud.email,
+                      empresa: formSolicitud.empresa,
+                    }}
                     onSignComplete={handleAdobeSignComplete}
                     onSignError={handleAdobeSignError}
                     onLoad={() => setFirmaCargada(true)}

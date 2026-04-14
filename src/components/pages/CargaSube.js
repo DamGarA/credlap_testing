@@ -469,7 +469,7 @@ export default function CargaSube() {
           <img src={avatarSube} alt="Avatar SUBE" />
           <div className="carga-sube-header-text">
             <h2>Cargá tu SUBE</h2>
-            <p>Devolvé $25.000 en una cuota sin interés</p>
+            <p>Devolvé tu recarga en un pago sin interés</p>
           </div>
         </div>
 
@@ -625,7 +625,7 @@ export default function CargaSube() {
                     />
                     <div>
                       <strong>Selfie sosteniendo tu DNI</strong>
-                      <small>¿Cómo hago la selfie?</small>
+                      <small><a href="https://workdrive.zohoexternal.com/external/6bab4eab41448be009c4b42afe6c69aa7008ccb402b919741b6009b5cf9b9d4e" target="_blank" rel="noopener noreferrer">¿Cómo hago la selfie?</a>  </small>
                     </div>
                   </div>
                   <input
@@ -642,6 +642,14 @@ export default function CargaSube() {
                   >
                     {imagenes.selfie ? "Cargado ✓" : "Cargar imagen"}
                   </button>
+                </div>
+
+                <div className="acredita-carga-banner">
+                  <div className="acredita-carga-icon">ℹ</div>
+                  <div className="acredita-carga-text">
+                    <strong>Acreditá tu carga</strong>
+                    <p>En una Terminal Automática, en el colectivo o con la app SUBE.</p>
+                  </div>
                 </div>
 
                 <div className="checks">
@@ -708,6 +716,15 @@ export default function CargaSube() {
                 <AdobeSignWidget
                   widgetId={ADOBE_SIGN_CONFIG.widgetId}
                   userName={formSolicitud.nombreCompleto}
+                  prefillData={{
+                    nombreCompleto: formSolicitud.nombreCompleto,
+                    genero: formSolicitud.genero,
+                    dni: formSolicitud.dni,
+                    provincia: formSolicitud.provincia,
+                    telefono: formSolicitud.telefono,
+                    email: formSolicitud.email,
+                    numeroTarjetaSube: formSolicitud.numeroTarjetaSube,
+                  }}
                   onSignComplete={handleAdobeSignComplete}
                   onSignError={handleAdobeSignError}
                   onLoad={() => setFirmaCargada(true)}

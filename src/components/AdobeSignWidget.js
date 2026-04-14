@@ -10,8 +10,12 @@ import "./AdobeSignWidget.css";
  * - onSignComplete: Función callback cuando la firma se completa exitosamente
  * - onSignError: Función callback si hay error en la firma
  * - userName: Nombre del usuario (para logs)
+ * - prefillData: Objeto con datos para autocompletar los form fields del PDF.
+ *                Las claves deben coincidir con los nombres de los form fields
+ *                definidos en la plantilla del widget en Adobe Sign.
+ *                Ej: { nombreCompleto: "Juan Perez", dni: "12345678", email: "..." }
  */
-export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError, onLoad, userName = "Usuario" }) {
+export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError, onLoad, userName = "Usuario", prefillData = null }) {
   const iframeRef = useRef(null);
   const completionHandledRef = useRef(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
@@ -46,6 +50,21 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
         return;
       }
 
+      // Construir URL del widget con prefill via hash fragments.
+      // Adobe Sign usa # para prefill: url?wid=XXX#campo1=valor1&campo2=valor2
+      // Los nombres de las claves deben coincidir con los form fields del PDF en Adobe Sign.
+      // Ref: https://helpx.adobe.com/sign/adv-user/web-form/url-parameters.html
+      let widgetScriptUrl = `https://na3.documents.adobe.com/public/esignWidget?wid=${widgetId}`;
+      if (prefillData && typeof prefillData === 'object' && Object.keys(prefillData).length > 0) {
+        const hashParams = Object.entries(prefillData)
+          .filter(([, value]) => value != null && value !== '')
+          .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+          .join('&');
+        if (hashParams) {
+          widgetScriptUrl += `#${hashParams}`;
+        }
+      }
+
       // HTML base para el iframe - CSS mínimo para evitar scroll horizontal
       const htmlContent = `
         <!DOCTYPE html>
@@ -78,7 +97,7 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
           </style>
         </head>
         <body>
-          <script type='text/javascript' language='JavaScript' src='https://na3.documents.adobe.com/public/embeddedWidget?wid=${widgetId}'></script>
+          <script type='text/javascript' language='JavaScript' src='${widgetScriptUrl}'></script>
           <script>
             // Reenviar mensajes de Adobe Sign al window principal (main window)
             // Adobe Sign envía postMessage a window.parent (este iframe),
@@ -142,7 +161,7 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
       setTimeout(() => setIframeLoaded(true), 1000);
       onSignError?.({ error: error.message });
     }
-  }, [iframeReady, widgetId, userName, onSignError]);
+  }, [iframeReady, widgetId, userName, onSignError, prefillData]);
 
   useEffect(() => {
     function isAdobeSignOrigin(origin = "") {

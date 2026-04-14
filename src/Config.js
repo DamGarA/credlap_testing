@@ -3,5 +3,5 @@ export const CREDLAP_EMAIL = 'consultas@credlap.com'
 
 export const ADOBE_SIGN_CONFIG = {
   // Widget ID fijo para firma digital
-  widgetId: "CBFCIBAA3AAABLblqZhCMfSh6laecMEGKbv2UqEyH7ub0kwv14pEzb1MEmEYmZvhdoB3My-4RSc3mkyOgkM4*"
+  widgetId: "CBFCIBAA3AAABLblqZhDGjiISXiB3JY6gkUbyAkwh-ixbunI86wG_bmfpfumzzx1pZFe32BQj6dwNfjn_02M*"
 };

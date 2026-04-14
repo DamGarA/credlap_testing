@@ -25,6 +25,7 @@ import invBalanz from "../../images/Inversiones-balanz.png";
 import invBrubank from "../../images/Inversiones-brubank.png";
 import invBull from "../../images/Inversiones-bullmarket.png";
 import invFrances from "../../images/Inversiones-frances.png";
+import invFacimex from "../../images/Inversiones-facimex.png";
 import invMP from "../../images/Inversiones-mp.png";
 import invTelepagos from "../../images/Inversiones-telepagos.png";
 
@@ -210,6 +211,7 @@ export default function Institucional() {
                   <img src={invFrances} alt="Frances" />
                   <img src={invMP} alt="MercadoPago" />
                   <img src={invTelepagos} alt="Telepagos" />
+                  <img src={invFacimex} alt="Facimex" />
 
                   {/* duplicados */}
                   <img src={invBalanz} alt="Balanz" />
@@ -218,6 +220,7 @@ export default function Institucional() {
                   <img src={invFrances} alt="Frances" />
                   <img src={invMP} alt="MercadoPago" />
                   <img src={invTelepagos} alt="Telepagos" />
+                  <img src={invFacimex} alt="Facimex" />
                 </div>
               </div>
             </div>
