@@ -4,6 +4,7 @@ import enviarSolicitud from "../../services/SBFintechService";
 import FormButton from "../FormButton";
 import FormCheckbox from "../FormCheckbox";
 import FormDropdown from "../FormDropdown";
+import FormCombobox from "../FormCombobox";
 import FormInput from "../FormInput";
 import AdobeSignWidget from "../AdobeSignWidget";
 import CustomAlert from "../CustomAlert";
@@ -181,7 +182,7 @@ export default function PagarFactura() {
 
   function handleEmpresaChange(event) {
     var mensaje = null;
-    if (!event.target.value) mensaje = "La empresa es obligatoria";
+    if (!event.target.value) mensaje = "";
 
     setFormSolicitud((prevForm) => ({
       ...prevForm,
@@ -555,7 +556,7 @@ export default function PagarFactura() {
                   <span>2</span> Datos de tu factura
                 </h3>
                 <div className="grid-1">
-                  <FormDropdown 
+                  <FormCombobox
                     placeholder="Empresa"
                     options={empresasLabelsYValues}
                     value={formSolicitud.empresa}

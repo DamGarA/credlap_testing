@@ -143,16 +143,24 @@
   /* Inputs más altos en el grid */
   .carga-sube-left .grid-2 .form-input-container,
   .carga-sube-left .grid-2 .form-dropdown-container,
+  .carga-sube-left .grid-2 .form-combobox-container,
   .carga-sube-left .grid-1 .form-input-container,
-  .carga-sube-left .grid-1 .form-dropdown-container {
+  .carga-sube-left .grid-1 .form-dropdown-container,
+  .carga-sube-left .grid-1 .form-combobox-container {
     height: 50px;
     margin-top: 0;
     background: transparent;
     padding: 0;
     border-radius: 25px;
-    overflow: hidden;
+    overflow: visible; /* visible para que la lista desplegable no quede cortada */
   }
-  
+
+  /* El wrapper interno del combobox mantiene la altura */
+  .carga-sube-left .grid-2 .form-combobox-container .form-combobox-input-wrapper,
+  .carga-sube-left .grid-1 .form-combobox-container .form-combobox-input-wrapper {
+    height: 50px;
+  }
+
   .carga-sube-left .grid-2 .form-input,
   .carga-sube-left .grid-2 .form-dropdown,
   .carga-sube-left .grid-1 .form-input,
@@ -163,7 +171,24 @@
     border-radius: 25px;
     border: none;
   }
-  
+
+  .carga-sube-left .grid-2 .form-combobox-input,
+  .carga-sube-left .grid-1 .form-combobox-input {
+    height: 50px;
+    padding: 0 44px 0 18px;
+    font-size: 1rem;
+    border-radius: 25px;
+    border: none;
+  }
+
+  .carga-sube-left .grid-2 .form-combobox-caret,
+  .carga-sube-left .grid-1 .form-combobox-caret {
+    height: 50px;
+    width: 44px;
+    border-radius: 0 25px 25px 0;
+    background-position: center;
+  }
+
   .carga-sube-left .grid-2 .form-dropdown,
   .carga-sube-left .grid-1 .form-dropdown {
     background-position-x: calc(100% - 15px);
@@ -466,8 +491,15 @@
 
     .carga-sube-left .grid-2 .form-input-container,
     .carga-sube-left .grid-2 .form-dropdown-container,
+    .carga-sube-left .grid-2 .form-combobox-container,
     .carga-sube-left .grid-1 .form-input-container,
-    .carga-sube-left .grid-1 .form-dropdown-container {
+    .carga-sube-left .grid-1 .form-dropdown-container,
+    .carga-sube-left .grid-1 .form-combobox-container {
+      height: 45px;
+    }
+
+    .carga-sube-left .grid-2 .form-combobox-container .form-combobox-input-wrapper,
+    .carga-sube-left .grid-1 .form-combobox-container .form-combobox-input-wrapper {
       height: 45px;
     }
 
@@ -478,6 +510,19 @@
       height: 45px;
       font-size: 0.9rem;
       padding: 0 14px;
+    }
+
+    .carga-sube-left .grid-2 .form-combobox-input,
+    .carga-sube-left .grid-1 .form-combobox-input {
+      height: 45px;
+      font-size: 0.9rem;
+      padding: 0 40px 0 14px;
+    }
+
+    .carga-sube-left .grid-2 .form-combobox-caret,
+    .carga-sube-left .grid-1 .form-combobox-caret {
+      height: 45px;
+      width: 40px;
     }
 
     .carga-sube-left > .form-input-container:last-of-type {
