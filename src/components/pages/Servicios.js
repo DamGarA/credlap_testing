@@ -89,7 +89,7 @@ export default function Servicios() {
             <p className="servicios-muyPronto-label">100% recargado</p>
             <h2 className="servicios-muyPronto-title">
               <span className="italic-title">
-                Resolvé todo en un mismo lugar :{" "}
+                Resolvé todo en un mismo lugar
               </span>
             </h2>
           </div>
