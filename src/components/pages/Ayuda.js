@@ -22,7 +22,6 @@ export default function Ayuda() {
   //     deleteChatBot();
   //   };
   // }, []);
-  const tooltip1 = useRef(null);
   const tooltip2 = useRef(null);
 
   return (
@@ -154,37 +153,7 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Una vez aprobada tu solicitud y luego del chequeo de seguridad 
-                              de nuestros asesores, el préstamo se acredita en una cuenta 
-                              bancaria a tu nombre.
-                            </p>
-                            <p className="ayuda-asterisco">
-                              *Para saber qué es un CBU hacé&nbsp;
-                              <span className="tooltip" ref={tooltip1}>
-                                click aquí.
-                                <Tooltip
-                                  parent={tooltip1}
-                                  text={
-                                    <>
-                                      En Argentina, se llama <b>CBU</b> a una
-                                      Clave Bancaria Uniforme/Única.
-                                      <br />
-                                      Pero... ¿Qué es? Es un código público
-                                      utilizado por los bancos para
-                                      <b> identificar la cuenta</b> de sus
-                                      clientes. Podemos decir que es similar a
-                                      un "DNI bancario". &nbsp;Sirve para:
-                                      <br />
-                                      · Enviar y recibir transferencias en tu
-                                      cuenta bancaria nacionales o
-                                      internacionales.
-                                      <br />· Permite adherirte al pago de
-                                      impuestos y servicios por débito
-                                      automático
-                                    </>
-                                  }
-                                />
-                              </span>
+                              Una vez aprobada tu solicitud y luego del chequeo de seguridad el préstamo será acreditado en una cuenta a tu nombre.
                             </p>
                           </div>
                         ),
