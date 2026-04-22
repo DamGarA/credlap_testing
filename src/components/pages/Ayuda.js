@@ -344,11 +344,11 @@ export default function Ayuda() {
                               >
                                 Pagá tu cuota
                               </a>
-                              , donde encontrarás nuestro chat con información detallada. Otra opción es a través de WhatsApp al 11-2617-0462 o haciendo&nbsp;
+                              , donde encontrarás nuestro chat con información detallada. Otra opción es a través de WhatsApp al 221-546-2961 o haciendo&nbsp;
                               <Link
                                 to={
                                   "//api.whatsapp.com/send?phone=" +
-                                  "541126170462"
+                                  "5492215462961"
                                 }
                                 style={{ color: "#FFF" }}
                                 target={"_blank"}
