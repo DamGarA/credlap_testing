@@ -105,7 +105,7 @@ export default function Ayuda() {
                               1- Tenés situaciones crediticias negativas en la
                               central de deudores del BCRA.
                             </p>
-                            <p>2- No tenés cuenta bancaria a tu nombre.</p>
+                            <p>2- No tenés una cuenta donde podamos acreditarte.</p>
                             <p>
                               3- Tenés un beneficio o un tipo de comprobante de ingresos 
                               con el que no estamos trabajando.
