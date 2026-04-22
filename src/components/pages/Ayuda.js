@@ -132,7 +132,7 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Si no tenés comprobante de ingresos, podés solicitar tu préstamo igual y será evaluado por nuestros asesores comerciales (recordá que es necesario contar con CBU a tu nombre)
+                              Si no tenés comprobante de ingresos, podés solicitar tu préstamo igual y será evaluado por nuestros asesores comerciales (recordá que debes tener una cuenta a tu nombre donde podamos acreditarte)
                             </p>
                           </div>
                         ),
