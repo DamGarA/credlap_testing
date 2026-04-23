@@ -3,166 +3,47 @@ import "./AdobeSignWidget.css";
 
 /**
  * Componente para mostrar el widget de firma electrónica de Adobe Sign
- * Carga el script de Adobe Sign en un iframe para evitar conflictos con document.write()
- * 
+ * Usa un iframe directo con src para que el prefill via hash fragment funcione.
+ *
  * Props:
  * - widgetId: ID único del widget de Adobe Sign
  * - onSignComplete: Función callback cuando la firma se completa exitosamente
  * - onSignError: Función callback si hay error en la firma
+ * - onLoad: Callback cuando el iframe terminó de cargar
  * - userName: Nombre del usuario (para logs)
- * - prefillData: Objeto con datos para autocompletar los form fields del PDF.
- *                Las claves deben coincidir con los nombres de los form fields
- *                definidos en la plantilla del widget en Adobe Sign.
+ * - prefillData: Objeto con campos a pre-completar. Las claves deben coincidir
+ *                con los nombres de los form fields definidos en Adobe Sign, Y cada
+ *                campo debe tener activado "Es posible que el valor predeterminado
+ *                proceda de una dirección URL" en el editor de Adobe Sign.
  *                Ej: { nombreCompleto: "Juan Perez", dni: "12345678", email: "..." }
+ *                Ref: https://helpx.adobe.com/sign/adv-user/web-form/url-parameters.html
  */
 export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError, onLoad, userName = "Usuario", prefillData = null }) {
   const iframeRef = useRef(null);
   const completionHandledRef = useRef(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
-  const [iframeReady, setIframeReady] = useState(false);
 
+  // Resetear al cambiar widgetId
   useEffect(() => {
     completionHandledRef.current = false;
+    setIframeLoaded(false);
   }, [widgetId]);
 
-  // Primer efecto: crear el iframe vacío apenas el componente monta
-  useEffect(() => {
-    if (!widgetId) {
-      console.error('❌ [AdobeSignWidget] Widget ID inválido');
-      onSignError?.({ error: "Widget ID inválido" });
-      return;
-    }
-    // Marcar que estamos listos para crear el iframe
-    setIframeReady(true);
-  }, [widgetId]);
+  // Construir URL del widget con prefill como hash fragments (#campo=valor).
+  // Adobe Sign lee los valores de los campos desde el hash de la URL, NO desde
+  // query params. Ref: https://helpx.adobe.com/sign/adv-user/web-form/url-parameters.html
+  function buildWidgetUrl() {
+    const base = `https://na3.documents.adobe.com/public/esignWidget?wid=${widgetId}`;
+    if (!prefillData || typeof prefillData !== 'object') return base;
 
-  // Segundo efecto: cargar el widget una vez que el iframe está disponible
-  useEffect(() => {
-    if (!iframeReady || !iframeRef.current) {
-      return;
-    }
+    const params = Object.entries(prefillData)
+      .filter(([, value]) => value != null && value !== '')
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
 
-    try {
-      const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
+    return params.length > 0 ? `${base}#${params.join('&')}` : base;
+  }
 
-      if (!iframeDoc) {
-        console.error('❌ [AdobeSignWidget] No se puede acceder al documento del iframe');
-        return;
-      }
-
-      // Construir URL del widget con prefill via hash fragments.
-      // Adobe Sign usa # para prefill: url?wid=XXX#campo1=valor1&campo2=valor2
-      // Los nombres de las claves deben coincidir con los form fields del PDF en Adobe Sign.
-      // Ref: https://helpx.adobe.com/sign/adv-user/web-form/url-parameters.html
-      let widgetScriptUrl = `https://na3.documents.adobe.com/public/esignWidget?wid=${widgetId}`;
-      if (prefillData && typeof prefillData === 'object' && Object.keys(prefillData).length > 0) {
-        const hashParams = Object.entries(prefillData)
-          .filter(([, value]) => value != null && value !== '')
-          .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-          .join('&');
-        if (hashParams) {
-          widgetScriptUrl += `#${hashParams}`;
-        }
-      }
-
-      // HTML base para el iframe - CSS mínimo para evitar scroll horizontal
-      const htmlContent = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-          <style>
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-            html { width: 100%; height: 100%; }
-            body {
-              width: 114%;
-              height: 100%;
-              overflow: hidden;
-
-              -webkit-overflow-scrolling: touch;
-            }
-            @media (max-width: 768px) {
-              html {
-                transform: scale(0.70);
-                transform-origin: top left;
-                width: 130%;
-                height: 100%;
-              }
-              body {
-                height: 145%;
-                overflow: hidden;
-              }
-            }
-          </style>
-        </head>
-        <body>
-          <script type='text/javascript' language='JavaScript' src='${widgetScriptUrl}'></script>
-          <script>
-            // Reenviar mensajes de Adobe Sign al window principal (main window)
-            // Adobe Sign envía postMessage a window.parent (este iframe),
-            // pero el listener está en el main window, así que reenviamos
-            window.addEventListener('message', function(event) {
-              try {
-                if (window.parent && window.parent !== window) {
-                  window.parent.postMessage(event.data, '*');
-                }
-              } catch(e) {
-                // Silenciar errores cross-origin
-              }
-            });
-          </script>
-        </body>
-        </html>
-      `;
-
-      // Escribir el contenido HTML en el iframe
-      iframeDoc.open();
-      iframeDoc.write(htmlContent);
-      iframeDoc.close();
-
-      // Detectar cuando el widget se ha cargado
-      let checkAttempts = 0;
-      const maxAttempts = 40; // 4 segundos con 100ms de intervalo
-
-      const checkWidgetLoaded = setInterval(() => {
-        checkAttempts++;
-        try {
-          // Verificar si el body tiene contenido real (no solo el script)
-          const hasContent = iframeDoc.body.innerHTML.length > 200;
-
-          if (hasContent) {
-            clearInterval(checkWidgetLoaded);
-            // Pequeño delay para asegurar que el contenido está completamente renderizado
-            setTimeout(() => {
-              setIframeLoaded(true);
-              onLoad?.();
-            }, 300);
-          } else if (checkAttempts >= maxAttempts) {
-            clearInterval(checkWidgetLoaded);
-            setIframeLoaded(true);
-            onLoad?.();
-          }
-        } catch (e) {
-          // Cross-origin error, pero es esperado
-          if (checkAttempts >= maxAttempts) {
-            clearInterval(checkWidgetLoaded);
-            setIframeLoaded(true);
-            onLoad?.();
-          }
-        }
-      }, 100);
-
-      return () => {
-        clearInterval(checkWidgetLoaded);
-      };
-    } catch (error) {
-      console.error('❌ [AdobeSignWidget] Error inicializando widget:', error);
-      setTimeout(() => setIframeLoaded(true), 1000);
-      onSignError?.({ error: error.message });
-    }
-  }, [iframeReady, widgetId, userName, onSignError, prefillData]);
-
+  // Escuchar eventos de Adobe Sign via postMessage
   useEffect(() => {
     function isAdobeSignOrigin(origin = "") {
       try {
@@ -172,72 +53,51 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
           hostname.endsWith(".adobesign.com") ||
           hostname.endsWith(".echosign.com")
         );
-      } catch (error) {
+      } catch {
         return false;
       }
     }
 
     function handleAdobeMessage(event) {
-      if (!isAdobeSignOrigin(event.origin)) {
-        return;
-      }
+      if (!isAdobeSignOrigin(event.origin)) return;
 
       let payload = event.data;
-
       if (typeof payload === "string") {
-        try {
-          payload = JSON.parse(payload);
-        } catch (error) {
-          return;
-        }
+        try { payload = JSON.parse(payload); } catch { return; }
       }
-
-      if (!payload || typeof payload !== "object") {
-        return;
-      }
+      if (!payload || typeof payload !== "object") return;
 
       const eventType = payload.event || payload.type;
-      const pageName = payload.pageName || payload.page;
+      const pageName  = payload.pageName || payload.page;
+
+      console.log("📨 [AdobeSignWidget] Evento recibido:", { eventType, pageName });
 
       if (eventType === "ERROR") {
         onSignError?.(payload);
         return;
       }
 
-      const isCompletionEvent =
+      const isCompletion =
         eventType === "ESIGN" ||
         eventType === "PREFILL" ||
-        (eventType === "PAGE_LOAD" &&
-          (pageName === "POST_SIGN" || pageName === "POST_SEND"));
+        (eventType === "PAGE_LOAD" && (pageName === "POST_SIGN" || pageName === "POST_SEND"));
 
-      if (isCompletionEvent && !completionHandledRef.current) {
+      if (isCompletion && !completionHandledRef.current) {
         completionHandledRef.current = true;
+        console.log("✓ [AdobeSignWidget] Firma completada");
         onSignComplete?.(payload);
       }
     }
 
     window.addEventListener("message", handleAdobeMessage);
+    return () => window.removeEventListener("message", handleAdobeMessage);
+  }, [onSignComplete, onSignError]);
 
-    // También escuchar en el contentWindow del iframe como respaldo
-    let iframeWindow = null;
-    if (iframeLoaded && iframeRef.current?.contentWindow) {
-      try {
-        iframeWindow = iframeRef.current.contentWindow;
-        iframeWindow.addEventListener("message", handleAdobeMessage);
-      } catch (e) {
-        console.warn('[AdobeSignWidget] No se pudo agregar listener al iframe (cross-origin):', e.message);
-      }
-    }
-
-    return () => {
-      window.removeEventListener("message", handleAdobeMessage);
-      if (iframeWindow) {
-        try {
-          iframeWindow.removeEventListener("message", handleAdobeMessage);
-        } catch (e) {}
-      }
-    };
-  }, [onSignComplete, onSignError, iframeLoaded]);
+  function handleIframeLoad() {
+    console.log("✓ [AdobeSignWidget] Iframe cargado");
+    setIframeLoaded(true);
+    onLoad?.();
+  }
 
   if (!widgetId) {
     return (
@@ -249,20 +109,21 @@ export default function AdobeSignWidget({ widgetId, onSignComplete, onSignError,
 
   return (
     <div className="adobe-sign-widget-container">
-      <div className={`adobe-sign-loading ${iframeLoaded ? "hidden" : ""}`}>
-        <div className="spinner"></div>
-        <p>Cargando formulario de firma digital...</p>
-      </div>
-
+      {!iframeLoaded && (
+        <div className="adobe-sign-loading">
+          <div className="spinner"></div>
+          <p>Cargando formulario de firma digital...</p>
+        </div>
+      )}
       <iframe
         ref={iframeRef}
+        src={buildWidgetUrl()}
         title="Adobe Sign Widget"
         className="adobe-sign-iframe"
+        onLoad={handleIframeLoad}
         style={{
-          width: '100%',
-          height: '100%',
           border: 'none',
-          display: iframeLoaded ? 'block' : 'none'
+          display: iframeLoaded ? 'block' : 'none',
         }}
       />
     </div>
