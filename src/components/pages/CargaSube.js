@@ -10,20 +10,24 @@ import CustomAlert from "../CustomAlert";
 import { ADOBE_SIGN_CONFIG } from "../../Config";
 import "./CargaSube.css";
 import avatarSube from "../../images/Coco-Sube_Servicios.png";
-import dniFrente from "../../images/Dni-Frente_Servicios.png"
-import dniDorso from "../../images/Dni-Dorso_Servicios.png"
-import iconSelfie from "../../images/Selfie_Servicios.png"
-
+import dniFrente from "../../images/Dni-Frente_Servicios.png";
+import dniDorso from "../../images/Dni-Dorso_Servicios.png";
+import iconSelfie from "../../images/Selfie_Servicios.png";
 
 export default function CargaSube() {
   const [formValido, setFormValido] = useState(false);
   const [estadoActual, setEstadoActual] = useState(null); // "enviando", "firmando", "firmado", null
-  const [condicionesServicioLeidas, setCondicionesServicioLeidas] = useState(false);
+  const [condicionesServicioLeidas, setCondicionesServicioLeidas] =
+    useState(false);
   const [idPreaprobado, setIdPreaprobado] = useState(null); // ID de preaprobación
   const [firmaCargada, setFirmaCargada] = useState(false);
-  const [alertConfig, setAlertConfig] = useState({ visible: false, mensaje: '', tipo: 'warning' });
+  const [alertConfig, setAlertConfig] = useState({
+    visible: false,
+    mensaje: "",
+    tipo: "warning"
+  });
 
-  function mostrarAlerta(mensaje, tipo = 'warning') {
+  function mostrarAlerta(mensaje, tipo = "warning") {
     setAlertConfig({ visible: true, mensaje, tipo });
   }
   const [formSolicitud, setFormSolicitud] = useState({
@@ -37,14 +41,14 @@ export default function CargaSube() {
     tyc: false,
     politicas: false,
     condicionesServicio: false,
-    validaciones: {},
+    validaciones: {}
   });
 
   // Estado para las imágenes
   const [imagenes, setImagenes] = useState({
     dniFrente: null,
     dniDorso: null,
-    selfie: null,
+    selfie: null
   });
 
   useEffect(() => {
@@ -80,7 +84,10 @@ export default function CargaSube() {
       mensaje = "El nombre y apellido solo pueden contener letras";
     } else {
       // Validar que tenga al menos dos palabras (nombre y apellido)
-      const palabras = value.trim().split(/\s+/).filter(p => p.length > 0);
+      const palabras = value
+        .trim()
+        .split(/\s+/)
+        .filter((p) => p.length > 0);
       if (palabras.length < 2) {
         mensaje = "Debe ingresar al menos nombre y apellido";
       }
@@ -91,8 +98,8 @@ export default function CargaSube() {
       nombreCompleto: value,
       validaciones: {
         ...prevForm.validaciones,
-        nombreCompleto: mensaje,
-      },
+        nombreCompleto: mensaje
+      }
     }));
   }
 
@@ -104,8 +111,8 @@ export default function CargaSube() {
       genero: event.target.value,
       validaciones: {
         ...prevForm.validaciones,
-        genero: mensaje,
-      },
+        genero: mensaje
+      }
     }));
   }
 
@@ -123,8 +130,8 @@ export default function CargaSube() {
       dni: event.target.value,
       validaciones: {
         ...prevForm.validaciones,
-        dni: mensaje,
-      },
+        dni: mensaje
+      }
     }));
   }
 
@@ -137,14 +144,15 @@ export default function CargaSube() {
       provincia: event.target.value,
       validaciones: {
         ...prevForm.validaciones,
-        provincia: mensaje,
-      },
+        provincia: mensaje
+      }
     }));
   }
 
   function handleNumeroTarjetaSubeChange(event) {
     var mensaje = null;
-    if (!event.target.value) mensaje = "El número de tarjeta SUBE es obligatorio";
+    if (!event.target.value)
+      mensaje = "El número de tarjeta SUBE es obligatorio";
     else {
       if (event.target.value.length > 16) return;
       if (event.target.value.length < 16)
@@ -156,8 +164,8 @@ export default function CargaSube() {
       numeroTarjetaSube: event.target.value,
       validaciones: {
         ...prevForm.validaciones,
-        numeroTarjetaSube: mensaje,
-      },
+        numeroTarjetaSube: mensaje
+      }
     }));
   }
 
@@ -175,8 +183,8 @@ export default function CargaSube() {
       telefono: event.target.value,
       validaciones: {
         ...prevForm.validaciones,
-        telefono: mensaje,
-      },
+        telefono: mensaje
+      }
     }));
   }
 
@@ -192,8 +200,8 @@ export default function CargaSube() {
       email: event.target.value,
       validaciones: {
         ...prevForm.validaciones,
-        email: mensaje,
-      },
+        email: mensaje
+      }
     }));
   }
 
@@ -202,8 +210,8 @@ export default function CargaSube() {
       ...prevForm,
       tyc: event.target.checked,
       validaciones: {
-        ...prevForm.validaciones,
-      },
+        ...prevForm.validaciones
+      }
     }));
   }
 
@@ -212,16 +220,21 @@ export default function CargaSube() {
       ...prevForm,
       politicas: event.target.checked,
       validaciones: {
-        ...prevForm.validaciones,
-      },
+        ...prevForm.validaciones
+      }
     }));
   }
 
   function handleCondicionesServicioChecked(event) {
     // Solo permitir marcar el checkbox si ya leyó las condiciones
     if (!condicionesServicioLeidas) {
-      console.warn('⚠️  [CargaSube] Usuario intentó marcar checkbox sin leer condiciones');
-      mostrarAlerta('Debes hacer clic en el link de condiciones de uso antes de marcar este checkbox', 'warning');
+      console.warn(
+        "⚠️  [CargaSube] Usuario intentó marcar checkbox sin leer condiciones"
+      );
+      mostrarAlerta(
+        "Debes hacer clic en el link de condiciones de uso antes de marcar este checkbox",
+        "warning"
+      );
       return;
     }
 
@@ -229,8 +242,8 @@ export default function CargaSube() {
       ...prevForm,
       condicionesServicio: event.target.checked,
       validaciones: {
-        ...prevForm.validaciones,
-      },
+        ...prevForm.validaciones
+      }
     }));
   }
 
@@ -248,7 +261,10 @@ export default function CargaSube() {
         resolve(reader.result);
       };
       reader.onerror = (error) => {
-        console.error('❌ [convertirArchivoABase64] Error en conversión:', error);
+        console.error(
+          "❌ [convertirArchivoABase64] Error en conversión:",
+          error
+        );
         reject(error);
       };
     });
@@ -259,23 +275,36 @@ export default function CargaSube() {
     const file = event.target.files[0];
     if (file) {
       // Validar que sea una imagen
-      if (!file.type.startsWith('image/')) {
-        console.warn('⚠️  [handleImagenDniFrente] Tipo de archivo inválido:', file.type);
-        mostrarAlerta('Por favor seleccione un archivo de imagen válido', 'error');
+      if (!file.type.startsWith("image/")) {
+        console.warn(
+          "⚠️  [handleImagenDniFrente] Tipo de archivo inválido:",
+          file.type
+        );
+        mostrarAlerta(
+          "Por favor seleccione un archivo de imagen válido",
+          "error"
+        );
         return;
       }
       // Validar tamaño máximo (5MB)
       if (file.size > 5 * 1024 * 1024) {
-        console.warn('⚠️  [handleImagenDniFrente] Archivo muy grande:', file.size, 'bytes');
-        mostrarAlerta('La imagen no debe superar los 5MB', 'error');
+        console.warn(
+          "⚠️  [handleImagenDniFrente] Archivo muy grande:",
+          file.size,
+          "bytes"
+        );
+        mostrarAlerta("La imagen no debe superar los 5MB", "error");
         return;
       }
       try {
         const base64 = await convertirArchivoABase64(file);
-        setImagenes(prev => ({ ...prev, dniFrente: base64 }));
+        setImagenes((prev) => ({ ...prev, dniFrente: base64 }));
       } catch (error) {
-        console.error('❌ [handleImagenDniFrente] Error al cargar imagen:', error);
-        mostrarAlerta('Error al cargar la imagen', 'error');
+        console.error(
+          "❌ [handleImagenDniFrente] Error al cargar imagen:",
+          error
+        );
+        mostrarAlerta("Error al cargar la imagen", "error");
       }
     }
   }
@@ -283,22 +312,35 @@ export default function CargaSube() {
   async function handleImagenDniDorso(event) {
     const file = event.target.files[0];
     if (file) {
-      if (!file.type.startsWith('image/')) {
-        console.warn('⚠️  [handleImagenDniDorso] Tipo de archivo inválido:', file.type);
-        mostrarAlerta('Por favor seleccione un archivo de imagen válido', 'error');
+      if (!file.type.startsWith("image/")) {
+        console.warn(
+          "⚠️  [handleImagenDniDorso] Tipo de archivo inválido:",
+          file.type
+        );
+        mostrarAlerta(
+          "Por favor seleccione un archivo de imagen válido",
+          "error"
+        );
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
-        console.warn('⚠️  [handleImagenDniDorso] Archivo muy grande:', file.size, 'bytes');
-        mostrarAlerta('La imagen no debe superar los 5MB', 'error');
+        console.warn(
+          "⚠️  [handleImagenDniDorso] Archivo muy grande:",
+          file.size,
+          "bytes"
+        );
+        mostrarAlerta("La imagen no debe superar los 5MB", "error");
         return;
       }
       try {
         const base64 = await convertirArchivoABase64(file);
-        setImagenes(prev => ({ ...prev, dniDorso: base64 }));
+        setImagenes((prev) => ({ ...prev, dniDorso: base64 }));
       } catch (error) {
-        console.error('❌ [handleImagenDniDorso] Error al cargar imagen:', error);
-        mostrarAlerta('Error al cargar la imagen', 'error');
+        console.error(
+          "❌ [handleImagenDniDorso] Error al cargar imagen:",
+          error
+        );
+        mostrarAlerta("Error al cargar la imagen", "error");
       }
     }
   }
@@ -306,22 +348,32 @@ export default function CargaSube() {
   async function handleImagenSelfie(event) {
     const file = event.target.files[0];
     if (file) {
-      if (!file.type.startsWith('image/')) {
-        console.warn('⚠️  [handleImagenSelfie] Tipo de archivo inválido:', file.type);
-        mostrarAlerta('Por favor seleccione un archivo de imagen válido', 'error');
+      if (!file.type.startsWith("image/")) {
+        console.warn(
+          "⚠️  [handleImagenSelfie] Tipo de archivo inválido:",
+          file.type
+        );
+        mostrarAlerta(
+          "Por favor seleccione un archivo de imagen válido",
+          "error"
+        );
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
-        console.warn('⚠️  [handleImagenSelfie] Archivo muy grande:', file.size, 'bytes');
-        mostrarAlerta('La imagen no debe superar los 5MB', 'error');
+        console.warn(
+          "⚠️  [handleImagenSelfie] Archivo muy grande:",
+          file.size,
+          "bytes"
+        );
+        mostrarAlerta("La imagen no debe superar los 5MB", "error");
         return;
       }
       try {
         const base64 = await convertirArchivoABase64(file);
-        setImagenes(prev => ({ ...prev, selfie: base64 }));
+        setImagenes((prev) => ({ ...prev, selfie: base64 }));
       } catch (error) {
-        console.error('Error al cargar imagen:', error);
-        mostrarAlerta('Error al cargar la imagen', 'error');
+        console.error("Error al cargar imagen:", error);
+        mostrarAlerta("Error al cargar la imagen", "error");
       }
     }
   }
@@ -329,33 +381,41 @@ export default function CargaSube() {
   function onFormSubmit(event) {
     // Validar campos obligatorios
     const faltantes = [];
-    if (!formSolicitud.nombreCompleto) faltantes.push('Nombre y apellido');
-    if (!formSolicitud.genero) faltantes.push('Género');
-    if (!formSolicitud.dni) faltantes.push('DNI');
-    if (!formSolicitud.provincia) faltantes.push('Provincia');
-    if (!formSolicitud.email) faltantes.push('E-mail');
-    if (!formSolicitud.telefono) faltantes.push('Teléfono');
-    if (!formSolicitud.numeroTarjetaSube) faltantes.push('Número de tarjeta SUBE');
-    if (!imagenes.dniFrente) faltantes.push('Foto DNI frente');
-    if (!imagenes.dniDorso) faltantes.push('Foto DNI dorso');
-    if (!imagenes.selfie) faltantes.push('Selfie');
-    if (!formSolicitud.tyc) faltantes.push('Términos y condiciones');
-    if (!formSolicitud.politicas) faltantes.push('Políticas de privacidad');
-    if (!formSolicitud.condicionesServicio) faltantes.push('Condiciones del servicio');
+    if (!formSolicitud.nombreCompleto) faltantes.push("Nombre y apellido");
+    if (!formSolicitud.genero) faltantes.push("Género");
+    if (!formSolicitud.dni) faltantes.push("DNI");
+    if (!formSolicitud.provincia) faltantes.push("Provincia");
+    if (!formSolicitud.email) faltantes.push("E-mail");
+    if (!formSolicitud.telefono) faltantes.push("Teléfono");
+    if (!formSolicitud.numeroTarjetaSube)
+      faltantes.push("Número de tarjeta SUBE");
+    if (!imagenes.dniFrente) faltantes.push("Foto DNI frente");
+    if (!imagenes.dniDorso) faltantes.push("Foto DNI dorso");
+    if (!imagenes.selfie) faltantes.push("Selfie");
+    if (!formSolicitud.tyc) faltantes.push("Términos y condiciones");
+    if (!formSolicitud.politicas) faltantes.push("Políticas de privacidad");
+    if (!formSolicitud.condicionesServicio)
+      faltantes.push("Condiciones del servicio");
 
     if (faltantes.length > 0) {
-      mostrarAlerta('Completá los siguientes campos:\n• ' + faltantes.join('\n• '), 'warning');
+      mostrarAlerta(
+        "Completá los siguientes campos:\n• " + faltantes.join("\n• "),
+        "warning"
+      );
       return;
     }
 
     if (provinciasExcluidas.includes(formSolicitud.provincia)) {
-      console.warn('⚠️  [CargaSube] Provincia excluida:', formSolicitud.provincia);
+      console.warn(
+        "⚠️  [CargaSube] Provincia excluida:",
+        formSolicitud.provincia
+      );
       //Provincias excluidas
       setTimeout(function () {
         handleSolicitudResponse({
           request: {
-            responseURL: "/solicitud-resultado?resultado=rechazado",
-          },
+            responseURL: "/solicitud-resultado?resultado=rechazado"
+          }
         });
       }, 1000);
     } else {
@@ -365,7 +425,10 @@ export default function CargaSube() {
       const apellido = palabras.slice(1).join(" ");
 
       if (!nombre || !apellido) {
-        mostrarAlerta('Por favor, ingresa tu nombre y apellido completo (mínimo dos palabras)', 'warning');
+        mostrarAlerta(
+          "Por favor, ingresa tu nombre y apellido completo (mínimo dos palabras)",
+          "warning"
+        );
         return;
       }
 
@@ -387,13 +450,19 @@ export default function CargaSube() {
         telefono: solicitudParaEnviar.telefono,
         email: solicitudParaEnviar.email,
         provincia: solicitudParaEnviar.provincia,
-        monto: 25000, // Monto fijo para Carga SUBE
+        monto: 25000 // Monto fijo para Carga SUBE
       };
 
       try {
-        sessionStorage.setItem('credlap_formData', JSON.stringify(datosParaGuardar));
+        sessionStorage.setItem(
+          "credlap_formData",
+          JSON.stringify(datosParaGuardar)
+        );
       } catch (error) {
-        console.warn('⚠️  [CargaSube] No se pudo guardar datos en sessionStorage:', error);
+        console.warn(
+          "⚠️  [CargaSube] No se pudo guardar datos en sessionStorage:",
+          error
+        );
       }
 
       enviarSolicitud(solicitudParaEnviar, handleSolicitudResponse);
@@ -402,17 +471,17 @@ export default function CargaSube() {
   }
 
   function handleSolicitudResponse(response) {
-
     if (response?.isError) {
-      console.error('❌ [CargaSube] Error en solicitud:', response.error);
-      console.error('📝 [CargaSube] Detalles del error:', response);
+      console.error("❌ [CargaSube] Error en solicitud:", response.error);
+      console.error("📝 [CargaSube] Detalles del error:", response);
       window.location.href = "/solicitud-resultado?resultado=error";
       return;
     }
 
     // Si llegamos aquí, la solicitud fue exitosa (idPreaprobado + documentos subidos)
     // Ahora mostramos el widget de Adobe Sign (usando widget ID fijo del frontend)
-    const idPreaprobadoRecibido = response?.data?.idPreaprobado || response?.data?.idReferencia;
+    const idPreaprobadoRecibido =
+      response?.data?.idPreaprobado || response?.data?.idReferencia;
 
     if (idPreaprobadoRecibido) {
       setIdPreaprobado(idPreaprobadoRecibido);
@@ -422,7 +491,7 @@ export default function CargaSube() {
       // 💻 Desktop → sigue con iframe
       setEstadoActual("firmando");
     } else {
-      console.warn('⚠️  [CargaSube] No se recibió ID de preaprobado');
+      console.warn("⚠️  [CargaSube] No se recibió ID de preaprobado");
       window.location.href = "/solicitud-resultado?resultado=error";
     }
   }
@@ -432,12 +501,17 @@ export default function CargaSube() {
 
     // Guardar en sessionStorage que la firma se completó
     try {
-      const datosFormulario = JSON.parse(sessionStorage.getItem('credlap_formData') || '{}');
+      const datosFormulario = JSON.parse(
+        sessionStorage.getItem("credlap_formData") || "{}"
+      );
       datosFormulario.adobeSignFirmado = true;
       datosFormulario.idPreaprobado = idPreaprobado;
-      sessionStorage.setItem('credlap_formData', JSON.stringify(datosFormulario));
+      sessionStorage.setItem(
+        "credlap_formData",
+        JSON.stringify(datosFormulario)
+      );
     } catch (error) {
-      console.warn('⚠️  [CargaSube] Error guardando estado de firma:', error);
+      console.warn("⚠️  [CargaSube] Error guardando estado de firma:", error);
     }
 
     // Redirigir a página de resultado después de 1 segundo
@@ -447,9 +521,12 @@ export default function CargaSube() {
   }
 
   function handleAdobeSignError(error) {
-    console.error('❌ [CargaSube] Error en firma de Adobe Sign:', error);
+    console.error("❌ [CargaSube] Error en firma de Adobe Sign:", error);
     setEstadoActual(null);
-    mostrarAlerta('Error al completar la firma. Por favor intente nuevamente.', 'error');
+    mostrarAlerta(
+      "Error al completar la firma. Por favor intente nuevamente.",
+      "error"
+    );
   }
 
   useEffect(() => {
@@ -462,7 +539,9 @@ export default function CargaSube() {
   }, []);
 
   return (
-    <div className={`carga-sube-wrapper ${estadoActual === "firmando" ? "firma-fullscreen" : ""}`}>
+    <div
+      className={`carga-sube-wrapper ${estadoActual === "firmando" ? "firma-fullscreen" : ""}`}
+    >
       <div className="carga-sube-card">
         {/* HEADER */}
         <div className="carga-sube-header">
@@ -473,7 +552,9 @@ export default function CargaSube() {
           </div>
         </div>
 
-        <div className={`carga-sube-content ${estadoActual === "firmando" ? "firmando" : ""}`}>
+        <div
+          className={`carga-sube-content ${estadoActual === "firmando" ? "firmando" : ""}`}
+        >
           {/* IZQUIERDA */}
           <div className="carga-sube-left">
             {!estadoActual && (
@@ -502,12 +583,12 @@ export default function CargaSube() {
                     options={[
                       {
                         label: "Femenino",
-                        value: "F",
+                        value: "F"
                       },
                       {
                         label: "Masculino",
-                        value: "M",
-                      },
+                        value: "M"
+                      }
                     ]}
                     value={formSolicitud.genero}
                     onChange={handleGeneroChange}
@@ -551,10 +632,14 @@ export default function CargaSube() {
               <div className="baja-enviando">Procesando solicitud...</div>
             )}
             {estadoActual === "firmando" && !firmaCargada && (
-              <div className="baja-enviando">Cargando formulario de firma...</div>
+              <div className="baja-enviando">
+                Cargando formulario de firma...
+              </div>
             )}
             {estadoActual === "firmado" && (
-              <div className="baja-enviando">¡Firma completada! Redirigiendo...</div>
+              <div className="baja-enviando">
+                ¡Firma completada! Redirigiendo...
+              </div>
             )}
           </div>
 
@@ -578,13 +663,13 @@ export default function CargaSube() {
                     type="file"
                     id="dniFrente"
                     accept="image/*"
-                    style={{ display: 'none' }}
+                    style={{ display: "none" }}
                     onChange={handleImagenDniFrente}
                   />
                   <button
                     type="button"
                     className={imagenes.dniFrente ? "ok" : ""}
-                    onClick={() => document.getElementById('dniFrente').click()}
+                    onClick={() => document.getElementById("dniFrente").click()}
                   >
                     {imagenes.dniFrente ? "Cargado ✓" : "Cargar imagen"}
                   </button>
@@ -592,10 +677,7 @@ export default function CargaSube() {
 
                 <div className="upload-item">
                   <div className="upload-left">
-                    <img
-                      src={dniDorso}
-                      alt="DNI dorso"
-                    />
+                    <img src={dniDorso} alt="DNI dorso" />
                     <div>
                       <strong>Dorso del DNI</strong>
                       <small>La imagen debe ser 100% visible</small>
@@ -605,13 +687,13 @@ export default function CargaSube() {
                     type="file"
                     id="dniDorso"
                     accept="image/*"
-                    style={{ display: 'none' }}
+                    style={{ display: "none" }}
                     onChange={handleImagenDniDorso}
                   />
                   <button
                     type="button"
                     className={imagenes.dniDorso ? "ok" : ""}
-                    onClick={() => document.getElementById('dniDorso').click()}
+                    onClick={() => document.getElementById("dniDorso").click()}
                   >
                     {imagenes.dniDorso ? "Cargado ✓" : "Cargar imagen"}
                   </button>
@@ -619,26 +701,31 @@ export default function CargaSube() {
 
                 <div className="upload-item">
                   <div className="upload-left">
-                    <img
-                      src={iconSelfie}
-                      alt="Selfie DNI"
-                    />
+                    <img src={iconSelfie} alt="Selfie DNI" />
                     <div>
                       <strong>Selfie sosteniendo tu DNI</strong>
-                      <small><a href="https://workdrive.zohoexternal.com/external/6bab4eab41448be009c4b42afe6c69aa7008ccb402b919741b6009b5cf9b9d4e" target="_blank" rel="noopener noreferrer">¿Cómo hago la selfie?</a>  </small>
+                      <small>
+                        <a
+                          href="https://workdrive.zohoexternal.com/external/6bab4eab41448be009c4b42afe6c69aa7008ccb402b919741b6009b5cf9b9d4e"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          ¿Cómo hago la selfie?
+                        </a>{" "}
+                      </small>
                     </div>
                   </div>
                   <input
                     type="file"
                     id="selfie"
                     accept="image/*"
-                    style={{ display: 'none' }}
+                    style={{ display: "none" }}
                     onChange={handleImagenSelfie}
                   />
                   <button
                     type="button"
                     className={imagenes.selfie ? "ok" : ""}
-                    onClick={() => document.getElementById('selfie').click()}
+                    onClick={() => document.getElementById("selfie").click()}
                   >
                     {imagenes.selfie ? "Cargado ✓" : "Cargar imagen"}
                   </button>
@@ -648,7 +735,10 @@ export default function CargaSube() {
                   <div className="acredita-carga-icon">ℹ</div>
                   <div className="acredita-carga-text">
                     <strong>Acreditá tu carga</strong>
-                    <p>En una Terminal Automática, en el colectivo o con la app SUBE.</p>
+                    <p>
+                      En una Terminal Automática, en el colectivo o con la app
+                      SUBE.
+                    </p>
                   </div>
                 </div>
 
@@ -672,7 +762,11 @@ export default function CargaSube() {
                         className="input-checkbox"
                         checked={formSolicitud.condicionesServicio}
                         onChange={handleCondicionesServicioChecked}
-                        title={!condicionesServicioLeidas ? "Haz clic en el link de condiciones primero" : ""}
+                        title={
+                          !condicionesServicioLeidas
+                            ? "Haz clic en el link de condiciones primero"
+                            : ""
+                        }
                       />
                     </div>
                     <label className="label-checkbox">
@@ -680,13 +774,20 @@ export default function CargaSube() {
                         href="https://workdrive.zohoexternal.com/external/5fc94b3c29bbe85da3bb9695e4e5d12ffe09da8f09a92508e6d6a0bb52a15066"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`checkbox-link ${condicionesServicioLeidas ? 'link-leido' : ''}`}
+                        className={`checkbox-link ${condicionesServicioLeidas ? "link-leido" : ""}`}
                         onClick={handleCondicionesServicioLink}
                       >
                         Acepto las condiciones de uso del servicio
                       </a>
-                      {condicionesServicioLeidas && <span className="link-leido-icon">✓</span>}
-                      {!condicionesServicioLeidas && <span className="link-no-leido-texto"> (Haz clic en el link primero)</span>}
+                      {condicionesServicioLeidas && (
+                        <span className="link-leido-icon">✓</span>
+                      )}
+                      {!condicionesServicioLeidas && (
+                        <span className="link-no-leido-texto">
+                          {" "}
+                          (Haz clic en el link primero)
+                        </span>
+                      )}
                       .
                     </label>
                   </div>
@@ -695,7 +796,7 @@ export default function CargaSube() {
                 <FormButton
                   label="ENVIAR SOLICITUD"
                   disabled={false}
-                  className={!formValido ? 'visual-disabled' : ''}
+                  className={!formValido ? "visual-disabled" : ""}
                   onClick={onFormSubmit}
                 />
               </>
@@ -724,6 +825,9 @@ export default function CargaSube() {
                     telefono: formSolicitud.telefono,
                     email: formSolicitud.email,
                     numeroTarjetaSube: formSolicitud.numeroTarjetaSube,
+                    dia: new Date().getDate(),
+                    mes: new Date().toLocaleString("es-AR", { month: "long" }),
+                    anio: new Date().getFullYear()
                   }}
                   onSignComplete={handleAdobeSignComplete}
                   onSignError={handleAdobeSignError}
@@ -734,17 +838,44 @@ export default function CargaSube() {
           </div>
         </div>
       </div>
-      <CustomAlert {...alertConfig} onClose={() => setAlertConfig({ ...alertConfig, visible: false })} />
+      <CustomAlert
+        {...alertConfig}
+        onClose={() => setAlertConfig({ ...alertConfig, visible: false })}
+      />
     </div>
   );
 }
 
 //Datos para la exclusion de ciertas provincias
-const listaDeProvincias = ["Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Tucumán", "Tierra del Fuego, Antártida e Islas del Atlántico Sur", "Santiago del Estero"]
-const provinciasLabelsYValues = listaDeProvincias.map(provincia => {
+const listaDeProvincias = [
+  "Buenos Aires",
+  "Catamarca",
+  "Chaco",
+  "Chubut",
+  "Córdoba",
+  "Corrientes",
+  "Entre Ríos",
+  "Formosa",
+  "Jujuy",
+  "La Pampa",
+  "La Rioja",
+  "Mendoza",
+  "Misiones",
+  "Neuquén",
+  "Río Negro",
+  "Salta",
+  "San Juan",
+  "San Luis",
+  "Santa Cruz",
+  "Santa Fe",
+  "Tucumán",
+  "Tierra del Fuego, Antártida e Islas del Atlántico Sur",
+  "Santiago del Estero"
+];
+const provinciasLabelsYValues = listaDeProvincias.map((provincia) => {
   return {
     label: provincia,
     value: provincia
-  }
-})
-const provinciasExcluidas = []
+  };
+});
+const provinciasExcluidas = [];
