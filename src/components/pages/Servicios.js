@@ -424,7 +424,9 @@ export default function Servicios() {
           término y tomará la decisión de aplicar las cuotas correspondientes
           entre los mínimos y máximos estipulados.
           <br></br>
-          Valor del servicio $19999,99.
+          El valor de los servicios será actualizado de manera trimestral en base al porcentaje de inflación determinado por los índices oficiales publicados por el organismo competente.
+          <br></br>
+          Valor del servicio $21899,99.
         </p>
         <Link
           to={

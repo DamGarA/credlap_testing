@@ -22,7 +22,6 @@ export default function Ayuda() {
   //     deleteChatBot();
   //   };
   // }, []);
-  const tooltip1 = useRef(null);
   const tooltip2 = useRef(null);
 
   return (
@@ -105,7 +104,7 @@ export default function Ayuda() {
                               1- Tenés situaciones crediticias negativas en la
                               central de deudores del BCRA.
                             </p>
-                            <p>2- No tenés cuenta bancaria a tu nombre.</p>
+                            <p>2- No tenés una cuenta donde podamos acreditarte.</p>
                             <p>
                               3- Tenés un beneficio o un tipo de comprobante de ingresos 
                               con el que no estamos trabajando.
@@ -132,7 +131,7 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Si no tenés comprobante de ingresos, podés solicitar tu préstamo igual y será evaluado por nuestros asesores comerciales (recordá que es necesario contar con CBU a tu nombre)
+                              Si no tenés comprobante de ingresos, podés solicitar tu préstamo igual y será evaluado por nuestros asesores comerciales (recordá que debes tener una cuenta a tu nombre donde podamos acreditarte)
                             </p>
                           </div>
                         ),
@@ -154,37 +153,7 @@ export default function Ayuda() {
                         contenido: (
                           <div className="ayuda-subaccordion-text">
                             <p>
-                              Una vez aprobada tu solicitud y luego del chequeo de seguridad 
-                              de nuestros asesores, el préstamo se acredita en una cuenta 
-                              bancaria a tu nombre.
-                            </p>
-                            <p className="ayuda-asterisco">
-                              *Para saber qué es un CBU hacé&nbsp;
-                              <span className="tooltip" ref={tooltip1}>
-                                click aquí.
-                                <Tooltip
-                                  parent={tooltip1}
-                                  text={
-                                    <>
-                                      En Argentina, se llama <b>CBU</b> a una
-                                      Clave Bancaria Uniforme/Única.
-                                      <br />
-                                      Pero... ¿Qué es? Es un código público
-                                      utilizado por los bancos para
-                                      <b> identificar la cuenta</b> de sus
-                                      clientes. Podemos decir que es similar a
-                                      un "DNI bancario". &nbsp;Sirve para:
-                                      <br />
-                                      · Enviar y recibir transferencias en tu
-                                      cuenta bancaria nacionales o
-                                      internacionales.
-                                      <br />· Permite adherirte al pago de
-                                      impuestos y servicios por débito
-                                      automático
-                                    </>
-                                  }
-                                />
-                              </span>
+                              Una vez aprobada tu solicitud y luego del chequeo de seguridad el préstamo será acreditado en una cuenta a tu nombre.
                             </p>
                           </div>
                         ),
@@ -375,11 +344,11 @@ export default function Ayuda() {
                               >
                                 Pagá tu cuota
                               </a>
-                              , donde encontrarás nuestro chat con información detallada. Otra opción es a través de WhatsApp al 11-2617-0462 o haciendo&nbsp;
+                              , donde encontrarás nuestro chat con información detallada. Otra opción es a través de WhatsApp al 221-546-2961 o haciendo&nbsp;
                               <Link
                                 to={
                                   "//api.whatsapp.com/send?phone=" +
-                                  "541126170462"
+                                  "5492215462961"
                                 }
                                 style={{ color: "#FFF" }}
                                 target={"_blank"}
