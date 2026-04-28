@@ -811,7 +811,10 @@ export default function CargaSube() {
                 </h3>
 
                 <p className="firma-descripcion">
-                  Por favor, complete su firma electrónica a continuación
+                  Por favor, complete su firma electrónica a continuación.
+                  <br />
+                  Una vez finalizado, revise su correo para continuar con la
+                  preaprobación.
                 </p>
 
                 <AdobeSignWidget
