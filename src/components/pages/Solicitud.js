@@ -25,6 +25,7 @@ export default function Solicitud() {
     monto: 25000,
     tyc: false,
     politicas: false,
+    conformidad: false,
     validaciones: {},
   });
 
@@ -55,7 +56,8 @@ export default function Solicitud() {
         formSolicitud.monto &&
         !formSolicitud.validaciones.monto &&
         formSolicitud.tyc &&
-        formSolicitud.politicas
+        formSolicitud.politicas &&
+        formSolicitud.conformidad
     );
   }
 
@@ -223,6 +225,16 @@ export default function Solicitud() {
     setFormSolicitud((prevForm) => ({
       ...prevForm,
       politicas: event.target.checked,
+      validaciones: {
+        ...prevForm.validaciones,
+      },
+    }));
+  }
+
+  function handleConformidadChecked(event) {
+    setFormSolicitud((prevForm) => ({
+      ...prevForm,
+      conformidad: event.target.checked,
       validaciones: {
         ...prevForm.validaciones,
       },
@@ -460,6 +472,14 @@ export default function Solicitud() {
                     value={formSolicitud.politicas}
                     onChange={handlePoliticasChecked}
                     validation={formSolicitud.validaciones.politicas}
+                  />
+                </div>
+                <div style={{ marginTop: "-15px" }}>
+                  <FormCheckbox
+                    label="Acepto y doy conformidad a lo leído"
+                    value={formSolicitud.conformidad}
+                    onChange={handleConformidadChecked}
+                    validation={formSolicitud.validaciones.conformidad}
                   />
                 </div>
               </div>

@@ -125,13 +125,13 @@ export default function PagaTuCuota() {
                   <span className="paga-qr-list-number">3</span>
                 </div>
                 <p className="paga-qr-list-label">
-                  Hablanos al chat{" "}
+                  Escribinos por chat{" "}
                   <img
                     className="pago-icono-credlap"
                     src={pagoIconoCredLap}
                     alt="icono-credlap"
                   ></img>
-                  , cargá tus datos y adjuntá tu comprobante
+                  {" "}o WhatsApp, cargá tus datos y adjuntá tu comprobante
                 </p>
               </div>
             </div>

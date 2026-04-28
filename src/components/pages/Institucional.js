@@ -228,7 +228,7 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* MARCAS DESTACADAS */}
+      {/* MARCAS DESTACADAS  */}
       <section className="marcas-section" id="marcas">
         <div className="marcas-container">
           <h2 className="section-title">Marcas Destacadas</h2>
