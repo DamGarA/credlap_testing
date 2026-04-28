@@ -99,6 +99,7 @@ export default function Servicios() {
               <div className="servicio-icon-circle">
                 <img src={imgMuyPronto1} alt="Carga SUBE" />
               </div>
+
               <button className="servicio-pill">Cargar SUBE</button>
             </div>
 
@@ -106,6 +107,7 @@ export default function Servicios() {
               <div className="servicio-icon-circle">
                 <img src={imgMuyPronto2} alt="Recargar saldo" />
               </div>
+
               <button className="servicio-pill">Recargar saldo</button>
             </div>
 
@@ -113,6 +115,7 @@ export default function Servicios() {
               <div className="servicio-icon-circle">
                 <img src={imgMuyPronto3} alt="Pagar factura" />
               </div>
+              
               <button className="servicio-pill">Pagar factura</button>
             </div>
           </div>

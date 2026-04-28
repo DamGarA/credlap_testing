@@ -818,7 +818,10 @@ export default function PagarFactura() {
                   <span>4</span> Firma digital
                 </h3>
                 <p className="firma-descripcion">
-                  Por favor, complete su firma electrónica a continuación
+                  Por favor, complete su firma electrónica a continuación.
+                  <br />
+                  Una vez finalizado, revise su correo para continuar con la
+                  preaprobación.
                 </p>
                 <AdobeSignWidget
                   widgetId={ADOBE_SIGN_CONFIG.widgetId}
