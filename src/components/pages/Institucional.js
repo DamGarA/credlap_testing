@@ -14,7 +14,6 @@ import iconMarca from "../../images/icon-marca.png";
 
 // IMAGENES MARCAS DESTACADAS
 import marcaCredlap from "../../images/marca-credlap.png";
-import marcaMacedo from "../../images/marca-macedo.png";
 import marcaAmarilla from "../../images/marca-amarilla.png";
 
 // IMAGEN MISION
@@ -95,7 +94,7 @@ export default function Institucional() {
           <div className="metric-card metric-black">
             <img src={iconMarca} className="metric-icon" alt="" />
             <div className="metric-texts">
-              <div className="metric-number">3 MARCAS</div>
+              <div className="metric-number">2 MARCAS</div>
               <div className="metric-sub">estratégicas</div>
             </div>
           </div>
@@ -267,29 +266,7 @@ export default function Institucional() {
                 </div>
               </article>
 
-              <article className="marca-card-feature">
-                <div className="marca-image-wrap">
-                  <img src={marcaMacedo} alt="Macedo" />
-                </div>
-                <div className="marca-body">
-                  <div className="marca-kicker macedo">REFUGIO MACEDO</div>
-                  <h3 className="marca-title">
-                    Experiencia Gastronómica Única
-                  </h3>
-                  <p className="marca-desc">
-                    Sabor y armonía en el refugio perfecto en las afueras de La
-                    Plata.
-                  </p>
-                  <a
-                    href="https://wa.me/5492216901832"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="marca-btn green"
-                  >
-                    DESCUBRIR MACEDO
-                  </a>
-                </div>
-              </article>
+
 
               <article className="marca-card-feature">
                 <div className="marca-image-wrap">
