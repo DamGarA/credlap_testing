@@ -106,21 +106,21 @@ function construirPayloadScore(formSolicitud) {
 
   if (tieneSube) {
     // Carga SUBE
-    lineaCredito = 58;
+    lineaCredito = 84;
     origen = "Recarga de SUBE";
     auxiliar001 = formSolicitud.numeroTarjetaSube || "";
     auxiliar002 = formSolicitud.provincia || "";
     auxiliar003 = "";
   } else if (tieneConfirmarTelefono) {
     // Recarga de saldo de celular
-    lineaCredito = 60;
+    lineaCredito = 86;
     origen = formSolicitud.empresa || "Recarga de saldo";
     auxiliar001 = formSolicitud.telefono || "";
     auxiliar002 = formSolicitud.empresa || "";
     auxiliar003 = formSolicitud.provincia || "";
   } else if (tieneCodigoFactura) {
     // Pago de servicios / factura
-    lineaCredito = 59;
+    lineaCredito = 85;
     origen = formSolicitud.empresa || "Pago de servicios";
     auxiliar001 = formSolicitud.codigoFactura || "";
     auxiliar002 = formSolicitud.empresa || "";
