@@ -12,8 +12,6 @@ import imgServicio2 from "../../images/images_services/FINANCIACION-MUBLERIA-FRE
 import imgServicio2Back from "../../images/images_services/FINANCIACION-MUBLERIA-DORSO.png";
 import imgServicio4 from "../../images/images_services/FINANCIACION-TECNOLOGIA-FRENTE.png";
 import imgServicio4Back from "../../images/images_services/FINANCIACION-TECNOLOGIA-DORSO.png";
-import imgServicio5 from "../../images/images_services/FINANCIACION-EVENTOS-FRENTE.png";
-import imgServicio5Back from "../../images/images_services/FINANCIACION-EVENTOS-DORSO.png";
 import imgCarousel1 from "../../images/images_services/ASESORIA-CALCULADORA.png";
 import imgCarousel2 from "../../images/images_services/ASESORIA-LEGAL.png";
 import imgCarousel3 from "../../images/images_services/ASESORIA-ALIMENTARIA.png";
@@ -170,42 +168,7 @@ export default function Servicios() {
               className="servicios-box-item-img-back"
             />
           </div>
-          <div className="servicios-second-section-box">
-            <img
-              src={imgServicio5}
-              alt="Servicio seguro"
-              className="servicios-box-item-img-front"
-            />
-            <img
-              src={imgServicio5Back}
-              alt="Servicios Seguro Dorso"
-              className="servicios-box-item-img-back"
-            />
-            <div className="servicios-box-links">
-              <Link
-                to={
-                  "https://www.instagram.com/refugiomacedook?igsh=MjJrNnBvOWFobGJm"
-                }
-                className="servicio-contacto-btn servicio-instagram"
-                target={"_blank"}
-              >
-                <FontAwesomeIcon
-                  icon={brands("instagram")}
-                  className="servicio-contacto-btn-icon"
-                />
-              </Link>
-              <Link
-                to={"https://www.facebook.com/share/1CfbeBvkGw/"}
-                className="servicio-contacto-btn"
-                target={"_blank"}
-              >
-                <FontAwesomeIcon
-                  icon={brands("facebook")}
-                  className="servicio-contacto-btn-icon"
-                />
-              </Link>
-            </div>
-          </div>
+
         </div>
       </div>
       <div className="servicios-third-section-fondo">
