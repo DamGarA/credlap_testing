@@ -94,7 +94,7 @@ export default function Institucional() {
           <div className="metric-card metric-black">
             <img src={iconMarca} className="metric-icon" alt="" />
             <div className="metric-texts">
-              <div className="metric-number">2 MARCAS</div>
+              <div className="metric-number">MARCAS PROPIAS REGISTRADAS</div>
               <div className="metric-sub">estratégicas</div>
             </div>
           </div>
