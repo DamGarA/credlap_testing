@@ -48,10 +48,6 @@ export default function Institucional() {
                 Una sociedad que transforma ideas en realidades y construye
                 valor en múltiples mercados.
               </p>
-
-              <a href="#mision" className="hero-cta">
-                EXPLORAR NEGOCIOS
-              </a>
             </div>
           </div>
         </div>
