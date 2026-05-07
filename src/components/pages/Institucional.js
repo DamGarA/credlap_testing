@@ -1,7 +1,5 @@
 import React from "react";
 
-import { useRef } from "react";
-
 // HERO + ICONOS
 import heroBg from "../../images/hero-institucional.png";
 import iconGestion from "../../images/icon-gestion.png";
@@ -11,10 +9,6 @@ import iconServicio from "../../images/icon-servicio.png";
 import icon10 from "../../images/icon-10.png";
 import iconCompromiso from "../../images/icon-compromiso.png";
 import iconMarca from "../../images/icon-marca.png";
-
-// IMAGENES MARCAS DESTACADAS
-import marcaCredlap from "../../images/marca-credlap.png";
-import marcaAmarilla from "../../images/marca-amarilla.png";
 
 // IMAGEN MISION
 import imgMision from "../../images/imagen-mision.png";
@@ -35,23 +29,6 @@ import iconWhatsapp from "../../images/icono-whatsapp.png";
 import "./Institucional.css";
 
 export default function Institucional() {
-  const sliderRef = useRef(null);
-
-  const scroll = (direction) => {
-    if (!sliderRef.current) return;
-
-    if (window.innerWidth > 768) return;
-
-    const cardWidth = sliderRef.current.children[0]?.offsetWidth || 0;
-    const gap = 20;
-    const scrollAmount = cardWidth + gap;
-
-    sliderRef.current.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth"
-    });
-  };
-
   return (
     <div className="institucional page-container">
       {/* HERO */}
@@ -71,10 +48,6 @@ export default function Institucional() {
                 Una sociedad que transforma ideas en realidades y construye
                 valor en múltiples mercados.
               </p>
-
-              <a href="#marcas" className="hero-cta">
-                EXPLORAR NEGOCIOS
-              </a>
             </div>
           </div>
         </div>
@@ -94,7 +67,7 @@ export default function Institucional() {
           <div className="metric-card metric-black">
             <img src={iconMarca} className="metric-icon" alt="" />
             <div className="metric-texts">
-              <div className="metric-number">2 MARCAS</div>
+              <div className="metric-number">MARCAS PROPIAS REGISTRADAS</div>
               <div className="metric-sub">estratégicas</div>
             </div>
           </div>
@@ -227,84 +200,8 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* MARCAS DESTACADAS  */}
-      <section className="marcas-section" id="marcas">
-        <div className="marcas-container">
-          <h2 className="section-title">Marcas Destacadas</h2>
-
-          <div className="marcas-slider">
-            <button
-              className="marca-arrow left"
-              aria-label="Anterior"
-              onClick={() => scroll("left")}
-            >
-              ‹
-            </button>
-
-            <div className="marcas-grid" ref={sliderRef}>
-              <article className="marca-card-feature">
-                <div className="marca-image-wrap">
-                  <img src={marcaCredlap} alt="Credlap" />
-                </div>
-                <div className="marca-body">
-                  <div className="marca-kicker credlap">CREDLAP</div>
-                  <h3 className="marca-title">
-                    Inversión y Servicios Financieros
-                  </h3>
-                  <p className="marca-desc">
-                    Más de 10 años potenciando tu futuro con el crédito más
-                    simple.
-                  </p>
-                  <a
-                    href="https://wa.me/5492215462961"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="marca-btn blue"
-                  >
-                    VISITAR CREDLAP
-                  </a>
-                </div>
-              </article>
-
-
-
-              <article className="marca-card-feature">
-                <div className="marca-image-wrap">
-                  <img src={marcaAmarilla} alt="Amarilla" />
-                </div>
-                <div className="marca-body">
-                  <div className="marca-kicker cerveza">CERVEZA AMARILLA</div>
-                  <h3 className="marca-title">
-                    Cerveza Artesanal con Carácter
-                  </h3>
-                  <p className="marca-desc">
-                    Pasión artesanal en cada pinta. Pequeña productora con
-                    estilos audaces.
-                  </p>
-                  <a
-                    href="https://wa.me/5492216046790"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="marca-btn yellow"
-                  >
-                    CONOCER AMARILLA
-                  </a>
-                </div>
-              </article>
-            </div>
-            <button
-              className="marca-arrow right"
-              aria-label="Siguiente"
-              onClick={() => scroll("right")}
-            >
-              ›
-            </button>
-          </div>
-        </div>
-      </section>
-
       {/* MISION */}
-      <section className="mission-section">
+      <section className="mission-section" id="mision">
         <div className="mision-container">
           <div className="mission-inner">
             <div className="mission-image">

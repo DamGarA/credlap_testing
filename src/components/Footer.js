@@ -352,7 +352,7 @@ export default function Footer() {
             </b>
           </p>
           <p>
-            <b>Actualización: 21/09/2025</b>
+            <b>Actualización: 16/04/2026</b>
           </p>
         </div>
         <p className="tasas-text">
