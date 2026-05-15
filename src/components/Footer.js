@@ -380,13 +380,6 @@ export default function Footer() {
             rel="noreferrer"
           >
             Damián García Abreu
-          </a>{" "}
-          /{" "}
-          <a
-            href="mailto:armendariz.ignacio@gmail.com"
-            style={{ textDecoration: "none" }}
-          >
-            Ignacio Armendariz
           </a>
           <br />
           Diseñado por{" "}
