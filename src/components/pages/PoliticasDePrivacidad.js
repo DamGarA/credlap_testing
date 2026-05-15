@@ -82,7 +82,7 @@ export default function PoliticasDePrivacidad() {
           Responsable de seguridad de datos: Medina Wanda, asesor externo. E-mail: administracion@credlap.com, Tel: +54 9 11 7831 2678.
         </p>
         <p>
-          Responsable de régimen informativo: Ortega Lina, asesor externo. E-mail: administracion@credlap.com, Tel: +54 9 11 7831 2678.
+          Responsable de régimen informativo: Fonseca Lilian, asesor externo. E-mail: administracion@credlap.com, Tel: +54 9 11 7831 2678.
         </p>
         <p>
           Responsable de atención al usuario financiero: Cativa Florencia, asesor externo. E-mail: cyr@credlap.com, Tel: +54 9 11 2617 0462.
